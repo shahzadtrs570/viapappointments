@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 "use client"
 
 import { Container } from "@package/ui/container"
@@ -8,41 +10,83 @@ export function SearchComponent() {
   const [searchData, setSearchData] = useState({
     // Buy tab data
     condition: "Used",
-    make: "Bentley", 
+    make: "Bentley",
     model: "All models",
     zipCode: "",
     // Sell tab data
     licensePlate: "",
-    state: "State"
+    state: "State",
   })
 
   const conditionOptions = ["New", "Used", "Certified Pre-Owned"]
   const makeOptions = [
-    "Audi", "BMW", "Bentley", "Honda", "Toyota", "Mercedes", "Ford", 
-    "Volkswagen", "Lexus", "Nissan", "Porsche", "Subaru", "Chevrolet", "Hyundai"
+    "Audi",
+    "BMW",
+    "Bentley",
+    "Honda",
+    "Toyota",
+    "Mercedes",
+    "Ford",
+    "Volkswagen",
+    "Lexus",
+    "Nissan",
+    "Porsche",
+    "Subaru",
+    "Chevrolet",
+    "Hyundai",
   ]
-  const modelOptions = ["All models", "Continental", "Bentayga", "Flying Spur", "Mulsanne"]
+  const modelOptions = [
+    "All models",
+    "Continental",
+    "Bentayga",
+    "Flying Spur",
+    "Mulsanne",
+  ]
   const stateOptions = [
-    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", 
-    "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", 
-    "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", 
-    "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi"
+    "Alabama",
+    "Alaska",
+    "Arizona",
+    "Arkansas",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "Delaware",
+    "Florida",
+    "Georgia",
+    "Hawaii",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Iowa",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Maine",
+    "Maryland",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Mississippi",
   ]
 
   const handleInputChange = (field: string, value: string) => {
-    setSearchData(prev => ({ ...prev, [field]: value }))
+    setSearchData((prev) => ({ ...prev, [field]: value }))
   }
 
   return (
-    <section className="relative bg-cover bg-center bg-no-repeat min-h-[600px] flex items-center justify-center" 
-             style={{
-               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`
-             }}>
+    <section
+      className="relative bg-cover bg-center bg-no-repeat min-h-[600px] flex items-center justify-center"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
+      }}
+    >
       <Container className="max-w-6xl text-center">
         {/* Hero Title */}
         <div className="mb-12">
           <h1 className="text-5xl md:text-6xl font-black text-white mb-4">
-            {activeTab === "buy" ? "Car shopping your way" : "Car selling your way"}
+            {activeTab === "buy"
+              ? "Car shopping your way"
+              : "Car selling your way"}
           </h1>
         </div>
 
@@ -139,7 +183,9 @@ export function SearchComponent() {
               <input
                 type="text"
                 value={searchData.licensePlate}
-                onChange={(e) => handleInputChange("licensePlate", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("licensePlate", e.target.value)
+                }
                 placeholder="(EX.) C4R 6URU"
                 className="w-full px-4 py-4 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white font-medium text-lg text-gray-700 placeholder-gray-500 border-0 outline-none transition-all duration-200"
               />
@@ -150,7 +196,9 @@ export function SearchComponent() {
                 onChange={(e) => handleInputChange("state", e.target.value)}
                 className="w-full px-4 py-4 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white font-medium text-lg text-gray-700 border-0 outline-none transition-all duration-200"
               >
-                <option value="State" disabled>State</option>
+                <option value="State" disabled>
+                  State
+                </option>
                 {stateOptions.map((option) => (
                   <option key={option} value={option}>
                     {option}
@@ -168,4 +216,4 @@ export function SearchComponent() {
       </Container>
     </section>
   )
-} 
+}

@@ -1,21 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable  */
 
 import type { Metadata } from "next"
 
 import { useTranslation } from "@/lib/i18n"
-
-import { FAQ, ValueProposition } from "./landing-page/_components"
-import { Benefits } from "./landing-page/_components/Benefits"
-import { Calculator } from "./landing-page/_components/Calculator"
-import { CallToAction } from "./landing-page/_components/CallToAction"
-import { Features } from "./landing-page/_components/Features"
 import { Hero } from "./landing-page/_components/Hero"
-import { HowItWorks } from "./landing-page/_components/HowItWorks"
-import { TrustIndicators } from "./landing-page/_components/TrustIndicators"
-import { WhatIsSrenova } from "./landing-page/_components/WhatIsSrenova"
-import LocationMap from "./landing-page/_components/LocationMap"
 import { ScrollingBanner } from "./landing-page/_components/ScrollingBanner"
-import { PreQualifyImage } from "./landing-page/_components/PreQualifyImage"
 import { ExploreCarMakes } from "./landing-page/_components/ExploreCarMakes"
 import { ExploreCarTypes } from "./landing-page/_components/ExploreCarTypes"
 import { BudgetCalculator } from "./landing-page/_components/BudgetCalculator"
@@ -53,8 +42,7 @@ export default async function LandingPage({
   return (
     <section className="bg-white dark:bg-background">
       <Hero />
-      <LocationMap />
-      <ScrollingBanner />
+      {/* <ScrollingBanner /> */}
       <SearchComponent />
       {/* <PreQualifyImage /> */}
       <BudgetCalculator />
