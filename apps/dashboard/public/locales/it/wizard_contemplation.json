@@ -1,0 +1,136 @@
+{
+  "title": "Grazie per la tua candidatura!",
+  "subtitle": "Il tuo percorso per liberare il valore della tua proprietà è in corso",
+  "application_received": "Candidatura ricevuta",
+  "what_happens_next": "Cosa succede dopo?",
+  "steps": {
+    "review": {
+      "title": "Revisione della candidatura",
+      "description": "I nostri specialisti stanno esaminando attentamente i dettagli della tua candidatura. Verifichiamo la tua idoneità e ci assicuriamo che tutte le informazioni siano accurate per offrirti la migliore proposta possibile.",
+      "timeframe": "Tempi",
+      "timeframe_value": "Generalmente 24-48 ore"
+    },
+    "verification": {
+      "title": "Valutazione e verifica della proprietà",
+      "description": "Il nostro team di esperti valuta i dettagli della tua proprietà e le informazioni sulla proprietà. Questo processo approfondito garantisce che possiamo offrirti condizioni eque e trasparenti.",
+      "process": "Processo di verifica",
+      "process_value": "Verifica dei documenti elettronici, conferma del catasto e analisi di mercato"
+    },
+    "offer": {
+      "title": "Offerta provvisoria",
+      "description": "Una volta completata la verifica, ti presenteremo un'offerta provvisoria personalizzata. Questo include il tuo pagamento iniziale, i pagamenti mensili e tutte le condizioni.",
+      "expect": "Cosa aspettarsi",
+      "expect_value": "Dettagli completi dell'offerta con analisi finanziaria completa e periodo di revisione senza impegno"
+    }
+  },
+  "about_section": {
+    "title": "Informazioni su Srenova e Viager",
+    "viager": {
+      "title": "Cos'è il Viager?",
+      "description": "Il viager è un accordo di vendita immobiliare unico con radici nella tradizione immobiliare francese. Vendi la tua casa mantenendo il diritto di viverci a vita (noto come \"usufrutto\"). Questa struttura ti fornisce capitale immediato garantendo al contempo le tue esigenze abitative per tutto il tempo che desideri rimanere nella tua casa."
+    },
+    "benefits": {
+      "title": "Vantaggi finanziari",
+      "description": "L'accordo viager offre significativi vantaggi finanziari: un pagamento iniziale (tipicamente 20-40% del valore della proprietà) seguito da pagamenti mensili garantiti a vita. Questo crea un reddito affidabile senza la necessità di trasferirsi, ridimensionare o gestire proprietà in affitto, eliminando al contempo le tasse sulla proprietà e i costi di manutenzione."
+    },
+    "difference": {
+      "title": "La differenza Srenova",
+      "description": "In Srenova, modernizziamo il concetto tradizionale del viager con condizioni trasparenti, valutazioni eque e supporto continuo. Il nostro approccio innovativo combina la sicurezza di un viager tradizionale con protezioni finanziarie moderne e flessibilità, il tutto gestito attraverso la nostra piattaforma digitale facile da usare e consulenti dedicati."
+    },
+    "peace": {
+      "title": "Tranquillità",
+      "description": "I nostri accordi viager sono strutturati legalmente per proteggere il tuo diritto di rimanere nella tua casa a vita. A differenza dei mutui inversi o dei piani di rilascio del capitale, non c'è accumulo di debito, nessun addebito di interessi e nessun rischio di pignoramento. I tuoi pagamenti mensili sono garantiti indipendentemente dalle condizioni di mercato."
+    }
+  },
+  "testimonial": {
+    "quote": "\"La soluzione viager di Srenova ci ha permesso di liberare il valore della nostra casa continuando a viverci. I pagamenti mensili hanno trasformato la nostra pensione, dandoci libertà finanziaria senza dover trasferirci.\"",
+    "author": "— Margaret & John, clienti Srenova dal 2021"
+  },
+  "status": {
+    "title": "Stato della candidatura",
+    "progress": "Progresso della verifica",
+    "in_process": "In corso",
+    "pending": "In attesa di revisione",
+    "processing": "In elaborazione",
+    "approved": "Approvato",
+    "rejected": "Respinto",
+    "application_id": "ID candidatura",
+    "submission_date": "Data di presentazione",
+    "estimated_completion": "Risposta stimata",
+    "completion_time": "Generalmente meno di un giorno lavorativo",
+    "check_status_info": "Puoi verificare lo stato della tua candidatura in qualsiasi momento cliccando sul pulsante \"Verifica stato verifica\"."
+  },
+  "guidebot": {
+    "initial_message": "Mentre attendi la verifica della tua candidatura, sentiti libero di chiedermi qualsiasi domanda su Srenova, il processo viager o cosa aspettarti dopo.",
+    "title": "La tua guida Srenova",
+    "responses": {
+      "verification_time": "Il nostro processo di verifica richiede generalmente 24-48 ore. Durante questo periodo, il nostro team esamina i dettagli della tua proprietà, le informazioni sulla proprietà e conduce valutazioni iniziali per preparare la tua offerta provvisoria.",
+      "documents_needed": "A questo punto, non sono necessari documenti aggiuntivi. Una volta verificata la tua candidatura, potremmo richiedere la documentazione della proprietà, la prova di proprietà e l'identificazione per i prossimi passaggi del processo.",
+      "change_information": "Puoi modificare le informazioni della tua candidatura se necessario. Contatta il nostro team di supporto a support@srenova.com o chiama la nostra linea di assistenza al 0800-123-4567 per richiedere modifiche.",
+      "financial_benefits": "I vantaggi finanziari di un accordo viager includono: 1) Un pagamento iniziale sostanziale, 2) Un reddito mensile garantito a vita, 3) Nessuna tassa sulla proprietà o costi di manutenzione, 4) Nessun rischio di accumulo di debito, e 5) La possibilità di rimanere nella tua casa con protezione legale completa.",
+      "family_implications": "È importante discutere dei tuoi piani viager con i membri della famiglia. Sebbene la proprietà non farà parte della tua eredità, i vantaggi finanziari possono fornirti più risorse per sostenere la tua famiglia durante la tua vita. Molti clienti trovano questo accordo vantaggioso per la loro pianificazione finanziaria familiare complessiva."
+    },
+    "questions": {
+      "verification_time": "Quanto tempo richiede la verifica?",
+      "documents_needed": "Devo fornire documenti?",
+      "financial_benefits": "Quali sono i principali vantaggi finanziari?",
+      "family_implications": "Come influisce sulla mia famiglia?"
+    }
+  },
+  "resources": {
+    "title": "Risorse utili",
+    "guide": {
+      "title": "Guida completa al Viager",
+      "description": "La nostra guida completa spiega ogni aspetto del processo viager, dalla valutazione al completamento, con casi studio reali e approfondimenti di esperti.",
+      "link": "Leggi la guida →"
+    },
+    "calculator": {
+      "title": "Calcolatore dei vantaggi finanziari",
+      "description": "Il nostro calcolatore interattivo ti aiuta a esplorare diversi scenari e vedere potenziali pagamenti iniziali e mensili basati sui dettagli della tua proprietà.",
+      "link": "Prova il calcolatore →"
+    },
+    "faq": {
+      "title": "FAQ Viager & Centro informazioni",
+      "description": "Trova risposte alle domande più comuni sugli accordi viager, considerazioni legali e il processo Srenova.",
+      "link": "Esplora le FAQ →"
+    }
+  },
+  "buttons": {
+    "back": "Indietro",
+    "check_status": "Verifica stato verifica",
+    "checking": "Verifica in corso..."
+  },
+  "toast": {
+    "verification_complete": {
+      "title": "Verifica completata",
+      "description": "La tua candidatura è stata verificata. Procedendo con la tua offerta."
+    },
+    "still_review": {
+      "title": "In attesa di revisione",
+      "description": "La tua candidatura è attualmente in attesa di revisione iniziale da parte del nostro team. Inizieremo a elaborarla molto presto."
+    },
+    "processing": {
+      "title": "Candidatura in elaborazione",
+      "description": "La tua candidatura è attualmente in fase di elaborazione dal nostro team di verifica. Questo è un passo positivo."
+    },
+    "rejected": {
+      "title": "Candidatura necessita attenzione",
+      "description": "Abbiamo identificato alcuni problemi con la tua candidatura che devono essere risolti. Si prega di contattare il nostro team di supporto."
+    },
+    "error": {
+      "title": "Errore durante la verifica",
+      "description": "Abbiamo riscontrato un errore durante la verifica del tuo stato. Si prega di riprovare più tardi."
+    }
+  },
+  "chatbot": {
+    "title": "Assistente Chat IA",
+    "initialMessage": "Ciao! Posso aiutarti a rispondere alle domande sul processo di verifica. Cosa vorresti sapere?",
+    "suggestedQuestions": {
+      "processTime": "Quanto tempo richiede il processo?",
+      "nextSteps": "Quali sono i prossimi passi del processo?",
+      "verificationProcess": "Cosa succede durante il processo di verifica?",
+      "changeMind": "Posso cambiare idea durante questo periodo?",
+      "familyInvolvement": "I membri della famiglia possono essere coinvolti nel processo?"
+    }
+  }
+}

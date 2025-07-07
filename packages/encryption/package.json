@@ -1,0 +1,32 @@
+{
+  "name": "@srenova/encryption",
+  "version": "0.1.0",
+  "description": "Field-level encryption for database fields",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint \"src/**/*.ts\"",
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "generate-key": "node -e \"console.log(require('crypto').randomBytes(32).toString('hex'))\""
+  },
+  "keywords": [
+    "encryption",
+    "database",
+    "prisma",
+    "security"
+  ],
+  "dependencies": {
+    "@prisma/client": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.11",
+    "eslint": "^8.38.0",
+    "jest": "^29.5.0",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
+  }
+} 

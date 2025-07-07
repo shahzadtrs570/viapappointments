@@ -1,0 +1,120 @@
+---
+description: Email template development and sending guidelines
+globs: packages/email/**/*.{ts,tsx}
+---
+# Email System Implementation
+
+This document outlines the email system implementation guidelines for the NextJet project.
+
+## Email Service Provider
+
+- Use Resend for email delivery with React Email templates
+
+## Email Templates
+
+- Structure email templates in `packages/email/src/templates/`:
+  ```typescript
+  // templates/WelcomeEmail.tsx
+  import {
+    Body,
+    Button,
+    Container,
+    Head,
+    Heading,
+    Html,
+    Preview,
+    Section,
+    Text,
+  } from '@react-email/components';
+
+  export const WelcomeEmail = ({
+    name,
+    actionUrl,
+  }: {
+    name: string;
+    actionUrl: string;
+  }) => (
+    <Html>
+      <Head />
+      <Preview>Welcome to NextJet, {name}!</Preview>
+      <Body>
+        <Container>
+          <Text>Hi {name},</Text>
+          <Text>
+            Welcome to NextJet! We're excited to have you on board.
+          </Text>
+          <Section>
+            <Button href={actionUrl}>
+              Get Started
+            </Button>
+          </Section>
+        </Container>
+      </Body>
+    </Html>
+  );
+  ```
+
+## Email Sending Service
+
+- Implement a proper email sending service:
+  ```typescript
+  // lib/sendEmail.ts
+  import { Resend } from 'resend';
+  
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  
+  export const sendEmail = async ({
+    to,
+    subject,
+    template: Template,
+    props,
+  }: SendEmailParams) => {
+    try {
+      await resend.emails.send({
+        from: `NextJet <${process.env.RESEND_EMAIL_DOMAIN}>`,
+        to,
+        subject,
+        react: <Template {...props} />,
+      });
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      throw error;
+    }
+  };
+  ```
+
+## Required Email Templates
+
+- Create reusable email templates for:
+  - Welcome emails
+  - Password reset
+  - Verification requests
+  - Subscription updates
+  - Invoice notifications
+
+## Error Handling
+
+- Implement proper error handling for email delivery failures
+- For detailed error handling guidelines, see [error-handling.mdc](mdc:error-handling.mdc)
+
+## Testing
+
+- Test email templates across different email clients
+
+## Configuration
+
+- Configure environment variables:
+  ```
+  RESEND_API_KEY=your_resend_key
+  RESEND_EMAIL_DOMAIN=notifications@your-domain.com
+  ```
+
+- For production, set up a proper email sending domain with appropriate DNS records
+
+## Integration with Authentication
+
+- For integration with authentication system, see [auth-implementation.mdc](mdc:auth-implementation.mdc)
+
+## Integration with Subscription Management
+
+- For integration with subscription system, see [payment-implementation.mdc](mdc:payment-implementation.mdc)

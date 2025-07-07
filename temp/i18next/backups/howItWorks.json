@@ -1,0 +1,51 @@
+{
+    "title": {
+      "how_to": "Comment",
+      "get_started": "Commencer"
+    },
+    "description": "Notre processus transparent vous guide de la demande initiale à la sécurité financière, avec un soutien expert à chaque étape.",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Vérification d'Éligibilité",
+        "items": [
+          "Évaluation en ligne simple",
+          "Évaluation de la propriété",
+          "Examen de votre situation personnelle",
+          "Consultation sans engagement"
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Évaluation de la Propriété",
+        "items": [
+          "Évaluation professionnelle",
+          "Analyse du marché",
+          "Détermination de la juste valeur",
+          "Processus transparent"
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Offre Personnalisée",
+        "items": [
+          "Structure de viager personnalisée",
+          "Options de paiement flexibles",
+          "Documentation claire",
+          "Consultation d'expert"
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Accord et Soutien",
+        "items": [
+          "Protection juridique complète",
+          "Paiements à vie garantis",
+          "Soutien continu",
+          "Tranquillité d'esprit complète"
+        ]
+      }
+    ],
+    "cta_button": "Vérifiez Votre Éligibilité Maintenant"
+  }
+  

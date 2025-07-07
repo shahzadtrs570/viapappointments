@@ -1,0 +1,59 @@
+{
+  "hero": {
+    "heading": {
+      "part1": "Débloquez votre ",
+      "part2": "la valeur de la maison ",
+      "part3": "et reste pour toujours"
+    },
+    "description": "Transformez votre maison en sécurité financière avec Srenova. Valorisez votre propriété tout en restant dans la maison que vous aimez.",
+    "buttons": {
+      "checkEligibility": "Vérifiez votre éligibilité maintenant",
+      "learnHow": "Découvrir Comment Ça Marche"
+    },
+    "trust": {
+      "label": "Fait confiance par les propriétaires à travers l'Europe",
+      "partners": {
+        "partner1": "Partenaire 1",
+        "partner2": "Partenaire 2",
+        "partner3": "Partenaire 3",
+        "partner4": "Partenaire 4"
+      }
+    },
+    "badges": {
+      "stayHome": {
+        "title": "Restez dans votre maison",
+        "subtitle": "100% garanti"
+      },
+      "unlockValue": {
+        "title": "Débloquez la valeur de votre maison",
+        "subtitle": "Sécurité financière"
+      }
+    },
+    "testimonials": {
+      "testimonial1": {
+        "text": "Jean et Claudine pourraient bénéficier de Srenova en débloquant une partie de la valeur de leur maison pour augmenter leurs revenus de retraite sans le stress émotionnel d'une vente ou d'un déménagement. Ils pourraient utiliser ces fonds supplémentaires pour voyager, subvenir aux besoins de leurs petits-enfants et profiter de leurs vieux jours tout en restant dans leur maison chérie.",
+        "author": "Jean et Claudine, 66 et 64 ans — Lyon, France"
+      },
+      "testimonial2": {
+        "text": "Margaret pourrait utiliser Srenova pour rester indépendante dans sa maison familiale avec un revenu mensuel garanti. Cela l'aiderait à préserver son mode de vie, à gérer ses frais de santé et à éviter de dépendre de ses enfants pour un soutien financier.",
+        "author": "Margaret, 73 ans — Oxford, Royaume-Uni"
+      },
+      "testimonial3": {
+        "text": "Carlos pourrait choisir Srenova pour créer un revenu régulier tout en conservant ses droits de résidence à vie. Cela lui permettrait de planifier sa succession, de soutenir sa famille et de rester dans la maison pleine de souvenirs qu'il a construite au fil des ans.",
+        "author": "Carlos, 71 ans — Valence, Espagne"
+      },
+      "testimonial4": {
+        "text": "Paul et Denise pourraient utiliser Srenova pour accéder à la valeur de leur propriété et profiter de voyages à travers le monde. Ils auraient la liberté d'explorer le monde tout en gardant leur base permanente à la maison, sans perturbation émotionnelle.",
+        "author": "Paul et Denise, 68 et 67 ans — Bath, Royaume-Uni"
+      },
+      "testimonial5": {
+        "text": "Sophia pourrait bénéficier de Srenova en recevant une somme forfaitaire et un revenu mensuel pour couvrir ses dépenses de santé. Elle pourrait rester confortablement chez elle sans la pression de vendre, sachant que son avenir financier est assuré.",
+        "author": "Sophia, 62 ans — Nice, France"
+      },
+      "testimonial6": {
+        "text": "Eleanor et Hugh pourraient utiliser Srenova pour soutenir leurs enfants avec un héritage anticipé. En les aidant à acheter leur première maison, ils verraient les avantages de donner maintenant, tout en continuant à vivre dans leur maison bien-aimée.",
+        "author": "Eleanor et Hugh, 70 et 72 ans — Surrey, Royaume-Uni"
+      }
+    }
+  }
+} 

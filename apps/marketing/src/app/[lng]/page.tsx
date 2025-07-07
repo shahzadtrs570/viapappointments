@@ -1,0 +1,74 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import type { Metadata } from "next"
+
+import { useTranslation } from "@/lib/i18n"
+
+import { FAQ, ValueProposition } from "./landing-page/_components"
+import { Benefits } from "./landing-page/_components/Benefits"
+import { Calculator } from "./landing-page/_components/Calculator"
+import { CallToAction } from "./landing-page/_components/CallToAction"
+import { Features } from "./landing-page/_components/Features"
+import { Hero } from "./landing-page/_components/Hero"
+import { HowItWorks } from "./landing-page/_components/HowItWorks"
+import { TrustIndicators } from "./landing-page/_components/TrustIndicators"
+import { WhatIsSrenova } from "./landing-page/_components/WhatIsSrenova"
+import LocationMap from "./landing-page/_components/LocationMap"
+import { ScrollingBanner } from "./landing-page/_components/ScrollingBanner"
+import { PreQualifyImage } from "./landing-page/_components/PreQualifyImage"
+import { ExploreCarMakes } from "./landing-page/_components/ExploreCarMakes"
+import { ExploreCarTypes } from "./landing-page/_components/ExploreCarTypes"
+import { BudgetCalculator } from "./landing-page/_components/BudgetCalculator"
+import { SearchComponent } from "./landing-page/_components/SearchComponent"
+/* eslint-disable @typescript-eslint/no-unused-vars, react-hooks/rules-of-hooks */
+// Generate dynamic metadata from translations
+export async function generateMetadata({
+  params: { lng },
+}: {
+  params: { lng: string }
+}): Promise<Metadata> {
+  const { t } = await useTranslation(lng, ["landing"])
+
+  return {
+    title: t(
+      "meta.title",
+      "Srenova | Unlock Your Home Equity While Staying in Your Home"
+    ),
+    description: t(
+      "meta.description",
+      "Srenova helps homeowners access their property's value while maintaining the right to live in their home. Flexible payment options, transparent process, and professional support."
+    ),
+  }
+}
+
+// Landing page component
+export default async function LandingPage({
+  params: { lng },
+}: {
+  params: { lng: string }
+}) {
+  // Get translations for landing page
+  const { t } = await useTranslation(lng, ["landing", "common"])
+
+  return (
+    <section className="bg-white dark:bg-background">
+      <Hero />
+      <LocationMap />
+      <ScrollingBanner />
+      <SearchComponent />
+      {/* <PreQualifyImage /> */}
+      <BudgetCalculator />
+      <ExploreCarMakes />
+      <ExploreCarTypes />
+      {/* <Features />
+      <WhatIsSrenova />
+      <Calculator />
+      <ValueProposition />
+      <HowItWorks />
+      <Benefits />
+      <FAQ />
+      <TrustIndicators />
+      <CallToAction /> */}
+    </section>
+  )
+}

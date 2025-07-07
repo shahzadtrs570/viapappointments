@@ -1,0 +1,51 @@
+{
+  "cardTitle": {
+    "signUp": "S'inscrire",
+    "signIn": "Se connecter"
+  },
+  "cardDescription": {
+    "signUp": "Entrez votre e-mail ci-dessous pour vous inscrire",
+    "signIn": "Entrez votre e-mail ci-dessous pour vous connecter à votre compte"
+  },
+  "form": {
+    "emailLabel": "E-mail",
+    "orSeparator": "ou"
+  },
+  "buttons": {
+    "submit": {
+      "signUp": "S'inscrire",
+      "signIn": "Se connecter"
+    },
+    "google": {
+      "signUp": "S'inscrire avec Google",
+      "signIn": "Se connecter avec Google"
+    },
+    "github": {
+      "signUp": "S'inscrire avec Github",
+      "signIn": "Se connecter avec Github"
+    }
+  },
+  "linkText": {
+    "prompt": {
+      "signUp": "Vous avez déjà un compte ?",
+      "signIn": "Vous n'avez pas de compte ?"
+    },
+    "action": {
+      "signUp": "Se connecter",
+      "signIn": "S'inscrire"
+    }
+  },
+  "emailDialog": {
+    "title": "Vérifiez votre messagerie",
+    "description": {
+      "signUp": "Un lien d'inscription a été envoyé à votre adresse e-mail, {{email}}. Cliquez sur le lien pour vous inscrire.",
+      "signIn": "Un lien de connexion a été envoyé à votre adresse e-mail, {{email}}. Cliquez sur le lien pour vous connecter."
+    }
+  },
+  "turnstileDialog": {
+    "title": "Vérification de Sécurité",
+    "description": "Veuillez compléter le contrôle de sécurité pour continuer"
+  }
+}
+
+

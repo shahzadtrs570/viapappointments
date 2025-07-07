@@ -1,0 +1,25 @@
+{
+  "banner": {
+    "title": "Bienvenue dans notre aperçu ! 🚀",
+    "subtitle": "Vous découvrez l'avenir",
+    "description": "Il s'agit d'un <strong>environnement de pré-production</strong> conçu pour les tests et les commentaires. Tout ce que vous voyez est simulé - pas de vraies transactions, réunions ou engagements.",
+    "features": {
+      "safeEnvironment": {
+        "title": "Environnement de test sécurisé",
+        "description": "Aucun paiement, aucune donnée réelle, aucun engagement"
+      },
+      "fullAccess": {
+        "title": "Accès complet aux fonctionnalités",
+        "description": "Essayez les évaluations immobilières, les flux et plus encore"
+      },
+      "helpImprove": {
+        "title": "Aidez-nous à nous améliorer",
+        "description": "Vos commentaires façonnent notre produit final"
+      }
+    },
+    "buttons": {
+      "startExploring": "Commencer l'exploration →",
+      "closeMessage": "Cliquez ici pour fermer ce message"
+    }
+  }
+} 

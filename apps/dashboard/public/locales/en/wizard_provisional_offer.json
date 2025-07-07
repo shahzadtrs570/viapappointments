@@ -1,0 +1,263 @@
+{
+  "pageTitle": "Your Provisional Offer",
+  "pageDescription": "Based on your application, we've prepared a formal provisional offer for you. Please review the details below.",
+  "shareModal": {
+    "title": "Share link",
+    "copiedToastTitle": "Link copied",
+    "copiedToastDescription": "The link has been copied to your clipboard.",
+    "shareUsingTitle": "Share using",
+    "buttons": {
+      "email": "Email",
+      "message": "Message",
+      "facebook": "Facebook",
+      "twitter": "Twitter"
+    }
+  },
+  "defaultShareTitle": "Srenova Provisional Offer",
+  "paymentCalculator": {
+    "title": "Balance Your Payment Structure",
+    "description": "Slide to adjust the balance between your initial lump sum and monthly payments.",
+    "homeValueLabel": "Value of your home?",
+    "sliderDescription": "You can use the slider to choose any lump sum between the minimum and maximum values.",
+    "minLumpSumLabel": "Min Lump Sum",
+    "maxLumpSumLabel": "Max Lump Sum",
+    "lumpSumSection": {
+      "title": "LUMP SUM",
+      "upfrontLabel": "upfront",
+      "description": "Spend or invest as you choose"
+    },
+    "monthlyPaymentSection": {
+      "title": "MONTHLY PAYMENT",
+      "durationLabel": "/month for {{duration}} years"
+    },
+    "purchasePriceNote": "Based on an estimated purchase price of"
+  },
+  "agreement": {
+    "title": "Srenvoa: PROVISIONAL OFFER AGREEMENT",
+    "referenceNumberLabel": "REFERENCE NUMBER:",
+    "dateOfIssueLabel": "DATE OF ISSUE:",
+    "propertySellerDetails": {
+      "title": "PROPERTY & SELLER DETAILS",
+      "addressLabel": "PROPERTY ADDRESS:",
+      "ownersLabel": "REGISTERED OWNER(S):",
+      "titleNumberLabel": "TITLE NUMBER:",
+      "tenureLabel": "TENURE:",
+      "typeLabel": "PROPERTY TYPE:"
+    },
+    "valuationOfferSummary": {
+      "title": "VALUATION & OFFER SUMMARY",
+      "marketValuationLabel": "INDEPENDENT MARKET VALUATION:",
+      "purchasePriceLabel": "Srenvoa PURCHASE PRICE (80% of market value):",
+      "lumpSumLabel": "INITIAL LUMP SUM (BOUQUET):",
+      "remainingBalanceAnnuityLabel": "REMAINING BALANCE FOR ANNUITY:",
+      "monthlyAnnuityPaymentLabel": "MONTHLY ANNUITY PAYMENT (RENTE):",
+      "annuityTermLabel": "ANNUITY TERM:"
+    },
+    "termsAndConditions": {
+      "title": "DETAILED TERMS & CONDITIONS",
+      "purchaseStructure": {
+        "title": "1. PURCHASE STRUCTURE",
+        "intro": "Srenvoa offers to purchase the above-referenced property under the following structure:",
+        "salePrice": "Sale Price: £{{price}}, representing {{percentage}}% of the current market valuation of £{{marketValue}}",
+        "paymentStructure": {
+          "title": "Payment Structure:",
+          "lumpSum": "Initial lump sum (bouquet) of £{{amount}} payable upon completion",
+          "remainingBalance": "Remaining balance of £{{amount}} paid as a monthly annuity",
+          "monthlyPayments": "Monthly payments of £{{amount}} for {{duration}} years"
+        },
+        "annualAdjustment": "Annual Payment Adjustment: Monthly payments will be adjusted annually in line with the UK Consumer Price Index (CPI) to protect against inflation."
+      },
+      "lifetimeOccupancy": {
+        "title": "2. LIFETIME OCCUPANCY RIGHTS",
+        "intro": "The seller(s) shall retain the following rights after completion of the sale:",
+        "rightOfResidence": "Lifetime Right of Residence: The seller(s) shall have the right to continue residing in the property for the remainder of their life/lives.",
+        "occupancyTerms": "Occupancy Terms: This right of residence is personal to the named seller(s) and cannot be transferred or assigned.",
+        "maintenanceResponsibilities": "Maintenance Responsibilities: The seller(s) shall maintain the property in good condition and be responsible for routine maintenance and decorative repairs.",
+        "structuralRepairs": "Structural Repairs: Major structural repairs shall be the responsibility of Srenvoa or the property investor."
+      },
+      "financialProtections": {
+        "title": "3. FINANCIAL PROTECTIONS",
+        "intro": "The following protections are included for the seller's security:",
+        "guaranteedPayments": "Guaranteed Payments: The annuity payments are contractually guaranteed for a minimum of 10 years, even in the event of the seller's early passing, with payments directed to their estate.",
+        "paymentProtection": "Payment Protection: All payment obligations are secured against the property through a legal charge registered at the Land Registry.",
+        "defaultProtection": "Default Protection: In the event of default on annuity payments, the seller has the right to rescind the agreement and reclaim ownership of the property, retaining all payments received to date."
+      }
+    },
+    "financialIllustration": {
+      "title": "FINANCIAL ILLUSTRATION",
+      "intro": "Below is an illustration of the total financial benefit under this agreement:",
+      "benefitComponentHeader": "FINANCIAL BENEFIT COMPONENT",
+      "amountHeader": "AMOUNT (£)",
+      "lumpSumRow": "Initial Lump Sum (Bouquet)",
+      "annuityPaymentsRow": "Total Projected Annuity Payments (over 20 years at current rates)",
+      "totalBenefitRow": "TOTAL PROJECTED BENEFIT",
+      "marketValueRow": "Comparative Market Value",
+      "netBenefitPercentageRow": "Net Benefit Percentage"
+    },
+    "agreementInPrinciple": {
+      "title": "Agreement in Principle",
+      "fullNameLabel": "Your Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "checkboxLabel": "I understand that this is 'agreement in principle' and not a legally binding agreement. Either party can choose not to continue this process at this stage."
+    }
+  },
+  "nextStepsSection": {
+    "title": "NEXT STEPS",
+    "intro": "Upon acceptance of this offer:",
+    "item1": "Your dedicated Srenvoa adviser will contact you within 24 hours to arrange the next steps.",
+    "item2": "Legal documentation will be prepared and sent to your solicitor.",
+    "item3": "Completion is typically arranged within 8-12 weeks.",
+    "item4": "The lump sum payment will be transferred on the day of completion.",
+    "item5": "Monthly payments will commence on the 1st day of the month following completion.",
+    "dedicatedAdvisorTitle": "YOUR DEDICATED ADVISER:",
+    "advisorName": "Sarah Johnson",
+    "advisorPhone": "Telephone: 0800 123 4567",
+    "advisorEmail": "Email: sarah.johnson@estateflex.com"
+  },
+  "importantRecommendation": {
+    "title": "Important Recommendation",
+    "description": "Srenova strongly recommends sharing this provisional offer with family members, financial advisers, or other trusted professionals before proceeding.",
+    "confirmationLabel": "I confirm that I have either:",
+    "sharedOption": "Shared this offer with family/financial advisers",
+    "proceedOption": "Understand the implications and wish to proceed without consultation",
+    "shareButton": "Share"
+  },
+  "responseSection": {
+    "title": "Provisional Offer Response",
+    "question": "How would you like to proceed with this provisional offer?",
+    "acceptButton": {
+      "label": "Accept Provisional Offer",
+      "subLabel": "Continue to next step"
+    },
+    "speakAdvisorButton": {
+      "label": "Speak with an Adviser",
+      "subLabel": "Get human assistance"
+    },
+    "declineButton": {
+      "label": "Decline Offer",
+      "subLabel": "Provide feedback"
+    }
+  },
+  "declineForm": {
+    "title": "Decline Provisional Offer",
+    "description": "We're sorry to hear you're declining. Please let us know why:",
+    "reasonSelectPlaceholder": "Select a reason...",
+    "reasons": {
+      "amountLow": "Offer amount too low",
+      "againstViager": "Decided against viager",
+      "alternativeSolution": "Found alternative solution",
+      "moreTime": "Need more time to consider",
+      "personalCircumstances": "Personal circumstances changed",
+      "termsConcern": "Concerns about terms & conditions",
+      "other": "Other"
+    },
+    "detailsLabel": "Additional Details (Optional)",
+    "detailsPlaceholder": "Please provide any additional comments or feedback...",
+    "submitButton": "Submit Decline"
+  },
+  "speakHumanForm": {
+    "title": "Speak with an Adviser",
+    "description": "We're here to help. Please provide your contact details and preferred time, and an advisor will reach out to you.",
+    "nameLabel": "Your Name",
+    "emailLabel": "Your Email",
+    "phoneLabel": "Your Telephone Number",
+    "contactMethodLabel": "Preferred Contact Method",
+    "contactMethodOptions": {
+      "email": "Email",
+      "phone": "Phone Call"
+    },
+    "contactTimeLabel": "Preferred Contact Time",
+    "contactTimeOptions": {
+      "morning": "Morning (9am - 12pm)",
+      "afternoon": "Afternoon (1pm - 5pm)",
+      "anytime": "Anytime"
+    },
+    "questionLabel": "Your Question/Comment (Optional)",
+    "questionPlaceholder": "Enter your question or comment here...",
+    "requestCallbackButton": "Request Callback"
+  },
+  "acceptanceConfirmation": {
+    "title": "Provisional Offer Accepted!",
+    "thankYouMessage": "Thank you for accepting the provisional offer. Your reference number is .",
+    "whatsNextTitle": "What's Next?",
+    "advisorContact": "Adviser Contact: Your dedicated adviser, {{advisorName}}, will contact you within 24 hours.",
+    "legalProcess": "Legal Process: We will begin preparing the legal documentation with your solicitor.",
+    "completion": "Completion: Aiming for completion within 8-12 weeks.",
+    "meantimeMessage": "In the meantime, you can proceed to the next step to provide any final details or review your application.",
+    "continueButton": "Continue to Finalisation"
+  },
+  "navigation": {
+    "saveAndContinueLater": "Save & Continue Later"
+  },
+  "toasts": {
+    "noReferenceError": "No offer reference number found",
+    "acceptProblemError": "There was a problem accepting your offer. Please try again.",
+    "declineReasonError": "Please select a reason for declining",
+    "propertyIdRequiredError": "Property ID is required",
+    "acceptedSuccess": "Your provisional offer has been accepted. Continue to finalisation when ready.",
+    "offerCreatedSuccess": "Provisional offer created successfully",
+    "offerAcceptedSuccess": "Offer accepted successfully",
+    "offerDeclinedSuccess": "Offer declined successfully"
+  },
+  "guideBot": {
+    "title": "Offer Details",
+    "initialMessage": "This is your provisional offer based on the information you've provided. You can adjust the balance between the lump sum and monthly payments using the slider.",
+    "suggestedQuestions": {
+      "priceCalc": "How is the purchase price calculated?",
+      "earlyPassing": "What happens if I pass away early?",
+      "sellLater": "Can I sell the property later?"
+    },
+    "responses": {
+      "purchase_price_calc": "The purchase price is typically set at a percentage (e.g., 70-80%) of the independent market valuation to account for the lifetime occupancy right and ongoing annuity payments.",
+      "early_passing": "Our agreements include protections. For instance, annuity payments are often guaranteed for a minimum period (e.g., 10 years), payable to your estate if you pass away before then.",
+      "sell_later": "Once the viager sale is complete, you no longer own the property, so you cannot sell it. You retain the right to live in it for life."
+    }
+  },
+  "guideBot2": {
+    "initialMessage": "Congratulations! You're now at the provisional offer stage. Please review the details carefully and ensure you understand all the terms before accepting. If you have any questions, don't hesitate to ask.",
+    "suggestedQuestions": {
+      "postAcceptance": "What happens after I accept the provisional offer?",
+      "legalTimeline": "How long does the legal process take?",
+      "paymentChanges": "Can I change my payment method later?"
+    },
+    "responses": {
+      "postAcceptance": "After accepting the provisional offer, we'll initiate the formal process. This includes: 1) Property valuation by independent surveyors, 2) Legal documentation preparation, 3) Setting up your chosen payment method, and 4) Final contract review with your solicitor. We'll guide you through each step.",
+      "legalTimeline": "The legal process typically takes 4-6 weeks from offer acceptance. This includes property searches, contract preparation, and final agreement signing. Your dedicated advisor and legal team will work to complete everything as efficiently as possible.",
+      "paymentChanges": "Yes, you can request changes to your payment method after the initial setup. Any changes will need to be agreed upon by both parties and documented properly. We recommend discussing any potential changes with your financial adviser first."
+    }
+  },
+  "importantInfo": {
+    "title": "Important Information"
+  },
+  "timeline": {
+    "title": "Key Information Summary",
+    "itemPriceCalc": "How is the purchase price calculated?",
+    "itemEarlyPassing": "What happens if I pass away early?",
+    "itemSellLater": "Can I sell the property later?"
+  },
+  "inputPlaceholder": "Type your message...",
+  "chatbot": {
+    "title": "AI Chat Assistant",
+    "initialMessage": "Hello! I can help answer questions about your offer and payment options. What would you like to know?",
+    "suggestedQuestions": {
+      "paymentStructure": "How does the payment structure work?",
+      "offerCalculation": "How do you determine my offer?",
+      "paymentAdjustment": "Can I adjust the balance between the lump sum and monthly payments?",
+      "taxImplications": "What tax implications should I consider?",
+      "liveLonger": "What happens if I live longer than expected?"
+    }
+  },
+  "expirationNotice": {
+    "message": "This offer expires on {{date}}. Please review and make your decision before this date."
+  },
+  "verification": {
+    "required": {
+      "title": "Email Verification Required",
+      "description": "Please verify your email address to proceed with your provisional offer. This helps us ensure the security of your account."
+    },
+    "send": "Send Verification Email",
+    "sending": "Sending...",
+    "sent": "Verification email sent! Please check your inbox.",
+    "alreadySent": "Verification email already sent"
+  }
+}

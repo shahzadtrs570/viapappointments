@@ -1,0 +1,12 @@
+{
+  "preview": "Aggiornamento stato proprietà - {{currentStage}}",
+  "title": "Aggiornamento stato proprietà",
+  "updateIntro": "Abbiamo un aggiornamento riguardo la tua proprietà:",
+  "currentStage": "Fase attuale: {{currentStage}}",
+  "requiredActions": "Azioni richieste:",
+  "dueBy": "Scadenza: {{date}}",
+  "urgentAction": "⚠️ Azione urgente richiesta",
+  "viewInDashboard": "Visualizza nel Dashboard",
+  "questions": "Fateci sapere se avete domande o feedback. Siamo sempre felici di aiutare!",
+  "signature": "I tuoi amici di Srenova"
+} 

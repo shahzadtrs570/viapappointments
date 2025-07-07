@@ -1,0 +1,30 @@
+{
+  "heading": "Real Stories, Real Results",
+  "subheading": "Hear from homeowners who have transformed their retirement with Srenova.",
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Marie Dubois",
+      "age": 72,
+      "location": "Paris, France",
+      "quote": "Srenova helped me unlock the value of my home while staying in the place I love. The guaranteed monthly payments have transformed my retirement, giving me both security and freedom."
+    },
+    {
+      "id": 2,
+      "name": "Robert Johnson",
+      "age": 68,
+      "location": "London, UK",
+      "quote": "After 40 years in our family home, we didn't want to leave but needed additional income. Srenova's viager solution was perfect - professional, transparent, and genuinely caring about our needs."
+    },
+    {
+      "id": 3,
+      "name": "Claire Ricci",
+      "age": 75,
+      "location": "Milan, Italy",
+      "quote": "The Srenova team guided me through every step with patience and expertise. Now I have the financial security I needed without sacrificing the comfort of my own home."
+    }
+  ],
+  "previous": "Previous testimonial",
+  "next": "Next testimonial",
+  "goto": "Go to testimonial {{number}}"
+} 

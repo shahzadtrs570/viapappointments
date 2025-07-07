@@ -1,0 +1,184 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "NEXT_PUBLIC_APP_ENV",
+    "NEXT_PUBLIC_APP_NAME",
+    "NEXT_PUBLIC_APP_URL",
+    "NEXT_PUBLIC_MARKETING_URL",
+    "NEXT_PUBLIC_ALLOW_CRAWLING",
+    "NEXTAUTH_URL",
+    "NEXTAUTH_SECRET",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+    "GITHUB_CLIENT_ID",
+    "GITHUB_CLIENT_SECRET",
+    "DATABASE_URL",
+    "RESEND_KEY",
+    "RESEND_EMAIL_DOMAIN",
+    "NEXT_PUBLIC_TINYBIRD_SRC",
+    "NEXT_PUBLIC_TINYBIRD_DATA_HOST",
+    "NEXT_PUBLIC_TINYBIRD_ANALYTICS_DASHBOARD_TRACKER_TOKEN",
+    "NEXT_PUBLIC_TINYBIRD_ANALYTICS_MARKETING_TRACKER_TOKEN",
+    "STRIPE_PUBLISHABLE_KEY",
+    "STRIPE_SECRET_KEY",
+    "STRIPE_WEBHOOKS_SECRET",
+    "LEMONSQUEEZY_API_KEY",
+    "LEMONSQUEEZY_STORE_ID",
+    "LEMONSQUEEZY_WEBHOOK_SECRET",
+    "NEXT_PUBLIC_CRISP_WEBSITE_ID",
+    "NEXT_PUBLIC_CANNY_BOARD_TOKEN",
+    "CANNY_PRIVATE_KEY",
+    "ENV_CLIENT_EMAIL_PROVIDER",
+    "ENV_CLIENT_AUTH_GMAIL_SENDER",
+    "ENV_CLIENT_AUTH_GMAIL_SENDER_PASSWORD",
+    "ENV_CLIENT_AUTH_GMAIL_FROM",
+    "ENV_CLIENT_AUTH_ADMIN_EMAIL",
+    "OPENAI_API_KEY",
+    "NEXT_PUBLIC_N8N_API_BASE_URL",
+    "NEXT_PUBLIC_N8N_API_KEY",
+    "NEXT_PUBLIC_N8N_WEBHOOK_PATH_TEST_BASE_URL",
+    "NEXT_PUBLIC_N8N_WEBHOOK_PATH_PROD_BASE_URL",
+    "NEXT_PUBLIC_N8N_WORKFLOW_DEV_MODE",
+    "GOOGLE_API_KEY",
+    "FIRECRAWL_API_KEY",
+    "DEBUG_MAGIC_LINK",
+    "CLOUDFLARE_ENDPOINT",
+    "CLOUDFLARE_BUCKET_NAME",
+    "CLOUDFLARE_ACCESS_KEY_ID",
+    "CLOUDFLARE_ACCESS_KEY_SECRET",
+    "CLOUDFLARE_PUBLIC_URL",
+    "STORAGE_PROVIDER",
+    "GOOGLE_CHAT_WEBHOOK_URL",
+    "DISABLE_NOTIFICATION_LOGGER",
+    "TURNSTILE_SECRET_KEY",
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY",
+    "NEXT_PUBLIC_GOOGLE_CHAT_WEBHOOK_URL",
+    "NEXT_PUBLIC_DISABLE_NOTIFICATION_LOGGER",
+    "NEXT_PUBLIC_LLMS_CACHE_PREFIX",
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY",
+    "TURNSTILE_SECRET_KEY",
+    "OPENAI_API_KEY",
+    "ENCRYPTION_ENABLED",
+    "ENCRYPTION_KEY",
+    "ENCRYPTED_FIELDS",
+    "NEXT_PUBLIC_USERBACK_TOKEN",
+    "NEXT_PUBLIC_USERBACK",
+    "NEXT_PUBLIC_IDEAL_POSTCODES_LOOKUP_KEY",
+    "RIGHTMOVE_API_URL",
+    "RIGHTMOVE_TOKEN_URL",
+    "RIGHTMOVE_CLIENT_ID",
+    "RIGHTMOVE_CLIENT_SECRET",
+    "PRISMA_FIELD_ENCRYPTION_KEY",
+    "NEXT_PUBLIC_PRISMA_FIELD_ENCRYPTION_KEY",
+    "PRISMA_FIELD_ENCRYPTION_HASH_SALT",
+    "NEXT_PUBLIC_ENABLE_RATE_LIMITING",
+    "SRENOVA_USE_RAG"
+  ],
+  "globalDependencies": [".env"],
+  "tasks": {
+    "db:generate": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
+    },
+    "db:migrate": {
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
+    },
+    "db:deploy": {
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
+    },
+    "db:pull": {
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
+    },
+    "db:reset": {
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
+    },
+    "build": {
+      "dependsOn": ["^db:generate"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "format": {
+      "dependsOn": ["^format"]
+    },
+    "dev": {
+      "dependsOn": ["^db:generate"],
+      "cache": false,
+      "persistent": true,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
+    },
+    "start": {
+      "cache": false,
+      "persistent": true,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
+    },
+    "stripe": {
+      "cache": false,
+      "persistent": true,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
+    }
+  }
+}

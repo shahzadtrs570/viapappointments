@@ -1,0 +1,87 @@
+---
+description: Marketing website UI implementation and content guidelines
+globs: apps/marketing/**/*.{ts,tsx,mdx}
+---
+# Marketing Website Implementation
+
+This document outlines the guidelines for developing the marketing website, including content structure, SEO optimization, and component usage.
+
+## Content Structure
+
+- Blog posts should be in `apps/marketing/content/blog` as MDX files
+- Documentation pages should be in `apps/marketing/content/docs` as MDX files
+- Legal pages should be in `apps/marketing/content/legal` as MDX files
+
+## Content Metadata
+
+- Blog posts require frontmatter with:
+  ```markdown
+  ---
+  title: Your Blog Title
+  description: Blog post description
+  publishedAt: 2024-01-29
+  updatedAt: 2024-01-29
+  coverImage: /images/blog/cover.jpg
+  authorName: John Doe
+  keywords: [nextjs, saas]
+  published: true
+  ---
+  ```
+
+- Documentation pages require frontmatter with:
+  ```markdown
+  ---
+  title: Documentation Title
+  description: Page description
+  updatedAt: 2024-01-29
+  ---
+  ```
+
+## SEO Optimization
+
+- Implement proper metadata for each page
+- Use Open Graph tags for social sharing
+- Configure automatic sitemap generation
+- Add structured data where appropriate
+
+## Page Performance
+
+- Prioritize static site generation (SSG) where possible
+- Use image optimization through Next.js Image component
+- Implement incremental static regeneration for dynamic content
+- Optimize loading of third-party scripts
+
+## Component Guidelines
+
+- Use marketing-specific UI components from `apps/marketing/src/components`
+- Implement proper call-to-action components that link to the dashboard
+- Use consistent styling for promotional sections
+- Ensure responsive behavior for all viewports
+
+## Navigation
+
+- Maintain clear navigation structure with proper breadcrumbs
+- Implement consistent header and footer components
+- Create logical content organization in documentation
+- Use proper metadata for documentation navigation
+
+## Content Components
+
+- For blog and documentation, use specialized MDX components:
+  ```jsx
+  <Callout type="info">Important information here</Callout>
+  
+  <CodeBlock language="typescript">
+    // Code example
+  </CodeBlock>
+  
+  <Tabs>
+    <Tab title="Option 1">Content 1</Tab>
+    <Tab title="Option 2">Content 2</Tab>
+  </Tabs>
+  ```
+
+## Integration with Other Systems
+
+- For design system implementation, see [design-system.mdc](mdc:design-system.mdc)
+- For core architecture principles, see [core-architecture.mdc](mdc:core-architecture.mdc)

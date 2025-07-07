@@ -1,0 +1,42 @@
+{
+  "title": {
+    "srenova": "Srenova",
+    "calculator": "Calculator"
+  },
+  "description": "Use this calculator to understand how much you might make selling your home the Srenova way.",
+  "controls": {
+    "home_value_label": "Likely value of your home?",
+    "current_value": "£{{value}}",
+    "min_value": "£150K",
+    "max_value": "£3M",
+    "max_value_plus": "£3M+",
+    "payment_preference": {
+      "label": "Would you rather receive:",
+      "options": {
+        "balanced": "Balanced",
+        "lump_sum": "A larger lump sum",
+        "monthly": "A larger monthly payment life"
+      }
+    },
+    "recalculate": "Recalculate"
+  },
+  "results": {
+    "valuation_basis": "Based on a valuation of {{value}}",
+    "srenova_offer_label": "Likely Srenova purchase offer:",
+    "srenova_offer_detail": "(20% less than the estimated value)",
+    "lump_sum": {
+      "label": "Lump sum",
+      "value": "{{value}} upfront",
+      "description": "Spend or invest as you choose",
+      "duration_short": " upfront"
+    },
+    "monthly": {
+      "label": "Monthly payment",
+      "value": "£{{value}}",
+      "duration": "for the rest of your life",
+      "duration_short": " /month for life"
+    },
+    "offer_basis": "Based on an estimated purchase price of {{offer}}",
+    "disclaimer": "Important: this is an indicative guide only. Please register your interest and provide details about your home to attain an accurate provisional purchase offer."
+  }
+} 

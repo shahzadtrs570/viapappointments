@@ -1,0 +1,1334 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  extensions = [vector]
+
+}
+
+model Account {
+  id                       String   @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String?  @db.Text
+  refresh_token_expires_in Int?
+  access_token             String?  @db.Text
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String?  @db.Text
+  session_state            String?
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model User {
+  id                String               @id @default(cuid())
+  name              String?              /// @encrypted
+  email             String?              @unique /// @encrypted
+  emailHash         String?              @unique /// @encryption:hash(email)
+  emailVerified     DateTime?
+  image             String?
+  hasOnboarded      Boolean              @default(false)
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+  role              Role                 @default(USER)
+  preferredLanguage String?              @default("en")
+  SrenovaRole    Srenova_UserRole[]     @default([SELLER, FUND_BUYER])
+  receiveUpdates    Boolean              @default(false)
+  isCompanyUser     Boolean              @default(false)
+
+  isBanned Boolean @default(false)
+
+  bans            Ban[]
+  performedBans   Ban[] @relation("performedBans")
+  performedUnbans Ban[] @relation("performedUnbans")
+
+  accounts         Account[]
+  sessions         Session[]
+  subscription     Subscription?
+  featureTemplates FeatureTemplate[]
+
+  // Srenova - Additional relations
+  contactAddress         ContactAddress?
+  sellerProfiles         SellerProfile[]
+  familySupporterProfile FamilySupporterProfile?
+  fundBuyerProfile       FundBuyerProfile?
+  conveyancerProfile     ConveyancerProfile?
+  valuerProfile          ValuerProfile?
+  adminProfile           AdminProfile?
+  documents              Document[]
+  propertyDocuments      PropertyDocument[]
+  
+  // BuyBox relations
+  createdBuyBoxes        BuyBox[]
+  buyBoxInvestments      BuyBoxInvestment[]
+  
+  // Buyer Onboarding relation
+  buyerOnboarding        BuyerOnboarding?
+  
+  // Eligibility relation
+  eligibility            Eligibility?
+}
+
+model Ban {
+  id               String  @id @default(cuid())
+  userId           String
+  bannedByUserId   String?
+  unbannedByUserId String?
+  banReason        String
+  unbanReason      String?
+
+  unbannedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  user       User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bannedBy   User? @relation("performedBans", fields: [bannedByUserId], references: [id], onDelete: SetNull)
+  unbannedBy User? @relation("performedUnbans", fields: [unbannedByUserId], references: [id], onDelete: SetNull)
+}
+
+model Subscription {
+  customerId            String              @id
+  subscriptionId        String?             @unique
+  lookupKey             String?
+  status                SubscriptionStatus?
+  isCanceledAtPeriodEnd Boolean             @default(false)
+  billingInterval       BillingInterval?
+
+  currentPeriodStart DateTime?
+  currentPeriodEnd   DateTime?
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WaitlistEntry {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  waitlistType String // e.g., "standard", "enterprise", "beta"
+  status       String   @default("active") // For future use: "active", "contacted", "converted"
+  source       String? // Optional: track where the signup came from
+  referralCode String? // Optional: for referral tracking
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  metadata     Json? // Flexible field for additional data
+  notes        String? // Admin notes
+
+  @@index([waitlistType])
+  @@index([createdAt])
+  @@index([status])
+}
+
+model Ai_api_calls {
+  id                  String   @id
+  userId              String
+  provider            String
+  model               String
+  prompt_string       String
+  prompt_tokens       Int
+  completion_tokens   Int
+  total_tokens        Int
+  responseData        String
+  response_time       String
+  status_code         Int
+  usage_cost          Float
+  createdAt           DateTime @default(now())
+  audio_length_mins   Float?
+  ai_response_words   Int?
+  ai_response_chars   Int?
+  prompt_number_words Int?
+  prompt_number_chars Int?
+}
+
+model QueueTask {
+  id              String      @id @default(cuid())
+  type            String
+  data            Json
+  result          Json?
+  status          QueueStatus @default(PENDING)
+  attempts        Int         @default(0)
+  maxAttempts     Int         @default(3)
+  failedProviders String[]
+  errorMessage    String?
+  errorPatterns   Json?
+  priority        Int         @default(0)
+  scheduledFor    DateTime?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  processedAt     DateTime?
+
+  // Generic reference fields
+  referenceId    String? // ID of the related entity
+  referenceModel String? // Name of the related model (e.g., "Story", "Video", "Audio")
+
+  @@index([status])
+  @@index([type])
+  @@index([createdAt])
+  @@index([priority])
+  @@index([scheduledFor])
+  @@index([referenceId])
+  @@index([referenceModel])
+}
+
+enum Role {
+  USER 
+  ADMIN 
+  SUPER_ADMIN 
+}
+
+enum SubscriptionStatus {
+  active
+  canceled
+  incomplete
+  incomplete_expired
+  past_due
+  paused
+  trialing
+  unpaid
+  expired
+}
+
+enum BillingInterval {
+  day
+  week
+  month
+  year
+}
+
+enum QueueStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  MAX_RETRIES_REACHED
+}
+
+// For newsletter subscribers
+model NewsletterSubscriber {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  name             String?
+  metadata         Json?
+  subscribedAt     DateTime @default(now())
+  isActive         Boolean  @default(true)
+  source           String?
+  tags             String[]
+  updatedAt        DateTime @updatedAt
+  unsubscribeToken String?  @unique
+
+  @@index([subscribedAt])
+  @@index([isActive])
+}
+
+// For general lead capture across multiple services
+model Lead {
+  id         String     @id @default(cuid())
+  email      String
+  name       String?
+  phone      String?
+  company    String?
+  message    String? // Free-form message
+  leadType   String // Flexible string for lead type
+  status     LeadStatus @default(NEW)
+  source     String? // Where the lead came from
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  metadata   Json? // Additional fields based on lead type
+  assignedTo String? // User ID for assigned team member
+
+  // Survey-related fields
+  lastSurveyOfferedAt   DateTime?
+  lastSurveyCompletedAt DateTime?
+
+  // Relationships
+  surveyResponses SurveyResponse[]
+
+  @@index([leadType])
+  @@index([status])
+  @@index([createdAt])
+  @@index([assignedTo])
+  @@index([email])
+}
+
+// Feature Template model
+model FeatureTemplate {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+// Lead status enum
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CONVERTED
+  LOST
+}
+
+// Survey status enum
+enum SurveyStatus {
+  DRAFT
+  PUBLISHED
+  CLOSED
+}
+
+// Survey trigger type enum - when to present the survey
+enum SurveyTriggerType {
+  IMMEDIATE // Show immediately after lead submission
+  DELAYED // Show after a delay
+  MANUAL // Require manual triggering
+}
+
+// Survey definition model
+model Survey {
+  id          String       @id @default(cuid())
+  title       String
+  description String?
+  status      SurveyStatus @default(DRAFT)
+  surveyJson  Json // SurveyJS schema definition
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  createdBy   String? // User ID reference
+  isArchived  Boolean      @default(false)
+
+  // Configuration options
+  redirectUrl     String? // URL to redirect to after completion
+  thankYouMessage String? // Message to show after completion
+  primaryColor    String? // Brand color for survey
+  isPublic        Boolean @default(false) // Whether survey is publicly accessible
+
+  // Relationships
+  responses             SurveyResponse[]
+  surveyLeadConnections SurveyLeadConnection[]
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([isArchived])
+}
+
+// Survey response model - stores individual response submissions
+model SurveyResponse {
+  id           String    @id @default(cuid())
+  surveyId     String
+  responseJson Json // Stores the actual response data
+  startedAt    DateTime  @default(now())
+  completedAt  DateTime?
+  isCompleted  Boolean   @default(false)
+  userId       String? // Optional User ID if authenticated
+  leadId       String? // Optional Lead ID if connected to a lead
+  ipAddress    String? // For tracking/analytics
+  userAgent    String? // Browser/device info
+
+  // Relationships
+  survey Survey @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  lead   Lead?  @relation(fields: [leadId], references: [id], onDelete: SetNull)
+
+  @@index([surveyId])
+  @@index([leadId])
+  @@index([completedAt])
+  @@index([isCompleted])
+}
+
+// Connects surveys to leads - defines which leads should receive which surveys
+model SurveyLeadConnection {
+  id             String   @id @default(cuid())
+  surveyId       String
+  leadTypeFilter String? // Filter for lead types eligible for this survey
+  isActive       Boolean  @default(true)
+  priority       Int      @default(0) // Higher number = higher priority
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Connection settings
+  triggerType  SurveyTriggerType @default(IMMEDIATE)
+  delayMinutes Int? // For DELAYED trigger type
+
+  // Relationships
+  survey Survey @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+
+  @@index([surveyId])
+  @@index([isActive])
+  @@index([priority])
+  @@index([leadTypeFilter])
+}
+
+// Srenova - New Models
+
+// User Roles specific to Srenova
+enum Srenova_UserRole {
+  SELLER
+  FAMILY_SUPPORTER
+  FUND_BUYER
+  CONVEYANCER
+  VALUER
+}
+
+// Property Types
+enum PropertyType {
+  HOUSE
+  APARTMENT
+  BUNGALOW
+  COTTAGE
+  VILLA
+  OTHER
+}
+
+// Health Conditions
+enum HealthCondition {
+  EXCELLENT
+  GOOD
+  FAIR
+  POOR
+}
+
+// Financial Priority
+enum FinancialPriority {
+  LUMP_SUM
+  MONTHLY_INCOME
+  MIXED
+  UNDECIDED
+}
+
+// Property Condition
+enum PropertyCondition {
+  EXCELLENT
+  GOOD
+  FAIR
+  NEEDS_RENOVATION
+}
+
+// Offer Status
+enum OfferStatus {
+  DRAFT
+  PENDING
+  ACCEPTED
+  REJECTED
+  EXPIRED
+  WITHDRAWN
+}
+
+// Contract Status
+enum ContractStatus {
+  DRAFT
+  PENDING_SIGNATURE
+  PARTIALLY_SIGNED
+  SIGNED
+  COMPLETED
+  TERMINATED
+  DISPUTED
+}
+
+// Valuation Status
+enum ValuationStatus {
+  REQUESTED
+  IN_PROGRESS
+  COMPLETED
+  REJECTED
+}
+
+// Property Document Type
+enum PropertyDocumentType {
+  DEED
+  FLOOR_PLAN
+  ENERGY_CERTIFICATE
+  SURVEY
+  PROPERTY_TAX
+  INSURANCE
+  PHOTO
+  OTHER
+}
+
+// Agreement Type
+enum AgreementType {
+  STANDARD
+  CUSTOM
+}
+
+// Occupancy Right
+enum OccupancyRight {
+  FULL
+  PARTIAL
+  NONE
+}
+
+// Contact Address
+model ContactAddress {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  streetLine1 String
+  streetLine2 String?
+  city        String
+  state       String?
+  postalCode  String
+  country     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Property Address
+model PropertyAddress {
+  id          String   @id @default(cuid())
+  propertyId  String   @unique
+  streetLine1 String   /// @encrypted
+  streetLine2 String?  /// @encrypted
+  city        String   /// @encrypted
+  state       String?  /// @encrypted
+  postalCode  String   /// @encrypted
+  country     String   /// @encrypted
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  addressData Json?    // Store full address data from lookup services
+
+  // Relations
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+}
+
+// Seller Profile
+model SellerProfile {
+  id                 String            @id @default(cuid())
+  userId             String
+  firstName          String            /// @encrypted
+  lastName           String            /// @encrypted
+  email              String            /// @encrypted
+  emailHash          String?           /// @encryption:hash(email)
+  dateOfBirth        String            /// @encrypted
+  generalHealth      HealthCondition
+  financialPriority  FinancialPriority
+  willStayInProperty Boolean
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  // Relations
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sellerProperties  SellerProperty[]
+  offers            Offer[]
+  contracts         Contract[]
+  completionStatus  CompletionStatus[]
+  applicationReview ApplicationReview[]
+  dashboardStatuses PropertyDashboardStatus[]
+
+  @@index([userId])
+}
+
+// Family Supporter Profile
+model FamilySupporterProfile {
+  id                   String   @id @default(cuid())
+  userId               String   @unique
+  firstName            String
+  lastName             String
+  relationshipToSeller String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// Fund Buyer Profile
+model FundBuyerProfile {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  companyName        String
+  registrationNumber String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// Conveyancer Profile
+model ConveyancerProfile {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  firmName      String
+  licenseNumber String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// Valuer Profile
+model ValuerProfile {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  firmName      String
+  licenseNumber String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  valuations Valuation[]
+
+  @@index([userId])
+}
+
+// Admin Profile
+model AdminProfile {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  adminLevel String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// Property
+model Property {
+  id             String            @id @default(cuid())
+  propertyType   PropertyType
+  bedroomCount   String            /// @encrypted
+  bathroomCount  String            /// @encrypted
+  totalAreaSqM   String            /// @encrypted
+  condition      PropertyCondition
+  estimatedValue String            /// @encrypted
+  confirmedValue String?           /// @encrypted
+  yearBuilt      String?           /// @encrypted
+  features       String            /// @encrypted
+  leaseLength    String?           /// @encrypted
+  userId         String            // Added userId field
+  showDocumentUpload Boolean?      // Whether to show document upload section
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  // Relations
+  address           PropertyAddress?
+  propertyDocuments PropertyDocument[]
+  valuations        Valuation[]
+  offers            Offer[]
+  sellerProperties  SellerProperty[]
+  completionStatus  CompletionStatus[]
+  applicationReview ApplicationReview[]
+  buyBoxProperties  BuyBoxProperty[]
+  dashboardStatuses PropertyDashboardStatus[]
+
+  @@index([propertyType])
+  @@index([userId])     // Added index for userId
+}
+
+// Seller-Property Relationship (Many-to-Many)
+model SellerProperty {
+  id                  String   @id @default(cuid())
+  sellerId            String   
+  propertyId          String
+  ownershipPercentage Float
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  // Relations
+  seller   SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([sellerId, propertyId])
+  @@index([sellerId])
+  @@index([propertyId])
+}
+
+// Offer
+model Offer {
+  id                   String         @id @default(cuid())
+  propertyId           String
+  sellerProfileId      String
+  referenceNumber      String?
+  initialPaymentAmount String         /// @encrypted // was: Float
+  monthlyPaymentAmount String         /// @encrypted // was: Float
+  indexationRate       String         /// @encrypted // was: Float
+  status               OfferStatus    @default(DRAFT)
+  agreementType        AgreementType
+  offerData            String?        /// @encrypted // was: Json? - Store the full offer JSON data as encrypted string
+  coSellerIds          String[]       @default([])
+  createdAt            String         /// @encrypted // was: DateTime - DateTime as encrypted ISO string
+  updatedAt            String         /// @encrypted // was: DateTime - DateTime as encrypted ISO string
+  expirationDate       DateTime?      // When the offer expires
+  isProvisional        Boolean        @default(true) // Indicates a provisional (true) vs final (false) offer
+  responseId           String?        // ID from the backoffice system response
+  
+  // Relations
+  property             Property       @relation(fields: [propertyId], references: [id])
+  sellerProfile        SellerProfile  @relation(fields: [sellerProfileId], references: [id])
+  contract             Contract[]
+
+  @@index([propertyId])
+  @@index([sellerProfileId])
+  @@index([status])
+  @@index([referenceNumber])
+}
+
+// Contract
+model Contract {
+  id              String         @id @default(cuid())
+  offerId         String         @unique
+  sellerProfileId String
+  contractNumber  String
+  status          ContractStatus @default(DRAFT)
+  signedBySeller  Boolean        @default(false)
+  signedByBuyer   Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  // Relations
+  offer         Offer         @relation(fields: [offerId], references: [id], onDelete: Cascade)
+  sellerProfile SellerProfile @relation(fields: [sellerProfileId], references: [id], onDelete: Cascade)
+
+  @@index([sellerProfileId])
+  @@index([status])
+}
+
+// Document (User Documents)
+model Document {
+  id           String   @id @default(cuid())
+  userId       String
+  documentType String
+  filename     String
+  fileUrl      String
+  fileSize     Int
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([documentType])
+}
+
+// Property Document
+model PropertyDocument {
+  id           String               @id @default(cuid())
+  propertyId   String
+  documentType String               /// @encrypted
+  filename     String               /// @encrypted
+  fileUrl      String               /// @encrypted
+  verified     Boolean              @default(false)
+  uploadedById String
+  createdAt    String               /// @encrypted // was: DateTime - DateTime as encrypted ISO string
+  updatedAt    String               /// @encrypted // was: DateTime - DateTime as encrypted ISO string
+
+  // Relations
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  uploadedBy User     @relation(fields: [uploadedById], references: [id], onDelete: Cascade)
+
+  @@index([propertyId])
+  @@index([documentType])
+  @@index([uploadedById])
+}
+
+// Valuation
+model Valuation {
+  id            String          @id @default(cuid())
+  propertyId    String
+  valuerId      String
+  marketValue   Float
+  occupiedValue Float
+  status        ValuationStatus @default(REQUESTED)
+  notes         String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  valuer   ValuerProfile @relation(fields: [valuerId], references: [id], onDelete: Cascade)
+
+  @@index([propertyId])
+  @@index([valuerId])
+  @@index([status])
+}
+
+// Application Review
+enum ApplicationReviewStatus {
+  PENDING
+  PROCESSING
+  ACCEPTED
+  REJECTED
+}
+
+model ApplicationReview {
+  id             String                @id @default(cuid())
+  checklist      String                /// @encrypted // Stores the checklist data as encrypted JSON string
+  considerations String                /// @encrypted // Stores the considerations data as encrypted JSON string
+  propertyId     String
+  sellerId       String
+  userId         String                // Added userId field
+  coSellerIds    String[]             @default([]) // IDs of additional sellers    
+  status         ApplicationReviewStatus @default(PENDING)
+  createdAt      String                /// @encrypted // Encrypted DateTime as ISO string
+  updatedAt      String                /// @encrypted // Encrypted DateTime as ISO string
+
+  // Relations
+  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  seller   SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  
+  @@index([propertyId])
+  @@index([sellerId])
+  @@index([userId])     // Added index for userId
+}
+
+// Completion Status
+model CompletionStatus {
+  id         String   @id @default(cuid())
+  choice     String   /// @encrypted // was: String
+  details    String   /// @encrypted // was: Json - Stores the solicitor details as encrypted JSON string
+  propertyId String
+  sellerId   String
+  coSellerIds    String[] @default([]) // IDs of additional sellers
+  createdAt  String   /// @encrypted // was: DateTime - DateTime as encrypted ISO string
+  updatedAt  String   /// @encrypted // was: DateTime - DateTime as encrypted ISO string
+
+  // Relations
+  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  seller   SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+
+  @@index([propertyId])
+  @@index([sellerId])
+}
+
+// BuyBox related models
+model BuyBox {
+  id               String   @id @default(cuid())
+  name             String
+  description      String
+  themeType        String
+  status           String   @default("draft") // draft, pending_review, approved, published
+  createdById      String
+  submissionNotes  String?
+  submittedAt      DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relations
+  createdBy            User                      @relation(fields: [createdById], references: [id])
+  themeData            BuyBoxThemeData?
+  properties           BuyBoxProperty[]
+  financialModel       BuyBoxFinancialModel?
+  complianceInfo       BuyBoxComplianceInfo?
+  platformListing      BuyBoxListing?
+  investorEngagement   BuyBoxInvestorEngagement?
+  capitalDeployment    BuyBoxCapitalDeployment?
+  continuousManagement BuyBoxContinuousManagement?
+  investments          BuyBoxInvestment[]
+
+  @@index([createdById])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model BuyBoxThemeData {
+  id                 String   @id @default(cuid())
+  buyBoxId           String   @unique
+  location           Json     @default("{}")
+  propertyTypes      Json     @default("[]")
+  demographicProfile Json     @default("{}")
+  additionalCriteria String?
+  targetInvestors    Json     @default("[]")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  // Relations
+  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
+}
+
+model BuyBoxProperty {
+  buyBoxId          String
+  propertyId        String
+  sellerDemographics Json
+  dueDiligence      Json
+  documents         Json     @default("[]")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  buyBox   BuyBox   @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
+  property Property @relation(fields: [propertyId], references: [id])
+
+  @@id([buyBoxId, propertyId])
+  @@index([buyBoxId])
+  @@index([propertyId])
+}
+
+model BuyBoxFinancialModel {
+  id                  String   @id @default(cuid())
+  buyBoxId            String   @unique
+  totalBouquet        Float
+  totalMonthlyAnnuity Float
+  guaranteedTerms     Json
+  expectedReturns     Json
+  riskAnalysis        Json
+  pricing             Json
+  cashFlowProjections Json?    @default("[]")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  // Relations
+  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
+}
+
+model BuyBoxComplianceInfo {
+  id                   String   @id @default(cuid())
+  buyBoxId             String   @unique
+  regulatoryCompliance Json
+  legalChecks          Json
+  documents            Json
+  internalApproval     Json
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  // Relations
+  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
+}
+
+model BuyBoxListing {
+  id                  String   @id @default(cuid())
+  buyBoxId            String   @unique
+  buyBoxName          String
+  shortDescription    String
+  longDescription     String   @db.Text
+  highlightFeatures   Json
+  investmentHighlights Json
+  riskDisclosures     Json
+  documents           Json
+  publishStatus       String   @default("draft") // draft, pending_review, approved, published
+  reviewNotes         String?
+  publishDate         DateTime?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  // Relations
+  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
+
+  @@index([publishStatus])
+}
+
+model BuyBoxInvestorEngagement {
+  id                     String   @id @default(cuid())
+  buyBoxId               String   @unique
+  accessControls         Json
+  investorCommunication  Json
+  subscriptionManagement Json
+  qAndASettings          Json
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  // Relations
+  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
+}
+
+model BuyBoxCapitalDeployment {
+  id               String   @id @default(cuid())
+  buyBoxId         String   @unique
+  fundsManagement  Json
+  contractExecution Json
+  propertyTransfers Json
+  sellerPayments    Json
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relations
+  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
+}
+
+model BuyBoxContinuousManagement {
+  id                 String   @id @default(cuid())
+  buyBoxId           String   @unique
+  reportingSchedule  Json
+  performanceTracking Json
+  investorRelations  Json
+  complianceReporting Json
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  // Relations
+  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
+}
+
+// BuyBox Investment related models
+model BuyBoxInvestment {
+  id              String   @id @default(cuid())
+  buyBoxId        String
+  investorId      String   // Reference to User ID
+  amount          Float
+  status          String   @default("pending") // pending, active, completed, withdrawn
+  investmentDate  DateTime @default(now())
+  completionDate  DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  buyBox   BuyBox @relation(fields: [buyBoxId], references: [id])
+  investor User   @relation(fields: [investorId], references: [id])
+
+  @@index([buyBoxId])
+  @@index([investorId])
+  @@index([status])
+}
+
+// Buyer Onboarding Models
+model BuyerOnboarding {
+  id                  String               @id @default(cuid())
+  userId              String               @unique
+  user                User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status              OnboardingStatus     @default(IN_PROGRESS)
+  startDate           DateTime             @default(now())
+  completionDate      DateTime?
+  currentStep         OnboardingStep       @default(INITIAL_INQUIRY)
+  initialInquiry      BuyerInitialInquiry?
+  qualificationKYCAML BuyerQualificationKYCAML?
+  dueDiligenceLegal   BuyerDueDiligenceLegal?
+  investorProfile     BuyerInvestorProfile?
+  platformTraining    BuyerPlatformTraining?
+  buyBoxAllocation    BuyerBuyBoxAllocation?
+  transactionExecution BuyerTransactionExecution?
+  monitoringReporting BuyerMonitoringReporting?
+  secondaryMarket     BuyerSecondaryMarket?
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+
+  @@index([userId])
+  @@map("buyer_onboarding")
+}
+
+model BuyerInitialInquiry {
+  id                      String          @id @default(cuid())
+  buyerOnboardingId       String          @unique
+  buyerOnboarding         BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
+  investmentGoals         String
+  estimatedInvestmentAmount Decimal
+  preferredContactMethod  String
+  preferredContactTime    String?
+  questions               String?
+  referralSource          String?
+  completed               Boolean         @default(false)
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
+
+  @@index([buyerOnboardingId])
+  @@map("buyer_initial_inquiry")
+}
+
+model BuyerQualificationKYCAML {
+  id                      String          @id @default(cuid())
+  buyerOnboardingId       String          @unique
+  buyerOnboarding         BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
+  investorType            String
+  entityType              String?
+  fullLegalName           String
+  dateOfBirth             DateTime?
+  taxIdentificationNumber String
+  nationality             String
+  residenceCountry        String
+  isAccreditedInvestor    Boolean
+  accreditationDocuments  String[]
+  sourceOfFunds           String
+  hasPoliticalExposure    Boolean
+  politicalExposureDetails String?
+  completed               Boolean         @default(false)
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
+
+  @@index([buyerOnboardingId])
+  @@map("buyer_qualification_kyc_aml")
+}
+
+model BuyerDueDiligenceLegal {
+  id                        String          @id @default(cuid())
+  buyerOnboardingId         String          @unique
+  buyerOnboarding           BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
+  hasReviewedInvestmentAgreement Boolean
+  hasReviewedOperatingAgreement Boolean
+  hasReviewedPrivacyPolicy  Boolean
+  hasReviewedTermsOfService Boolean
+  hasReviewedRiskDisclosures Boolean
+  legalRepresentativeName   String?
+  legalRepresentativeContact String?
+  additionalLegalRequirements String?
+  signedDocuments           String[]
+  electronicSignatureConsent Boolean
+  completed                 Boolean         @default(false)
+  createdAt                 DateTime        @default(now())
+  updatedAt                 DateTime        @updatedAt
+
+  @@index([buyerOnboardingId])
+  @@map("buyer_due_diligence_legal")
+}
+
+model BuyerInvestorProfile {
+  id                      String          @id @default(cuid())
+  buyerOnboardingId       String          @unique
+  buyerOnboarding         BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
+  investmentStrategy      String
+  riskTolerance           String
+  investmentHorizon       String
+  targetAnnualReturn      Decimal?
+  investmentFrequency     String?
+  preferredPropertyTypes  String[]
+  preferredLocations      String[]
+  minPropertyValue        Decimal?
+  maxPropertyValue        Decimal?
+  preferredDiversification String?
+  esgPreferences          String[]
+  specialRequirements     String?
+  completed               Boolean         @default(false)
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
+
+  @@index([buyerOnboardingId])
+  @@map("buyer_investor_profile")
+}
+
+model BuyerPlatformTraining {
+  id                                String          @id @default(cuid())
+  buyerOnboardingId                 String          @unique
+  buyerOnboarding                   BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
+  hasCompletedPlatformOrientation   Boolean
+  hasCompletedInvestmentWorkshop    Boolean
+  hasCompletedPortfolioManagementTraining Boolean
+  hasSetupAccount                   Boolean
+  hasSetupNotifications             Boolean
+  hasTestedInvestmentSimulation     Boolean
+  scheduledPersonalTraining         Boolean
+  personalTrainingDate              DateTime?
+  trainingFeedback                  String?
+  additionalTrainingRequested       String?
+  completed                         Boolean         @default(false)
+  createdAt                         DateTime        @default(now())
+  updatedAt                         DateTime        @updatedAt
+
+  @@index([buyerOnboardingId])
+  @@map("buyer_platform_training")
+}
+
+model BuyerBuyBoxAllocation {
+  id                        String          @id @default(cuid())
+  buyerOnboardingId         String          @unique
+  buyerOnboarding           BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
+  selectedBuyBoxIds         String[]
+  investmentAmountPerBuyBox Json
+  totalAllocation           Decimal
+  allocationStrategy        String
+  allocationNotes           String?
+  targetAllocationDate      DateTime?
+  reinvestmentPreferences   String?
+  hasDiversificationRequirements Boolean
+  diversificationRequirements String?
+  completed                 Boolean         @default(false)
+  createdAt                 DateTime        @default(now())
+  updatedAt                 DateTime        @updatedAt
+
+  @@index([buyerOnboardingId])
+  @@map("buyer_buy_box_allocation")
+}
+
+model BuyerTransactionExecution {
+  id                           String          @id @default(cuid())
+  buyerOnboardingId            String          @unique
+  buyerOnboarding              BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
+  paymentMethod                String
+  bankingInformation           Json?
+  cryptoWalletAddress          String?
+  transactionDate              DateTime?
+  hasReviewedTransactionDetails Boolean
+  hasConfirmedInvestmentAmount Boolean
+  hasSentFunds                 Boolean
+  fundsReceivedDate            DateTime?
+  transactionConfirmationNumber String?
+  investmentActivationDate     DateTime?
+  completed                    Boolean         @default(false)
+  createdAt                    DateTime        @default(now())
+  updatedAt                    DateTime        @updatedAt
+
+  @@index([buyerOnboardingId])
+  @@map("buyer_transaction_execution")
+}
+
+model BuyerMonitoringReporting {
+  id                         String          @id @default(cuid())
+  buyerOnboardingId          String          @unique
+  buyerOnboarding            BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
+  preferredReportingFrequency String
+  additionalMetricsRequested String[]
+  notificationPreferences    Json
+  hasSetupDashboardAlerts    Boolean
+  hasScheduledPeriodicCalls  Boolean
+  periodicCallFrequency      String?
+  taxReportingPreferences    String?
+  specialReportingRequirements String?
+  completed                  Boolean         @default(false)
+  createdAt                  DateTime        @default(now())
+  updatedAt                  DateTime        @updatedAt
+
+  @@index([buyerOnboardingId])
+  @@map("buyer_monitoring_reporting")
+}
+
+model BuyerSecondaryMarket {
+  id                       String          @id @default(cuid())
+  buyerOnboardingId        String          @unique
+  buyerOnboarding          BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
+  interestedInSecondaryMarket Boolean
+  expectedHoldingPeriod    String?
+  secondaryMarketPreferences String[]
+  hasReviewedLiquidityOptions Boolean
+  liquidityRequirements    String?
+  exitStrategyPreferences  String?
+  hasTrustedBeneficiaries  Boolean
+  beneficiaryInformation   Json?
+  completed                Boolean         @default(false)
+  createdAt                DateTime        @default(now())
+  updatedAt                DateTime        @updatedAt
+
+  @@index([buyerOnboardingId])
+  @@map("buyer_secondary_market")
+}
+
+enum OnboardingStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  SUSPENDED
+}
+
+enum OnboardingStep {
+  INITIAL_INQUIRY
+  QUALIFICATION_KYC_AML
+  DUE_DILIGENCE_LEGAL
+  INVESTOR_PROFILE
+  PLATFORM_TRAINING
+  BUY_BOX_ALLOCATION
+  TRANSACTION_EXECUTION
+  MONITORING_REPORTING
+  SECONDARY_MARKET
+  COMPLETED
+}
+
+model PropertyDashboardStatus {
+  id             String   @id @default(cuid())
+  propertyId     String
+  sellerId       String
+  coSellerIds    String[] @default([])
+  referenceNumber String  /// @encrypted // was: String
+  currentStage   String   /// @encrypted // was: String
+  stageProgress  String   /// @encrypted // was: Float
+  statusData     String   /// @encrypted // was: Json - Store the full dashboard status as encrypted JSON string
+  createdAt      String   /// @encrypted // was: DateTime - DateTime as encrypted ISO string
+  updatedAt      String   /// @encrypted // was: DateTime - DateTime as encrypted ISO string
+  
+  // Hash fields for sorting (non-encrypted)
+  createdAtHash  String?  /// @encryption:hash(createdAt) - Sortable hash for createdAt
+  updatedAtHash  String?  /// @encryption:hash(updatedAt) - Sortable hash for updatedAt
+
+  // Relations
+  property       Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  seller         SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+
+  @@index([propertyId])
+  @@index([sellerId])
+  @@index([referenceNumber])
+  @@index([updatedAtHash])
+  @@index([createdAtHash])
+}
+
+
+model Resource {
+  id        String      @id @default(cuid())
+  content   String
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @default(now()) @map("updated_at")
+  embeddings Embedding[]
+
+  @@map("resources")
+}
+
+model Embedding {
+  id         String   @id @default(cuid())
+  resourceId String   @map("resource_id")
+  content    String
+  embedding  Unsupported("vector(1536)")
+
+  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@map("embeddings")
+  // Prisma doesn't directly support HNSW indexes - you'll need to create this with raw SQL
+  // CREATE EXTENSION IF NOT EXISTS vector;
+  // CREATE INDEX ON embeddings USING hnsw (embedding vector_cosine_ops);
+}
+
+// Eligibility model to store user eligibility data
+model Eligibility {
+  id                     String   @id @default(cuid())
+  userId                 String   @unique
+  isEligible            Boolean?
+  age                    String?
+  ownership              String?
+  propertyType           String?
+  mainResidence          String?
+  financialGoals         String[] @default([])
+  country                String?
+  propertyOwnership      String?
+  jointOwnership         String?
+  spouseAge              String?
+  childrenHeirs          String?
+  inheritanceImportance  String?
+  confidentUnderstanding String?
+  discussOptions         String?
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  // Relation to User
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Domande Comuni",
+  "description": "Esplora le domande comuni qui, o chatta con la nostra <span>Guida Srenova</span>",
+  "faqs": [
+    {
+      "question": "Come viene calcolato il mio pagamento?",
+      "answer": "Il tuo pagamento è calcolato in base a diversi fattori, tra cui il valore di mercato della tua casa, la tua età, le condizioni della proprietà e la posizione. Utilizziamo modelli attuariali per garantire offerte eque che riflettano il valore della tua proprietà, fornendoti al contempo benefici finanziari significativi."
+    },
+    {
+      "question": "Quali protezioni legali ho?",
+      "answer": "I tuoi diritti sono protetti tramite una documentazione legale completa. Mantieni il diritto legalmente protetto di occupare la tua casa per tutta la vita. Tutti gli accordi sono preparati da avvocati specializzati e delineano chiaramente tutti i termini, inclusi i tuoi diritti di occupazione, le responsabilità di manutenzione e il programma di pagamento."
+    },
+    {
+      "question": "Posso includere il mio coniuge/partner?",
+      "answer": "Sì, incoraggiamo l'inclusione del tuo coniuge o partner nell'accordo. Questo garantisce che entrambi abbiate diritti di occupazione a vita, indipendentemente da chi muore per primo. Questo fornisce importante sicurezza e tranquillità per le coppie."
+    },
+    {
+      "question": "Cosa succede se ho bisogno di trasferirmi?",
+      "answer": "Se le tue circostanze cambiano e hai bisogno di trasferirti, i nostri accordi offrono flessibilità. Le opzioni includono l'affitto della tua proprietà (con il reddito da locazione che va a te), la richiesta di un accordo di riacquisto o, in alcuni casi, il trasferimento dei tuoi diritti di occupazione a un'altra proprietà del nostro portafoglio."
+    }
+  ]
+} 

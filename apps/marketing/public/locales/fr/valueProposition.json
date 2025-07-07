@@ -1,0 +1,38 @@
+{
+  "title": {
+    "the": "La",
+    "srenova": "Méthode",
+    "way": "Srenova"
+  },
+  "description": "Notre approche novatrice innovante vous permet d'accéder à la valeur de votre propriété bien tout en conservant la sécurité de votre foyer.",
+  "features": [
+    {
+      "title": "Autonomie financière",
+      "benefits": [
+        "Accédez à la valeur de votre maison sans déménager ni vous endetter",
+        "Recevez un revenu mensuel garanti à vie",
+        "Obtenez un versement initial bouquet si nécessaire",
+        "Conservez votre indépendance financière à la retraite"
+      ]
+    },
+    {
+      "title": "Tranquillité d'esprit",
+      "benefits": [
+        "Restez dans votre maison chérie à vie",
+        "Plus de frais d'entretiens coûteux pour votre bien immobilier",
+        "Protégé par des accords juridiques transparents",
+        "Accompagnement d'experts tout au long du processus"
+      ]
+    },
+    {
+      "title": "Accompagnement professionnel",
+      "benefits": [
+        "Solutions de niveau institutionnel",
+        "Processus clair et transparent",
+        "Conseillers experts vous guident à chaque étape",
+        "Soutenu par des partenaires financiers de confiance"
+      ]
+    }
+  ],
+  "cta_button": "Vérifiez Votre Éligibilité Maintenant"
+} 

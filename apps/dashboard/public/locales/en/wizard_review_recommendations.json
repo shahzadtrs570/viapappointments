@@ -1,0 +1,122 @@
+{
+  "applicationPreview": {
+    "title": "Application Preview",
+    "propertyDetails": {
+      "title": "Property Details",
+      "type": "Type:",
+      "bedrooms": "Bedrooms:",
+      "bathrooms": "Bathrooms:",
+      "size": "Size:",
+      "sqmSuffix": "sq m",
+      "condition": "Condition:",
+      "estimatedValue": "Estimated Value:",
+      "editButton": "Edit Property Details"
+    },
+    "ownerInformation": {
+      "title": "Owner Information",
+      "ownershipType": "Ownership Type:",
+      "numberOfOwners": "Number of Owners:",
+      "primaryOwner": "Primary Owner",
+      "coOwner": "Co-owner",
+      "name": "Name:",
+      "dob": "DOB:",
+      "email": "Email:",
+      "editButton": "Edit Owner Information"
+    }
+  },
+  "srenovaRecommendations": {
+    "title": "Srenova Recommendations",
+    "description": "Selling your home is a big decision. We strongly recommend that you include your family and support network as you progress with these discussions",
+    "tooltip": "Want to understand how this affects your tax situation? I can explain the tax implications and considerations.",
+    "checklist": {
+      "financialAdvisor": "I have considered adding a financial adviser to my support network",
+      "financialSituation": "I have considered including details about my current financial situation",
+      "carePlans": "I have considered adding information about my long-term care plans",
+      "existingMortgages": "I have considered including details about any existing mortgages or loans"
+    },
+    "tip": "Tip: We recommend adding your children or close family members to your support network. This can provide additional emotional support and help with decision-making throughout the process."
+  },
+  "keyConsiderations": {
+    "title": "Key Considerations",
+    "ownership": {
+      "main": "You will no longer own your property.",
+      "sub": "It cannot be inherited by your family."
+    },
+    "benefits": {
+      "main": "This may impact your eligibility for certain benefits.",
+      "sub": "Including means-tested government support."
+    },
+    "mortgage": {
+      "main": "Any existing mortgage or lien must be cleared.",
+      "sub": "The proceeds from the viager will be used for this."
+    }
+  },
+  "buttons": {
+    "back": "Back",
+    "requestProvisionalOffer": "Request to provisional offer",
+    "saving": "Saving...",
+    "continue": "Continue",
+    "saveChanges": "Save Changes"
+  },
+  "toasts": {
+    "savedSuccess": "Application review saved successfully",
+    "updatedSuccess": "Application review updated successfully",
+    "missingInfoError": "Missing required property or seller information",
+    "saveFailedError": "Failed to save review",
+    "success": "Success",
+    "error": "Error",
+    "verificationEmailSent": "Verification email sent successfully. Please check your inbox.",
+    "verificationEmailFailed": "Failed to send verification email. Please try again.",
+    "noEmailFound": "No email address found for the primary owner."
+  },
+  "emailVerification": {
+    "title": "Email Verification Required",
+    "description": "Please verify your email address before proceeding.",
+    "sentMessage": "A verification email has been sent. Please check your inbox and click the verification link.",
+    "button": {
+      "sending": "Sending...",
+      "send": "Send Verification Email",
+      "resend": "Resend Verification Email"
+    }
+  },
+  "guideBot": {
+    "title": "Your Srenova Guide",
+    "initialMessage": "Your viager application is coming along well. Adding professional contacts like a solicitor and financial adviser can significantly strengthen your application and provide valuable support throughout the process.",
+    "suggestedQuestions": {
+      "requiredDocuments": "What documents will I need for the next step?",
+      "processTimeline": "How long does the viager process typically take?",
+      "postSubmission": "What happens after I submit my application?"
+    },
+    "responses": {
+      "required_documents": "For the next step, you'll need: 1) Proof of ID (passport/driving licence), 2) Recent utility bills, 3) Property documentation (deeds, mortgage statements), 4) Financial statements. We'll provide a detailed checklist once you're ready to proceed.",
+      "process_timeline": "The typical viager process takes 8-12 weeks from application to completion. This includes property valuation, legal checks, and finalising agreements. We'll keep you informed at every stage and work to expedite where possible.",
+      "post_submission": "After submission, our team will review your application within 48 hours. We'll then arrange a property valuation and connect you with our legal team. You'll receive regular updates via email and through your dedicated adviser."
+    }
+  },
+  "nextSteps": {
+    "title": "Next Steps",
+    "step1": "Review your application details",
+    "step2": "Complete the Srenova recommended checklist",
+    "step3": "Review key considerations"
+  },
+  "contemplationPhase": {
+    "title": "Contemplation Phase ",
+    "description": "This is a significant life decision. We recommend taking time to contemplate all aspects before proceeding to the next stages.",
+    "remember": "Remember: Take at least 24 hours to consider all implications before proceeding. You may want to discuss with your support network and trusted advisors."
+  },
+  "nonBindingDisclaimer": {
+    "title": "Important",
+    "text": "This application is non-binding until you accept an offer at a later stage in this process. You are free to withdraw at any time before accepting a formal offer without any obligation."
+  },
+  "chatbot": {
+    "title": "AI Chat Assistant",
+    "initialMessage": "Hello! I can help explain the viager model and answer questions about the review process. What would you like to know?",
+    "suggestedQuestions": {
+      "financialAdvisor": "Should I consult a financial adviser?",
+      "inheritance": "How does this affect inheritance for my children?",
+      "familyInvolvement": "Can family members be involved in the process?",
+      "legalProtections": "What legal protections do I have?",
+      "taxImplications": "What tax implications should I consider?"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "greeting": "Ciao (Dashboard)",
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "profile": "Profilo",
+    "settings": "Impostazioni"
+  },
+  "save": "Salva",
+  "cancel": "Annulla",
+  "loading": "Caricamento...",
+  "error": "Errore",
+  "success": "Successo",
+  "confirm": "Conferma",
+  "back": "Indietro",
+  "next": "Avanti",
+  "previous": "Precedente",
+  "close": "Chiudi",
+  "open_menu": "Apri menu",
+  "view_details": "Visualizza dettagli",
+  "actions": {
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica"
+  },
+  "created_at": "Creato il",
+  "toast": {
+    "rate_limit": {
+      "title": "Troppe Richieste",
+      "description": "Stai facendo richieste troppo velocemente. Aspetta un momento e riprova.",
+      "auth_title": "Autenticazione Limitata",
+      "auth_description": "Troppi tentativi di autenticazione. Aspetta prima di riprovare.",
+      "api_title": "API Limitata",
+      "api_description": "Hai superato il limite di richieste API. Aspetta prima di fare altre richieste.",
+      "critical_title": "Sicurezza Limitata",
+      "critical_description": "Troppe richieste relative alla sicurezza. Aspetta prima di riprovare."
+    }
+  }
+}

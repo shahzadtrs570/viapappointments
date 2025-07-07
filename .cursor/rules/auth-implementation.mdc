@@ -1,0 +1,83 @@
+---
+description: Authentication and authorization implementation guidelines
+globs: packages/auth/**/*.{ts,tsx}
+---
+# Authentication and Authorization Implementation
+
+This document outlines the authentication and authorization implementation guidelines for the NextJet project.
+
+## Authentication Framework
+Important Note: Authentication is usually included in the nextjet starter kit so you will not have to do any work here, just confirm to the user if they want the defaul setup? The default setup should focus on on email authentication as a primary objective, google and others can be added later if needed. Check if this has been implemented already? It should have been setup by defaulk in the nextjet starter kit, if not sure, check with the user.
+
+- Use Auth.js (NextAuth) for authentication with secure session management
+- Support the following authentication providers:
+  - Magic Link Sign In
+  - Google OAuth
+  - GitHub OAuth
+
+## Access Control
+
+- Implement both Role-Based Access Control (RBAC) and Policy-Based Access Control (PBAC)
+- Use the following roles structure:
+  ```typescript
+  export enum Role {
+    USER = 'USER',
+    ADMIN = 'ADMIN',
+    SUPER_ADMIN = 'SUPER_ADMIN'
+  }
+  ```
+
+### RBAC Implementation
+
+- For RBAC components:
+  ```typescript
+  // Example RBAC Component
+  <Authorization allowedRoles={[Role.ADMIN]}>
+    <AdminContent />
+  </Authorization>
+  ```
+
+### PBAC Implementation
+
+- For PBAC policies:
+  ```typescript
+  // Example PBAC Policy
+  export const policies = {
+    'post:delete': ({ user, post }) => {
+      return user.role === 'ADMIN' || post.authorId === user.id;
+    }
+  };
+  ```
+
+## Authentication State Management
+
+- Use the `useAuth` hook for authentication state:
+  ```typescript
+  const { isAuthenticated, user, isLoading } = useAuth();
+  ```
+- The SessionProvider from next-auth/react is implemented in `apps/dashboard/src/app/providers.tsx`
+- Always import the Providers component from the correct path: `import { Providers } from "@/app/providers"`
+
+## Security Best Practices
+
+- Protect sensitive routes on both client and server side
+- Implement secure session management with proper cookie settings
+- Use environment variables for authentication secrets
+- Never hardcode authentication credentials or secrets
+- Implement proper error handling for authentication failures
+- Use appropriate HTTP-only cookies for storing authentication tokens
+
+## Integration with Next.js App Router
+
+- For details on integrating authentication with Next.js App Router, see [nextjs-patterns.mdc](mdc:nextjs-patterns.mdc)
+
+## Dashboard Authentication Flow
+
+- For dashboard-specific authentication implementation, see [dashboard-ui.mdc](mdc:dashboard-ui.mdc)
+
+## Error Handling
+
+- For authentication error handling guidelines, see [error-handling.mdc](mdc:error-handling.mdc)
+
+
+

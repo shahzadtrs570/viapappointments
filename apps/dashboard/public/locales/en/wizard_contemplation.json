@@ -1,0 +1,137 @@
+{
+  "title": "Thank You for Your Application!",
+  "subtitle": "Your journey to unlocking your property's value is underway",
+  "application_received": "Application Received",
+  "what_happens_next": "What happens next?",
+  "steps": {
+    "review": {
+      "title": "Application Review",
+      "description": "Our specialists are carefully reviewing your application details. We verify your eligibility and ensure all information is accurate to provide you with the best possible offer.",
+      "timeframe": "Timeframe",
+      "timeframe_value": "Typically less than 1 business day"
+    },
+    "verification": {
+      "title": "Property Valuation & Verification",
+      "description": "Our expert valuation team assesses your property details and ownership information. This thorough process ensures we can offer you fair and transparent terms.",
+      "process": "Verification process",
+      "process_value": "Electronic records check, land registry confirmation, and market analysis"
+    },
+    "offer": {
+      "title": "Provisional Offer",
+      "description": "Once verification is complete, we'll present you with a personalised provisional offer. This includes your initial lump sum, monthly payments, and all terms and conditions.",
+      "expect": "What to expect",
+      "expect_value": "Comprehensive offer details with full financial breakdown and no-obligation review period"
+    }
+  },
+  "about_section": {
+    "title": "About Srenova & Viager",
+    "viager": {
+      "title": "What is Viager?",
+      "description": "Viager is a unique property sale arrangement with roots in French real estate tradition. You sell your home but retain the right to live in it for life (known as a \"life estate\"). This structure provides immediate capital while securing your housing needs for as long as you wish to remain in your home."
+    },
+    "benefits": {
+      "title": "Financial Benefits",
+      "description": "The viager arrangement provides significant financial benefits: an initial lump sum payment (typically 20-40% of property value) followed by guaranteed monthly payments for life. This creates reliable income without the need to move, downsize or manage rental properties, while eliminating property taxes and maintenance costs."
+    },
+    "difference": {
+      "title": "The Srenova Difference",
+      "description": "At Srenova, we modernise the traditional viager concept with transparent terms, fair valuations, and ongoing support. Our innovative approach combines the security of a traditional viager with modern financial protections and flexibility, all managed through our easy-to-use digital platform and dedicated advisers."
+    },
+    "peace": {
+      "title": "Peace of Mind",
+      "description": "Our viager arrangements are legally structured to protect your right to remain in your home for life. Unlike reverse mortgages or equity release schemes, there's no debt accumulation, no interest charges, and no risk of foreclosure. Your monthly payments are guaranteed regardless of market conditions."
+    }
+  },
+  "testimonial": {
+    "quote": "\"Srenova's viager solution allowed us to unlock the value in our home while continuing to live in the property we love. The monthly payments have transformed our retirement, giving us financial freedom without having to move.\"",
+    "author": "— Margaret & John, Srenova clients since 2021"
+  },
+  "status": {
+    "title": "Application Status",
+    "progress": "Verification Progress",
+    "in_process": "In Process",
+    "pending": "Pending Review",
+    "processing": "In Progress",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "loading": "Loading...",
+    "application_id": "Application ID",
+    "submission_date": "Submission Date",
+    "estimated_completion": "Estimated Response",
+    "completion_time": "Typically less than 1 business day",
+    "check_status_info": "You can check the status of your application at any time by clicking the \"Check Verification Status\" button."
+  },
+  "guidebot": {
+    "initial_message": "While you wait for your application to be verified, feel free to ask me any questions about Srenova, the viager process, or what to expect next.",
+    "title": "Your Srenova Guide",
+    "responses": {
+      "verification_time": "Our verification process typically takes 24-48 hours. During this time, our team reviews your property details, ownership information, and conducts initial assessments to prepare your provisional offer.",
+      "documents_needed": "At this stage, no additional documents are needed. Once your application is verified, we may request property documentation, proof of ownership, and identification for the next steps in the process.",
+      "change_information": "You can make changes to your application information if needed. Please contact our support team at support@srenova.com or call our helpline at 0800-123-4567 to request modifications.",
+      "financial_benefits": "The financial benefits of a viager arrangement include: 1) A substantial initial lump sum payment, 2) Guaranteed monthly income for life, 3) No property taxes or maintenance costs, 4) No risk of debt accumulation, and 5) The ability to remain in your home with complete legal protection.",
+      "family_implications": "It's important to discuss your viager plans with family members. While the property won't form part of your estate for inheritance, the financial benefits can provide you with more resources to support your family during your lifetime. Many clients find this arrangement beneficial for their overall family financial planning."
+    },
+    "questions": {
+      "verification_time": "How long does verification take?",
+      "documents_needed": "Do I need to provide any documents?",
+      "financial_benefits": "What are the main financial benefits?",
+      "family_implications": "How does this affect my family?"
+    }
+  },
+  "resources": {
+    "title": "Helpful Resources",
+    "guide": {
+      "title": "Complete Viager Guide",
+      "description": "Our comprehensive guide explains every aspect of the viager process, from valuation to completion, with real case studies and expert insights.",
+      "link": "Read the guide →"
+    },
+    "calculator": {
+      "title": "Financial Benefits Calculator",
+      "description": "Our interactive calculator helps you explore different scenarios and see potential lump sums and monthly payments based on your property details.",
+      "link": "Try the calculator →"
+    },
+    "faq": {
+      "title": "Viager FAQ & Information Center",
+      "description": "Find answers to the most common questions about viager arrangements, legal considerations, and the Srenova process.",
+      "link": "Explore FAQs →"
+    }
+  },
+  "buttons": {
+    "back": "Back",
+    "check_status": "Check Verification Status",
+    "checking": "Checking Status..."
+  },
+  "toast": {
+    "verification_complete": {
+      "title": "Verification complete",
+      "description": "Your application has been verified. Proceeding to your offer."
+    },
+    "still_review": {
+      "title": "Application pending review",
+      "description": "Your application is currently pending initial review by our team. We'll begin processing it very soon."
+    },
+    "processing": {
+      "title": "Application in progress",
+      "description": "Your application is currently being processed by our verification team. This is a positive step forward."
+    },
+    "rejected": {
+      "title": "Application needs attention",
+      "description": "We've identified some issues with your application that need to be addressed. Please contact our support team."
+    },
+    "error": {
+      "title": "Error checking status",
+      "description": "We encountered an error while checking your verification status. Please try again later."
+    }
+  },
+  "chatbot": {
+    "title": "AI Chat Assistant",
+    "initialMessage": "Hello! I can help answer questions about the verification process. What would you like to know?",
+    "suggestedQuestions": {
+      "processTime": "How long does the process take?",
+      "nextSteps": "What are the next steps in the process?",
+      "verificationProcess": "What happens during the verification process?",
+      "changeMind": "Can I change my mind during this period?",
+      "familyInvolvement": "Can family members be involved in the process?"
+    }
+  }
+}

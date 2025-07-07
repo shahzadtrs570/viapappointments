@@ -1,0 +1,266 @@
+{
+  "pageTitle": "Property Details",
+  "pageDescription": "Please provide information about your property. This helps us understand its value and suitability for our services.",
+  "addressSearchSection": {
+    "label": "Enter your property address",
+    "placeholder": "e.g. 123 High Street, London, Greater London, SW1A 1AA",
+    "buttonGo": "Go",
+    "helpText": "For best results, include street, town, county and postcode separated by commas",
+    "noAddressEntered": "Please enter an address to continue",
+    "manualEntryButton": "Manually enter my address",
+    "searchSubtitle": "Enter your property address"
+  },
+  "manualEntryForm": {
+    "locationTitle": "Property Location",
+    "detailsTitle": "Property Details",
+    "conditionTitle": "Property Condition",
+    "photosTitle": "Property Photos",
+    "form": {
+      "address": {
+        "label": "Property Address",
+        "placeholder": "Enter your property address",
+        "validationRequired": "Property address is required"
+      },
+      "postcode": {
+        "label": "Postcode",
+        "validationRequired": "Postcode is required"
+      },
+      "townCity": {
+        "label": "Town/City",
+        "validationRequired": "Town/City is required"
+      },
+      "county": {
+        "label": "County",
+        "validationRequired": "County is required"
+      },
+      "propertyType": {
+        "label": "Property Type",
+        "validationRequired": "Please select a property type",
+        "options": {
+          "house": "House",
+          "flat": "Flat/Apartment",
+          "bungalow": "Bungalow",
+          "other": "Other"
+        }
+      },
+      "propertyStatus": {
+        "label": "Property Status",
+        "validationRequired": "Please select a property status",
+        "options": {
+          "freehold": "Freehold",
+          "leasehold": "Leasehold"
+        }
+      },
+      "leaseLength": {
+        "label": "Remaining Lease Length (years)"
+      },
+      "estimatedValue": {
+        "label": "Estimated Property Value (£)",
+        "placeholder": "e.g. 250000",
+        "validationRequired": "Please enter the estimated property value"
+      },
+      "bedrooms": {
+        "label": "Number of Bedrooms",
+        "placeholder": "Select number of bedrooms",
+        "validationRequired": "Please select number of bedrooms",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5+": "5+"
+        }
+      },
+      "bathrooms": {
+        "label": "Number of Bathrooms",
+        "placeholder": "Select number of bathrooms",
+        "validationRequired": "Please select number of bathrooms",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3+": "3+"
+        }
+      },
+      "yearBuilt": {
+        "label": "Year Built",
+        "validationRequired": "Please enter a valid year"
+      },
+      "propertySize": {
+        "label": "Property Size (sq meters)",
+        "validationRequired": "Please enter the property size"
+      },
+      "propertySizeFt": {
+        "label": "Property Size (sq feet)",
+        "validationRequired": "Please enter the property size"
+      },
+      "features": {
+        "label": "Property Features",
+        "options": {
+          "garden": "Garden",
+          "garage": "Garage",
+          "parking": "Parking",
+          "centralHeating": "Central Heating",
+          "doubleGlazing": "Double Glazing",
+          "conservatory": "Conservatory"
+        }
+      },
+      "condition": {
+        "label": "Overall Condition",
+        "validationRequired": "Please select the property condition",
+        "options": {
+          "excellent": "Excellent",
+          "good": "Good",
+          "fair": "Fair",
+          "needs_renovation": "Needs Renovation"
+        }
+      },
+      "conditionNotes": {
+        "label": "Additional Notes",
+        "placeholder": "Please provide any additional information about the property's condition..."
+      }
+    }
+  },
+  "photoUploadSection": {
+    "label": "Upload photos",
+    "description": "PNG, JPG, GIF up to 10MB each",
+    "altText": "Property ",
+    "title": "Property Photos",
+    "uploadLabel": "Upload photos"
+  },
+  "buttons": {
+    "continueToReview": "Continue to Review & Recommendations",
+    "back": "Back",
+    "saving": "Saving...",
+    "continue": "Continue"
+  },
+  "toasts": {
+    "savedSuccess": "Property details saved successfully",
+    "updatedSuccess": "Property details updated successfully",
+    "formError": "Property type, status, bedrooms, bathrooms and condition are required",
+    "saveSuccessTitle": "Details Saved",
+    "saveSuccessDescription": "Your property details have been successfully saved."
+  },
+  "errors": {
+    "parsingStoredPhotos": "Error parsing saved photos:",
+    "submitFailed": "Failed to submit form"
+  },
+  "validation": {
+    "propertyTypeRequired": "Please select a property type",
+    "propertyStatusRequired": "Please select a property status",
+    "leaseLengthInvalid": "Invalid lease length",
+    "leaseLengthMax": "Maximum lease length exceeded",
+    "bedroomsRequired": "Please select number of bedrooms",
+    "bathroomsRequired": "Please select number of bathrooms",
+    "yearBuiltInvalid": "Please enter a valid year",
+    "yearBuiltInFuture": "Year built cannot be in the future",
+    "yearBuiltTooOld": "Year built is too old",
+    "propertySizeRequired": "Please enter the property size",
+    "addressRequired": "Property address is required",
+    "postcodeRequired": "Postcode is required",
+    "townRequired": "Town/City is required",
+    "countyRequired": "County is required",
+    "conditionRequired": "Please select the property condition",
+    "estimatedValueRequired": "Please enter the estimated property value"
+  },
+  "guideBot": {
+    "title": "Your Srenova Guide",
+    "initialMessage": "Providing accurate information about your property helps us give you the most relevant recommendations. Don't worry if you don't know all the details - you can always update this information later.",
+    "suggestedQuestions": {
+      "valuation": "How will my property be valued?",
+      "nextSteps": "What happens after I submit this information?",
+      "photoRequirement": "Do I need to provide photos?",
+      "propertyValuation": "How will my property be valued?"
+    },
+    "responses": {
+      "property_valuation": "We use a combination of your provided information, local market data, and professional valuation methods to assess your property's value. This helps us give you the most accurate and competitive offer.",
+      "next_steps": "After submitting your property information, our team will review the details and may schedule a property inspection if needed. We'll then provide you with personalised recommendations and a provisional offer.",
+      "photo_requirement": "While not mandatory, providing photos helps us better understand your property's condition and features. This can lead to more accurate valuations and faster processing of your application.",
+      "propertyValuation": "We use a combination of your provided information, local market data, and professional valuation methods to assess your property's value. This helps us give you the most accurate and competitive offer.",
+      "nextSteps": "After submitting your property information, our team will review the details and may schedule a property inspection if needed. We'll then provide you with personalised recommendations and a provisional offer.",
+      "photoRequirement": "While not mandatory, providing photos helps us better understand your property's condition and features. This can lead to more accurate valuations and faster processing of your application."
+    }
+  },
+  "valuationTips": {
+    "title": "Property Valuation Tips",
+    "description": "Understanding the true value of your home can help you make more informed decisions. Here are a few ways to get a clearer picture.",
+    "tip1": {
+      "title": "Recent sales",
+      "description": "Check recent sales of similar properties in your area"
+    },
+    "tip2": {
+      "title": "Condition matters",
+      "description": "Note any recent renovations or issues that might affect value"
+    },
+    "tip3": {
+      "title": "Be realistic",
+      "description": "Use online valuation tools as a guide, but be aware they may not be fully accurate"
+    }
+  },
+  "nextStepsSidebar": {
+    "title": "Next Steps",
+    "step1": "Complete your seller information",
+    "step2": "Provide property details",
+    "step3": "Receive personalised recommendations"
+  },
+  "chatbot": {
+    "title": "AI Chat Assistant",
+    "initialMessage": "I can help you answer questions about the property information process. What would you like to know?",
+    "suggestedQuestions": {
+      "property_type": "What types of properties are eligible?",
+      "property_value": "How is my property valued?",
+      "mortgage": "What if I have an outstanding mortgage?",
+      "required_repairs": "Who is responsible for property maintenance and repairs?",
+      "renovations": "Can I make renovations or modify my home?"
+    }
+  },
+  "documentSection": {
+    "title": "Property Documents",
+    "detailedTitle": "Detailed Documents",
+    "generalDescription": "Upload any property related documents here",
+    "uploadButton": "Upload Documents",
+    "uploadPropertyDocuments": "Upload Property Documents",
+    "readOnlyMessage": "Uploads disabled in read-only mode",
+    "noDocumentsMessage": "No documents available",
+    "documentTypes": {
+      "deed": {
+        "label": "Property Deed",
+        "description": "Upload property deed or ownership documents"
+      },
+      "floorPlan": {
+        "label": "Floor Plan",
+        "description": "Upload property floor plans and layouts"
+      },
+      "energyCertificate": {
+        "label": "Energy Certificate",
+        "description": "Upload energy performance certificate"
+      },
+      "survey": {
+        "label": "Survey Report",
+        "description": "Upload property survey reports"
+      },
+      "propertyTax": {
+        "label": "Property Tax",
+        "description": "Upload property tax documents"
+      },
+      "insurance": {
+        "label": "Insurance",
+        "description": "Upload property insurance documents"
+      },
+      "photo": {
+        "label": "Additional Photos",
+        "description": "Upload additional property photos"
+      },
+      "other": {
+        "label": "Other Documents",
+        "description": "Upload any other relevant documents"
+      }
+    },
+    "buttons": {
+      "upload": "Upload",
+      "preview": "Preview",
+      "remove": "Remove",
+      "openInNewWindow": "Open in new window"
+    },
+    "previewNotAvailable": "Preview not available for this file type"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "magicLink": {
+    "subject": "Magic Link Sign In/Register",
+    "previewText": "Magic Link Sign In/Register",
+    "title": "Magic Link Sign In/Register",
+    "greeting": "Dear user,",
+    "description": "Click and confirm that you want to sign in to Srenova.",
+    "buttonText": "Sign In/Sign Up",
+    "linkText": "Or sign in/sign up using this link:",
+    "message": "Let us know if you have any questions or feedback. I'm always happy to help!",
+    "signature": "Your friends at Srenova"
+  },
+  "propertyStatus": {
+    "preview": "Property Status Update - {{stage}}",
+    "title": "Property Status Update",
+    "updateIntro": "We have an update regarding your property:",
+    "reference": "Reference: {{referenceNumber}}",
+    "currentStage": "Current Stage: {{stage}}",
+    "requiredActions": "Required Actions:",
+    "dueBy": "Due by: {{date}}",
+    "urgentAction": "⚠️ Urgent Action Required",
+    "viewDashboard": "View Details in Dashboard",
+    "needHelp": "Need help? Contact our support team at",
+    "supportEmail": "support@srenova.com"
+  }
+} 

@@ -1,0 +1,41 @@
+{
+  "formSchema": {
+    "firstNameRequired": "First name is required",
+    "lastNameRequired": "Last name is required",
+    "emailInvalid": "Invalid email address",
+    "acceptTermsRequired": "You must accept the terms and conditions"
+  },
+  "toastMessages": {
+    "errorTitle": "Error",
+    "emailVerificationFailed": "Failed to send verification email. Please try again.",
+    "unexpectedError": "An unexpected error occurred. Please try again.",
+    "mustAcceptTerms": "You must accept the terms and conditions to continue"
+  },
+  "cardHeader": {
+    "title": "Ready to request a provisional Srenova offer?",
+    "description": "We'll need some more information about you and your home to get started. It should take you just 15 minutes, and then we'll provide a provisional offer within 48hrs."
+  },
+  "form": {
+    "firstNameLabel": "Your First Name",
+    "firstNamePlaceholder": "John",
+    "lastNameLabel": "Last Name",
+    "lastNamePlaceholder": "Doe",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "john.doe@example.com",
+    "emailHint": "We'll use this to keep you updated on your application.",
+    "termsLabelPart1": "I agree to the",
+    "termsOfServiceLink": "Terms of Service",
+    "termsAnd": "and",
+    "privacyPolicyLink": "Privacy Policy",
+    "marketingLabel": "Please keep me updated about my Srenova application and you can opt out at anytime."
+  },
+  "buttons": {
+    "back": "Back",
+    "loading": "Processing...",
+    "getStarted": "Get Started"
+  },
+  "emailDialog": {
+    "title": "Check your email",
+    "description": "A sign in link has been sent to your email address, {{email}}. Click the link to access your account."
+  }
+}

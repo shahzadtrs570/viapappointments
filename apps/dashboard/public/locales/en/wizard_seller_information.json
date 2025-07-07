@@ -1,0 +1,156 @@
+{
+  "pageTitle": "Your Information",
+  "pageDescription": "Please provide your personal information to help us understand your needs better. This information will be used to tailor our recommendations to you.",
+  "ownershipSection": {
+    "title": "Property Ownership",
+    "howManyOwnersQuestion": "How many people own this property?",
+    "ownerType": {
+      "single": {
+        "label": "Single Owner",
+        "description": "I am the only owner"
+      },
+      "couple": {
+        "label": "Couple",
+        "description": "Joint ownership"
+      },
+      "multiple": {
+        "label": "Multiple Owners",
+        "description": "More than two owners"
+      }
+    },
+    "numberOfOwnersLabel": "Number of Owners",
+    "numberOfOwnersDescription": "All owners will need to provide their information and agree to the terms."
+  },
+  "ownerDetailsSection": {
+    "title": "Owner ",
+    "personalDetailsTitle": "Personal Details",
+    "contactInformationTitle": "Contact Information",
+    "optionalSuffix": "(Optional)",
+    "form": {
+      "firstName": {
+        "label": "First Name",
+        "validationRequired": "First name is required"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "validationRequired": "Last name is required"
+      },
+      "dateOfBirth": {
+        "label": "Date of Birth",
+        "placeholder": "mm/dd/yyyy",
+        "validationRequired": "Date of birth is required"
+      },
+      "email": {
+        "label": "Email Address",
+        "validationRequired": "Email address is required",
+        "validationInvalid": "Please enter a valid email address"
+      },
+      "phone": {
+        "label": "Telephone Number",
+        "placeholder": "Enter telephone number"
+      },
+      "useExistingAddress": {
+        "label": "Use address from previous step",
+        "noPreviousAddress": "(No previous address available)"
+      },
+      "currentAddress": {
+        "label": "Current Address",
+        "placeholder": "Enter current address"
+      },
+      "postcode": {
+        "label": "Postcode",
+        "placeholder": "Enter postcode"
+      },
+      "townCity": {
+        "label": "Town/City",
+        "placeholder": "Enter town/city"
+      },
+      "county": {
+        "label": "County",
+        "placeholder": "Enter county"
+      }
+    },
+    "validation": {
+      "selectOwnerType": "Please select how many people own this property",
+      "atLeastOneOwner": "At least one owner is required",
+      "provideOwnerInfo": "Please provide owner information"
+    }
+  },
+  "buttons": {
+    "back": "Back",
+    "saving": "Saving...",
+    "continueToProperty": "Continue to Property Information",
+    "continue": "Continue",
+    "saveChanges": "Save Changes"
+  },
+  "toasts": {
+    "savedSuccess": "Seller information saved successfully",
+    "updatedSuccess": "Seller information updated successfully"
+  },
+  "errors": {
+    "parsingStoredOwners": "Error parsing stored owners:"
+  },
+  "guideBot": {
+    "initialMessage": "Welcome to the Seller Information step! Here, we need to gather some details about the property owner(s). First, tell us if the property is owned by a single person, a couple, or multiple individuals. If there are multiple owners, please specify how many (up to 5). Then, for each owner, we'll need their full name and date of birth. Contact information like email and phone, as well as current address details, are optional but helpful. If you've already provided an address in a previous step (e.g., for the property itself), you might see an option to reuse that address for an owner to save you time. Let me know if you have any questions as you fill out this section!",
+    "suggestedQuestions": {
+      "whyDob": "Why do you need my date of birth?",
+      "dobApproximate": "What if I don't know the exact date of birth?",
+      "poBox": "Can I use a P.O. Box for the address?",
+      "infoUsage": "How is this information used?",
+      "dataSecurity": "Is my data secure?"
+    },
+    "responses": {
+      "dob_explanation": "Your date of birth is used for identity verification and to determine eligibility for certain age-related aspects of our products.",
+      "dob_approximate": "Please provide your most accurate estimate. We may require more precise verification later in the process.",
+      "po_box_address": "For residential address verification, a P.O. Box is generally not sufficient. We require a physical residential address.",
+      "information_usage": "Your information is used to process your application, verify identity, and tailor our services to your needs, in accordance with our privacy policy.",
+      "data_security": "We take data security very seriously. All personal information is encrypted and stored securely. Please see our privacy policy for more details."
+    }
+  },
+  "dataProtection": {
+    "title": "Property Valuation Tips",
+    "description": "Understanding the true value of your home can help you make more informed decisions. Here are a few ways to get a clearer picture.",
+    "mainText": "Your data is protected with us.",
+    "secureStorage": {
+      "title": "Recent sales",
+      "text": "Check recent sales of similar properties in your area."
+    },
+    "limitedAccess": {
+      "title": "Online tools",
+      "text": "Use property websites to get an estimated value."
+    },
+    "yourRights": {
+      "title": "Professional valuation",
+      "text": "Consider getting a professional valuation for accuracy."
+    }
+  },
+  "nextSteps": {
+    "title": "Next Steps",
+    "step1": "Complete your seller information",
+    "step2": "Provide property details",
+    "step3": "Receive personalised recommendations"
+  },
+  "chatbot": {
+    "title": "AI Chat Assistant",
+    "initialMessage": "Hello! I can help answer questions about the seller information process. What would you like to know?",
+    "suggestedQuestions": {
+      "minimum_age": "What are the minimum age requirements?",
+      "multiple_owners": "What happens if one spouse/partner dies?",
+      "process_time": "How long does the process take?",
+      "eligible_properties": "What types of properties are eligible?",
+      "medical_exam": "Do I need to pass a medical exam?"
+    }
+  },
+  "ageRequirements": {
+    "title": "Age Requirements",
+    "description": "For this property type, we have specific age requirements:",
+    "minimumAge": {
+      "title": "Minimum Age",
+      "description": "All owners must be at least 55 years old"
+    },
+    "maximumAge": {
+      "title": "Maximum Age",
+      "description": "At least one owner must be under 75 years old"
+    }
+  }
+}

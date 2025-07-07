@@ -1,0 +1,46 @@
+{
+  "title": {
+    "why_trust": "Pourquoi Faire Confiance à ",
+    "srenova": "Srenova",
+    "question_mark": "?"
+  },
+  "description": "Notre soutien institutionnel et notre expertise assurent votre sécurité financière et votre tranquillité d'esprit.",
+  "columns": [
+    {
+      "title": "Solidité institutionnelle",
+      "features": [
+        "Soutenue par des partenaires d'investissement réputés",
+        "Paiements garantis à vie",
+        "Processus standardisés et transparents",
+        "Solidité et stabilité financières"
+      ]
+    },
+    {
+      "title": "Soutien d'experts",
+      "features": [
+        "Connaissances spécialisées",
+        "Expertise juridique et financière",
+        "Accompagnement personnalisé",
+        "Service client continu"
+      ]
+    },
+    {
+      "title": "Leadership européen",
+      "features": [
+        "Présence paneuropéenne",
+        "Pionniers du secteur en Europe et au Royaume-Uni",
+        "Standardisation des transactions viagères",
+        "Création d'une nouvelle catégorie de financement des retraites"
+      ]
+    }
+  ],
+  "partners": {
+    "title": "Soutenu par les principales institutions financières de premier plan",
+    "logos": [
+      {"name": "Partenaire 1"},
+      {"name": "Partenaire 2"},
+      {"name": "Partenaire 3"},
+      {"name": "Partenaire 4"}
+    ]
+  }
+} 

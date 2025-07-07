@@ -1,0 +1,24 @@
+{
+  "welcome": "Bienvenue",
+  "home": "Accueil",
+  "about": "À propos",
+  "services": "Services",
+  "contact": "Contact",
+  "language": "Langue",
+  "login": "Connexion",
+  "signup": "S'inscrire",
+  "title": "Srenova",
+  "description": "Connecter les propriétaires avec des opportunités d'investissement",
+  "eligibility": "Éligibilité",
+  "resources": "Ressources",
+  "footer": {
+    "rights": "Tous droits réservés",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Contact",
+    "help": "Aide",
+    "faq": "FAQ",
+    "legal": "Légal",
+    "data_protection_policy": "Politique de protection des données"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "title": {
+    "benefits_for": "Benefits for",
+    "homeowners": "Homeowners"
+  },
+  "description": "Inspired by the traditional French viager system, our modern approach provides financial security while ensuring you can continue living in your home.",
+  "benefits_list": [
+    {
+      "title": "Stay in your home for life"
+    },
+    {
+      "title": "Receive guaranteed income"
+    },
+    {
+      "title": "No more property maintenance costs"
+    },
+    {
+      "title": "Eliminate mortgage payments"
+    },
+    {
+      "title": "Safeguard your independence"
+    }
+  ],
+  "download_button": "Download Viager Guide",
+  "testimonial": {
+    "quote": "Paul and Denise could use Srenova to unlock capital tied up in their property, giving them the freedom to travel the world while maintaining their permanent base. With Srenova, they could enjoy global adventures without the emotional toll of leaving their beloved home behind.",
+    "author": "Paul and Denise, 68 and 67 — Bath, UK"
+  },
+  "alt_text": {
+    "checkmark": "checkmark",
+    "download": "download",
+    "homeowners": "Happy homeowners using Srenova"
+  }
+} 

@@ -1,0 +1,59 @@
+name: version-tracker
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history for all branches and tags
+
+      - name: Generate version.json files
+        run: |
+          # Get the latest commit hash
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
+          # Create version.json content
+          VERSION_CONTENT="{
+            \"version\": \"$COMMIT_HASH\",
+            \"timestamp\": \"$TIMESTAMP\"
+          }"
+          
+          # Update dashboard version
+          rm -f apps/dashboard/public/version.json
+          echo "$VERSION_CONTENT" > apps/dashboard/public/version.json
+          
+          # Update marketing version
+          rm -f apps/marketing/public/version.json
+          mkdir -p apps/marketing/public
+          echo "$VERSION_CONTENT" > apps/marketing/public/version.json
+          
+          # Show the content for verification
+          echo "Dashboard version.json:"
+          cat apps/dashboard/public/version.json
+          echo "Marketing version.json:"
+          cat apps/marketing/public/version.json
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Force add the files
+          git add -f apps/dashboard/public/version.json
+          git add -f apps/marketing/public/version.json
+          
+          # Commit with current timestamp
+          git commit -m "Update version.json to $(git rev-parse --short HEAD) [skip ci]" --allow-empty
+          
+          # Force push the change
+          git push

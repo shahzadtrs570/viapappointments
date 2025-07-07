@@ -1,0 +1,67 @@
+{
+  "steps": {
+    "initialEntry": "Entrée initiale",
+    "eligibilityAssessment": "Évaluation d'éligibilité",
+    "signUpVerification": "Inscription et vérification",
+    "sellerInformation": "Informations du vendeur",
+    "propertyInformation": "Informations sur la propriété",
+    "reviewAndRecommendations": "Examen et recommandations",
+    "offerAndNextSteps": "Offre et prochaines étapes",
+    "completionStatus": "État d'achèvement"
+  },
+  "buttons": {
+    "back": "Retour",
+    "next": "Suivant",
+    "save": "Enregistrer",
+    "saving": "Enregistrement...",
+    "submit": "Soumettre",
+    "submitting": "Soumission...",
+    "cancel": "Annuler",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "view": "Voir",
+    "go": "Aller",
+    "share": "Partager",
+    "refreshStatus": "Rafraîchir l'état",
+    "refreshingStatus": "Rafraîchissement...",
+    "continue": "Continuer",
+    "continueToProperty": "Continuer"
+  },
+  "labels": {
+    "optional": "(Facultatif)",
+    "required": "*",
+    "name": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "postcode": "Code postal",
+    "townCity": "Ville",
+    "county": "Département"
+  },
+  "placeholders": {
+    "enterFullName": "Entrez votre nom complet",
+    "enterEmailAddress": "Entrez votre adresse email",
+    "enterPhoneNumber": "Entrez votre numéro de téléphone",
+    "enterAddress": "Entrez votre adresse",
+    "enterPostcode": "Entrez votre code postal",
+    "enterTownCity": "Entrez votre ville",
+    "enterCounty": "Entrez votre département"
+  },
+  "toasts": {
+    "success": {
+      "title": "Succès",
+      "generic": "Opération terminée avec succès."
+    },
+    "error": {
+      "title": "Erreur",
+      "generic": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+      "notFound": "La ressource demandée n'a pas été trouvée.",
+      "validation": "Veuillez corriger les erreurs dans le formulaire."
+    }
+  },
+  "loading": "Chargement...",
+  "notSpecified": "Non spécifié",
+  "srenovaBrand": "Srenova"
+}
+
+

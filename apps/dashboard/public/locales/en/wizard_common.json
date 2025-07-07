@@ -1,0 +1,66 @@
+{
+  "steps": {
+    "initialEntry": "Initial Entry",
+    "eligibilityAssessment": "Eligibility Assessment",
+    "signUpVerification": "Sign Up & Verification",
+    "sellerInformation": "Seller Information",
+    "propertyInformation": "Property Information",
+    "reviewAndRecommendations": "Review & Recommendations",
+    "contemplation": "Contemplation",
+    "offerAndNextSteps": "Offer & Next Steps",
+    "completionStatus": "Completion Status"
+  },
+  "buttons": {
+    "back": "Back",
+    "next": "Next",
+    "save": "Save",
+    "saving": "Saving...",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "go": "Go",
+    "share": "Share",
+    "refreshStatus": "Refresh Status",
+    "refreshingStatus": "Refreshing...",
+    "continue": "Continue",
+    "continueToProperty": "Continue"
+  },
+  "labels": {
+    "optional": "(Optional)",
+    "required": "*",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "postcode": "Postcode",
+    "townCity": "Town/City",
+    "county": "County"
+  },
+  "placeholders": {
+    "enterFullName": "Enter your full name",
+    "enterEmailAddress": "Enter email address",
+    "enterPhoneNumber": "Enter phone number",
+    "enterAddress": "Enter address",
+    "enterPostcode": "Enter postcode",
+    "enterTownCity": "Enter town/city",
+    "enterCounty": "Enter county"
+  },
+  "toasts": {
+    "success": {
+      "title": "Success",
+      "generic": "Operation completed successfully."
+    },
+    "error": {
+      "title": "Error",
+      "generic": "An unexpected error occurred. Please try again.",
+      "notFound": "The requested resource was not found.",
+      "validation": "Please correct the errors in the form."
+    }
+  },
+  "loading": "Loading...",
+  "notSpecified": "Not specified",
+  "srenovaBrand": "Srenova"
+}

@@ -1,0 +1,39 @@
+{
+  "companyDescription": "Srenova aide les propriétaires à libérer la valeur de leur bien tout en restant dans la maison qu'ils aiment – offrant ainsi une liberté financière pour la retraite.",
+  "socialLinks": {
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn"
+  },
+  "legalLinks": {
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialité",
+    "data": "Politique relative aux cookies"
+  },
+  "copyright": "© 2025 Srenova. Tous droits réservés.",
+  "navTitles": {
+    "company": "Entreprise",
+    "resources": "Ressources",
+    "contact": "Coordonnées"
+  },
+  "companyLinks": {
+    "about": "À propos",
+    "story": "Notre histoire",
+    "team": "Notre équipe",
+    "press": "Presse",
+    "careers": "Carrières",
+    "contact": "Contact"
+  },
+  "resourceLinks": {
+    "how": "Fonctionnement",
+    "faqs": "FAQ",
+    "wage": "Guide du viager",
+    "blog": "Blog",
+    "retirement": "Planification retraite"
+  },
+  "contactLinks": {
+    "phone": "+44 (0) 123 456 7890",
+    "email": "info@srenova.com",
+    "address": "123 Business Avenue, London, UK, W1 1AA"
+  }
+}

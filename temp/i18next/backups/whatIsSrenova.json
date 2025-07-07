@@ -1,0 +1,28 @@
+{
+  "title": {
+    "what_is": "Qu'est-ce que",
+    "srenova": "Srenova",
+    "question_mark": "?"
+  },
+  "description": {
+    "paragraph1": "Srenova est une transaction immobilière où vous vendez votre maison tout en conservant le droit d'y vivre à vie. Vous recevez un paiement initial (bouquet) et/ou des paiements mensuels garantis (rente) à vie.",
+    "paragraph2": "Srenova a modernisé ce concept séculaire avec un soutien institutionnel et une efficacité numérique pour vous offrir une sécurité financière à la retraite."
+  },
+  "chat_prompt": "Des questions ? Notre Guide Srenova peut vous aider.",
+  "buttons": {
+    "eligibility": "Vérifiez votre éligibilité maintenant",
+    "how_it_works": "Découvrez comment ça marche"
+  },
+  "chat": {
+    "header": "Demandez à votre Guide Srenova",
+    "initial_message": "Bonjour ! Je suis là pour répondre à vos questions sur notre programme de viager. Que souhaitez-vous savoir ?"
+  },
+  "suggested_questions": {
+    "age_requirements": "Quelles sont les conditions d'âge minimum ?",
+    "property_types": "Quels types de propriétés sont éligibles ?",
+    "property_value": "Comment ma propriété est-elle évaluée ?",
+    "mortgage": "Que se passe-t-il si j'ai un prêt hypothécaire en cours ?",
+    "viager_program": "Qu'est-ce que le programme viager de Srenova ?",
+    "process_timeline": "Combien de temps dure le processus ?"
+  }
+} 

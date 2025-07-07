@@ -1,0 +1,14 @@
+{
+  "title": "Enter your property address",
+  "placeholder": "e.g. 123 High Street, London, Greater London, SW1A 1AA",
+  "helperText": {
+    "initialized": "Start typing to search for your address, or enter it manually",
+    "notInitialized": "For best results, include street, town, county and postcode separated by commas"
+  },
+  "errors": {
+    "required": "Please enter an address to continue",
+    "serviceUnavailable": "Address lookup service unavailable. Please enter your address manually.",
+    "searchError": "Error searching for addresses. Please try again or enter manually.",
+    "initializationError": "Failed to initialize address lookup. Please enter your address manually."
+  }
+}

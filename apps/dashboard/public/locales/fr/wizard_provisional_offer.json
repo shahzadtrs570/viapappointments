@@ -1,0 +1,259 @@
+{
+  "pageTitle": "Votre offre provisoire",
+  "pageDescription": "Sur la base de votre candidature, nous avons préparé une offre provisoire formelle pour vous. Veuillez examiner les détails ci-dessous.",
+  "shareModal": {
+    "title": "Partager le lien",
+    "copiedToastTitle": "Lien copié",
+    "copiedToastDescription": "Le lien a été copié dans votre presse-papiers.",
+    "shareUsingTitle": "Partager via",
+    "buttons": {
+      "email": "Email",
+      "message": "Message",
+      "facebook": "Facebook",
+      "twitter": "Twitter"
+    }
+  },
+  "defaultShareTitle": "Offre provisoire Srenova",
+  "paymentCalculator": {
+    "title": "Équilibrez votre structure de paiement",
+    "description": "Faites glisser pour ajuster l'équilibre entre votre somme forfaitaire initiale et les paiements mensuels.",
+    "higherLumpSum": "Somme forfaitaire plus élevée",
+    "higherMonthly": "Mensualités plus élevées",
+    "initialLumpSumLabel": "Somme forfaitaire initiale",
+    "monthlyPaymentLabel": "Paiement mensuel",
+    "totalPurchasePriceLabel": "Prix d'achat total",
+    "remainingBalanceLabel": "Solde restant"
+  },
+  "agreement": {
+    "title": "Srenova : ACCORD D'OFFRE PROVISOIRE",
+    "referenceNumberLabel": "NUMÉRO DE RÉFÉRENCE :",
+    "dateOfIssueLabel": "DATE D'ÉMISSION :",
+    "propertySellerDetails": {
+      "title": "DÉTAILS DU BIEN ET DU VENDEUR",
+      "addressLabel": "ADRESSE DU BIEN :",
+      "ownersLabel": "PROPRIÉTAIRE(S) ENREGISTRÉ(S) :",
+      "titleNumberLabel": "NUMÉRO DE TITRE :",
+      "tenureLabel": "TYPE DE TENURE :",
+      "typeLabel": "TYPE DE BIEN :"
+    },
+    "valuationOfferSummary": {
+      "title": "ÉVALUATION ET RÉSUMÉ DE L'OFFRE",
+      "marketValuationLabel": "ÉVALUATION INDÉPENDANTE DU MARCHÉ :",
+      "purchasePriceLabel": "PRIX D'ACHAT Srenova (80% de la valeur du marché) :",
+      "lumpSumLabel": "SOMME FORFAITAIRE INITIALE (BOUQUET) :",
+      "remainingBalanceAnnuityLabel": "SOLDE RESTANT POUR RENTE :",
+      "monthlyAnnuityPaymentLabel": "PAIEMENT MENSUEL DE RENTE :",
+      "annuityTermLabel": "DURÉE DE LA RENTE :"
+    },
+    "termsAndConditions": {
+      "title": "TERMES ET CONDITIONS DÉTAILLÉS",
+      "purchaseStructure": {
+        "title": "1. STRUCTURE D'ACHAT",
+        "intro": "Srenova propose d'acheter le bien mentionné ci-dessus selon la structure suivante :",
+        "salePrice": "Prix de vente : {{amount}} €, représentant {{percentage}}% de l'évaluation actuelle du marché de {{market_value}} €.",
+        "paymentStructureTitle": "Structure de paiement :",
+        "lumpSumPayable": "Somme forfaitaire initiale (bouquet) de {{amount}} € payable à la finalisation",
+        "remainingBalanceMonthly": "Solde restant de {{amount}} € payé sous forme de rente mensuelle",
+        "monthlyPaymentsForTerm": "Paiements mensuels de {{amount}} € pour {{term}}",
+        "annualAdjustment": "Ajustement annuel des paiements : Les paiements mensuels seront ajustés annuellement en fonction de l'Indice des Prix à la Consommation (IPC) du Royaume-Uni pour protéger contre l'inflation."
+      },
+      "lifetimeOccupancy": {
+        "title": "2. DROITS D'OCCUPATION À VIE",
+        "intro": "Le(s) vendeur(s) conservera(ont) les droits suivants après la finalisation de la vente :",
+        "rightOfResidence": "Droit de résidence à vie : Le(s) vendeur(s) aura(ont) le droit de continuer à résider dans le bien pour le reste de sa/leur vie.",
+        "occupancyTerms": "Conditions d'occupation : Ce droit de résidence est personnel au(x) vendeur(s) nommé(s) et ne peut être transféré ou cédé.",
+        "maintenanceResponsibilities": "Responsabilités d'entretien : Le(s) vendeur(s) doit(vent) maintenir le bien en bon état et être responsable(s) de l'entretien courant et des réparations décoratives.",
+        "structuralRepairs": "Réparations structurelles : Les réparations structurelles majeures seront de la responsabilité de Srenova ou de l'investisseur immobilier."
+      },
+      "financialProtections": {
+        "title": "3. PROTECTIONS FINANCIÈRES",
+        "intro": "Les protections suivantes sont incluses pour la sécurité du vendeur :",
+        "guaranteedPayments": "Paiements garantis : Les paiements de rente sont contractuellement garantis pour un minimum de 10 ans, même en cas de décès prématuré du vendeur, les paiements étant alors dirigés vers sa succession.",
+        "paymentProtection": "Protection des paiements : Toutes les obligations de paiement sont garanties sur le bien par une charge légale enregistrée au Registre foncier.",
+        "defaultProtection": "Protection contre le défaut : En cas de défaut de paiement de la rente, le vendeur a le droit de résilier l'accord et de récupérer la propriété du bien, en conservant tous les paiements reçus à ce jour."
+      }
+    },
+    "financialIllustration": {
+      "title": "ILLUSTRATION FINANCIÈRE",
+      "intro": "Ci-dessous figure une illustration de l'avantage financier total dans le cadre de cet accord :",
+      "benefitComponentHeader": "COMPOSANTE DE L'AVANTAGE FINANCIER",
+      "amountHeader": "MONTANT (€)",
+      "lumpSumRow": "Somme forfaitaire initiale (Bouquet)",
+      "annuityPaymentsRow": "Total des paiements de rente projetés (sur 20 ans aux taux actuels)",
+      "totalBenefitRow": "AVANTAGE TOTAL PROJETÉ",
+      "marketValueRow": "Valeur comparative du marché",
+      "netBenefitPercentageRow": "Pourcentage d'avantage net"
+    },
+    "agreementInPrinciple": {
+      "title": "Accord de principe",
+      "fullNameLabel": "Votre nom complet",
+      "fullNamePlaceholder": "Entrez votre nom complet",
+      "checkboxLabel": "Je comprends qu'il s'agit d'un 'accord de principe' et non d'un accord juridiquement contraignant. Chaque partie peut choisir de ne pas poursuivre ce processus à ce stade."
+    }
+  },
+  "nextStepsSection": {
+    "title": "PROCHAINES ÉTAPES",
+    "intro": "À l'acceptation de cette offre :",
+    "item1": "Votre conseiller Srenova dédié vous contactera dans les 24 heures pour organiser les prochaines étapes.",
+    "item2": "La documentation juridique sera préparée et envoyée à votre avocat.",
+    "item3": "La finalisation est généralement organisée dans un délai de 8 à 12 semaines.",
+    "item4": "La somme forfaitaire sera transférée le jour de la finalisation.",
+    "item5": "Les paiements mensuels commenceront le 1er jour du mois suivant la finalisation.",
+    "dedicatedAdvisorTitle": "VOTRE CONSEILLER DÉDIÉ :",
+    "advisorName": "Sarah Johnson",
+    "advisorPhone": "Téléphone : 0800 123 4567",
+    "advisorEmail": "Email : sarah.johnson@estateflex.com"
+  },
+  "importantRecommendation": {
+    "title": "Recommandation importante",
+    "description": "Srenova recommande vivement de partager cette offre provisoire avec des membres de la famille, des conseillers financiers ou d'autres professionnels de confiance avant de procéder.",
+    "confirmationLabel": "Je confirme que j'ai soit :",
+    "sharedOption": "Partagé cette offre avec ma famille/des conseillers financiers",
+    "proceedOption": "Compris les implications et souhaite procéder sans consultation",
+    "shareButton": "Partager"
+  },
+  "responseSection": {
+    "title": "Réponse à l'offre provisoire",
+    "question": "Comment souhaitez-vous procéder avec cette offre provisoire ?",
+    "acceptButton": {
+      "label": "Accepter l'offre provisoire",
+      "subLabel": "Continuer à l'étape suivante"
+    },
+    "speakAdvisorButton": {
+      "label": "Parler à un conseiller",
+      "subLabel": "Obtenir une assistance humaine"
+    },
+    "declineButton": {
+      "label": "Décliner l'offre",
+      "subLabel": "Fournir des commentaires"
+    }
+  },
+  "declineForm": {
+    "title": "Décliner l'offre provisoire",
+    "description": "Nous sommes désolés d'apprendre que vous déclinez l'offre. Veuillez nous indiquer pourquoi :",
+    "reasonSelectPlaceholder": "Sélectionnez une raison...",
+    "reasons": {
+      "amountLow": "Montant de l'offre trop bas",
+      "againstViager": "Décidé contre le viager",
+      "alternativeSolution": "Trouvé une solution alternative",
+      "moreTime": "Besoin de plus de temps pour réfléchir",
+      "personalCircumstances": "Changement de circonstances personnelles",
+      "termsConcern": "Préoccupations concernant les termes et conditions",
+      "other": "Autre"
+    },
+    "detailsLabel": "Détails supplémentaires (Facultatif)",
+    "detailsPlaceholder": "Veuillez fournir tout commentaire ou retour supplémentaire...",
+    "submitButton": "Soumettre le refus"
+  },
+  "speakHumanForm": {
+    "title": "Parler à un conseiller",
+    "description": "Nous sommes là pour vous aider. Veuillez fournir vos coordonnées et l'heure préférée, et un conseiller vous contactera.",
+    "nameLabel": "Votre nom",
+    "emailLabel": "Votre email",
+    "phoneLabel": "Votre numéro de téléphone",
+    "contactMethodLabel": "Méthode de contact préférée",
+    "contactMethodOptions": {
+      "email": "Email",
+      "phone": "Appel téléphonique"
+    },
+    "contactTimeLabel": "Moment de contact préféré",
+    "contactTimeOptions": {
+      "morning": "Matin (9h - 12h)",
+      "afternoon": "Après-midi (13h - 17h)",
+      "anytime": "N'importe quand"
+    },
+    "questionLabel": "Votre question/commentaire (Facultatif)",
+    "questionPlaceholder": "Entrez votre question ou commentaire ici...",
+    "requestCallbackButton": "Demander un rappel",
+    "inputPlaceholder": "Tapez votre message..."
+  },
+  "acceptanceConfirmation": {
+    "title": "Offre provisoire acceptée !",
+    "thankYouMessage": "Merci d'avoir accepté l'offre provisoire. Votre numéro de référence est {{referenceNumber}}.",
+    "whatsNextTitle": "Que se passe-t-il ensuite ?",
+    "advisorContact": "Contact avec le conseiller : Votre conseiller dédié, {{advisorName}}, vous contactera dans les 24 heures.",
+    "legalProcess": "Processus juridique : Nous commencerons à préparer la documentation juridique avec votre avocat.",
+    "completion": "Finalisation : Visant une finalisation dans les 8 à 12 semaines.",
+    "meantimeMessage": "En attendant, vous pouvez passer à l'étape suivante pour fournir des détails finaux ou revoir votre candidature.",
+    "continueButton": "Continuer vers la finalisation"
+  },
+  "navigation": {
+    "saveAndContinueLater": "Enregistrer et continuer plus tard"
+  },
+  "toasts": {
+    "noReferenceError": "Aucun numéro de référence d'offre trouvé",
+    "acceptProblemError": "Un problème est survenu lors de l'acceptation de votre offre. Veuillez réessayer.",
+    "declineReasonError": "Veuillez sélectionner une raison pour le refus",
+    "propertyIdRequiredError": "L'ID de la propriété est requis",
+    "acceptedSuccess": "Votre offre provisoire a été acceptée. Continuez vers la finalisation quand vous êtes prêt.",
+    "offerCreatedSuccess": "Offre provisoire créée avec succès",
+    "offerAcceptedSuccess": "Offre acceptée avec succès",
+    "offerDeclinedSuccess": "Offre refusée avec succès"
+  },
+  "guideBot": {
+    "title": "Détails de l'offre",
+    "initialMessage": "Voici votre offre provisoire basée sur les informations que vous avez fournies. Vous pouvez ajuster l'équilibre entre la somme forfaitaire et les paiements mensuels à l'aide du curseur.",
+    "suggestedQuestions": {
+      "priceCalc": "Comment le prix d'achat est-il calculé ?",
+      "earlyPassing": "Que se passe-t-il si je décède prématurément ?",
+      "sellLater": "Puis-je vendre la propriété plus tard ?"
+    },
+    "responses": {
+      "priceCalc": "Le prix d'achat est généralement fixé à 80 % de la valeur marchande actuelle du bien. Cette décote reflète la particularité de l'arrangement viager, où nous achetons le bien tout en vous accordant le droit d'y vivre à vie. La valeur est déterminée par une évaluation indépendante du marché.",
+      "earlyPassing": "Si vous décédez plus tôt que prévu, vos bénéficiaires désignés ou votre succession recevront les paiements mensuels garantis pour une période minimale de 10 ans à compter de la date de finalisation. Cela assure une protection financière à votre famille même en cas de décès prématuré.",
+      "sellLater": "Une fois l'accord finalisé, Srenova devient le propriétaire légal du bien, donc vous ne pourrez pas vendre la propriété ultérieurement. Cependant, votre droit d'y vivre est protégé à vie par un contrat légal, vous offrant une sécurité à long terme sans les soucis de propriété.",
+      "monthlyCalc": "Les paiements mensuels sont calculés sur la base de plusieurs facteurs, notamment : le solde restant après la somme forfaitaire initiale, votre âge et votre espérance de vie, et les taux d'intérêt actuels. Le montant est fixé pour vous offrir un revenu fiable tout au long de votre vie.",
+      "flexibleOption": "Oui, vous pouvez personnaliser la structure de paiement en fonction de vos besoins. Utilisez le calculateur de paiement pour ajuster l'équilibre entre la somme forfaitaire initiale et les paiements mensuels. Un conseiller peut également vous aider à trouver la structure optimale pour votre situation."
+    }
+  },
+  "guideBot2": {
+    "initialMessage": "Félicitations ! Vous êtes maintenant à l'étape de l'offre provisoire. Veuillez examiner attentivement les détails et vous assurer de comprendre toutes les conditions avant d'accepter. Si vous avez des questions, n'hésitez pas à les poser.",
+    "suggestedQuestions": {
+      "postAcceptance": "Que se passe-t-il après que j'accepte l'offre provisoire ?",
+      "legalTimeline": "Combien de temps dure le processus juridique ?",
+      "paymentChanges": "Puis-je changer mon mode de paiement ultérieurement ?"
+    },
+    "responses": {
+      "postAcceptance": "Après avoir accepté l'offre provisoire, nous lancerons le processus formel. Cela comprend : 1) L'évaluation de la propriété par des experts indépendants, 2) La préparation de la documentation juridique, 3) La mise en place de votre méthode de paiement choisie, et 4) La révision finale du contrat avec votre avocat. Nous vous guiderons à travers chaque étape.",
+      "legalTimeline": "Le processus juridique prend généralement 4 à 6 semaines à partir de l'acceptation de l'offre. Cela comprend les recherches sur la propriété, la préparation du contrat et la signature de l'accord final. Votre conseiller dédié et l'équipe juridique travailleront pour tout finaliser aussi efficacement que possible.",
+      "paymentChanges": "Oui, vous pouvez demander des modifications à votre méthode de paiement après la configuration initiale. Tout changement devra être convenu par les deux parties et documenté correctement. Nous vous recommandons de discuter de tout changement potentiel avec votre conseiller financier au préalable."
+    }
+  },
+  "importantInfo": {
+    "title": "Informations Importantes"
+  },
+  "timeline": {
+    "title": "Résumé des Informations Clés",
+    "itemPriceCalc": "Comment le prix d'achat est-il calculé ?",
+    "itemEarlyPassing": "Que se passe-t-il si je décède prématurément ?",
+    "itemSellLater": "Puis-je vendre la propriété plus tard ?"
+  },
+  "inputPlaceholder": "Tapez votre message...",
+  "chatbot": {
+    "title": "Assistant de Chat IA",
+    "initialMessage": "Bonjour! Je peux vous aider à répondre aux questions sur votre offre et les options de paiement. Que souhaitez-vous savoir?",
+    "suggestedQuestions": {
+      "paymentStructure": "Comment fonctionne la structure de paiement?",
+      "offerCalculation": "Comment déterminez-vous mon offre?",
+      "paymentAdjustment": "Puis-je ajuster l'équilibre entre le montant forfaitaire et les paiements mensuels?",
+      "taxImplications": "Quelles implications fiscales devrais-je considérer?",
+      "liveLonger": "Que se passe-t-il si je vis plus longtemps que prévu?"
+    }
+  },
+  "buttons": {
+    "back": "Retour",
+    "continueToCompletion": "Continuer vers la finalisation"
+  },
+  "verification": {
+    "required": {
+      "title": "Vérification de l'email requise",
+      "description": "Veuillez vérifier votre adresse email pour continuer avec votre offre provisoire. Cela nous aide à assurer la sécurité de votre compte."
+    },
+    "send": "Envoyer l'email de vérification",
+    "sending": "Envoi en cours...",
+    "sent": "Email de vérification envoyé ! Veuillez vérifier votre boîte de réception.",
+    "alreadySent": "Email de vérification déjà envoyé"
+  }
+}
+
+

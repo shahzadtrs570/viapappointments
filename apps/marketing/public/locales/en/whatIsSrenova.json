@@ -1,0 +1,28 @@
+{
+  "title": {
+    "what_is": "What is",
+    "srenova": "Srenova",
+    "question_mark": "?"
+  },
+  "description": {
+    "paragraph1": "Srenova is a property transaction where you sell your home while retaining the right to live there for life. You receive an initial payment (bouquet) and guaranteed monthly payments for life.",
+    "paragraph2": "Srenova has modernised this centuries-old concept with institutional backing and digital efficiency to provide you with unparalleled financial security in retirement."
+  },
+  "chat_prompt": "Got Questions? Our Srenova Guide can help.",
+  "buttons": {
+    "eligibility": "Check Your Eligibility Now",
+    "how_it_works": "Learn How It Works"
+  },
+  "chat": {
+    "header": "Ask your Srenova Guide",
+    "initial_message": "Hello! I'm here to help answer your questions about our viager programme. What would you like to know?"
+  },
+  "suggested_questions": {
+    "age_requirements": "What are the minimum age requirements?",
+    "property_types": "What types of properties are eligible?",
+    "property_value": "How is my property valued?",
+    "mortgage": "What if I have an outstanding mortgage?",
+    "viager_program": "What is Srenova's programme?",
+    "process_timeline": "How long does the process take?"
+  }
+} 

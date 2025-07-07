@@ -1,0 +1,51 @@
+{
+  "title": {
+    "how_to": "Come",
+    "get_started": "Iniziare"
+  },
+  "description": "Il nostro processo trasparente ti guida dalla richiesta iniziale alla sicurezza finanziaria, con supporto esperto ad ogni passo.",
+  "steps": [
+    {
+      "number": 1,
+      "title": "Verifica di Idoneità",
+      "items": [
+        "Valutazione online semplice",
+        "Valutazione approfondita della proprietà",
+        "Revisione rassicurante della situazione personale",
+        "Consulenza senza impegno"
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Valutazione della Proprietà",
+      "items": [
+        "Valutazione professionale",
+        "Analisi di mercato",
+        "Determinazione del giusto valore",
+        "Processo trasparente"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Offerta Personalizzata",
+      "items": [
+        "Dashboard Srenova personalizzata",
+        "Opzioni di pagamento flessibili",
+        "Documentazione chiara",
+        "Consulenza esperta"
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Accordo e Supporto",
+      "items": [
+        "Protezione legale completa",
+        "Pagamenti a vita garantiti",
+        "Supporto continuo",
+        "Completa tranquillità"
+      ]
+    }
+  ],
+  "cta_button": "Verifica la Tua Idoneità Ora"
+}
+  

@@ -1,0 +1,39 @@
+{
+  "companyDescription": "Srenova aiuta i proprietari di case ad accedere al valore della loro proprietà rimanendo nella casa che amano, offrendo libertà finanziaria per la pensione.",
+  "socialLinks": {
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn"
+  },
+  "legalLinks": {
+    "terms": "Termini di servizio",
+    "privacy": "Informativa sulla privacy",
+    "data": "Politica dei dati"
+  },
+  "copyright": "© 2025 Srenova. Tutti i diritti riservati.",
+  "navTitles": {
+    "company": "Azienda",
+    "resources": "Risorse",
+    "contact": "Informazioni di contatto"
+  },
+  "companyLinks": {
+    "about": "Chi siamo",
+    "story": "La nostra storia",
+    "team": "Il nostro team",
+    "press": "Stampa",
+    "careers": "Carriere",
+    "contact": "Contatti"
+  },
+  "resourceLinks": {
+    "how": "Come funziona",
+    "faqs": "Domande frequenti",
+    "wage": "Guida ai salari",
+    "blog": "Blog",
+    "retirement": "Pianificazione pensionistica"
+  },
+  "contactLinks": {
+    "phone": "+44 (0) 123 456 7890",
+    "email": "info@srenova.com",
+    "address": "123 Business Avenue, Londra, UK, W1 1AA"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "title": {
+    "the": "The",
+    "srenova": "Srenova",
+    "way": "Way"
+  },
+  "description": "Our innovative approach helps you access the value in your property while maintaining the security of your home.",
+  "features": [
+    {
+      "title": "Financial Empowerment",
+      "benefits": [
+        "Realise your home's value without moving or taking on any debt",
+        "Receive guaranteed monthly income for life",
+        "Get an upfront payment (bouquet) if needed",
+        "Maintain financial independence in retirement"
+      ]
+    },
+    {
+      "title": "Peace of Mind",
+      "benefits": [
+        "Stay in your beloved home for life",
+        "No monthly mortgage payments",
+        "Protected by transparent legal agreements",
+        "Expert guidance throughout your journey"
+      ]
+    },
+    {
+      "title": "Professional Support",
+      "benefits": [
+        "Institutional-grade solutions",
+        "Clear, transparent process",
+        "Expert advisors guide you through every step",
+        "Backed by trusted financial partners"
+      ]
+    }
+  ],
+  "cta_button": "Check Your Eligibility Now"
+} 

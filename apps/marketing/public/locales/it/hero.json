@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "heading": {
+      "part1": "Ricchezza Sbloccata",
+      "part2": "Ricordi Intatti"
+    },
+    "description": "Rimani nella casa che ami, goditi il reddito che meriti trasformando la tua casa in sicurezza finanziaria con Srenova. Realizza il valore della tua proprietà mentre rimani nella casa che ami, senza contrarre alcun debito.",
+    "buttons": {
+      "checkEligibility": "Verifica la tua idoneità",
+      "learnHow": "Scopri Come Funziona"
+    },
+    "guide": {
+      "askSrenovaGuide": "Chiedi alla Guida Srenova"
+    },
+    "trust": {
+      "label": "Approvato dai proprietari in tutta Europa",
+      "partners": {
+        "partner1": "Partner 1",
+        "partner2": "Partner 2",
+        "partner3": "Partner 3",
+        "partner4": "Partner 4"
+      }
+    },
+    "badges": {
+      "stayHome": {
+        "title": "Rimani a casa tua",
+        "subtitle": "100% garantito"
+      },
+      "unlockValue": {
+        "title": "Libera il valore della tua casa",
+        "subtitle": "Sicurezza finanziaria"
+      }
+    },
+    "testimonials": {
+      "testimonial1": {
+        "text": "Jean e Claudine potrebbero beneficiare di Srenova liberando parte del valore della loro casa per aumentare il loro reddito pensionistico. Potrebbero utilizzare i fondi aggiuntivi per viaggiare, sostenere i loro nipoti e godersi gli ultimi anni rimanendo nella casa che amano",
+        "author": "Jean e Claudine, 66 e 64 anni — Lione, Francia"
+      },
+      "testimonial2": {
+        "text": "Margaret potrebbe utilizzare Srenova per rimanere indipendente nella sua casa di famiglia con un reddito mensile sicuro. Questo l'aiuterebbe a mantenere il suo stile di vita, gestire i costi sanitari ed evitare di dipendere dai figli per il sostegno finanziario.",
+        "author": "Margaret, 73 anni — Oxford, Regno Unito"
+      },
+      "testimonial3": {
+        "text": "Carlos potrebbe scegliere Srenova per creare un reddito costante mantenendo i diritti di residenza a vita. Gli permetterebbe di pianificare la sua eredità, sostenere la sua famiglia e rimanere nella casa piena di ricordi che ha costruito nel corso degli anni.",
+        "author": "Carlos, 71 anni — Valencia, Spagna"
+      },
+      "testimonial4": {
+        "text": "Paul e Denise potrebbero utilizzare Srenova per accedere al valore della loro proprietà e godersi viaggi in tutto il mondo. Avrebbero la libertà di esplorare il mondo mantenendo la loro base permanente a casa, senza disagi emotivi.",
+        "author": "Paul e Denise, 68 e 67 anni — Bath, Regno Unito"
+      },
+      "testimonial5": {
+        "text": "Sophia potrebbe beneficiare di Srenova ricevendo una somma forfettaria e un reddito mensile per coprire le spese sanitarie. Potrebbe rimanere comodamente a casa senza la pressione di vendere, sapendo che il suo futuro finanziario è sicuro.",
+        "author": "Sophia, 62 anni — Nizza, Francia"
+      },
+      "testimonial6": {
+        "text": "Eleanor e Hugh potrebbero utilizzare Srenova per sostenere i loro figli con un'eredità anticipata. Aiutandoli ad acquistare la loro prima casa, vedrebbero i benefici del dare ora, continuando a vivere nella loro amata casa.",
+        "author": "Eleanor e Hugh, 70 e 72 anni — Surrey, Regno Unito"
+      }
+    }
+  }
+} 

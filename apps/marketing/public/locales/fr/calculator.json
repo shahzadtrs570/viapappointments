@@ -1,0 +1,42 @@
+{
+  "title": {
+    "srenova": "Srenova",
+    "calculator": "Simulateur"
+  },
+  "description": "Utilisez ce simulateur pour estimer le montant que vous pourriez obtenir en vendant votre logement avec Srenova.",
+  "controls": {
+    "home_value_label": "Valeur estimée de votre logement ?",
+    "current_value": "€{{value}}",
+    "min_value": "€150K",
+    "max_value": "€3M",
+    "max_value_plus": "€3M+",
+    "payment_preference": {
+      "label": "Préférez-vous :",
+      "options": {
+        "balanced": "Balancé",
+        "lump_sum": "Un versement initial plus important",
+        "monthly": "Une rente mensuelle à vie plus élevée"
+      }
+    },
+    "recalculate": "Recalculer"
+  },
+  "results": {
+    "valuation_basis": "Basé sur une estimation de {{value}}",
+    "srenova_offer_label": "Offre d'achat probable de Srenova :",
+    "srenova_offer_detail": "(20 % de moins que la valeur estimée)",
+    "lump_sum": {
+      "label": "Versement initial",
+      "value": "{{value}} immédiatement",
+      "description": "À utiliser ou investir comme vous le souhaitez",
+      "duration_short": " immédiatement"
+    },
+    "monthly": {
+      "label": "Rente mensuelle",
+      "value": "€{{value}}",
+      "duration": "pour le reste de votre vie",
+      "duration_short": " /mois à vie"
+    },
+    "offer_basis": "Basé sur une offre d'achat de {{offer}}",
+    "disclaimer": "Important : il ne s'agit que d'un guide indicatif. Inscrivez‑vous et renseignez votre bien pour recevoir une offre d'achat provisoire précise."
+  }
+} 

@@ -1,0 +1,345 @@
+{
+  "metadata": {
+    "created": "2025-05-29T10:35:00Z",
+    "source_document": "Srenova marketing site content.md",
+    "total_changes": 28,
+    "files_affected": 7
+  },
+  "changes": [
+    {
+      "file": "apps/marketing/public/locales/fr/navbar.json",
+      "key": "menuItems.aboutSrenova",
+      "action": "update",
+      "old_value": "À propos de Srenova",
+      "new_value": "À propos",
+      "source_content": "Line 9 in Srenova marketing site content.md",
+      "notes": "Simplified menu label for better mobile display",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/navbar.json",
+      "key": "menuItems.howItWorks",
+      "action": "update",
+      "old_value": "Comment ça marche",
+      "new_value": "Fonctionnement",
+      "source_content": "Line 5 in Srenova marketing site content.md",
+      "notes": "More concise and modern phrasing",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/hero.json",
+      "key": "hero.heading.part1",
+      "action": "update",
+      "old_value": "Débloquez votre ",
+      "new_value": "Débloquez la valeur de ",
+      "source_content": "Line 21 in Srenova marketing site content.md",
+      "notes": "Correction to match new content",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/hero.json",
+      "key": "hero.heading.part2",
+      "action": "update",
+      "old_value": "la valeur de la maison ",
+      "new_value": "votre logement ",
+      "source_content": "Line 21 in Srenova marketing site content.md",
+      "notes": "Correction to match new content",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/hero.json",
+      "key": "hero.heading.part3",
+      "action": "update",
+      "old_value": "et reste pour toujours",
+      "new_value": "et restez-y pour toujours",
+      "source_content": "Line 21 in Srenova marketing site content.md",
+      "notes": "Grammatical correction",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/hero.json",
+      "key": "hero.description",
+      "action": "update",
+      "old_value": "Transformez votre maison en sécurité financière avec Srenova. Valorisez votre propriété tout en restant dans la maison que vous aimez.",
+      "new_value": "Transformez votre logement en sécurité financière avec Srenova. Accédez à la valeur de votre bien tout en continuant à vivre dans la maison que vous aimez.",
+      "source_content": "Line 23 in Srenova marketing site content.md",
+      "notes": "Updated translation to match new content",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/hero.json",
+      "key": "hero.trust.label",
+      "action": "update",
+      "old_value": "Fait confiance par les propriétaires à travers l'Europe",
+      "new_value": "Plébiscité par les propriétaires dans toute l'Europe",
+      "source_content": "Line 33 in Srenova marketing site content.md",
+      "notes": "Grammatical correction and improved translation",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/hero.json",
+      "key": "hero.testimonials.testimonial1.text",
+      "action": "update",
+      "old_value": "Jean et Claudine pourraient bénéficier de Srenova en débloquant une partie de la valeur de leur maison pour augmenter leurs revenus de retraite sans le stress émotionnel d'une vente ou d'un déménagement. Ils pourraient utiliser ces fonds supplémentaires pour voyager, subvenir aux besoins de leurs petits-enfants et profiter de leurs vieux jours tout en restant dans leur maison chérie.",
+      "new_value": "Jean et Claudine pourraient bénéficier de Srenova en libérant une partie de la valeur de leur maison pour augmenter leur revenu de retraite – sans le stress émotionnel de la vente ou du déménagement. Ils pourraient utiliser les fonds supplémentaires pour voyager, aider leurs petits‑enfants et profiter de leurs vieux jours tout en restant dans la maison qu'ils aiment.",
+      "source_content": "Lines 41-43 in Srenova marketing site content.md",
+      "notes": "Updated translation to match new content",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/hero.json",
+      "key": "hero.testimonials.testimonial2.text",
+      "action": "update",
+      "old_value": "Margaret pourrait utiliser Srenova pour rester indépendante dans sa maison familiale avec un revenu mensuel garanti. Cela l'aiderait à préserver son mode de vie, à gérer ses frais de santé et à éviter de dépendre de ses enfants pour un soutien financier.",
+      "new_value": "Margaret pourrait utiliser Srenova pour rester indépendante dans sa maison familiale tout en s'assurant un revenu mensuel garanti. Au lieu de trouver un logement plus petit ou de dépendre de ses enfants, elle pourrait préserver son mode de vie, gérer ses frais de santé et profiter de sa retraite en toute sérénité.",
+      "source_content": "Lines 47-49 in Srenova marketing site content.md",
+      "notes": "Updated translation to match new content",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/whatIsSrenova.json",
+      "key": "title",
+      "action": "update",
+      "old_value": "Qu'est-ce que Srenova ?",
+      "new_value": "Qu'est‑ce que Srenova ?",
+      "source_content": "Line 85 in Srenova marketing site content.md",
+      "notes": "Typographical correction with proper French spacing",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/whatIsSrenova.json",
+      "key": "description",
+      "action": "update",
+      "old_value": "Existing description",
+      "new_value": "Srenova est une transaction de type viager : vous vendez votre logement tout en conservant le droit d'y vivre à vie. Vous recevez un versement initial et une rente mensuelle garantie à vie.",
+      "source_content": "Line 87 in Srenova marketing site content.md",
+      "notes": "Updated description to match new content",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/calculator.json",
+      "key": "title",
+      "action": "update",
+      "old_value": "Calculateur de paiement",
+      "new_value": "Simulateur de paiement",
+      "source_content": "Line 95 in Srenova marketing site content.md",
+      "notes": "More accurate French term for 'simulator'",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/calculator.json",
+      "key": "description",
+      "action": "update",
+      "old_value": "Existing description",
+      "new_value": "Utilisez ce simulateur pour estimer le montant que vous pourriez obtenir en vendant votre logement avec Srenova.",
+      "source_content": "Line 97 in Srenova marketing site content.md",
+      "notes": "Updated description to match new content",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/benefits.json",
+      "key": "sections.financialFreedom.title",
+      "action": "update",
+      "old_value": "Existing title",
+      "new_value": "Autonomie financière",
+      "source_content": "Line 131 in Srenova marketing site content.md",
+      "notes": "Updated benefit category title",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/benefits.json",
+      "key": "sections.financialFreedom.benefits",
+      "action": "update",
+      "old_value": "Existing benefits array",
+      "new_value": [
+        "Accédez à la valeur de votre maison sans déménager ni vous endetter",
+        "Recevez un revenu mensuel garanti à vie",
+        "Obtenez un versement initial bouquet si nécessaire",
+        "Conservez votre indépendance financière à la retraite"
+      ],
+      "source_content": "Lines 133-137 in Srenova marketing site content.md",
+      "notes": "Updated list of benefits",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/benefits.json",
+      "key": "sections.peaceOfMind.title",
+      "action": "update",
+      "old_value": "Existing title",
+      "new_value": "Tranquillité d'esprit",
+      "source_content": "Line 141 in Srenova marketing site content.md",
+      "notes": "Updated benefit category title",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/benefits.json",
+      "key": "sections.peaceOfMind.benefits",
+      "action": "update",
+      "old_value": "Existing benefits array",
+      "new_value": [
+        "Restez dans votre maison chérie à vie",
+        "Plus de frais d'entretiens coûteux pour votre bien immobilier",
+        "Protégé par des accords juridiques transparents",
+        "Accompagnement d'experts tout au long du processus"
+      ],
+      "source_content": "Lines 143-147 in Srenova marketing site content.md",
+      "notes": "Updated list of benefits",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/howItWorks.json",
+      "key": "title",
+      "action": "update",
+      "old_value": "Existing title",
+      "new_value": "Comment démarrer",
+      "source_content": "Line 151 in Srenova marketing site content.md",
+      "notes": "Updated section title",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/howItWorks.json",
+      "key": "description",
+      "action": "update",
+      "old_value": "Existing description",
+      "new_value": "Notre processus transparent vous guide, de la première prise de contact jusqu'à la sécurité financière, avec un accompagnement d'experts à chaque étape.",
+      "source_content": "Line 153 in Srenova marketing site content.md",
+      "notes": "Updated description to match new content",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/howItWorks.json",
+      "key": "steps.0.title",
+      "action": "update",
+      "old_value": "Existing step title",
+      "new_value": "Vérification d'éligibilité",
+      "source_content": "Line 157 in Srenova marketing site content.md",
+      "notes": "Updated step title",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/howItWorks.json",
+      "key": "steps.0.description",
+      "action": "update",
+      "old_value": "Existing step description array",
+      "new_value": [
+        "Questionnaire en ligne simple",
+        "Évaluation approfondie de la propriété",
+        "Analyse de votre situation",
+        "Entretien sans engagement"
+      ],
+      "source_content": "Lines 159-163 in Srenova marketing site content.md",
+      "notes": "Updated step description",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/faq.json",
+      "key": "questions.0.question",
+      "action": "update",
+      "old_value": "Existing question",
+      "new_value": "Comment mon paiement est‑il calculé ?",
+      "source_content": "Line 209 in Srenova marketing site content.md",
+      "notes": "Updated FAQ question with proper French spacing",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/faq.json",
+      "key": "questions.1.question",
+      "action": "update",
+      "old_value": "Existing question",
+      "new_value": "Quelles sont les protections juridiques dont je bénéficie ?",
+      "source_content": "Line 211 in Srenova marketing site content.md",
+      "notes": "Updated FAQ question",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/trustIndicators.json",
+      "key": "sections.0.title",
+      "action": "update",
+      "old_value": "Existing title",
+      "new_value": "Solidité institutionnelle",
+      "source_content": "Line 217 in Srenova marketing site content.md",
+      "notes": "Updated trust indicator title",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/trustIndicators.json",
+      "key": "sections.0.items",
+      "action": "update",
+      "old_value": "Existing items array",
+      "new_value": [
+        "Soutenue par des partenaires d'investissement réputés",
+        "Paiements garantis à vie",
+        "Processus standardisés et transparents",
+        "Solidité et stabilité financières"
+      ],
+      "source_content": "Lines 219-223 in Srenova marketing site content.md",
+      "notes": "Updated trust indicator items",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/footer.json",
+      "key": "description",
+      "action": "update",
+      "old_value": "Existing description",
+      "new_value": "Srenova aide les propriétaires à libérer la valeur de leur bien tout en restant dans la maison qu'ils aiment – offrant ainsi une liberté financière pour la retraite.",
+      "source_content": "Line 245 in Srenova marketing site content.md",
+      "notes": "Updated footer description",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/footer.json",
+      "key": "links.company",
+      "action": "update",
+      "old_value": "Existing company links array",
+      "new_value": [
+        "À propos",
+        "Notre histoire",
+        "Notre équipe",
+        "Presse",
+        "Carrières",
+        "Contact"
+      ],
+      "source_content": "Line 253 in Srenova marketing site content.md",
+      "notes": "Updated company links in footer",
+      "status": "proposed"
+    },
+    {
+      "file": "apps/marketing/public/locales/fr/footer.json",
+      "key": "links.resources",
+      "action": "update",
+      "old_value": "Existing resources links array",
+      "new_value": [
+        "Fonctionnement",
+        "FAQ",
+        "Blog",
+        "Guide du viager",
+        "Planification retraite"
+      ],
+      "source_content": "Line 257 in Srenova marketing site content.md",
+      "notes": "Updated resources links in footer",
+      "status": "proposed"
+    }
+  ],
+  "issues_requiring_approval": [
+    {
+      "issue": "Terminology consistency",
+      "description": "Some terms alternate between 'maison', 'logement', 'bien', and 'propriété'",
+      "proposed_solution": "Standardize terminology: use 'logement' for general references, 'maison' for emotional contexts, and 'bien' for financial/legal contexts",
+      "files_affected": ["hero.json", "benefits.json", "calculator.json", "whatIsSrenova.json"]
+    },
+    {
+      "issue": "Typographical standards",
+      "description": "French typography requires specific spacing for punctuation marks (e.g., '‑' for non-breaking hyphens, spaces before ':', '?', '!')",
+      "proposed_solution": "Apply proper French typographical standards throughout all files",
+      "files_affected": ["All FR JSON files"]
+    }
+  ],
+  "content_not_used": [
+    {
+      "content": "Specific numerical examples in calculator section",
+      "location": "Lines 107-115 in Srenova marketing site content.md",
+      "reason": "Dynamic values likely handled by application logic",
+      "suggestion": "Consider if these example values should be added to the calculator.json file for static display"
+    }
+  ]
+} 

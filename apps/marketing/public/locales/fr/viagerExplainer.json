@@ -1,0 +1,23 @@
+{
+  "heading": "Le Viager Moderne : Comment Ça Fonctionne",
+  "subheading": "Inspiré du système traditionnel français du viager, notre approche moderne offre une sécurité financière tout en vous permettant de continuer à vivre dans votre maison.",
+  "steps": [
+    {
+      "title": "Évaluation du Bien",
+      "description": "Nous déterminons la valeur marchande actuelle de votre maison grâce à une évaluation approfondie."
+    },
+    {
+      "title": "Offre Personnalisée",
+      "description": "Nous créons un plan de paiement personnalisé qui correspond à vos besoins financiers."
+    },
+    {
+      "title": "Droit à Vie de Rester",
+      "description": "Vous recevez des paiements tout en conservant le droit légal de vivre dans votre maison aussi longtemps que vous le souhaitez."
+    }
+  ],
+  "learnMore": "En savoir plus sur notre processus",
+  "testimonyTitle": "Tranquillité Financière",
+  "testimonyQuote": "Nous avons vécu ici pendant 40 ans et l'idée de partir nous brisait le cœur. Avec Srenova, nous avons obtenu les fonds dont nous avions besoin tout en gardant notre maison.",
+  "testimonySigner": "—Jean & Marie Laurent",
+  "imageAlt": "Couple de personnes âgées examinant des documents financiers à la maison"
+} 

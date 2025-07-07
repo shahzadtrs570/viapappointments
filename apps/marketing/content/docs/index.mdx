@@ -1,0 +1,205 @@
+---
+title: Introduction
+description: Introduction of the docs.
+updatedAt: '2024-05-08'
+---
+
+import { HomeIcon } from 'lucide-react';
+import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
+
+<div className="border text-center border-primary rounded-md border-l-4">
+Here's an overview of the beautiful built in components. <br />
+The docs are also written in MDX.
+</div>
+
+## Code
+```tsx
+const fumaComponents = {
+  Callout,
+  Accordion,
+  Accordions,
+  Card,
+  Cards,
+  Steps,
+  Step,
+  Tabs,
+  Tab,
+  TypeTable,
+}
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...defaultComponents,
+    ...components,
+    ...fumaComponents,
+  }
+}
+
+```
+
+### Code with highlight
+```tsx
+<div>Hello World</div>  // [!code highlight]
+<div>Hello World</div>
+<div>Goodbye</div>
+<div>Hello World</div>
+```
+
+### Highlight specific word
+```js
+// [!code word:config]
+const config = {
+  reactStrictMode: true,
+};
+```
+### Code with title
+```ts title="next.config.js" icon="ts"
+console.log('Hello World');
+```
+
+## Files & Folders
+<Files>
+  <Folder name="app" defaultOpen>
+    <File name="layout.tsx" />
+    <File name="page.tsx" />
+    <File name="global.css" />
+  </Folder>
+  <Folder name="components">
+    <File name="button.tsx" />
+    <File name="tabs.tsx" />
+    <File name="dialog.tsx" />
+  </Folder>
+  <File name="package.json" />
+</Files>
+
+
+## Acordion
+<Accordions>
+  <Accordion title="My Title">
+    My Content
+  </Accordion>
+</Accordions>
+
+## Callout
+<Callout title="Title">Hello World</Callout>
+
+## Card
+<Cards>
+  <Card
+    href="https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating"
+    title="Fetching, Caching, and Revalidating"
+    description="Learn more about caching in Next.js"
+  />
+</Cards>
+
+
+### Card With Icon
+<Cards>
+  <Card
+    icon={<HomeIcon />}
+    href="/"
+    title="Home"
+    description="Go back to home"
+  />
+</Cards>
+
+## Zoom Image
+<ImageZoom src="/images/blog/boilerplate-cover.png" object-fit="cover" width={500} height={500} alt="image"  />
+
+## Steps
+<Steps>
+  <Step>
+  ### Step 1
+  Hello World
+  </Step>
+  <Step>
+  ### Step 2
+  Hello World
+  </Step>
+  <Step>
+  ### Step 3
+  Hello World
+  </Step>
+</Steps>
+
+## Tabs
+
+<Tabs items={['Javascript','Typescript', 'Rust']}>
+  <Tab value="Javascript">Javascript is weird</Tab>
+  <Tab value="Typescript">Typescript is the GOAT</Tab>
+  <Tab value="Rust">Rust is fast</Tab>
+</Tabs>
+
+## Typetable
+<TypeTable
+  type={{
+    percentage: {
+      description:
+        'The percentage of scroll position to display the roll button',
+      type: 'number',
+      default: 0.2,
+    },
+  }}
+/>
+
+## Write custom JSX with tailwind in MDX
+This is a custom JSX component that uses tailwind classes, directly inside MDX.
+
+<div className="relative inline-block">
+  <img src="/images/blog/pixel-renas-avatar.jpg" className="rounded-full size-10" />
+  <div className="absolute bottom-7 right-0 bg-success size-3 rounded-full animate-pulse" />
+</div>
+
+This is the code for it:
+
+```tsx
+<div className="relative inline-block">
+  <img src="/images/blog/pixel-renas-avatar.jpg" className="rounded-full size-10" />
+  <div className="absolute bottom-7 right-0 bg-success size-3 rounded-full animate-pulse" />
+</div>
+```
+
+## You can even import components from other packages
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@package/ui/select"
+
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Language" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Javascript</SelectItem>
+    <SelectItem value="dark">Typescript</SelectItem>
+    <SelectItem value="system">Rust</SelectItem>
+  </SelectContent>
+</Select>
+
+This is the code for it:
+  
+  ```tsx
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@package/ui/select"
+
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Language" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Javascript</SelectItem>
+    <SelectItem value="dark">Typescript</SelectItem>
+    <SelectItem value="system">Rust</SelectItem>
+  </SelectContent>
+</Select>
+
+  ```

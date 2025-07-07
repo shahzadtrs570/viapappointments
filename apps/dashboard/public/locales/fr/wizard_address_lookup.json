@@ -1,0 +1,16 @@
+{
+  "title": "Entrez l'adresse de votre propriété",
+  "placeholder": "ex. 123 Rue Principale, Paris, Île-de-France, 75001",
+  "helperText": {
+    "initialized": "Commencez à taper pour rechercher votre adresse, ou entrez-la manuellement",
+    "notInitialized": "Pour de meilleurs résultats, incluez la rue, la ville, le département et le code postal séparés par des virgules"
+  },
+  "errors": {
+    "required": "Veuillez entrer une adresse pour continuer",
+    "serviceUnavailable": "Service de recherche d'adresse indisponible. Veuillez entrer votre adresse manuellement.",
+    "searchError": "Erreur lors de la recherche d'adresses. Veuillez réessayer ou entrer manuellement.",
+    "initializationError": "Échec de l'initialisation de la recherche d'adresse. Veuillez entrer votre adresse manuellement."
+  }
+}
+
+

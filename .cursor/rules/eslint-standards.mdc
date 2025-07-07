@@ -1,0 +1,486 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# ESLint Standards and Configuration
+
+## Overview
+This document outlines the ESLint configuration standards for the NextJet project to maintain code quality and consistency.
+
+## ESLint Disable Comments Reference
+
+### File-Level Disabling
+```javascript
+/* eslint-disable */                          // Disable all rules for entire file
+/* eslint-enable */                           // Re-enable all rules for entire file
+/* eslint-disable @typescript-eslint/rule-name, rule-name */  // Disable specific rules for entire file
+```
+
+### Line or Block-Level Disabling
+```javascript
+// eslint-disable-next-line                   // Disable all rules for next line
+// eslint-disable-next-line rule-name         // Disable specific rule for next line
+// eslint-disable-next-line @typescript-eslint/rule-name  // Disable specific TypeScript rule
+/* eslint-disable-next-line @typescript-eslint/rule-name, rule-name */  // Disable multiple rules
+
+/* eslint-disable */                          // Disable all rules for this block
+/* eslint-enable */                           // Re-enable all rules after this block
+
+/* eslint-disable rule-name */                // Disable specific rule for this block
+// Your code here
+/* eslint-enable rule-name */                 // Re-enable specific rule after this block
+```
+
+### Common Rule Disabling Patterns
+```javascript
+// TypeScript-specific
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
+// React-specific
+// eslint-disable-next-line react/jsx-no-bind
+// eslint-disable-next-line react/no-array-index-key
+// eslint-disable-next-line react-hooks/exhaustive-deps
+// eslint-disable-next-line react/jsx-max-depth
+
+// Import-specific
+// eslint-disable-next-line import/no-cycle
+// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-relative-parent-imports
+
+// Code style
+// eslint-disable-next-line no-console
+// eslint-disable-next-line max-len
+// eslint-disable-next-line complexity
+// eslint-disable-next-line max-lines-per-function
+
+// Accessibility
+// eslint-disable-next-line jsx-a11y/click-events-have-key-events
+// eslint-disable-next-line jsx-a11y/no-static-element-interactions
+```
+
+### Best Practices for Using Disable Comments
+
+1. **Always Add Justification**
+```javascript
+// eslint-disable-next-line no-console
+// Logging error for critical system failure that needs investigation
+console.error('Critical system error:', error);
+
+/* eslint-disable react-hooks/exhaustive-deps */
+// Omitting dependencies to prevent unnecessary re-renders in animation frame
+/* eslint-enable react-hooks/exhaustive-deps */
+```
+
+2. **Scope Minimization**
+```javascript
+// Good: Disable only for specific line
+// eslint-disable-next-line max-len
+const veryLongLine = 'This is a very long line that cannot be broken down and exceeds our normal line length limits';
+
+// Bad: Disabling for entire file when only needed for one section
+/* eslint-disable max-len */
+```
+
+3. **Multiple Rules**
+```javascript
+// eslint-disable-next-line max-len, no-console, @typescript-eslint/no-explicit-any
+const debugLog: any = (message: string) => console.log('Very long debug message that exceeds line length:', message);
+```
+
+4. **Temporary Fixes**
+```javascript
+// TODO: Remove eslint disable when proper type definitions are added
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const tempAnyType: any = complexData;
+```
+
+### When to Use Disable Comments
+
+1. **Valid Use Cases**:
+   - Third-party code integration that can't be modified
+   - Generated code
+   - Legacy code during gradual migration
+   - Exceptional cases with proper documentation
+   - Testing specific scenarios
+   - Performance critical sections
+
+2. **Avoid Using For**:
+   - Regular development patterns
+   - Bypassing important security rules
+   - Avoiding proper error handling
+   - Circumventing accessibility requirements
+   - Temporary fixes without follow-up
+
+3. **Documentation Requirements**:
+   - Always add a comment explaining why the rule is disabled
+   - Include ticket/issue reference if applicable
+   - Add TODO/FIXME if temporary
+   - Document any side effects
+
+### Example Usage Patterns
+
+```javascript
+// 1. Temporary Type Override
+// TODO: TICKET-123 - Remove when proper types are added
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const externalData: any = thirdPartyApi.getData();
+
+// 2. Performance Critical Section
+/* eslint-disable react-hooks/exhaustive-deps */
+// Performance optimization: Dependencies limited to prevent unnecessary calculations
+useEffect(() => {
+  heavyCalculation();
+}, [essentialDependency]); // Omitting optional dependencies for performance
+/* eslint-enable react-hooks/exhaustive-deps */
+
+// 3. Testing Scenarios
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mockFunction = jest.fn() as any; // Required for complex mock typing
+
+// 4. Legacy Code Migration
+/* eslint-disable */
+// Legacy module scheduled for refactor in TICKET-456
+const oldCode = require('./legacy-module');
+/* eslint-enable */
+```
+
+## ESLint Configuration
+
+```javascript
+// .eslintrc.js
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2022,
+    sourceType: 'module',
+    project: './tsconfig.json',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'prettier', // Must be last to override other configs
+  ],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'react-hooks',
+    'jsx-a11y',
+    'import',
+    'prettier',
+  ],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    'import/resolver': {
+      typescript: {},
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+  rules: {
+    // File and Code Organization
+    'max-len': ['error', { 
+      code: 500,
+      tabWidth: 2,
+      ignoreComments: true,
+      ignoreUrls: true,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: true,
+    }],
+    'max-lines': ['error', {
+      max: 500,
+      skipBlankLines: true,
+      skipComments: true,
+    }],
+    'max-lines-per-function': ['error', {
+      max: 100,
+      skipBlankLines: true,
+      skipComments: true,
+      IIFEs: true,
+    }],
+    'max-depth': ['error', 4], // Maximum block nesting depth
+    'complexity': ['error', 15], // Maximum cyclomatic complexity
+
+    // JSX Specific Rules
+    'react/jsx-max-depth': ['error', { max: 6 }], // Maximum JSX nesting depth
+    'react/jsx-max-props-per-line': ['error', { maximum: 4, when: 'multiline' }],
+    'react/jsx-sort-props': ['error', {
+      callbacksLast: true,
+      shorthandFirst: true,
+      ignoreCase: true,
+      reservedFirst: true,
+    }],
+    'react/jsx-no-duplicate-props': 'error',
+    'react/jsx-pascal-case': 'error',
+    'react/jsx-fragments': ['error', 'syntax'],
+    'react/jsx-no-useless-fragment': 'error',
+    'react/jsx-no-script-url': 'error',
+    'react/jsx-no-target-blank': ['error', { enforceDynamicLinks: 'always' }],
+    'react/jsx-boolean-value': ['error', 'never'],
+    'react/no-array-index-key': 'warn',
+    'react/no-unused-prop-types': 'error',
+    'react/no-unused-state': 'error',
+    'react/no-access-state-in-setstate': 'error',
+    'react/no-adjacent-inline-elements': 'error',
+    'react/no-danger': 'error',
+
+    // Code Style and Best Practices
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
+    'no-debugger': 'error',
+    'no-alert': 'error',
+    'no-unused-vars': 'off', // Using TypeScript's checker instead
+    '@typescript-eslint/no-unused-vars': ['error', {
+      vars: 'all',
+      args: 'after-used',
+      ignoreRestSiblings: true,
+      argsIgnorePattern: '^_',
+    }],
+    'prefer-const': 'error',
+    'no-var': 'error',
+    'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1 }],
+    'no-nested-ternary': 'error',
+    'no-unneeded-ternary': 'error',
+    'no-multi-assign': 'error',
+    'no-else-return': 'error',
+    'no-return-await': 'error',
+    'no-param-reassign': 'error',
+    'no-shadow': 'error',
+    'no-use-before-define': 'error',
+    'prefer-template': 'error',
+    'prefer-destructuring': ['error', {
+      array: true,
+      object: true,
+    }],
+    'prefer-rest-params': 'error',
+    'prefer-spread': 'error',
+    'prefer-arrow-callback': 'error',
+
+    // TypeScript Specific
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-unsafe-assignment': 'error',
+    '@typescript-eslint/no-unsafe-call': 'error',
+    '@typescript-eslint/no-unsafe-member-access': 'error',
+    '@typescript-eslint/no-unsafe-return': 'error',
+    '@typescript-eslint/no-unsafe-argument': 'error',
+    '@typescript-eslint/no-implied-any': 'error',
+    '@typescript-eslint/no-non-null-assertion': 'warn',
+    '@typescript-eslint/no-empty-interface': 'warn',
+    '@typescript-eslint/ban-ts-comment': 'warn',
+    '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+    '@typescript-eslint/prefer-optional-chain': 'error',
+    '@typescript-eslint/no-floating-promises': 'error',
+    '@typescript-eslint/no-misused-promises': 'error',
+    '@typescript-eslint/await-thenable': 'error',
+    '@typescript-eslint/no-for-in-array': 'error',
+    '@typescript-eslint/no-unnecessary-type-arguments': 'error',
+    '@typescript-eslint/prefer-includes': 'error',
+    '@typescript-eslint/prefer-nullish-coalescing': 'error',
+    '@typescript-eslint/prefer-reduce-type-parameter': 'error',
+    '@typescript-eslint/prefer-string-starts-ends-with': 'error',
+
+    // React Hooks
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    
+    // Performance Rules
+    'react/jsx-no-bind': ['error', {
+      ignoreDOMComponents: true,
+      ignoreRefs: true,
+      allowArrowFunctions: false,
+      allowFunctions: false,
+      allowBind: false,
+    }],
+    'react/jsx-no-constructed-context-values': 'error',
+    'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
+
+    // Import/Export Rules
+    'import/order': ['error', {
+      'groups': [
+        'builtin',
+        'external',
+        'internal',
+        'parent',
+        'sibling',
+        'index',
+      ],
+      'newlines-between': 'always',
+      'alphabetize': {
+        order: 'asc',
+        caseInsensitive: true,
+      },
+    }],
+    'import/no-unresolved': 'error',
+    'import/named': 'error',
+    'import/default': 'error',
+    'import/namespace': 'error',
+    'import/no-duplicates': 'error',
+    'import/no-cycle': 'error',
+    'import/no-self-import': 'error',
+    'import/no-useless-path-segments': 'error',
+    'import/no-relative-parent-imports': 'error',
+    'import/no-deprecated': 'warn',
+
+    // Accessibility
+    'jsx-a11y/anchor-is-valid': 'warn',
+    'jsx-a11y/click-events-have-key-events': 'warn',
+    'jsx-a11y/no-static-element-interactions': 'warn',
+    'jsx-a11y/alt-text': 'error',
+    'jsx-a11y/aria-props': 'error',
+    'jsx-a11y/aria-proptypes': 'error',
+    'jsx-a11y/aria-unsupported-elements': 'error',
+    'jsx-a11y/role-has-required-aria-props': 'error',
+    'jsx-a11y/role-supports-aria-props': 'error',
+    'jsx-a11y/tabindex-no-positive': 'error',
+    'jsx-a11y/no-redundant-roles': 'error',
+    'jsx-a11y/no-interactive-element-to-noninteractive-role': 'error',
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': 'error',
+
+    // Formatting (when Prettier doesn't cover)
+    'no-trailing-spaces': 'error',
+    'eol-last': ['error', 'always'],
+    'arrow-body-style': ['error', 'as-needed'],
+    'arrow-parens': ['error', 'always'],
+    'object-shorthand': ['error', 'always'],
+  },
+  overrides: [
+    {
+      // Test files
+      files: ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
+      env: {
+        jest: true,
+      },
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+        'max-lines-per-function': 'off',
+      },
+    },
+    {
+      // Configuration files
+      files: ['*.config.js', '*.config.ts'],
+      rules: {
+        'max-lines': 'off',
+        'import/no-default-export': 'off',
+      },
+    },
+  ],
+};
+```
+
+## Rule Explanations
+
+### File and Code Organization
+- `max-len`: Maximum line length set to 500 characters
+- `max-lines`: Maximum file size of 500 lines (excluding comments and blank lines)
+- `max-lines-per-function`: Maximum function size of 100 lines
+- `max-depth`: Maximum block nesting depth of 4
+- `complexity`: Maximum cyclomatic complexity of 15
+
+### JSX Specific Rules
+- `react/jsx-max-depth`: Maximum JSX nesting depth of 6 levels
+- `react/jsx-max-props-per-line`: Maximum 4 props per line in multiline JSX
+- `react/jsx-sort-props`: Enforces consistent prop ordering
+- `react/no-array-index-key`: Warns against using array index as key
+- `react/jsx-no-useless-fragment`: Prevents unnecessary fragments
+- `react/jsx-pascal-case`: Enforces PascalCase for components
+
+### Code Style and Best Practices
+- Enforces const over let/var
+- Prevents nested ternaries
+- Enforces template literals over string concatenation
+- Prevents parameter reassignment
+- Enforces destructuring
+- Prevents shadowing variables
+
+### TypeScript Enhancements
+- Enforces consistent type imports
+- Prevents unnecessary type assertions
+- Enforces optional chaining
+- Prevents misused promises
+- Enforces modern TypeScript features
+
+### Performance Rules
+- Prevents inline function creation in JSX
+- Prevents constructed context values
+- Controls nested component definitions
+
+### Import/Export Enhancements
+- Prevents circular dependencies
+- Prevents self-imports
+- Prevents deprecated imports
+- Enforces absolute imports over relative parent imports
+
+### Enhanced Accessibility Rules
+- Enforces ARIA attributes and roles
+- Prevents redundant roles
+- Enforces proper interactive and non-interactive elements
+- Prevents positive tabindex values
+
+## Implementation
+
+1. Copy the ESLint configuration into your root `.eslintrc.js`
+2. Install required dependencies:
+```bash
+npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y eslint-plugin-import eslint-config-prettier eslint-plugin-prettier
+```
+
+3. Add script to package.json:
+```json
+{
+  "scripts": {
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+  }
+}
+```
+
+## VS Code Integration
+
+Add the following to your `.vscode/settings.json`:
+```json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
+}
+```
+
+## Maintenance
+
+- Review and update rules quarterly
+- Test new rules in a development branch before applying to main
+- Document any rule changes in the project changelog 

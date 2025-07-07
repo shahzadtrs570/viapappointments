@@ -1,0 +1,25 @@
+{
+  "name": "@package/fonts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module", 
+  "exports": {
+    ".": "./src/index.ts",
+    "./assets": "./src/assets"
+  },
+  "scripts": {
+    "lint": "eslint . --ext ts --report-unused-disable-directives",
+    "format": "eslint . --ext ts --fix",
+    "download-fonts": "node scripts/download-fonts.js"
+  },
+  "dependencies": {
+    "next": "^14.0.0"
+  },
+  "devDependencies": {
+    "@package/eslint-config": "workspace:*",
+    "@package/prettier-config": "workspace:*",
+    "@package/typescript-config": "workspace:*",
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.1"
+  }
+} 

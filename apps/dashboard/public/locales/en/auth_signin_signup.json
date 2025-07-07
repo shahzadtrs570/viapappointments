@@ -1,0 +1,49 @@
+{
+  "cardTitle": {
+    "signUp": "Sign Up",
+    "signIn": "Sign In"
+  },
+  "cardDescription": {
+    "signUp": "Enter your email below to sign up",
+    "signIn": "Enter your email below to login to your account"
+  },
+  "form": {
+    "emailLabel": "Email",
+    "orSeparator": "or"
+  },
+  "buttons": {
+    "submit": {
+      "signUp": "Sign up",
+      "signIn": "Sign in"
+    },
+    "google": {
+      "signUp": "Sign up with Google",
+      "signIn": "Sign in with Google"
+    },
+    "github": {
+      "signUp": "Sign up with Github",
+      "signIn": "Sign in with Github"
+    }
+  },
+  "linkText": {
+    "prompt": {
+      "signUp": "Already have an account?",
+      "signIn": "Don't have an account?"
+    },
+    "action": {
+      "signUp": "Sign in",
+      "signIn": "Sign up"
+    }
+  },
+  "emailDialog": {
+    "title": "Check your email",
+    "description": {
+      "signUp": "A sign up link has been sent to your email address, {{email}}. Click the link to sign up.",
+      "signIn": "A sign in link has been sent to your email address, {{email}}. Click the link to sign in."
+    }
+  },
+  "turnstileDialog": {
+    "title": "Security Verification",
+    "description": "Please complete the security check to continue"
+  }
+}

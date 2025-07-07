@@ -1,0 +1,25 @@
+{
+  "banner": {
+    "title": "Benvenuto nella nostra anteprima! 🚀",
+    "subtitle": "Stai sperimentando il futuro",
+    "description": "Questo è un <strong>ambiente di pre-produzione</strong> progettato per test e feedback. Tutto quello che vedi è simulato - nessuna transazione reale, riunioni o impegni.",
+    "features": {
+      "safeEnvironment": {
+        "title": "Ambiente di test sicuro",
+        "description": "Nessun pagamento, nessun dato reale, nessun impegno"
+      },
+      "fullAccess": {
+        "title": "Accesso completo alle funzionalità",
+        "description": "Prova valutazioni immobiliari, flussi e altro ancora"
+      },
+      "helpImprove": {
+        "title": "Aiutaci a migliorare",
+        "description": "Il tuo feedback plasma il nostro prodotto finale"
+      }
+    },
+    "buttons": {
+      "startExploring": "Inizia a esplorare →",
+      "closeMessage": "Clicca qui per chiudere questo messaggio"
+    }
+  }
+} 

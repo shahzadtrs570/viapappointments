@@ -1,0 +1,46 @@
+{
+  "title": {
+    "why_trust": "Perché Fidarsi di ",
+    "srenova": "Srenova",
+    "question_mark": "?"
+  },
+  "description": "Il nostro supporto istituzionale e la nostra competenza garantiscono la tua sicurezza finanziaria e tranquillità.",
+  "columns": [
+    {
+      "title": "Affidabilità Istituzionale",
+      "features": [
+        "Sostenuto da partner di investimento di prestigio",
+        "Pagamenti a vita garantiti",
+        "Processi standardisati e trasparenti",
+        "Forza e stabilità finanziaria"
+      ]
+    },
+    {
+      "title": "Supporto Esperto",
+      "features": [
+        "Conoscenza specialisata del vitalizio",
+        "Competenza legale e finanziaria",
+        "Guida personalisata",
+        "Assistenza clienti continua"
+      ]
+    },
+    {
+      "title": "Leadership Europea",
+      "features": [
+        "Presenza paneuropea",
+        "Pionieri del settore nel Regno Unito e in Italia",
+        "Standardisazione delle transazioni di vitalizio",
+        "Creazione di una nuova categoria di finanza pensionistica"
+      ]
+    }
+  ],
+  "partners": {
+    "title": "Fidato dalle principali istituzioni finanziarie",
+    "logos": [
+      {"name": "Partner 1"},
+      {"name": "Partner 2"},
+      {"name": "Partner 3"},
+      {"name": "Partner 4"}
+    ]
+  }
+} 

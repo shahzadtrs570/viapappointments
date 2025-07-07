@@ -1,0 +1,297 @@
+{
+  "meta": {
+    "title": "Srenova | Unlock Your Home Equity While Staying in Your Home",
+    "description": "Srenova helps homeowners access their property's value while maintaining the right to live in their home. Flexible payment options, transparent process, and professional support."
+  },
+  "hero": {
+    "badge": "Financial Freedom for Homeowners",
+    "title": "Where Retirement Meets <span class='text-primary'>Renewal</span>",
+    "description": "Transform your home into financial security with Srenova. Our innovative viager solution helps you access your property's value while staying in the home you love - giving you financial freedom for retirement.",
+    "primary_button": "Check Your Eligibility",
+    "secondary_button": "Learn How It Works",
+    "feature_1": "Stay in Your Home",
+    "feature_2": "Guaranteed Lifetime Income",
+    "feature_3": "Trusted Support",
+    "alt_text": "Happy senior homeowner enjoying financial freedom"
+  },
+  "trust_indicators": {
+    "title": "Why Trust Srenova",
+    "items": [
+      {
+        "title": "FCA Regulated"
+      },
+      {
+        "title": "Member of the Equity Release Council"
+      },
+      {
+        "title": "5-star rated on Trustpilot"
+      }
+    ]
+  },
+  "what_is": {
+    "title": "What is Srenova?",
+    "description": "Srenova is pioneering viager transactions across Europe, helping homeowners age 55+ access their property's value while continuing to live there. Our innovative approach combines the traditional viager concept with institutional backing and digital efficiency, providing homeowners with guaranteed lifetime income and investors with stable returns backed by real estate."
+  },
+  "explore_options": {
+    "title": "Explore Your Options",
+    "calculator": {
+      "title": "Financial Calculator",
+      "description": "Estimate how much you could receive from your property with our easy-to-use calculator.",
+      "button": "Try Calculator"
+    },
+    "resources": {
+      "title": "Learning Resources",
+      "description": "Access comprehensive guides and videos to understand how Srenova works.",
+      "button": "View Resources"
+    }
+  },
+  "info_section": {
+    "title": "How Srenova Works",
+    "step_1_title": "Property Assessment",
+    "step_1_description": "We'll evaluate your property and discuss your financial goals to understand your situation.",
+    "step_2_title": "Personalised Options",
+    "step_2_description": "Receive customised solutions based on your property value and personal needs.",
+    "step_3_title": "Simple Agreement",
+    "step_3_description": "Select the option that works best for you with transparent terms and documentation.",
+    "step_4_title": "Access Your Value",
+    "step_4_description": "Receive your funds while continuing to live in your home with security and peace of mind."
+  },
+  "pain_section": {
+    "title": "Are You Facing These Property Challenges?",
+    "description": "Many homeowners find themselves in need of financial flexibility without wanting to leave their beloved homes. Srenova provides the solution to these common challenges.",
+    "challenge_1_title": "Property Rich, Cash Poor",
+    "challenge_1_description": "Your home represents significant value, but you can't access this wealth without selling and moving elsewhere.",
+    "challenge_2_title": "Financial Pressure",
+    "challenge_2_description": "Rising costs of living and unexpected expenses create stress when retirement income isn't sufficient for your needs.",
+    "challenge_3_title": "Limited Options",
+    "challenge_3_description": "Traditional equity release options can be complex, expensive, and don't provide the flexibility you need for your unique situation."
+  },
+  "social_proof": {
+    "title": "Don't just take our word for it",
+    "subtitle": "Here's what our customers say about their experience with Srenova",
+    "testimonial_1_name": "Margaret J.",
+    "testimonial_1_location": "Florida",
+    "testimonial_1_text": "Srenova allowed me to stay in the home I love while accessing the equity I needed for my retirement. The process was straightforward and their team was supportive every step of the way.",
+    "testimonial_2_name": "Robert & Susan T.",
+    "testimonial_2_location": "Arizona",
+    "testimonial_2_text": "We were looking for a way to help pay for healthcare costs without moving from our family home. Srenova provided us with the perfect solution and exceptional service.",
+    "testimonial_3_name": "William P.",
+    "testimonial_3_location": "California",
+    "testimonial_3_text": "After researching many options, Srenova stood out for their transparent approach and flexible solutions. I was able to unlock my home's value while maintaining my independence."
+  },
+  "features": {
+    "title": "Why Choose Srenova",
+    "subtitle": "Our approach puts homeowners first with transparent, flexible solutions",
+    "feature_1_title": "Transparent Process",
+    "feature_1_description": "Clear documentation and straightforward terms with no hidden fees or complicated structures.",
+    "feature_2_title": "Tailored Solutions",
+    "feature_2_description": "Customised options based on your unique property, financial situation, and personal goals.",
+    "feature_3_title": "Professional Support",
+    "feature_3_description": "Dedicated advisers guide you through every step of the process with expertise and care.",
+    "feature_4_title": "Quick Access to Funds",
+    "feature_4_description": "Efficient process allows you to access your property's value when you need it most.",
+    "feature_5_title": "Maintained Homeownership",
+    "feature_5_description": "Solutions that respect your connection to your home and community.",
+    "feature_6_title": "Flexible Payment Options",
+    "feature_6_description": "Various structures available to suit your financial situation and preferences.",
+    "group_one": {
+      "stay_home": {
+        "title": "Stay In Your Home",
+        "text": "Continue living in your property for as long as you wish while accessing its value. Our legal framework ensures your occupancy rights are fully protected, giving you both financial freedom and peace of mind."
+      },
+      "no_repayments": {
+        "title": "No Monthly Repayments",
+        "text": "Unlike traditional loans, there are no monthly repayments to worry about. The loan is only repaid when you choose to leave your home, giving you complete financial flexibility in your retirement."
+      },
+      "fca": {
+        "title": "FCA Regulated",
+        "text": "As a fully regulated provider by the Financial Conduct Authority and member of the Equity Release Council, we adhere to strict standards ensuring your interests are protected at all times."
+      },
+      "guidance": {
+        "title": "Expert Guidance",
+        "text": "Our team of financial advisers and property specialists are here to guide you through every step. Get personalised advice and support to make informed decisions about your property's equity."
+      }
+    },
+    "group_two": {
+      "how_works": {
+        "title": "How does Srenova work?",
+        "text": "Srenova allows you to release equity from your home while continuing to live in it. You can receive a lump sum payment and/or regular monthly income in exchange for a share of your property's future value."
+      },
+      "eligibility": {
+        "title": "Am I eligible for Srenova?",
+        "text": "To be eligible, you typically need to be over 55, own your property (or have a small mortgage), and the property should be your main residence. Take our quick eligibility check to see if you qualify."
+      },
+      "receive": {
+        "title": "How much could I receive?",
+        "text": "The amount you can receive depends on factors such as your age, property value, and health. Use our calculator to get an estimate, or speak with an adviser for a personalised assessment."
+      },
+      "maintenance": {
+        "title": "Property Maintenance",
+        "text": "We help ensure your property remains well-maintained, preserving its value and providing you with a comfortable living environment throughout the agreement."
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Get answers to common questions about our home equity solutions",
+    "questions": [
+      {
+        "question": "How does Srenova differ from a traditional home sale?",
+        "answer": "Unlike a traditional sale where you must vacate your property, Srenova allows you to access your home's equity while continuing to live there. You maintain occupancy rights while receiving funds that can be used for retirement, healthcare, or other financial needs."
+      },
+      {
+        "question": "What payment options are available with Srenova?",
+        "answer": "Srenova offers flexible payment structures including lump sum payments, monthly installments, or a combination of both. Our financial advisors work with you to create a customized solution that fits your specific needs and circumstances."
+      },
+      {
+        "question": "Who is eligible for Srenova solutions?",
+        "answer": "Eligibility typically requires homeowners to be at least 55 years old with significant equity in their property. The home must meet certain valuation criteria, and applicants undergo a financial assessment to ensure the solution is appropriate for their situation."
+      },
+      {
+        "question": "What happens to my property after I pass away?",
+        "answer": "Your heirs will have options based on your specific agreement. Typically, they can purchase the property back at market value, allow the investor to sell the property (with any excess value after the agreement is fulfilled returned to your estate), or facilitate the transition according to the terms of your contract."
+      },
+      {
+        "question": "Are there any ongoing costs or maintenance responsibilities?",
+        "answer": "As you continue to live in the home, you generally remain responsible for ongoing costs like property taxes, insurance, and maintenance. These responsibilities are clearly outlined in your agreement, and our team can help you understand and plan for these expenses."
+      }
+    ]
+  },
+  "keyBenefits": {
+    "sectionTitle": "Key Benefits",
+    "benefits": [
+      {
+        "title": "Stay in your home",
+        "description": "Continue living in your property for as long as you wish"
+      },
+      {
+        "title": "Flexible payment options",
+        "description": "Choose between lump sum, monthly income, or both"
+      },
+      {
+        "title": "No monthly repayments",
+        "description": "The loan is repaid when you leave your home"
+      }
+    ]
+  },
+  "lead_capture": {
+    "title": "Ready to explore your options with Srenova?",
+    "subtitle": "Tell us about your property and financial needs, and our team will create a customized solution that works for your situation.",
+    "form_name_label": "Full Name",
+    "form_name_placeholder": "Enter your full name",
+    "form_email_label": "Email Address",
+    "form_email_placeholder": "Enter your email address",
+    "form_phone_label": "Telephone Number",
+    "form_phone_placeholder": "Enter your telephone number",
+    "form_property_label": "Property Value (Estimated)",
+    "form_property_placeholder": "Approximate value of your property",
+    "form_submit": "Get Your Free Assessment",
+    "form_disclaimer": "By submitting this form, you agree to our privacy policy and terms of service. We'll never share your information with third parties.",
+    "form_company_label": "Company",
+    "form_company_placeholder": "Enter your company name",
+    "form_interest_label": "Interest",
+    "form_interest_placeholder": "Select your interest",
+    "form_message_label": "Message",
+    "form_message_placeholder": "Your message",
+    "optional": "optional",
+    "submitting": "Submitting...",
+    "success_title": "Success",
+    "success_message": "Thanks for your interest! We'll be in touch soon.",
+    "error_title": "Error",
+    "error_message": "Failed to submit your information. Please try again.",
+    "validation": {
+      "name_required": "Name is required",
+      "email_required": "Email is required",
+      "email_valid": "Please enter a valid email address",
+      "interest_required": "Interest is required"
+    }
+  },
+  "cta": {
+    "discover_button": "Discover Your Options",
+    "cta_first_text": "See how Srenova can help you access your home's value while keeping your right to live there. Our transparent process provides peace of mind and financial flexibility.",
+    "cta_first_title": "Unlock Your Home's Value Without Moving",
+    "get_started_button": "Get Started Today",
+    "cta_second_text": "Join thousands of homeowners who have found financial freedom with Srenova. Our team is ready to help you access your home's value while you continue living there.",
+    "cta_second_title": "Take Control of Your Financial Future"
+  },
+  "guide_bot": {
+    "title": "Your Srenova Guide",
+    "welcome_message": "Welcome to Srenova! I'm your dedicated guide to understanding our viager property solutions. I'm here to explain how you can unlock the value of your property while continuing to live in it.\n\nI can help you understand:\n• How viager works\n• The benefits and guarantees\n• Our simple process\n• Your eligibility\n• Payment options\n\nPlease feel free to ask any questions or click one of the suggested topics below.",
+    "input_placeholder": "Ask a question...",
+    "follow_up_prompt": "You might also want to know:",
+    "generic_response": "Thank you for your question. Let me help you with that. To provide the most accurate information, could you please be more specific about what you'd like to know?",
+    "suggested_questions": [
+      {
+        "id": "what-is",
+        "text": "What is a viager?",
+        "category": "basics",
+        "followUp": ["process", "benefits", "right-for-me"]
+      },
+      {
+        "id": "process",
+        "text": "How does the process work?",
+        "category": "process",
+        "followUp": ["timeline", "guarantees", "right-for-me"]
+      },
+      {
+        "id": "right-for-me",
+        "text": "Is viager right for me?",
+        "category": "eligibility",
+        "followUp": ["benefits", "guarantees", "process"]
+      },
+      {
+        "id": "benefits",
+        "text": "What are the benefits of choosing Srenova?",
+        "category": "benefits",
+        "followUp": ["guarantees", "process", "timeline"]
+      },
+      {
+        "id": "guarantees",
+        "text": "What guarantees do I have?",
+        "category": "security",
+        "followUp": ["process", "timeline", "right-for-me"]
+      },
+      {
+        "id": "timeline",
+        "text": "How long does the process take?",
+        "category": "process",
+        "followUp": ["process", "guarantees", "right-for-me"]
+      }
+    ],
+    "bot_responses": {
+      "what-is": "A viager is a unique French property transaction that allows you to unlock the value of your home while continuing to live in it. You receive an initial lump sum payment (bouquet) and regular monthly payments (rente) for life. This arrangement provides financial security while maintaining your right to stay in your home.",
+      "process": "The Srenova viager process is straightforward and secure:\n\n1. Initial Consultation: We assess your property and discuss your needs\n2. Valuation: Professional assessment of your property's market value\n3. Offer Creation: We calculate your bouquet and rente payments\n4. Legal Review: Our experts handle all legal documentation\n5. Notarial Deed: Official completion with a notary\n\nOur team guides you through each step, ensuring you're fully informed and comfortable.",
+      "right-for-me": "A viager could be ideal for you if you:\n\n• Own your property\n• Are aged 55 or older\n• Want to maintain independence in your home\n• Need additional regular income\n• Want to optimise your estate planning\n\nWe can provide a personalised assessment of your situation to help you make an informed decision.",
+      "benefits": "Choosing Srenova offers numerous advantages:\n\n• Guaranteed lifetime right to stay in your home\n• Immediate lump sum payment plus monthly income\n• No maintenance fees or property taxes\n• Professional support throughout the process\n• Regulated by FCA and Equity Release Council\n• Full transparency and no hidden costs",
+      "guarantees": "At Srenova, we provide robust guarantees:\n\n• Legal protection of your occupancy rights\n• Guaranteed monthly payments for life\n• FCA regulation compliance\n• Equity Release Council membership\n• Professional indemnity insurance\n• Transparent documentation and contracts",
+      "timeline": "The typical timeline from initial consultation to completion is 8-12 weeks. This includes:\n\n• Initial consultation (1-2 weeks)\n• Property valuation (1 week)\n• Offer preparation (1 week)\n• Legal processing (4-6 weeks)\n• Notarial completion (2 weeks)\n\nWe manage the entire process to ensure smooth progression."
+    }
+  },
+  "features_section": {
+    "title": "How Srenova Works",
+    "description": "Our platform provides a seamless way to access your property's value while maintaining your right to live there. Discover our key features below."
+  },
+  "newsletter": {
+    "title": "Subscribe",
+    "description": "Stay updated with our latest news and product releases",
+    "buttonText": "Subscribe",
+    "successMessage": "Thanks for subscribing! Please check your email to confirm your subscription."
+  },
+  "landing.cta_second_title": "Take Control of Your Financial Future",
+  "newsletter.title": "Subscribe",
+  "newsletter.description": "Stay updated with our latest news and product releases",
+  "newsletter.buttonText": "Subscribe",
+  "newsletter.successMessage": "Thanks for subscribing! Please check your email to confirm your subscription.",
+  "chatbot": {
+    "title": "AI Chat Assistant",
+    "initial_message": "Hello! I'm your FAQ assistant. I can help answer questions about our products and services. What would you like to know?",
+    "questions": {
+      "what_is": "What is a viager?",
+      "process": "How does the process work?",
+      "right_for_me": "Is viager right for me?",
+      "benefits": "What are the benefits?",
+      "guarantees": "What guarantees do I have?",
+      "timeline": "How long does the process take?"
+    }
+  }
+}

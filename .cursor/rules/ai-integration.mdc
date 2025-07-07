@@ -1,0 +1,201 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Guidelines for integrating AI features and services in the NextJet project
+globs: **/*ai*.{ts,tsx}, **/llm*.{ts,tsx}, packages/api/src/routers/**/service/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# AI Integration Guidelines
+
+This document outlines the guidelines for integrating AI features and services in the NextJet project.
+
+## LangChain Implementation
+
+Always use LangChain for AI integrations in the project:
+
+### Basic Configuration
+
+```typescript
+// ✅ Correct: Use LangChain for AI integration
+import { ChatOpenAI } from 'langchain/chat_models/openai';
+import { SystemMessage, HumanMessage } from 'langchain/schema';
+import { z } from 'zod';
+
+// Initialize LLM
+const llm = new ChatOpenAI({
+  modelName: "gpt-4",
+  temperature: 0.7,
+  openAIApiKey: process.env.OPENAI_API_KEY,
+});
+
+// ❌ Incorrect: Don't use OpenAI directly
+const openai = new OpenAI({ // Wrong
+  apiKey: process.env.OPENAI_API_KEY,
+});
+```
+
+## Structured Output with Zod
+
+Always use structured output with Zod schemas for type safety:
+
+```typescript
+// Define output schema
+const storySchema = z.object({
+  storyTitle: z.string().describe("The title of the story"),
+  storySummary: z.string().describe("A brief summary of the story"),
+  storyContent: z.string().describe("The full content of the story")
+});
+
+// Use structured output
+const storyResponse = await llm.withStructuredOutput(storySchema).invoke([
+  new SystemMessage("You are a creative story writer. Generate an engaging story based on the given idea."),
+  new HumanMessage(`Create a story based on this idea: ${storyIdea}`)
+]);
+
+// Now storyResponse is fully typed:
+console.log(storyResponse.storyTitle);
+console.log(storyResponse.storySummary);
+console.log(storyResponse.storyContent);
+```
+
+## Complete Implementation Pattern
+
+Follow this pattern for AI service implementation:
+
+```typescript
+try {
+  console.log('Starting AI process...');
+  
+  // Step 1: Generate main content with structured output
+  const contentResponse = await llm.withStructuredOutput(outputSchema).invoke([
+    new SystemMessage("System instructions here"),
+    new HumanMessage(`User input: ${userInput}`)
+  ]);
+
+  // Step 2: If needed, additional processing with other AI services
+  // Example: Text-to-speech conversion
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+
+  const mp3Response = await openai.audio.speech.create({
+    model: "tts-1",
+    voice: "alloy",
+    input: contentResponse.mainContent,
+  });
+
+  const audioBuffer = Buffer.from(await mp3Response.arrayBuffer());
+  const audioBase64 = audioBuffer.toString('base64');
+
+  // Step 3: Return combined results
+  const finalResponse = {
+    content: contentResponse,
+    audio: {
+      data: `data:audio/mp3;base64,${audioBase64}`
+    }
+  };
+
+  return finalResponse;
+} catch (error) {
+  console.error("Error in AI process:", error);
+  throw new TRPCError({
+    code: "INTERNAL_SERVER_ERROR",
+    message: "Failed to generate content",
+  });
+}
+```
+
+## Error Handling for AI Services
+
+Implement robust error handling for AI services:
+
+```typescript
+try {
+  // AI processing code
+} catch (error) {
+  // Check for specific error types
+  if (error instanceof OpenAIError) {
+    if (error.code === 'context_length_exceeded') {
+      throw new TRPCError({
+        code: "BAD_REQUEST",
+        message: "Input too long for AI processing",
+      });
+    }
+    if (error.code === 'rate_limit_exceeded') {
+      throw new TRPCError({
+        code: "TOO_MANY_REQUESTS",
+        message: "Rate limit exceeded, please try again later",
+      });
+    }
+  }
+  
+  // Generic error handling
+  console.error("AI service error:", error);
+  throw new TRPCError({
+    code: "INTERNAL_SERVER_ERROR",
+    message: "Failed to process with AI service",
+  });
+}
+```
+
+## Token Usage Tracking
+
+Track token usage for cost management:
+
+```typescript
+const startTime = performance.now();
+
+const response = await llm.invoke([
+  new SystemMessage("System prompt here"),
+  new HumanMessage("User message here")
+]);
+
+const endTime = performance.now();
+const latency = endTime - startTime;
+
+// Log usage data
+console.log({
+  model: llm.modelName,
+  latency: `${latency.toFixed(2)}ms`,
+  status: "success",
+});
+
+// If using OpenAI with completion data:
+if ('usage' in response && response.usage) {
+  console.log({
+    prompt_tokens: response.usage.prompt_tokens,
+    completion_tokens: response.usage.completion_tokens,
+    total_tokens: response.usage.total_tokens,
+  });
+}
+```
+
+## Best Practices
+
+### ✅ Do
+1. Use LangChain with structured output
+2. Define Zod schemas for all AI responses
+3. Parametrize prompts for flexibility
+4. Implement comprehensive error handling
+5. Track and log token usage
+6. Use proper TypeScript types for all responses
+
+### ❌ Don't
+1. Use OpenAI API directly instead of LangChain
+2. Return unstructured text without schema validation
+3. Hardcode prompts without parameters
+4. Skip error handling for AI services
+5. Omit token usage tracking
+6. Use any or unknown types for AI responses
+
+## Integration with API Layer
+
+- For integration with the API layer, see [data-layer.mdc](mdc:data-layer.mdc)
+
+## Error Handling
+
+- For detailed error handling guidelines, see [error-handling.mdc](mdc:error-handling.mdc)

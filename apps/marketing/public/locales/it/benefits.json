@@ -1,0 +1,34 @@
+{
+  "title": {
+    "benefits_for": "Vantaggi per",
+    "homeowners": "Proprietari"
+  },
+  "description": "Ispirato al tradizionale sistema francese del vitalizio, il nostro approccio moderno offre sicurezza finanziaria garantendo al contempo che tu possa continuare a vivere nella tua casa.",
+  "benefits_list": [
+    {
+      "title": "Resta nella tua casa per tutta la vita"
+    },
+    {
+      "title": "Ricevi un reddito garantito"
+    },
+    {
+      "title": "Niente più costi di manutenzione della proprietà"
+    },
+    {
+      "title": "Elimina i pagamenti del mutuo"
+    },
+    {
+      "title": "Salvaguarda la tua indipendenza"
+    }
+  ],
+  "download_button": "Scarica la Guida sul Vitalizio",
+  "testimonial": {
+    "quote": "Paul e Denise potrebbero utilizzare Srenova per sbloccare il capitale della loro proprietà, dando loro la libertà di viaggiare per il mondo mantenendo la loro base permanente. Con Srenova, potrebbero godersi avventure globali senza il costo emotivo di lasciare la loro amata casa.",
+    "author": "Paul e Denise, 68 e 67 anni — Bath, Regno Unito"
+  },
+  "alt_text": {
+    "checkmark": "segno di spunta",
+    "download": "scarica",
+    "homeowners": "Proprietari felici che utilizzano Srenova"
+  }
+} 

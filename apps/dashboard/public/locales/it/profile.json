@@ -1,0 +1,32 @@
+{
+  "metadata_title": "Profilo",
+  "metadata_description": "Pagina profilo per l'utente autenticato.",
+  "heading": "Profilo",
+  "changeName": {
+    "title": "Il tuo nome",
+    "description": "Questo è il tuo nome visualizzato.",
+    "label": "Nome",
+    "placeholder": "Nome",
+    "button": "Salva modifiche"
+  },
+  "deleteAccount": {
+    "title": "Elimina Account",
+    "description": "Elimina definitivamente il tuo account e tutti i dati associati. Questa azione non può essere annullata - procedi con cautela.",
+    "button": "Elimina Account"
+  },
+  "deleteAccountDialog": {
+    "description": "Elimina definitivamente il tuo account e tutti i dati correlati. Questa azione non può essere annullata e non sarai in grado di recuperare alcun dato. Procedi con cautela.",
+    "formLabel": "Per confermare, inserisci l'email del tuo account.",
+    "confirmButton": "Conferma eliminazione account"
+  },
+  "changeNameHook": {
+    "successTitle": "Successo",
+    "successDescription": "Nome modificato con successo!"
+  },
+  "deleteAccountHook": {
+    "successTitle": "Successo",
+    "successDescription": "Account eliminato",
+    "emailRequired": "L'email è obbligatoria",
+    "emailMustMatch": "L'email deve corrispondere all'email del tuo account"
+  }
+}

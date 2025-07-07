@@ -1,0 +1,51 @@
+{
+    "title": {
+      "how_to": "Comment",
+      "get_started": "démarrer"
+    },
+    "description": "Notre processus transparent vous guide, de la première prise de contact jusqu'à la sécurité financière, avec un accompagnement d'experts à chaque étape.",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Vérification d'éligibilité",
+        "items": [
+          "Questionnaire en ligne simple",
+          "Évaluation approfondie de la propriété",
+          "Analyse rassurante de votre situation",
+          "Entretien sans engagement"
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Évaluation du bien",
+        "items": [
+          "Expertise professionnelle",
+          "Analyse du marché",
+          "Détermination d'une valeur équitable",
+          "Processus transparent"
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Offre personnalisée",
+        "items": [
+          "Tableau de bord Srenova personnalisé",
+          "Options de paiement flexibles",
+          "Documentation claire",
+          "Consultation d'experts"
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Signature & accompagnement",
+        "items": [
+          "Protection juridique complète",
+          "Paiements garantis à vie",
+          "Suivi continu",
+          "Sérénité totale"
+        ]
+      }
+    ],
+    "cta_button": "Vérifiez votre éligibilité maintenant"
+  }
+  

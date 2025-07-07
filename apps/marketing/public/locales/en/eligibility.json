@@ -1,0 +1,409 @@
+{
+  "alert": {
+    "selectOption": "Please select an option to continue."
+  },
+  "header": {
+    "title": "Srenova Eligibility Check",
+    "description": "Let's find out if our property solutions are right for you. Answer a few simple questions to determine your eligibility.",
+    "button": "Speak to an Adviser"
+  },
+  "navigation": {
+    "title": "Eligibility Check"
+  },
+  "main": {
+    "title": "Check Your Eligibility",
+    "progress": "Step {{current}} of {{total}}"
+  },
+  "progress": {
+    "question": "Question {{current}} of {{total}}",
+    "percent": "{{percent}}% Complete"
+  },
+  "section": {
+    "eligibilityAndAge": "Eligibility & Age",
+    "familyInvolvement": "Family Involvement",
+    "propertyDetails": "Property Details",
+    "financialSituation": "Financial Situation",
+    "adviceAndConsent": "Advice & Consent"
+  },
+  "button": {
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish & See Results",
+    "startOver": "Start Over",
+    "continue": "Continue",
+    "stayInTouch": "Stay in Touch",
+    "goBack": "Go Back",
+    "continueAnyway": "I understand",
+    "cancel": "Cancel"
+  },
+  "feedback": {
+    "eligibleTitle": "You May Be Eligible",
+    "ineligibleTitle": "Thank You for Your Interest",
+    "eligible": "Based on your answers, Srenova might be a great for for you. In the next step we'll ask for your name and email address, and ask if you want to start with an application to sell your home the Srneova way. You're in control of the process, and nothing is binding at this stage — it's an opportunity to learn more about us, and for us to learn about you and your home.",
+    "ineligible": "Based on your answers, Srenova might not be suitable for you yet. But let's stay connected as we may be a great fit in the future.",
+    "ineligibleConfirmed": "Thank you for confirming. While Srenova might not be suitable now, feel free to stay in touch for future updates or discuss potential alternatives."
+  },
+  "contactForm": {
+    "title": "Stay in Touch",
+    "description": "Leave your contact information and we'll keep you updated on our services.",
+    "success": {
+      "title": "Thank You!",
+      "description": "We've received your information and will be in touch soon.",
+      "message": "We'll be in touch soon with updates and information that might be helpful for your situation."
+    },
+    "error": {
+      "title": "Submission Failed",
+      "message": "Sorry, there was an error submitting your information. Please try again."
+    },
+    "label": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Telephone Number (Optional)",
+      "message": "Message (Optional)"
+    },
+    "placeholder": {
+      "name": "Enter your full name",
+      "email": "you@example.com",
+      "phone": "Enter your telephone number",
+      "message": "Tell us a bit more about your situation or specific questions..."
+    },
+    "note": {
+      "message": "Providing more details can help us understand your needs better."
+    },
+    "privacyNote": "By submitting this form, you agree to receive updates about our services. We respect your privacy and will not share your information with third parties.",
+    "button": {
+      "submitting": "Submitting...",
+      "submit": "Submit Information",
+      "retrying": "Retrying...",
+      "retry": "Retry Submission"
+    }
+  },
+  "confirmDialog": {
+    "title": "Important Eligibility Information",
+    "description": "Based on your selection, you may not be eligible for our services.",
+    "content": {
+      "country": "Our services are currently only fully available in the United Kingdom with limited services in some EU countries.",
+      "ownership": "Our services require property ownership as they are specifically designed for homeowners.",
+      "ageUnder60": "Our services are specifically designed for individuals aged 60 and above.",
+      "age75plus": "Our standard services are typically designed for individuals between 60-74 years of age. However, we have specialized options for seniors in your age group that our advisors can discuss with you.",
+      "spouseAge": "For jointly owned properties, our standard services typically require both owners to be 60 or older. However, we may have alternative options that our advisors can discuss with you.",
+      "inheritanceTopPriority": "Our standard solutions may affect the inheritance value of your property. If preserving inheritance is your top priority, you may want to explore alternative options. We can still discuss specialized solutions that may better align with your inheritance goals.",
+      "discussOptionsNo": "Understanding your options is a crucial part of making an informed decision. Without discussing your options with an advisor, we cannot ensure you'll have all the information needed to make the best choice for your situation."
+    }
+  },
+  "sidebar": {
+    "criteria": {
+      "title": "Eligibility Criteria"
+    },
+    "privacy": {
+      "title": "Your Privacy",
+      "description": "Your answers are stored locally in your browser and won't be shared without your permission. We take your privacy seriously.",
+      "secureNote": "Your data is secure and encrypted"
+    },
+    "help": {
+      "title": "Need Help?",
+      "description": "Our advisors are ready to assist you with any questions.",
+      "button": "Call an Adviser"
+    },
+    "chatbot": {
+      "title": "AI Chat Assistant",
+      "welcome": "Hello! I'm here to help answer your questions about our viager programme. What would you like to know?",
+      "eligibility": {
+        "minimum_age": "What are the minimum age requirements?",
+        "property_types": "What types of properties are eligible?",
+        "valuation": "How is my property valued?",
+        "mortgage": "What if I have an outstanding mortgage?",
+        "viager_model": "What is Srenova's viager programme?",
+        "process_time": "How long does the process take?"
+      },
+      "family": {
+        "inheritance": "How does this affect inheritance for my children?",
+        "family_receive": "Will my family receive anything from the sale later on?",
+        "family_involvement": "Can family members be involved in the process?",
+        "family_siblings": "Can multiple siblings be listed as contacts?",
+        "spouse_dies": "What happens if one spouse/partner dies?",
+        "divorce": "What happens if we separate or divorce?"
+      },
+      "advice": {
+        "tax_implications": "What tax implications should I consider?",
+        "benefits_eligibility": "Will this affect my eligibility for means-tested benefits?",
+        "legal_protections": "What legal protections do I have?",
+        "business_protection": "What happens if Srenova or the buyer goes out of business?",
+        "buyer_defaults": "What happens if the buyer defaults on payments?",
+        "support_offered": "What support does Srenova offer during the process?"
+      }
+    }
+  },
+  "criteria": {
+    "age": {
+      "title": "Age 65 or older",
+      "description": "You must be at least 65 years old to qualify"
+    },
+    "ownership": {
+      "title": "Property ownership",
+      "description": "You must own your property or have a small mortgage"
+    },
+    "residence": {
+      "title": "Main residence",
+      "description": "The property should be your main residence"
+    }
+  },
+  "country": {
+    "question": "What country are you in?",
+    "description": "Our services are currently available in selected regions. Your location helps us determine if we can assist you.",
+    "options": {
+      "uk": {
+        "label": "United Kingdom",
+        "description": "Full service available"
+      },
+      "eu": {
+        "label": "European Union",
+        "description": "Selected services available in certain countries"
+      },
+      "other": {
+        "label": "Other",
+        "description": "Limited availability"
+      }
+    }
+  },
+  "propertyOwnership": {
+    "question": "Do you own the property?",
+    "description": "Ownership of your property is a key requirement for our services.",
+    "options": {
+      "yes": {
+        "label": "Yes",
+        "description": "I own my property outright or have a small mortgage"
+      },
+      "no": {
+        "label": "No",
+        "description": "I don't own my current residence"
+      }
+    }
+  },
+  "age": {
+    "question": "How old are you?",
+    "description": "Age is an important factor in determining eligibility for property-based financial solutions.",
+    "options": {
+      "under60": {
+        "label": "Under 60",
+        "description": "Not yet eligible for age related services"
+      },
+      "60to64": {
+        "label": "60-64",
+        "description": "Meets minimum age requirements"
+      },
+      "65to74": {
+        "label": "65-74",
+        "description": "Within ideal age range"
+      },
+      "over75": {
+        "label": "75+",
+        "description": "Senior qualification"
+      }
+    }
+  },
+  "jointOwnership": {
+    "question": "Is the property owned jointly with a spouse or partner?",
+    "description": "Joint ownership affects how we structure our solutions to benefit all property owners.",
+    "options": {
+      "yes": {
+        "label": "Yes",
+        "description": "I share ownership with my spouse/partner"
+      },
+      "no": {
+        "label": "No",
+        "description": "I am the sole owner"
+      }
+    }
+  },
+  "spouseAge": {
+    "question": "Is your spouse or partner also over 60?",
+    "description": "Both owners typically need to meet age requirements for jointly owned properties.",
+    "options": {
+      "yes": {
+        "label": "Yes",
+        "description": "My spouse/partner is 60 or older"
+      },
+      "no": {
+        "label": "No",
+        "description": "My spouse/partner is under 60"
+      }
+    }
+  },
+  "childrenHeirs": {
+    "question": "Do you have children or heirs who might expect to inherit your home or wealth?",
+    "description": "Understanding your family situation helps us advise on the best approach for your circumstances.",
+    "options": {
+      "yes": {
+        "label": "Yes",
+        "description": "I have children or other intended heirs"
+      },
+      "no": {
+        "label": "No",
+        "description": "I don't have children or intended heirs"
+      }
+    }
+  },
+  "inheritanceImportance": {
+    "question": "How important is it to you to leave this property or its value to your family as an inheritance?",
+    "description": "This helps us understand your priorities and recommend appropriate options.",
+    "options": {
+      "topPriority": {
+        "label": "Yes, inheritance is a top priority",
+        "description": "Preserving inheritance value is very important to me"
+      },
+      "notPriority": {
+        "label": "No, inheritance isn't a top priority",
+        "description": "I'm more focused on my current financial needs"
+      },
+      "notSure": {
+        "label": "Not Sure",
+        "description": "I'm undecided or need more information"
+      }
+    }
+  },
+  "propertyValue": {
+    "question": "What is the estimated value of your property?",
+    "description": "The property value helps determine the potential amount of equity that can be accessed.",
+    "options": {
+      "under150k": {
+        "label": "Under £150,000",
+        "description": "May be below minimum threshold"
+      },
+      "150kto250k": {
+        "label": "£150,000 - £250,000",
+        "description": "Potential eligibility"
+      },
+      "250kto500k": {
+        "label": "£250,000 - £500,000",
+        "description": "Common eligibility range"
+      },
+      "500kto1m": {
+        "label": "£500,000 - £1 million",
+        "description": "Higher value property"
+      },
+      "over1m": {
+        "label": "Over £1 million",
+        "description": "High value property"
+      }
+    }
+  },
+  "propertyType": {
+    "question": "What type of property do you own?",
+    "description": "The type of property can affect eligibility and the terms offered.",
+    "options": {
+      "house": {
+        "label": "House (Detached, Semi, Terraced)",
+        "description": "Standard property type"
+      },
+      "apartment": {
+        "label": "Apartment / Flat",
+        "description": "May have specific criteria"
+      },
+      "other": {
+        "label": "Other (e.g., Maisonette, Bungalow)",
+        "description": "Subject to review"
+      }
+    }
+  },
+  "mortgageStatus": {
+    "question": "Do you currently have a mortgage or loan secured against the property?",
+    "description": "Existing debts secured on the property need to be considered.",
+    "options": {
+      "noMortgage": {
+        "label": "No, it's owned outright",
+        "description": "No existing mortgage"
+      },
+      "smallMortgage": {
+        "label": "Yes, a small mortgage/loan",
+        "description": "Loan-to-value ratio is important"
+      },
+      "largeMortgage": {
+        "label": "Yes, a significant mortgage/loan",
+        "description": "May affect eligibility or amount available"
+      }
+    }
+  },
+  "incomeNeeds": {
+    "question": "What are your primary financial needs?",
+    "description": "Understanding your goals helps tailor the solution.",
+    "options": {
+      "lumpSum": {
+        "label": "Need a lump sum now",
+        "description": "For immediate expenses or investments"
+      },
+      "regularIncome": {
+        "label": "Need regular income boost",
+        "description": "To supplement pension or other income"
+      },
+      "both": {
+        "label": "Need both a lump sum and regular income",
+        "description": "Combination of immediate and ongoing needs"
+      },
+      "unsure": {
+        "label": "Unsure / Exploring options",
+        "description": "Open to discussing possibilities"
+      }
+    }
+  },
+  "financialAdvice": {
+    "question": "Have you sought independent financial advice regarding equity release or similar products?",
+    "description": "We strongly recommend seeking independent advice.",
+    "options": {
+      "yes": {
+        "label": "Yes, I have spoken to an advisor",
+        "description": "Good step for informed decisions"
+      },
+      "no": {
+        "label": "No, not yet",
+        "description": "Consider consulting an independent advisor"
+      }
+    }
+  },
+  "contactPermission": {
+    "question": "Are you happy for us to contact you to discuss your options further?",
+    "description": "We need your permission to follow up based on your answers.",
+    "options": {
+      "yes": {
+        "label": "Yes, please contact me",
+        "description": "We will reach out using the details provided"
+      },
+      "no": {
+        "label": "No, thank you",
+        "description": "We respect your decision"
+      }
+    }
+  },
+  "confidentUnderstanding": {
+    "question": "Do you feel confident in understanding all the details and implications yourself?",
+    "description": "Financial decisions about your property can be complex. We're here to help explain everything.",
+    "options": {
+      "yes": {
+        "label": "Yes",
+        "description": "I understand the process and implications"
+      },
+      "no": {
+        "label": "No",
+        "description": "I'd like assistance understanding the details"
+      },
+      "notSure": {
+        "label": "Not Sure",
+        "description": "I understand some aspects but have questions"
+      }
+    }
+  },
+  "discussOptions": {
+    "question": "Would you like to discuss your options?",
+    "description": "Our advisors can help you understand the options available to you based on your situation.",
+    "options": {
+      "yes": {
+        "label": "Yes",
+        "description": "I'd like to speak with an advisor"
+      },
+      "no": {
+        "label": "No",
+        "description": "I'll continue on my own for now"
+      }
+    }
+  }
+}

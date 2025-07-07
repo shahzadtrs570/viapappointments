@@ -1,0 +1,65 @@
+{
+  "steps": {
+    "initialEntry": "Ingresso Iniziale",
+    "eligibilityAssessment": "Valutazione Idoneità",
+    "signUpVerification": "Registrazione e Verifica",
+    "sellerInformation": "Informazioni Venditore",
+    "propertyInformation": "Informazioni Proprietà",
+    "reviewAndRecommendations": "Revisione e Raccomandazioni",
+    "offerAndNextSteps": "Offerta e Passi Successivi",
+    "completionStatus": "Stato di Completamento"
+  },
+  "buttons": {
+    "back": "Indietro",
+    "next": "Avanti",
+    "save": "Salva",
+    "saving": "Salvataggio in corso...",
+    "submit": "Invia",
+    "submitting": "Invio in corso...",
+    "cancel": "Annulla",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "view": "Visualizza",
+    "go": "Vai",
+    "share": "Condividi",
+    "refreshStatus": "Aggiorna Stato",
+    "refreshingStatus": "Aggiornamento in corso...",
+    "continue": "Continua",
+    "continueToProperty": "Continua"
+  },
+  "labels": {
+    "optional": "(Facoltativo)",
+    "required": "*",
+    "name": "Nome",
+    "email": "Email",
+    "phone": "Telefono",
+    "address": "Indirizzo",
+    "postcode": "Codice Postale",
+    "townCity": "Città",
+    "county": "Provincia"
+  },
+  "placeholders": {
+    "enterFullName": "Inserisci il tuo nome completo",
+    "enterEmailAddress": "Inserisci indirizzo email",
+    "enterPhoneNumber": "Inserisci numero di telefono",
+    "enterAddress": "Inserisci indirizzo",
+    "enterPostcode": "Inserisci codice postale",
+    "enterTownCity": "Inserisci città",
+    "enterCounty": "Inserisci provincia"
+  },
+  "toasts": {
+    "success": {
+      "title": "Successo",
+      "generic": "Operazione completata con successo."
+    },
+    "error": {
+      "title": "Errore",
+      "generic": "Si è verificato un errore imprevisto. Riprova.",
+      "notFound": "La risorsa richiesta non è stata trovata.",
+      "validation": "Correggi gli errori nel modulo."
+    }
+  },
+  "loading": "Caricamento in corso...",
+  "notSpecified": "Non specificato",
+  "srenovaBrand": "Srenova"
+}

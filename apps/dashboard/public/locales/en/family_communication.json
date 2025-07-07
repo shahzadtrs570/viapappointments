@@ -1,0 +1,9 @@
+{
+  "inputPlaceholder": "Type your message...",
+  "conversationsTitle": "Conversations",
+  "viewButton": "View",
+  "sendButton": "Send",
+  "profileButtonLabel": "View Profile",
+  "participantsButtonLabel": "View Participants",
+  "attachButtonLabel": "Attach File"
+}

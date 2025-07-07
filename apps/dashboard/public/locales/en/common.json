@@ -1,0 +1,38 @@
+{
+  "greeting": "Hello (Dashboard)",
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "search": "Search",
+  "search_placeholder": "Search properties...",
+  "showing_page": "Page {{page}} of {{total}}",
+  "no_results": "No properties found",
+  "open_menu": "Open menu",
+  "view_details": "View details",
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "created_at": "Created At",
+  "toast": {
+    "rate_limit": {
+      "title": "Too Many Requests",
+      "description": "You're making requests too quickly. Please wait a moment and try again.",
+      "auth_title": "Authentication Rate Limited",
+      "auth_description": "Too many authentication attempts. Please wait before trying again.",
+      "api_title": "API Rate Limited",
+      "api_description": "You've exceeded the API request limit. Please wait before making more requests.",
+      "critical_title": "Security Rate Limited",
+      "critical_description": "Too many security-related requests. Please wait before trying again."
+    }
+  }
+}

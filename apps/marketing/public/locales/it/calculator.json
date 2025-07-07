@@ -1,0 +1,42 @@
+{
+  "title": {
+    "srenova": "Srenova",
+    "calculator": "Calcolatore"
+  },
+  "description": "Usa questo calcolatore per capire quanto potresti guadagnare vendendo la tua casa alla maniera Srenova.",
+  "controls": {
+    "home_value_label": "Valore probabile della tua casa?",
+    "current_value": "€{{value}}",
+    "min_value": "€150K",
+    "max_value": "€3M",
+    "max_value_plus": "€3M+",
+    "payment_preference": {
+      "label": "Preferiresti ricevere:",
+      "options": {
+        "balanced": "Balanciato",
+        "lump_sum": "Una somma forfettaria più grande",
+        "monthly": "Una durata di pagamento mensile più lunga"
+      }
+    },
+    "recalculate": "Ricalcola"
+  },
+  "results": {
+    "valuation_basis": "Basato su una valutazione di {{value}}",
+    "srenova_offer_label": "Offerta di acquisto Srenova probabile:",
+    "srenova_offer_detail": "(20% in meno rispetto al valore stimato)",
+    "lump_sum": {
+      "label": "Somma forfettaria",
+      "value": "{{value}} anticipati",
+      "description": "Spendi o investi come preferisci",
+      "duration_short": " anticipati"
+    },
+    "monthly": {
+      "label": "Pagamento mensile",
+      "value": "€{{value}}",
+      "duration": "per il resto della tua vita",
+      "duration_short": " /mese per la vita"
+    },
+    "offer_basis": "Basato su un prezzo di acquisto stimato di {{offer}}",
+    "disclaimer": "Importante: questa è solo una guida indicativa. Registra il tuo interesse e fornisci dettagli sulla tua casa per ottenere un'offerta di acquisto provvisoria accurata."
+  }
+} 

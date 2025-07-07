@@ -1,0 +1,39 @@
+{
+  "companyDescription": "Srenova helps homeowners access their property's value while staying in the home they love gaining financial freedom for retirement.",
+  "socialLinks": {
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn"
+  },
+  "legalLinks": {
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "data": "Data Policy"
+  },
+  "copyright": "© 2025 Srenova. All rights reserved.",
+  "navTitles": {
+    "company": "Company",
+    "resources": "Resources",
+    "contact": "Contact Information"
+  },
+  "companyLinks": {
+    "about": "About Us",
+    "story": "Our Story",
+    "team": "Our Team",
+    "press": "Press",
+    "careers": "Careers",
+    "contact": "Contact"
+  },
+  "resourceLinks": {
+    "how": "How it Works",
+    "faqs": "FAQs",
+    "wage": "Wage Guide",
+    "blog": "Blog",
+    "retirement": "Retirement Planning"
+  },
+  "contactLinks": {
+    "phone": "+44 (0) 123 456 7890",
+    "email": "info@srenova.com",
+    "address": "123 Business Avenue, London, UK, W1 1AA"
+  }
+}

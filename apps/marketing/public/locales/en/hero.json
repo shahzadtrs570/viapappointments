@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "heading": {
+      "part1": "Wealth Unlocked",
+      "part2": "Memories Unmoved"
+    },
+    "description": "Stay in the home you cherish, enjoy the income you deserve by transforming your home into financial security with Srenova. Realise your property's value while staying in the home you love, without taking on any debt.",
+    "buttons": {
+      "checkEligibility": "Check Your Eligibility",
+      "learnHow": "Learn How It Works"
+    },
+    "guide": {
+      "askSrenovaGuide": "Ask Srenova Guide"
+    },
+    "trust": {
+      "label": "Trusted by homeowners across Europe",
+      "partners": {
+        "partner1": "Partner 1",
+        "partner2": "Partner 2",
+        "partner3": "Partner 3",
+        "partner4": "Partner 4"
+      }
+    },
+    "badges": {
+      "stayHome": {
+        "title": "Stay in your home",
+        "subtitle": "100% guaranteed"
+      },
+      "unlockValue": {
+        "title": "Unlock your home's value",
+        "subtitle": "Financial security"
+      }
+    },
+   "testimonials": {
+  "testimonial1": {
+    "text": "Jean and Claudine could benefit from Srenova by unlocking part of their home's value to enhance their retirement. With extra income, they could travel, support their grandchildren, and enjoy their later years while staying in the home they love.",
+    "author": "Jean and Claudine, 66 and 64 — Lyon, France"
+  },
+  "testimonial2": {
+    "text": "Margaret could use Srenova to stay independent in her family home with a secure monthly income. It would help her preserve her lifestyle, manage healthcare costs, and avoid relying on her children for financial support.",
+    "author": "Margaret, 73 — Oxford, UK"
+  },
+  "testimonial3": {
+    "text": "Carlos might choose Srenova to create steady income while keeping lifetime residence rights. It would let him plan his estate, support his family, and stay in the home full of memories he's built over the years.",
+    "author": "Carlos, 71 — Valencia, Spain"
+  },
+  "testimonial4": {
+    "text": "Paul and Denise could use Srenova to access the value in their property and enjoy global travel. They would have the freedom to explore the world while keeping their permanent base at home, without emotional disruption.",
+    "author": "Paul and Denise, 68 and 67 — Bath, UK"
+  },
+  "testimonial5": {
+    "text": "Sophia might benefit from Srenova by receiving a lump sum and monthly income to cover healthcare expenses. She could stay comfortably at home without the pressure to sell, knowing her financial future is secure.",
+    "author": "Sophia, 62 — Nice, France"
+  },
+  "testimonial6": {
+    "text": "Eleanor and Hugh could use Srenova to support their children with early inheritance. By helping them buy their first homes, they'd see the rewards of giving now—while continuing to live in their cherished home.",
+        "author": "Eleanor and Hugh, 70 and 72 — Surrey, UK"
+      }
+    }
+  }
+}

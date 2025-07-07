@@ -1,0 +1,30 @@
+{
+  "heading": "Storie Vere, Risultati Reali",
+  "subheading": "Ascolta i proprietari di casa che hanno trasformato la loro pensione con Srenova.",
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Marie Dubois",
+      "age": 72,
+      "location": "Parigi, Francia",
+      "quote": "Srenova mi ha aiutato a sbloccare il valore della mia casa rimanendo nel luogo che amo. I pagamenti mensili garantiti hanno trasformato la mia pensione, dandomi sia sicurezza che libertà."
+    },
+    {
+      "id": 2,
+      "name": "Robert Johnson",
+      "age": 68,
+      "location": "Londra, Regno Unito",
+      "quote": "Dopo 40 anni nella nostra casa di famiglia, non volevamo andarcene ma avevamo bisogno di un reddito aggiuntivo. La soluzione vitalizio di Srenova è stata perfetta - professionale, trasparente e genuinamente attenta alle nostre esigenze."
+    },
+    {
+      "id": 3,
+      "name": "Claire Ricci",
+      "age": 75,
+      "location": "Milano, Italia",
+      "quote": "Il team di Srenova mi ha guidato in ogni fase con pazienza e competenza. Ora ho la sicurezza finanziaria di cui avevo bisogno senza sacrificare il comfort della mia casa."
+    }
+  ],
+  "previous": "Testimonianza precedente",
+  "next": "Testimonianza successiva",
+  "goto": "Vai alla testimonianza {{number}}"
+} 

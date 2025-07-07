@@ -1,0 +1,22 @@
+{
+  "title": "Common Questions",
+  "description": "Explore common questions here, or chat with our <span>Srenova Guide</span>",
+  "faqs": [
+    {
+      "question": "How is my payment calculated?",
+      "answer": "Your payment is calculated based on several factors including your home's market value, your age, the property condition, and location. We use actuarial models to ensure fair offers that reflect your property's worth while providing you with meaningful financial benefits."
+    },
+    {
+      "question": "What legal protections do I have?",
+      "answer": "Your rights are protected through comprehensive legal documentation. You retain the legally protected right to occupy your home for life. All agreements are prepared by specialized lawyers and clearly outline all terms, including your occupation rights, maintenance responsibilities, and payment schedule."
+    },
+    {
+      "question": "Can I include my spouse/partner?",
+      "answer": "Yes, we encourage including your spouse or partner in the agreement. This ensures both of you have lifetime occupancy rights, regardless of who passes away first. This provides important security and peace of mind for couples."
+    },
+    {
+      "question": "What happens if I need to move?",
+      "answer": "If your circumstances change and you need to move, our agreements provide flexibility. Options include renting out your property (with rental income going to you), requesting a buy-back arrangement, or in some cases, transferring your occupancy rights to another property in our portfolio."
+    }
+  ]
+} 

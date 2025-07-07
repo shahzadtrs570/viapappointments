@@ -1,0 +1,16 @@
+{
+  "menuItems": {
+    "aboutSrenova": "À propos",
+    "eligibility": "Éligibilité",
+    "calculator": "Calculateur",
+    "howItWorks": "Fonctionnement",
+    "benefits": "Avantages",
+    "faq": "FAQ"
+  },
+  "actions": {
+    "mysrenova": "Mon Srenova",
+    "login": "Connexion",
+    "signup": "Inscription",
+    "checkEligibility": "Vérifiez votre éligibilité maintenant"
+  }
+}

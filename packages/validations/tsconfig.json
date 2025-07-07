@@ -1,0 +1,5 @@
+{
+  "extends": "@package/typescript-config/nextjs.json",
+  "include": ["src", ".eslintrc.js"],
+  "exclude": ["node_modules"]
+}

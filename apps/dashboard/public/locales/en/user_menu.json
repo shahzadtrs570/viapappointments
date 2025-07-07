@@ -1,0 +1,24 @@
+{
+  "roles": {
+    "SELLER": "Seller",
+    "FUND_BUYER": "Fund Buyer",
+    "VALUER": "Valuer",
+    "CONVEYANCER": "Conveyancer",
+    "FAMILY_SUPPORTER": "Family Supporter"
+  },
+  "dashboardLabel": {
+    "SUPER_ADMIN": "Super Admin",
+    "ADMIN": "Admin",
+    "USER": "User"
+  },
+  "menuItems": {
+    "adminDashboard": "Admin",
+    "myProperties": "My Properties",
+    "profile": "Profile",
+    "giveFeedback": "Give feedback",
+    "signOut": "Sign out"
+  },
+  "srOnly": {
+    "toggleUserMenu": "Toggle user menu"
+  }
+}

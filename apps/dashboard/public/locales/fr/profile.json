@@ -1,0 +1,34 @@
+{
+  "metadata_title": "Profil",
+  "metadata_description": "Page de profil pour l'utilisateur authentifié.",
+  "heading": "Profil",
+  "changeName": {
+    "title": "Votre nom",
+    "description": "Ceci est votre nom d'affichage.",
+    "label": "Nom",
+    "placeholder": "Nom",
+    "button": "Enregistrer les modifications"
+  },
+  "deleteAccount": {
+    "title": "Supprimer le Compte",
+    "description": "Supprimez définitivement votre compte et toutes les données associées. Cette action est irréversible - veuillez procéder avec prudence.",
+    "button": "Supprimer le Compte"
+  },
+  "deleteAccountDialog": {
+    "description": "Supprimez définitivement votre compte et toutes les données associées. Cette action est irréversible et vous ne pourrez récupérer aucune donnée. Veuillez procéder avec prudence.",
+    "formLabel": "Pour confirmer, veuillez saisir l'e-mail de votre compte.",
+    "confirmButton": "Confirmer la suppression du compte"
+  },
+  "changeNameHook": {
+    "successTitle": "Succès",
+    "successDescription": "Nom modifié avec succès !"
+  },
+  "deleteAccountHook": {
+    "successTitle": "Succès",
+    "successDescription": "Compte supprimé",
+    "emailRequired": "L'e-mail est requis",
+    "emailMustMatch": "L'e-mail doit correspondre à l'e-mail de votre compte"
+  }
+}
+
+

@@ -1,0 +1,5 @@
+{
+  "extends": "@package/typescript-config/nextjs.json",
+  "include": ["src", "tailwind.config.ts", "../../apps/marketing/src/app/(landing)/_components/WaitlistConsumer/WaitlistConsumer.tsx"],
+  "exclude": ["node_modules"]
+}

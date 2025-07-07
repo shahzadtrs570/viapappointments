@@ -1,0 +1,156 @@
+{
+  "pageTitle": "Le Tue Informazioni",
+  "pageDescription": "Fornisci le tue informazioni personali per aiutarci a comprendere meglio le tue esigenze. Queste informazioni saranno utilizzate per personalizzare le nostre raccomandazioni.",
+  "ownershipSection": {
+    "title": "Proprietà dell'Immobile",
+    "howManyOwnersQuestion": "Quante persone possiedono questa proprietà?",
+    "ownerType": {
+      "single": {
+        "label": "Proprietario Singolo",
+        "description": "Sono l'unico proprietario"
+      },
+      "couple": {
+        "label": "Coppia",
+        "description": "Proprietà congiunta"
+      },
+      "multiple": {
+        "label": "Proprietari Multipli",
+        "description": "Più di due proprietari"
+      }
+    },
+    "numberOfOwnersLabel": "Numero di Proprietari",
+    "numberOfOwnersDescription": "Tutti i proprietari dovranno fornire le loro informazioni e accettare i termini."
+  },
+  "ownerDetailsSection": {
+    "title": "Proprietario ",
+    "personalDetailsTitle": "Dati Personali",
+    "contactInformationTitle": "Informazioni di Contatto",
+    "optionalSuffix": "(Facoltativo)",
+    "form": {
+      "firstName": {
+        "label": "Nome",
+        "validationRequired": "Il nome è obbligatorio"
+      },
+      "lastName": {
+        "label": "Cognome",
+        "validationRequired": "Il cognome è obbligatorio"
+      },
+      "dateOfBirth": {
+        "label": "Data di Nascita",
+        "placeholder": "gg/mm/aaaa",
+        "validationRequired": "La data di nascita è obbligatoria"
+      },
+      "email": {
+        "label": "Indirizzo email",
+        "validationRequired": "L'indirizzo email è obbligatorio",
+        "validationInvalid": "Inserisci un indirizzo email valido"
+      },
+      "phone": {
+        "label": "Numero di Telefono",
+        "placeholder": "Inserisci numero di telefono"
+      },
+      "useExistingAddress": {
+        "label": "Usa l'indirizzo del passaggio precedente",
+        "noPreviousAddress": "(Nessun indirizzo precedente disponibile)"
+      },
+      "currentAddress": {
+        "label": "Indirizzo Attuale",
+        "placeholder": "Inserisci indirizzo attuale"
+      },
+      "postcode": {
+        "label": "Codice Postale",
+        "placeholder": "Inserisci codice postale"
+      },
+      "townCity": {
+        "label": "Città",
+        "placeholder": "Inserisci città"
+      },
+      "county": {
+        "label": "Provincia",
+        "placeholder": "Inserisci provincia"
+      }
+    },
+    "validation": {
+      "selectOwnerType": "Seleziona quante persone possiedono questa proprietà",
+      "atLeastOneOwner": "È richiesto almeno un proprietario",
+      "provideOwnerInfo": "Fornisci le informazioni del proprietario"
+    }
+  },
+  "buttons": {
+    "back": "Indietro",
+    "saving": "Salvataggio in corso...",
+    "continueToProperty": "Continua alle Informazioni sulla Proprietà",
+    "continue": "Continua",
+    "saveChanges": "Salva Modifiche"
+  },
+  "toasts": {
+    "savedSuccess": "Informazioni del venditore salvate con successo",
+    "updatedSuccess": "Informazioni del venditore aggiornate con successo"
+  },
+  "errors": {
+    "parsingStoredOwners": "Errore nell'analisi dei proprietari memorizzati:"
+  },
+  "guideBot": {
+    "initialMessage": "Benvenuto alla fase Informazioni del Venditore! Qui dobbiamo raccogliere alcuni dettagli sui proprietari dell'immobile. Innanzitutto, dicci se la proprietà è di una singola persona, una coppia o più individui. Se ci sono più proprietari, specifica quanti (fino a 5). Poi, per ogni proprietario, avremo bisogno del nome completo e della data di nascita. Informazioni di contatto come email e telefono, nonché i dettagli dell'indirizzo attuale, sono facoltativi ma utili. Se hai già fornito un indirizzo in una fase precedente (ad es. per la proprietà stessa), potresti vedere un'opzione per riutilizzare quell'indirizzo per un proprietario per farti risparmiare tempo. Fammi sapere se hai domande mentre compili questa sezione!",
+    "suggestedQuestions": {
+      "whyDob": "Perché avete bisogno della mia data di nascita?",
+      "dobApproximate": "E se non conosco la data di nascita esatta?",
+      "poBox": "Posso usare una casella postale per l'indirizzo?",
+      "infoUsage": "Come vengono utilizzate queste informazioni?",
+      "dataSecurity": "I miei dati sono sicuri?"
+    },
+    "responses": {
+      "dob_explanation": "La tua data di nascita viene utilizzata per la verifica dell'identità e per determinare l'idoneità per alcuni aspetti dei nostri prodotti legati all'età.",
+      "dob_approximate": "Fornisci la tua stima più accurata. Potremmo richiedere una verifica più precisa in seguito nel processo.",
+      "po_box_address": "Per la verifica dell'indirizzo residenziale, una casella postale generalmente non è sufficiente. Richiediamo un indirizzo residenziale fisico.",
+      "information_usage": "Le tue informazioni vengono utilizzate per elaborare la tua domanda, verificare l'identità e adattare i nostri servizi alle tue esigenze, in conformità con la nostra politica sulla privacy.",
+      "data_security": "Prendiamo molto sul serio la sicurezza dei dati. Tutte le informazioni personali sono criptate e archiviate in modo sicuro. Consulta la nostra politica sulla privacy per maggiori dettagli."
+    }
+  },
+  "dataProtection": {
+    "title": "Protezione dei Dati",
+    "description": "Comprendere il valore reale della tua casa può aiutarti a prendere decisioni più informate. Ecco alcuni modi per ottenere una visione più chiara.",
+    "mainText": "I tuoi dati sono protetti con noi.",
+    "secureStorage": {
+      "title": "Vendite recenti",
+      "text": "Controlla le vendite recenti di proprietà simili nella tua zona."
+    },
+    "limitedAccess": {
+      "title": "Strumenti online",
+      "text": "Utilizza siti web immobiliari per ottenere una stima del valore."
+    },
+    "yourRights": {
+      "title": "Valutazione professionale",
+      "text": "Considera di ottenere una valutazione professionale per maggiore precisione."
+    }
+  },
+  "nextSteps": {
+    "title": "Prossimi Passi",
+    "step1": "Completa le tue informazioni di venditore",
+    "step2": "Fornisci i dettagli della proprietà",
+    "step3": "Ricevi raccomandazioni personalizzate"
+  },
+  "chatbot": {
+    "title": "Assistente Chat IA",
+    "initialMessage": "Ciao! Posso aiutarti a rispondere a domande sul processo di informazioni del venditore. Cosa vorresti sapere?",
+    "suggestedQuestions": {
+      "minimum_age": "Quali sono i requisiti minimi di età?",
+      "multiple_owners": "Cosa succede se un coniuge/partner muore?",
+      "process_time": "Quanto tempo richiede il processo?",
+      "eligible_properties": "Quali tipi di proprietà sono idonei?",
+      "medical_exam": "Devo superare una visita medica?"
+    }
+  },
+  "ageRequirements": {
+    "title": "Requisiti di Età",
+    "description": "Per questo tipo di proprietà, abbiamo requisiti di età specifici:",
+    "minimumAge": {
+      "title": "Età Minima",
+      "description": "Tutti i proprietari devono avere almeno 55 anni"
+    },
+    "maximumAge": {
+      "description": "Almeno un proprietario deve avere meno di 75 anni"
+    }
+   
+  }
+}

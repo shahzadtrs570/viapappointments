@@ -1,0 +1,95 @@
+---
+description: UI component guidelines and design principles
+globs: packages/configs/tailwind-config/**/*.css,**/*.{ts,tsx,js,jsx,css}
+---
+# Design System Implementation
+
+This document outlines the guidelines for UI component development, theme configuration, and design system implementation with Tailwind CSS.
+
+## React Component Guidelines
+
+- Use functional components with hooks rather than class components
+- Follow the structure for component props:
+  ```typescript
+  interface ComponentProps {
+    title: string;
+    description?: string; // Optional props with ?
+    onAction: () => void; // Function props with clear signatures
+  }
+  ```
+- Use ShadCN UI components from the shared UI package:
+  ```typescript
+  import { Button } from '@package/ui/button';
+  import { Card, CardContent } from '@package/ui/card';
+  ```
+- Implement responsive design using Tailwind breakpoints
+- Support both light and dark modes using Tailwind dark mode variants
+- Use appropriate hooks (useState, useEffect, useCallback, useMemo, useContext)
+- Extract reusable logic into custom hooks in `_hooks` directories
+- Implement proper error boundaries and loading states
+- Focus on accessibility with appropriate ARIA attributes
+
+## Theme Configuration
+
+### Core Theme Values
+
+The theme configuration in NextJet is managed through `packages/configs/tailwind-config/styles.css`. All custom theme values should be defined here:
+
+```css
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --border: 217.2 32.6% 17.5%;
+}
+```
+
+### Color System
+
+- Use semantic color variables rather than direct color values
+- Implement a consistent color palette with primary, secondary, and accent colors
+- Ensure sufficient contrast ratios for accessibility (WCAG AA compliance)
+- Use Tailwind's opacity modifiers for variations (e.g., `bg-primary/80`)
+
+## Component Library
+
+### Core Components
+
+The design system includes these core components:
+
+- **UI Package Components**:
+  - **Layout Utilities**: Container, Grid, Flex, Box (import from `@package/ui/container`, etc.)
+  - **Navigation Components**: Navbar, Sidebar, Tabs, Breadcrumbs
+  - **Form Components**: Input, Select, Checkbox, Radio, Switch, Textarea
+  - **Feedback Components**: Alert, Toast, Progress, Skeleton
+  - **Display Components**: Card, Badge, Avatar, Tooltip
+  - **Action Components**: Button, IconButton, Menu, Dropdown
+
+- **App-Specific Layout Components**:
+  - Dashboard layouts are in `apps/dashboard/src/components/Layouts/`
+  - Marketing layouts are in `apps/marketing/src/components/Layouts/`
+  - Import app layouts using: `import { DashboardLayout } from "@/components/Layouts"`
+
+### Component Usage Guidelines
+
+- Use consistent spacing with Tailwind's spacing scale
+- Implement proper component composition patterns
+- Follow accessibility best practices (keyboard navigation, screen reader support)
+- Ensure responsive behavior across all viewport sizes
+- Maintain consistent styling across components
+
+## Integration with Other Systems
+
+- For dashboard UI implementation, see [dashboard-ui.mdc](mdc:dashboard-ui.mdc)
+- For marketing UI implementation, see [marketing-ui.mdc](mdc:marketing-ui.mdc)
+- For coding standards and practices, see [coding-standards.mdc](mdc:coding-standards.mdc)

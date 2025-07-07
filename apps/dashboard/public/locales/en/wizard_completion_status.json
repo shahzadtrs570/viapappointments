@@ -1,0 +1,198 @@
+{
+  "solicitorDetails": {
+    "title": "Your Solicitor Details",
+    "description": "Please provide details of your solicitor or confirm if you wish to proceed without one. We recommend using a solicitor to ensure your interests are protected.",
+    "question": "Do you have a solicitor?",
+    "choices": {
+      "hasSolicitor": "Yes, I have a solicitor",
+      "noSolicitor": "No, I don't want a solicitor",
+      "recommendSolicitor": "No, please recommend a solicitor"
+    },
+    "form": {
+      "solicitorName": {
+        "label": "Solicitor Name",
+        "placeholder": "Enter solicitor name",
+        "validationRequired": "Solicitor name is required"
+      },
+      "firmName": {
+        "label": "Firm Name",
+        "placeholder": "Enter firm name"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter email address",
+        "validationInvalid": "Please enter a valid email address"
+      },
+      "phone": {
+        "label": "Telephone Number",
+        "placeholder": "Enter telephone number",
+        "validationInvalid": "Please enter a valid telephone number (minimum 10 digits)"
+      },
+      "address": {
+        "label": "Address",
+        "placeholder": "Enter address"
+      },
+      "buttons": {
+        "delete": "Delete Solicitor",
+        "cancel": "Cancel",
+        "save": "Save Details"
+      }
+    },
+    "recommendedSolicitors": {
+      "title": "Recommended Solicitors",
+      "description": "Here are some solicitors experienced with viager transactions that we recommend:",
+      "visitWebsite": "Visit Website",
+      "smithAndPartners": {
+        "name": "Smith & Partners LLP",
+        "specialty": "Specialists in property law and viager transactions",
+        "location": "📍 London, Manchester, Birmingham",
+        "phone": "📞 0800 123 4567"
+      },
+      "johnsonAndBrown": {
+        "name": "Johnson & Brown Solicitors",
+        "specialty": "Expert property conveyancing services",
+        "location": "📍 Bristol, Cardiff, Southampton",
+        "phone": "📞 0800 987 6543"
+      },
+      "wilsonPropertyLaw": {
+        "name": "Wilson Property Law",
+        "specialty": "Dedicated viager and property specialists",
+        "location": "📍 Edinburgh, Glasgow, Aberdeen",
+        "phone": "📞 0800 456 7890"
+      }
+    },
+    "savedDetails": {
+      "title": "Your Solicitor",
+      "editButton": "Edit Details",
+      "nameLabel": "Name",
+      "firmLabel": "Firm",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone",
+      "addressLabel": "Address"
+    },
+    "noSolicitorWarning": {
+      "title": "Important Notice",
+      "recommendation": "We strongly recommend using a solicitor for this transaction. A solicitor can:",
+      "benefits": [
+        "Ensure your legal interests are protected",
+        "Review all documentation on your behalf",
+        "Explain the terms and conditions in detail",
+        "Identify any potential issues before completion"
+      ],
+      "waiverInfo": "If you proceed without a solicitor, you will need to sign a waiver acknowledging that you understand the risks."
+    }
+  },
+  "conveyancingStatus": {
+    "title": "Conveyancing Process Status",
+    "description": "Track the progress of your viager application through the conveyancing process. Your dedicated advisor is available to answer any questions you may have.",
+    "steps": {
+      "applicationAccepted": "Application Accepted",
+      "legalDocumentation": "Legal Documentation",
+      "propertyValuation": "Property Valuation",
+      "conveyancing": "Conveyancing",
+      "completion": "Completion"
+    },
+    "status": {
+      "inProgress": "In Progress",
+      "pending": "Pending",
+      "completedOn": "Completed on {{date}}",
+      "completedOnNoDate": "Completed on"
+    },
+    "currentStagePrefix": "Current stage: ",
+    "processDetails": {
+      "initialDocsSent": "Initial documentation sent to your solicitor",
+      "valuationCompleted": "Property valuation completed",
+      "solicitorReviewing": "Solicitor reviewing documentation",
+      "exchangeContracts": "Exchange of contracts",
+      "completion": "Completion"
+    },
+    "expectedCompletionPrefix": "Expected completion: ",
+    "expectedPrefix": "Expected: "
+  },
+  "nextActionRequired": {
+    "title": "Next Action Required",
+    "description": "Your solicitor will contact you to arrange a meeting to sign the necessary documentation. Please ensure you have your identification documents ready.",
+    "scheduleMeetingButton": "Schedule Meeting"
+  },
+  "documentChecklist": {
+    "title": "Document Checklist",
+    "description": "Track the status of important documents in your conveyancing process:",
+    "headers": {
+      "document": "Document",
+      "status": "Status",
+      "date": "Date",
+      "action": "Action"
+    },
+    "items": {
+      "propertyInfoForm": "Property Information Form",
+      "sellersQuestionnaire": "Seller's Questionnaire",
+      "valuationReport": "Property Valuation Report",
+      "draftContract": "Draft Contract",
+      "transferDeed": "Transfer Deed"
+    },
+    "statuses": {
+      "completed": "Completed",
+      "inReview": "In Review",
+      "pending": "Pending"
+    },
+    "viewAction": "View"
+  },
+  "keyContacts": {
+    "title": "Key Contacts",
+    "description": "Important contacts for your conveyancing process:",
+    "owner": "Owner",
+    "srenovaAdvisor": {
+      "role": "Your Srenova Adviser",
+      "name": "Sarah Johnson",
+      "email": "Email: sarah.johnson@srenova.com",
+      "phone": "Telephone: 0800 123 4567"
+    },
+    "yourSolicitor": {
+      "role": "Your Solicitor"
+    }
+  },
+  "customerSupportChat": {
+    "title": "Customer Support Chat",
+    "greeting": "Hello! I'm Sarah, your dedicated advisor. How can I help you with your conveyancing process today?",
+    "inputPlaceholder": "Type your message..."
+  },
+  "timeline": {
+    "title": "Timeline",
+    "items": {
+      "applicationAccepted": "Application accepted ({{date}})",
+      "applicationAcceptedNoDate": "Application accepted",
+      "legalDocumentation": "Legal documentation ({{date}})",
+      "legalDocumentationNoDate": "Legal documentation",
+      "propertyValuation": "Property valuation ({{date}})",
+      "propertyValuationNoDate": "Property valuation",
+      "conveyancing": "Conveyancing (In progress)",
+      "completion": "Completion (Expected: {{date}})",
+      "completionNoDate": "Completion",
+      "completionExpectedNoDate": "Completion (Expected: "
+    }
+  },
+  "toasts": {
+    "statusSavedSuccess": "Final status saved successfully",
+    "statusUpdatedSuccess": "Final status updated successfully",
+    "statusDeletedSuccess": "Final status deleted successfully",
+    "failedToSaveSolicitor": "Failed to save solicitor details",
+    "propertyIdRequiredError": "Property ID is required to refresh status",
+    "statusRefreshedSuccess": "Status refreshed successfully",
+    "noSolicitorDetailsFound": "No solicitor details found",
+    "addSolicitorPrompt": "Please select 'Yes, I have a solicitor' and add your solicitor's details to get started."
+  },
+  "buttons": {
+    "refreshStatus": "Refresh Status",
+    "refreshing": "Refreshing..."
+  },
+  "status": {
+    "title": "Status",
+    "progress": "Progress",
+    "loading": "Loading...",
+    "approved": "Approved",
+    "processing": "Processing",
+    "pending": "Pending",
+    "rejected": "Rejected",
+    "in_process": "In Process"
+  }
+}

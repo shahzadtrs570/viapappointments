@@ -1,0 +1,10 @@
+{
+  "title": "ui",
+  "root": true,
+  "pages": [
+    "---Getting Started---",
+    "index",
+    "---Example Docs---",
+    "example-docs"
+  ]
+}

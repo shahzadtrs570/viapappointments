@@ -1,0 +1,28 @@
+{
+  "title": {
+    "what_is": "Che cos'è",
+    "srenova": "Srenova",
+    "question_mark": "?"
+  },
+  "description": {
+    "paragraph1": "Srenova è una transazione immobiliare in cui vendi la tua casa mantenendo il diritto di viverci per tutta la vita. Ricevi un pagamento iniziale (bouquet) e pagamenti mensili garantiti a vita.",
+    "paragraph2": "Srenova ha modernizzato questo concetto secolare con supporto istituzionale ed efficienza digitale per offrirti una sicurezza finanziaria senza pari in pensione."
+  },
+  "chat_prompt": "Hai domande? La nostra Guida Srenova può aiutarti.",
+  "buttons": {
+    "eligibility": "Verifica la tua idoneità ora",
+    "how_it_works": "Scopri come funziona"
+  },
+  "chat": {
+    "header": "Chiedi alla tua Guida Srenova",
+    "initial_message": "Ciao! Sono qui per rispondere alle tue domande sul nostro programma di vitalizio. Cosa vorresti sapere?"
+  },
+  "suggested_questions": {
+    "age_requirements": "Quali sono i requisiti minimi di età?",
+    "property_types": "Quali tipi di proprietà sono idonee?",
+    "property_value": "Come viene valutata la mia proprietà?",
+    "mortgage": "Cosa succede se ho un mutuo in corso?",
+    "viager_program": "Cos'è il programma di Srenova?",
+    "process_timeline": "Quanto tempo richiede il processo?"
+  }
+} 

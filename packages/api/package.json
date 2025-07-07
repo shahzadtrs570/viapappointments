@@ -1,0 +1,42 @@
+{
+  "name": "@package/api",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
+    "format": "eslint . --ext ts,tsx --fix"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.674.0",
+    "@google/generative-ai": "^0.21.0",
+    "@langchain/community": "^0.3.30",
+    "@langchain/core": "^0.3.39",
+    "@langchain/google-genai": "^0.1.8",
+    "@langchain/openai": "^0.4.3",
+    "@mendable/firecrawl-js": "^1.16.0",
+    "@package/auth": "workspace:*",
+    "@package/db": "workspace:*",
+    "@package/email": "workspace:*",
+    "@package/file_storage": "workspace:*",
+    "@package/payments": "workspace:*",
+    "@package/utils": "workspace:*",
+    "@package/validations": "workspace:*",
+    "@prisma/client": "^5.20.0",
+    "@trpc/server": "11.0.0-rc.364",
+    "date-fns": "^3.6.0",
+    "node-id3": "^0.2.6",
+    "openai": "^4.83.0",
+    "superjson": "2.2.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@package/eslint-config": "workspace:*",
+    "@package/prettier-config": "workspace:*",
+    "@package/typescript-config": "workspace:*",
+    "prisma": "^5.20.0"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "applicationPreview": {
+    "title": "Anteprima dell'Applicazione",
+    "propertyDetails": {
+      "title": "Dettagli della Proprietà",
+      "type": "Tipo:",
+      "bedrooms": "Camere da letto:",
+      "bathrooms": "Bagni:",
+      "size": "Dimensione:",
+      "sqmSuffix": "m²",
+      "condition": "Condizione:",
+      "estimatedValue": "Valore Stimato:",
+      "editButton": "Modifica Dettagli Proprietà"
+    },
+    "ownerInformation": {
+      "title": "Informazioni sul Proprietario",
+      "ownershipType": "Tipo di Proprietà:",
+      "numberOfOwners": "Numero di Proprietari:",
+      "primaryOwner": "Proprietario Principale",
+      "name": "Nome:",
+      "dob": "Data di Nascita:",
+      "email": "Email:",
+      "coOwner": "Comproprietario",
+      "coOwners": "Comproprietari",
+      "editButton": "Modifica Informazioni Proprietario"
+    }
+  },
+  "srenovaRecommendations": {
+    "title": "Raccomandazioni Srenova",
+    "description": "Vendere la tua casa è una decisione importante. Ti consigliamo vivamente di includere la tua famiglia e il tuo network di supporto durante queste discussioni",
+    "tooltip": "Vuoi capire come questo influisce sulla tua situazione fiscale? Posso spiegare le implicazioni fiscali e le considerazioni.",
+    "checklist": {
+      "financialAdvisor": "Ho considerato di aggiungere un consulente finanziario alla mia rete di supporto",
+      "financialSituation": "Ho considerato di includere dettagli sulla mia attuale situazione finanziaria",
+      "carePlans": "Ho considerato di aggiungere informazioni sui miei piani di assistenza a lungo termine",
+      "existingMortgages": "Ho considerato di includere dettagli su eventuali mutui o prestiti esistenti"
+    },
+    "tip": "Consiglio: Raccomandiamo di aggiungere i tuoi figli o membri stretti della famiglia alla tua rete di supporto. Questo può fornire un supporto emotivo aggiuntivo e aiutare nel processo decisionale durante tutto il processo."
+  },
+  "keyConsiderations": {
+    "title": "Considerazioni Chiave",
+    "ownership": {
+      "main": "Non sarai più proprietario della tua proprietà.",
+      "sub": "Non potrà essere ereditata dalla tua famiglia."
+    },
+    "benefits": {
+      "main": "Questo potrebbe influire sulla tua idoneità a determinati benefici.",
+      "sub": "Inclusi i sussidi governativi basati sul reddito."
+    },
+    "mortgage": {
+      "main": "Qualsiasi mutuo o pegno esistente deve essere estinto.",
+      "sub": "I proventi del viager saranno utilizzati per questo."
+    }
+  },
+  "buttons": {
+    "requestProvisionalOffer": "Continua ai Dettagli Finanziari",
+    "continue": "Continua",
+    "saveChanges": "Salva Modifiche",
+    "back": "Indietro",
+    "saving": "Salvataggio in corso..."
+  },
+  "toasts": {
+    "savedSuccess": "Revisione della domanda salvata con successo",
+    "updatedSuccess": "Revisione della domanda aggiornata con successo",
+    "missingInfoError": "Mancano informazioni richieste sulla proprietà o sul venditore",
+    "saveFailedError": "Impossibile salvare la revisione",
+    "success": "Successo",
+    "error": "Errore",
+    "verificationEmailSent": "Email di verifica inviata con successo. Controlla la tua casella di posta.",
+    "verificationEmailFailed": "Impossibile inviare l'email di verifica. Riprova.",
+    "noEmailFound": "Nessun indirizzo email trovato per il proprietario principale."
+  },
+  "emailVerification": {
+    "title": "Verifica Email Richiesta",
+    "description": "Verifica il tuo indirizzo email prima di procedere.",
+    "sentMessage": "È stata inviata un'email di verifica. Controlla la tua casella di posta e clicca sul link di verifica.",
+    "button": {
+      "sending": "Invio in corso...",
+      "send": "Invia Email di Verifica",
+      "resend": "Invia Nuovamente Email di Verifica"
+    }
+  },
+  "guideBot": {
+    "title": "La Tua Guida Srenova",
+    "initialMessage": "La tua domanda di viager sta procedendo bene. Aggiungere contatti professionali come un avvocato e un consulente finanziario può rafforzare significativamente la tua domanda e fornire un supporto prezioso durante tutto il processo.",
+    "suggestedQuestions": {
+      "requiredDocuments": "Quali documenti mi serviranno per il prossimo passo?",
+      "processTimeline": "Quanto tempo richiede tipicamente il processo di viager?",
+      "postSubmission": "Cosa succede dopo che invio la mia domanda?"
+    },
+    "responses": {
+      "required_documents": "Per il prossimo passo, avrai bisogno di: 1) Documento d'identità (passaporto/patente di guida), 2) Bollette recenti, 3) Documentazione della proprietà (atti, estratti conto del mutuo), 4) Estratti conto finanziari. Forniremo una lista dettagliata quando sarai pronto a procedere.",
+      "process_timeline": "Il processo tipico di viager richiede 8-12 settimane dall'invio della domanda al completamento. Questo include la valutazione della proprietà, controlli legali e la finalizzazione degli accordi. Ti terremo informato ad ogni fase e lavoreremo per accelerare dove possibile.",
+      "post_submission": "Dopo l'invio, il nostro team esaminerà la tua domanda entro 48 ore. Organizzeremo poi una valutazione della proprietà e ti metteremo in contatto con il nostro team legale. Riceverai aggiornamenti regolari via email e tramite il tuo consulente dedicato."
+    }
+  },
+  "nextSteps": {
+    "title": "Prossimi Passi",
+    "step1": "Rivedi i dettagli della tua domanda",
+    "step2": "Completa la lista di controllo raccomandata da Srenova",
+    "step3": "Rivedi le considerazioni chiave"
+  },
+  "contemplationPhase": {
+    "title": "Fase di Riflessione",
+    "description": "Questa è una decisione importante nella vita. Ti consigliamo di prenderti il tempo necessario per riflettere su tutti gli aspetti prima di procedere alle fasi successive.",
+    "remember": "Ricorda: Prenditi almeno 24 ore per considerare tutte le implicazioni prima di procedere. Potresti voler discutere con la tua rete di supporto e i tuoi consulenti di fiducia."
+  },
+  "nonBindingDisclaimer": {
+    "title": "Importante",
+    "text": "Questa domanda non è vincolante fino a quando non accetti un'offerta in una fase successiva di questo processo. Sei libero di ritirarti in qualsiasi momento prima di accettare un'offerta formale, senza alcun obbligo."
+  },
+  "chatbot": {
+    "title": "Assistente Chat IA",
+    "initialMessage": "Ciao! Posso aiutarti a spiegare il modello viager e rispondere alle tue domande sul processo di revisione. Cosa vorresti sapere?",
+    "suggestedQuestions": {
+      "financialAdvisor": "Dovrei consultare un consulente finanziario?",
+      "inheritance": "Come influisce sull'eredità per i miei figli?",
+      "familyInvolvement": "I membri della famiglia possono essere coinvolti nel processo?",
+      "legalProtections": "Quali protezioni legali ho?",
+      "taxImplications": "Quali implicazioni fiscali dovrei considerare?"
+    }
+  }
+}

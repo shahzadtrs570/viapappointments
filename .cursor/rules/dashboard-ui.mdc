@@ -1,0 +1,96 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: SaaS dashboard UI implementation and application structure
+globs: apps/dashboard/**/*.{ts,tsx}
+---
+# Dashboard Application Implementation
+
+This document outlines the guidelines for developing the SaaS dashboard application, including route structure, authentication flow, and UI components.
+
+## Route Structure
+
+- Use the dashboard layout wrapper for authenticated pages:
+  ```
+  apps/dashboard/src/app/(dashboard)/
+  ```
+- Use the auth layout wrapper for authentication pages:
+  ```
+  apps/dashboard/src/app/(auth)/
+  ```
+- Implement proper loading and error states for each route
+- Ensure all dashboard routes are protected with authentication
+
+## Authentication Flow
+
+- Implement authentication checks in layout components
+- Use the `useAuth` hook for authentication state
+- Redirect unauthenticated users to login page
+- Implement proper onboarding flow for new users
+- Track user onboarding status in the database
+- The RootLayout component in `apps/dashboard/src/components/Layouts/RootLayout/RootLayout.tsx` uses the Providers component from `apps/dashboard/src/app/providers.tsx`
+- Always import the Providers component using the correct path: `import { Providers } from "@/app/providers"`
+- For detailed authentication implementation, see [auth-implementation.mdc](mdc:auth-implementation.mdc)
+
+## Dashboard Components
+
+- Create admin-specific components in `admin/_components`
+- Implement data visualization with proper error handling and loading states
+- Use skeleton loaders for asynchronous content
+- Implement proper form validation with error messages
+- Use ShadCN UI components for consistent design
+- For design system implementation, see [design-system.mdc](mdc:design-system.mdc)
+
+## Data Management
+
+- Use Tanstack Query for data fetching and caching
+- Implement optimistic updates for better UX
+- Handle loading, error, and empty states consistently
+- Use proper pagination for large data sets
+- Implement sorting and filtering capabilities
+- For data layer implementation, see [data-layer.mdc](mdc:data-layer.mdc)
+
+## User Settings
+
+- Create comprehensive settings pages for:
+  - Profile management
+  - Subscription management
+  - Notification preferences
+  - Security settings
+  - Team management (if applicable)
+- Implement proper form validation and error handling
+- Show success/error toasts for user actions
+
+## Admin Features
+
+- Implement user management dashboard for admins
+- Create subscription oversight panels
+- Design analytics dashboards with relevant metrics
+- Implement user impersonation for support purposes
+- Add system settings configuration panels
+
+## Subscription Management
+
+- Implement subscription plan selector
+- Create payment form with proper validation
+- Handle subscription lifecycle events
+- Show appropriate subscription status indicators
+- Implement upgrade/downgrade flows
+- Handle payment failures gracefully
+- For payment implementation details, see [payment-implementation.mdc](mdc:payment-implementation.mdc)
+
+## Performance Considerations
+
+- Implement virtualization for long lists
+- Use proper data fetching strategies to minimize API calls
+- Optimize component rendering with memoization where needed
+- Implement lazy loading for complex dashboard sections
+- For error handling guidelines, see [error-handling.mdc](mdc:error-handling.mdc)
+
+## Integration with Other Systems
+
+- For core architecture principles, see [core-architecture.mdc](mdc:core-architecture.mdc)
+- For Next.js patterns and best practices, see [nextjs-patterns.mdc](mdc:nextjs-patterns.mdc)

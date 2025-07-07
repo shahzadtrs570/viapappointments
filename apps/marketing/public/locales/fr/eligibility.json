@@ -1,0 +1,409 @@
+{
+  "alert": {
+    "selectOption": "Veuillez sélectionner une option pour continuer."
+  },
+  "header": {
+    "title": "Vérification d'éligibilité Srenova",
+    "description": "Découvrons si nos solutions immobilières vous conviennent. Répondez à quelques questions simples pour déterminer votre éligibilité.",
+    "button": "Parler à un conseiller"
+  },
+  "navigation": {
+    "title": "Vérification d'éligibilité"
+  },
+  "main": {
+    "title": "Vérifiez votre éligibilité",
+    "progress": "Étape {{current}} sur {{total}}"
+  },
+  "progress": {
+    "question": "Question {{current}} sur {{total}}",
+    "percent": "{{percent}}% Complété"
+  },
+  "section": {
+    "eligibilityAndAge": "Éligibilité et Âge",
+    "familyInvolvement": "Implication familiale",
+    "propertyDetails": "Détails de la propriété",
+    "financialSituation": "Situation financière",
+    "adviceAndConsent": "Conseil et Consentement"
+  },
+  "button": {
+    "back": "Retour",
+    "next": "Suivant",
+    "finish": "Terminer et voir les résultats",
+    "startOver": "Recommencer",
+    "continue": "Continuer",
+    "stayInTouch": "Rester en contact",
+    "goBack": "Retour",
+    "continueAnyway": "Continuer quand même",
+    "cancel": "Annuler"
+  },
+  "feedback": {
+    "eligibleTitle": "Vous pourriez être éligible",
+    "ineligibleTitle": "Merci de votre intérêt",
+    "eligible": "D'après vos réponses, Srenova pourrait être parfait pour vous. À l'étape suivante, nous vous demanderons votre nom et votre adresse e-mail, et si vous souhaitez commencer par une demande pour vendre votre maison à la manière Srenova. Vous gardez le contrôle du processus, et rien n'est contraignant à ce stade — c'est l'occasion d'en apprendre davantage sur nous, et pour nous d'en apprendre davantage sur vous et votre maison.",
+    "ineligible": "D'après vos réponses, Srenova pourrait ne pas vous convenir pour le moment. Mais restons en contact car nous pourrions être parfaits pour vous à l'avenir.",
+    "ineligibleConfirmed": "Merci d'avoir confirmé. Bien que Srenova ne soit peut-être pas adapté pour le moment, n'hésitez pas à rester en contact pour de futures mises à jour ou pour discuter d'alternatives potentielles."
+  },
+  "contactForm": {
+    "title": "Restons en contact",
+    "description": "Laissez vos coordonnées et nous vous tiendrons au courant de nos services.",
+    "success": {
+      "title": "Merci !",
+      "description": "Nous avons bien reçu vos informations et vous contacterons bientôt.",
+      "message": "Nous vous contacterons bientôt avec des mises à jour et des informations qui pourraient être utiles pour votre situation."
+    },
+    "error": {
+      "title": "Échec de la soumission",
+      "message": "Désolé, une erreur s'est produite lors de la soumission de vos informations. Veuillez réessayer."
+    },
+    "label": {
+      "name": "Nom complet",
+      "email": "Adresse e-mail",
+      "phone": "Numéro de téléphone (Facultatif)",
+      "message": "Message (Facultatif)"
+    },
+    "placeholder": {
+      "name": "Entrez votre nom complet",
+      "email": "vous@exemple.com",
+      "phone": "Entrez votre numéro de téléphone",
+      "message": "Parlez-nous un peu plus de votre situation ou de vos questions spécifiques..."
+    },
+    "note": {
+      "message": "Fournir plus de détails peut nous aider à mieux comprendre vos besoins."
+    },
+    "privacyNote": "En soumettant ce formulaire, vous acceptez de recevoir des mises à jour sur nos services. Nous respectons votre vie privée et ne partagerons pas vos informations avec des tiers.",
+    "button": {
+      "submitting": "Soumission en cours...",
+      "submit": "Soumettre les informations",
+      "retrying": "Nouvel essai...",
+      "retry": "Réessayer la soumission"
+    }
+  },
+  "confirmDialog": {
+    "title": "Information importante sur l'éligibilité",
+    "description": "D'après votre sélection, vous pourriez ne pas être éligible à nos services.",
+    "content": {
+      "country": "Nos services ne sont actuellement entièrement disponibles qu'au Royaume-Uni, avec des services limités dans certains pays de l'UE.",
+      "ownership": "Nos services nécessitent la propriété du bien car ils sont spécifiquement conçus pour les propriétaires.",
+      "ageUnder60": "Nos services sont spécifiquement conçus pour les personnes âgées de 60 ans et plus.",
+      "age75plus": "Nos services standards sont généralement conçus pour les personnes âgées de 60 à 74 ans. Cependant, nous avons des options spécialisées pour les seniors de votre groupe d'âge que nos conseillers peuvent discuter avec vous.",
+      "spouseAge": "Pour les biens détenus conjointement, nos services standards exigent généralement que les deux propriétaires aient 60 ans ou plus. Cependant, nous pourrions avoir des options alternatives que nos conseillers peuvent discuter avec vous.",
+      "inheritanceTopPriority": "Nos solutions standards peuvent affecter la valeur d'héritage de votre propriété. Si préserver l'héritage est votre priorité absolue, vous pourriez vouloir explorer des options alternatives. Nous pouvons néanmoins discuter de solutions spécialisées qui pourraient mieux s'aligner avec vos objectifs d'héritage.",
+      "discussOptionsNo": "Comprendre vos options est une partie cruciale pour prendre une décision éclairée. Sans discuter de vos options avec un conseiller, nous ne pouvons pas garantir que vous aurez toutes les informations nécessaires pour faire le meilleur choix pour votre situation."
+    }
+  },
+  "sidebar": {
+    "criteria": {
+      "title": "Critères d'éligibilité"
+    },
+    "privacy": {
+      "title": "Votre confidentialité",
+      "description": "Vos réponses sont stockées localement dans votre navigateur et ne seront pas partagées sans votre permission. Nous prenons votre vie privée au sérieux.",
+      "secureNote": "Vos données sont sécurisées et cryptées"
+    },
+    "help": {
+      "title": "Besoin d'aide ?",
+      "description": "Nos conseillers sont prêts à vous aider pour toute question.",
+      "button": "Appeler un conseiller"
+    },
+    "chatbot": {
+      "title": "Assistant de Chat IA",
+      "welcome": "Bonjour ! Je suis là pour répondre à vos questions sur notre programme viager. Que souhaitez-vous savoir ?",
+      "eligibility": {
+        "minimum_age": "Quelles sont les conditions d'âge minimum ?",
+        "property_types": "Quels types de propriétés sont éligibles ?",
+        "valuation": "Comment ma propriété est-elle évaluée ?",
+        "mortgage": "Que se passe-t-il si j'ai un prêt immobilier en cours ?",
+        "viager_model": "Qu'est-ce que le programme viager de Srenova ?",
+        "process_time": "Combien de temps dure le processus ?"
+      },
+      "family": {
+        "inheritance": "Comment cela affecte-t-il l'héritage pour mes enfants ?",
+        "family_receive": "Ma famille recevra-t-elle quelque chose de la vente plus tard ?",
+        "family_involvement": "Les membres de la famille peuvent-ils être impliqués dans le processus ?",
+        "family_siblings": "Plusieurs frères et sœurs peuvent-ils être répertoriés comme contacts ?",
+        "spouse_dies": "Que se passe-t-il si un conjoint/partenaire décède ?",
+        "divorce": "Que se passe-t-il en cas de séparation ou de divorce ?"
+      },
+      "advice": {
+        "tax_implications": "Quelles implications fiscales dois-je considérer ?",
+        "benefits_eligibility": "Cela affectera-t-il mon éligibilité aux prestations sous conditions de ressources ?",
+        "legal_protections": "Quelles protections juridiques ai-je ?",
+        "business_protection": "Que se passe-t-il si Srenova ou l'acheteur fait faillite ?",
+        "buyer_defaults": "Que se passe-t-il si l'acheteur ne respecte pas les paiements ?",
+        "support_offered": "Quel soutien Srenova offre-t-il pendant le processus ?"
+      }
+    }
+  },
+  "criteria": {
+    "age": {
+      "title": "65 ans ou plus",
+      "description": "Vous devez avoir au moins 65 ans pour être éligible"
+    },
+    "ownership": {
+      "title": "Propriété du bien",
+      "description": "Vous devez posséder votre bien ou avoir une petite hypothèque"
+    },
+    "residence": {
+      "title": "Résidence principale",
+      "description": "Le bien doit être votre résidence principale"
+    }
+  },
+  "country": {
+    "question": "Dans quel pays êtes-vous ?",
+    "description": "Nos services sont actuellement disponibles dans certaines régions. Votre emplacement nous aide à déterminer si nous pouvons vous aider.",
+    "options": {
+      "uk": {
+        "label": "Royaume-Uni",
+        "description": "Service complet disponible"
+      },
+      "eu": {
+        "label": "Union européenne",
+        "description": "Services sélectionnés disponibles dans certains pays"
+      },
+      "other": {
+        "label": "Autre",
+        "description": "Disponibilité limitée"
+      }
+    }
+  },
+  "propertyOwnership": {
+    "question": "Êtes-vous propriétaire du bien ?",
+    "description": "La propriété de votre bien est une exigence clé pour nos services.",
+    "options": {
+      "yes": {
+        "label": "Oui",
+        "description": "Je possède mon bien en pleine propriété ou j'ai une petite hypothèque"
+      },
+      "no": {
+        "label": "Non",
+        "description": "Je ne suis pas propriétaire de ma résidence actuelle"
+      }
+    }
+  },
+  "age": {
+    "question": "Quel âge avez-vous ?",
+    "description": "L'âge est un facteur important pour déterminer l'éligibilité aux solutions financières basées sur la propriété.",
+    "options": {
+      "under60": {
+        "label": "Moins de 60 ans",
+        "description": "Pas encore éligible aux services liés à l'âge"
+      },
+      "60to64": {
+        "label": "60-64 ans",
+        "description": "Répond aux exigences d'âge minimum"
+      },
+      "65to74": {
+        "label": "65-74 ans",
+        "description": "Dans la tranche d'âge idéale"
+      },
+      "over75": {
+        "label": "75 ans et plus",
+        "description": "Qualification senior"
+      }
+    }
+  },
+  "jointOwnership": {
+    "question": "Le bien est-il détenu conjointement avec un conjoint ou un partenaire ?",
+    "description": "La copropriété affecte la manière dont nous structurons nos solutions pour bénéficier à tous les propriétaires.",
+    "options": {
+      "yes": {
+        "label": "Oui",
+        "description": "Je partage la propriété avec mon conjoint/partenaire"
+      },
+      "no": {
+        "label": "Non",
+        "description": "Je suis le seul propriétaire"
+      }
+    }
+  },
+  "spouseAge": {
+    "question": "Votre conjoint ou partenaire a-t-il également plus de 60 ans ?",
+    "description": "Les deux propriétaires doivent généralement satisfaire aux exigences d'âge pour les biens détenus conjointement.",
+    "options": {
+      "yes": {
+        "label": "Oui",
+        "description": "Mon conjoint/partenaire a 60 ans ou plus"
+      },
+      "no": {
+        "label": "Non",
+        "description": "Mon conjoint/partenaire a moins de 60 ans"
+      }
+    }
+  },
+  "childrenHeirs": {
+    "question": "Avez-vous des enfants ou des héritiers qui pourraient s'attendre à hériter de votre maison ou de votre patrimoine ?",
+    "description": "Comprendre votre situation familiale nous aide à vous conseiller sur la meilleure approche pour votre situation.",
+    "options": {
+      "yes": {
+        "label": "Oui",
+        "description": "J'ai des enfants ou d'autres héritiers désignés"
+      },
+      "no": {
+        "label": "Non",
+        "description": "Je n'ai pas d'enfants ou d'héritiers désignés"
+      }
+    }
+  },
+  "inheritanceImportance": {
+    "question": "Quelle importance accordez-vous au fait de laisser ce bien ou sa valeur à votre famille en héritage ?",
+    "description": "Cela nous aide à comprendre vos priorités et à recommander les options appropriées.",
+    "options": {
+      "topPriority": {
+        "label": "Oui, l'héritage est une priorité absolue",
+        "description": "Préserver la valeur de l'héritage est très important pour moi"
+      },
+      "notPriority": {
+        "label": "Non, l'héritage n'est pas une priorité absolue",
+        "description": "Je me concentre davantage sur mes besoins financiers actuels"
+      },
+      "notSure": {
+        "label": "Je ne suis pas sûr(e)",
+        "description": "Je suis indécis(e) ou j'ai besoin de plus d'informations"
+      }
+    }
+  },
+  "propertyValue": {
+    "question": "Quelle est la valeur estimée de votre bien ?",
+    "description": "La valeur du bien aide à déterminer le montant potentiel des capitaux propres accessibles.",
+    "options": {
+      "under150k": {
+        "label": "Moins de 150 000 £",
+        "description": "Peut être en dessous du seuil minimum"
+      },
+      "150kto250k": {
+        "label": "150 000 £ - 250 000 £",
+        "description": "Éligibilité potentielle"
+      },
+      "250kto500k": {
+        "label": "250 000 £ - 500 000 £",
+        "description": "Gamme d'éligibilité courante"
+      },
+      "500kto1m": {
+        "label": "500 000 £ - 1 million £",
+        "description": "Bien de valeur supérieure"
+      },
+      "over1m": {
+        "label": "Plus d'1 million £",
+        "description": "Bien de grande valeur"
+      }
+    }
+  },
+  "propertyType": {
+    "question": "Quel type de bien possédez-vous ?",
+    "description": "Le type de bien peut affecter l'éligibilité et les conditions offertes.",
+    "options": {
+      "house": {
+        "label": "Maison (Individuelle, Mitoyenne, En rangée)",
+        "description": "Type de bien standard"
+      },
+      "apartment": {
+        "label": "Appartement",
+        "description": "Peut avoir des critères spécifiques"
+      },
+      "other": {
+        "label": "Autre (ex : Maisonette, Bungalow)",
+        "description": "Soumis à examen"
+      }
+    }
+  },
+  "mortgageStatus": {
+    "question": "Avez-vous actuellement un prêt immobilier ou un crédit garanti sur le bien ?",
+    "description": "Les dettes existantes garanties sur le bien doivent être prises en compte.",
+    "options": {
+      "noMortgage": {
+        "label": "Non, je suis pleinement propriétaire",
+        "description": "Pas de prêt immobilier existant"
+      },
+      "smallMortgage": {
+        "label": "Oui, un petit prêt/crédit",
+        "description": "Le ratio prêt-valeur est important"
+      },
+      "largeMortgage": {
+        "label": "Oui, un prêt/crédit important",
+        "description": "Peut affecter l'éligibilité ou le montant disponible"
+      }
+    }
+  },
+  "incomeNeeds": {
+    "question": "Quels sont vos besoins financiers principaux ?",
+    "description": "Comprendre vos objectifs aide à adapter la solution.",
+    "options": {
+      "lumpSum": {
+        "label": "Besoin d'une somme forfaitaire maintenant",
+        "description": "Pour des dépenses immédiates ou des investissements"
+      },
+      "regularIncome": {
+        "label": "Besoin d'un complément de revenu régulier",
+        "description": "Pour compléter la pension ou d'autres revenus"
+      },
+      "both": {
+        "label": "Besoin d'une somme forfaitaire et d'un revenu régulier",
+        "description": "Combinaison de besoins immédiats et continus"
+      },
+      "unsure": {
+        "label": "Incertain / Exploration des options",
+        "description": "Ouvert à la discussion des possibilités"
+      }
+    }
+  },
+  "financialAdvice": {
+    "question": "Avez-vous consulté un conseiller financier indépendant concernant la libération d'actifs ou des produits similaires ?",
+    "description": "Nous recommandons fortement de consulter un conseiller indépendant.",
+    "options": {
+      "yes": {
+        "label": "Oui, j'ai parlé à un conseiller",
+        "description": "Bonne étape pour des décisions éclairées"
+      },
+      "no": {
+        "label": "Non, pas encore",
+        "description": "Envisagez de consulter un conseiller indépendant"
+      }
+    }
+  },
+  "contactPermission": {
+    "question": "Acceptez-vous que nous vous contactions pour discuter de vos options ?",
+    "description": "Nous avons besoin de votre permission pour donner suite à vos réponses.",
+    "options": {
+      "yes": {
+        "label": "Oui, vous pouvez me contacter",
+        "description": "Nous vous contacterons avec les coordonnées fournies"
+      },
+      "no": {
+        "label": "Non, merci",
+        "description": "Nous respectons votre décision"
+      }
+    }
+  },
+  "confidentUnderstanding": {
+    "question": "Vous sentez-vous confiant(e) dans la compréhension de tous les détails et implications par vous-même ?",
+    "description": "Les décisions financières concernant votre bien peuvent être complexes. Nous sommes là pour vous aider à tout expliquer.",
+    "options": {
+      "yes": {
+        "label": "Oui",
+        "description": "Je comprends le processus et les implications"
+      },
+      "no": {
+        "label": "Non",
+        "description": "J'aimerais de l'aide pour comprendre les détails"
+      },
+      "notSure": {
+        "label": "Pas sûr(e)",
+        "description": "Je comprends certains aspects mais j'ai des questions"
+      }
+    }
+  },
+  "discussOptions": {
+    "question": "Souhaitez-vous discuter de vos options ?",
+    "description": "Nos conseillers peuvent vous aider à comprendre les options disponibles en fonction de votre situation.",
+    "options": {
+      "yes": {
+        "label": "Oui",
+        "description": "Je souhaite parler à un conseiller"
+      },
+      "no": {
+        "label": "Non",
+        "description": "Je vais continuer seul(e) pour l'instant"
+      }
+    }
+  }
+}

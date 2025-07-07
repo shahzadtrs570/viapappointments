@@ -1,0 +1,32 @@
+{
+  "metadata_title": "Profile",
+  "metadata_description": "Profile page for the authenticated user.",
+  "heading": "Profile",
+  "changeName": {
+    "title": "Your Name",
+    "description": "This is your display name.",
+    "label": "Name",
+    "placeholder": "Name",
+    "button": "Save Changes"
+  },
+  "deleteAccount": {
+    "title": "Delete Account",
+    "description": "Permanently delete your account, and all associated data. This action cannot be undone - please proceed with caution.",
+    "button": "Delete Account"
+  },
+  "deleteAccountDialog": {
+    "description": "Permanently delete your account, and all the related data. This action can't be undone, and you won't be able to recover any data. Please proceed with caution.",
+    "formLabel": "To confirm, please enter your account's email.",
+    "confirmButton": "Confirm delete account"
+  },
+  "changeNameHook": {
+    "successTitle": "Success",
+    "successDescription": "Name changed successfully!"
+  },
+  "deleteAccountHook": {
+    "successTitle": "Success",
+    "successDescription": "Account deleted",
+    "emailRequired": "Email is required",
+    "emailMustMatch": "Email must match your account email"
+  }
+}

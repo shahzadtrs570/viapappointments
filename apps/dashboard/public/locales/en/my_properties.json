@@ -1,0 +1,25 @@
+{
+  "title": "My Properties",
+  "property": {
+    "title": "My Properties",
+    "address": "Address",
+    "postcode": "Postcode",
+    "price": "Price",
+    "type": "Property Type",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "area": "Total Area",
+    "condition": "Condition",
+    "estimated_value": "Estimated Value",
+    "confirmed_value": "Confirmed Value"
+  },
+  "seller_info": {
+    "title": "Seller Information",
+    "ownership": "Ownership"
+  },
+  "detail": {
+    "title": "Property Details",
+    "property_info": "Property Information",
+    "not_available": "N/A"
+  }
+} 

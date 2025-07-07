@@ -1,0 +1,118 @@
+---
+name: nextjs-patterns.mdc
+description: Next.js App Router implementation and best practices
+globs: apps/**/{page,layout,loading,error,not-found}.tsx
+---
+# Next.js App Router Patterns
+
+This document outlines the patterns and best practices for using Next.js App Router in the NextJet project.
+
+## Routing Structure
+
+- Always use the App Router with nested route folders following the convention `app/[route]/page.tsx`
+- Follow the feature-based folder structure within each application:
+  ```
+  app/
+    ├── (dashboard)/
+    │   ├── admin/
+    │   │   ├── _components/
+    │   │   ├── _contexts/
+    │   │   ├── _hooks/
+    │   │   └── _types/
+  ```
+- Use proper file naming conventions:
+  - `page.tsx` for route pages
+  - `layout.tsx` for layouts
+  - `loading.tsx` for loading states
+  - `error.tsx` for error boundaries
+  - `not-found.tsx` for 404 pages
+
+## Component Architecture
+
+- Use server components by default unless client-side interactivity is required
+- Leverage RSC (React Server Components) for better performance and SEO
+- Keep data fetching close to where it's used
+- Implement proper metadata using the metadata object export
+
+## Performance Best Practices
+
+- Optimize component rendering with proper boundaries
+- Implement streaming and suspense for improved UX
+- Use appropriate caching strategies for data fetching
+- Implement proper error handling with error boundaries
+
+## Client vs Server Components
+
+### Server Components (Default)
+- All components in the App Router are Server Components by default
+- Use for components that:
+  - Need to fetch data
+  - Access backend resources directly
+  - Keep sensitive information on the server
+  - Don't require client-side interactivity
+
+### Client Components
+- Add `"use client"` directive at the top of files that need client-side features
+- Required for components that use:
+  - React hooks (useState, useEffect, useContext, etc.)
+  - Browser-only APIs
+  - Event listeners
+  - Client-side state management
+
+### Common Errors and Solutions
+
+#### Client Component Error
+```
+Error: You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+```
+
+**Resolution Steps**:
+1. Add `"use client"` directive at the top of the file using React hooks
+2. Alternatively, move the component using hooks to a separate file with the `"use client"` directive
+3. Remember that once a component is marked as a Client Component, all its children are also Client Components
+
+**Example Fix**:
+```tsx
+"use client"
+
+import { useState } from 'react'
+
+export function Counter() {
+  const [count, setCount] = useState(0)
+  
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  )
+}
+```
+
+## Data Fetching
+
+- Use React Server Components for data fetching when possible
+- Implement proper loading states with suspense boundaries
+- Use appropriate caching strategies based on data requirements
+- For client-side data fetching, refer to the [data-layer.mdc](mdc:data-layer.mdc) file
+
+## Authentication Integration
+
+- Protect routes using middleware or layout components
+- For detailed authentication implementation, refer to the [auth-implementation.mdc](mdc:auth-implementation.mdc) file
+
+## Providers Component
+
+- The Providers component is located at `app/providers.tsx` in both dashboard and marketing apps
+- This component wraps the application with necessary providers:
+  - TRPCReactProvider for API communication
+  - ThemeProvider for theme management
+  - SessionProvider for authentication state (in dashboard app)
+  - Toaster for notifications
+- Always import from the correct path: `import { Providers } from "@/app/providers"`
+- Never reference the file as `src/providers` - always use the correct path `src/app/providers.tsx`
+
+## Related Documentation
+
+- For overall project architecture, see [core-architecture.mdc](mdc:core-architecture.mdc)
+- For UI component guidelines, see [design-system.mdc](mdc:design-system.mdc)
+- For coding standards, see [coding-standards.mdc](mdc:coding-standards.mdc)

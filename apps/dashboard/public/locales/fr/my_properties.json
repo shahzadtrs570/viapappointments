@@ -1,0 +1,25 @@
+{
+  "title": "Mes Propriétés",
+  "property": {
+    "title": "Mes Propriétés",
+    "address": "Adresse",
+    "postcode": "Code Postal",
+    "price": "Prix",
+    "type": "Type de Propriété",
+    "bedrooms": "Chambres",
+    "bathrooms": "Salles de Bain",
+    "area": "Surface Totale",
+    "condition": "État",
+    "estimated_value": "Valeur Estimée",
+    "confirmed_value": "Valeur Confirmée"
+  },
+  "seller_info": {
+    "title": "Information du Vendeur",
+    "ownership": "Propriété"
+  },
+  "detail": {
+    "title": "Détails de la Propriété",
+    "property_info": "Information sur la Propriété",
+    "not_available": "N/D"
+  }
+} 

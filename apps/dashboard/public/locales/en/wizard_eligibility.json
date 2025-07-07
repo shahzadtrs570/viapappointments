@@ -1,0 +1,130 @@
+{
+  "toasts": {
+    "savedSuccess": "Eligibility information saved successfully",
+    "savedError": "There was an error saving your information",
+    "syncError": "Your progress is saved locally but couldn't be synced to your account"
+  },
+  "errors": {
+    "syncError": "Failed to save eligibility data to database",
+    "processingData": "Error processing eligibility data"
+  },
+  "logs": {
+    "savedFromURL": "Eligibility data saved to localStorage from URL",
+    "syncedFromDatabase": "Eligibility data synced from database to localStorage"
+  },
+  "pageTitle": "Eligibility Assessment",
+  "pageDescription": "Please answer the following questions to help us determine if our services are right for you.",
+  "questions": {
+    "age": {
+      "label": "What is your age range?",
+      "options": {
+        "under-55": "Under 55",
+        "55-64": "55-64",
+        "65-74": "65-74",
+        "75+": "75+"
+      }
+    },
+    "ownership": {
+      "label": "What is your ownership status?",
+      "options": {
+        "sole-owner": "Sole owner",
+        "joint-owner": "Joint owner",
+        "other": "Other"
+      }
+    },
+    "propertyType": {
+      "label": "What type of property do you own?",
+      "options": {
+        "house": "House",
+        "flat": "Flat/Apartment",
+        "bungalow": "Bungalow",
+        "other": "Other"
+      }
+    },
+    "mainResidence": {
+      "label": "Is this your main residence?",
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "financialGoals": {
+      "label": "What are your financial goals? (Select all that apply)",
+      "options": {
+        "goal-lump-sum": "Receive a lump sum",
+        "goal-monthly-income": "Generate monthly income",
+        "goal-inheritance": "Leave an inheritance",
+        "goal-other": "Other"
+      }
+    },
+    "country": {
+      "label": "Where is your property located?",
+      "options": {
+        "united-kingdom": "United Kingdom",
+        "other": "Other"
+      }
+    },
+    "propertyOwnership": {
+      "label": "Do you own your property outright?",
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "jointOwnership": {
+      "label": "Is the property jointly owned?",
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "spouseAge": {
+      "label": "What is your spouse/partner's age range?",
+      "options": {
+        "under-55": "Under 55",
+        "55-64": "55-64",
+        "65-74": "65-74",
+        "75+": "75+"
+      }
+    },
+    "childrenHeirs": {
+      "label": "Do you have children or other intended heirs?",
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "inheritanceImportance": {
+      "label": "How important is it to leave an inheritance?",
+      "options": {
+        "very-important": "Very important",
+        "somewhat-important": "Somewhat important",
+        "not-important": "Not important",
+        "not-sure": "Not sure"
+      }
+    },
+    "confidentUnderstanding": {
+      "label": "How confident are you in understanding equity release options?",
+      "options": {
+        "very-confident": "Very confident",
+        "somewhat-confident": "Somewhat confident",
+        "not-confident": "Not confident",
+        "no-knowledge": "No knowledge"
+      }
+    },
+    "discussOptions": {
+      "label": "Would you like to discuss your options with a financial adviser?",
+      "options": {
+        "yes": "Yes",
+        "no": "No",
+        "not-sure": "Not sure"
+      }
+    }
+  },
+  "buttons": {
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "saving": "Saving..."
+  }
+} 

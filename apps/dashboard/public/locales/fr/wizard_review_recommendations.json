@@ -1,0 +1,125 @@
+{
+  "applicationPreview": {
+    "title": "Aperçu de la demande",
+    "propertyDetails": {
+      "title": "Détails du bien",
+      "type": "Type :",
+      "bedrooms": "Chambres :",
+      "bathrooms": "Salles de bain :",
+      "size": "Superficie :",
+      "sqmSuffix": "m²",
+      "condition": "État :",
+      "estimatedValue": "Valeur estimée :",
+      "editButton": "Modifier les détails du bien"
+    },
+    "ownerInformation": {
+      "title": "Informations sur le propriétaire",
+      "ownershipType": "Type de propriété :",
+      "numberOfOwners": "Nombre de propriétaires :",
+      "primaryOwner": "Propriétaire principal",
+      "name": "Nom :",
+      "dob": "Date de naissance :",
+      "email": "Email :",
+      "coOwner": "Copropriétaire",
+      "coOwners": "Copropriétaires",
+      "editButton": "Modifier les informations du propriétaire"
+    }
+  },
+  "srenovaRecommendations": {
+    "title": "Recommandations Srenova",
+    "description": "Vendre votre bien immobilier est une décision importante. Nous vous recommandons vivement d'inclure votre famille et votre réseau de soutien lorsque vous avancez dans ces discussions",
+    "tooltip": "Vous voulez comprendre comment cela affecte votre situation fiscale ? Je peux vous expliquer les implications et considérations fiscales.",
+    "checklist": {
+      "financialAdvisor": "J'ai envisagé d'ajouter un conseiller financier à mon réseau de soutien",
+      "financialSituation": "J'ai envisagé d'inclure des détails sur ma situation financière actuelle",
+      "carePlans": "J'ai envisagé d'ajouter des informations sur mes plans de soins à long terme",
+      "existingMortgages": "J'ai envisagé d'inclure des détails sur mes hypothèques ou prêts existants"
+    },
+    "tip": "Conseil : Nous vous recommandons d'ajouter vos enfants ou les membres proches de votre famille à votre réseau de soutien. Cela peut vous apporter un soutien émotionnel supplémentaire et vous aider à prendre des décisions tout au long du processus."
+  },
+  "keyConsiderations": {
+    "title": "Considérations clés",
+    "ownership": {
+      "main": "Vous ne serez plus propriétaire de votre bien.",
+      "sub": "Il ne peut pas être hérité par votre famille."
+    },
+    "benefits": {
+      "main": "Cela peut affecter votre éligibilité à certaines prestations.",
+      "sub": "Y compris les aides gouvernementales sous conditions de ressources."
+    },
+    "mortgage": {
+      "main": "Toute hypothèque ou privilège existant doit être soldé.",
+      "sub": "Le produit du viager sera utilisé à cette fin."
+    }
+  },
+  "buttons": {
+    "requestProvisionalOffer": "Continuer vers les détails financiers",
+    "continue": "Continuer",
+    "saveChanges": "Enregistrer les modifications",
+    "back": "Retour",
+    "saving": "Enregistrement..."
+  },
+  "toasts": {
+    "savedSuccess": "Examen de la demande enregistré avec succès",
+    "updatedSuccess": "Examen de la demande mis à jour avec succès",
+    "missingInfoError": "Informations requises sur le bien ou le vendeur manquantes",
+    "saveFailedError": "Échec de l'enregistrement de l'examen",
+    "success": "Succès",
+    "error": "Erreur",
+    "verificationEmailSent": "Email de vérification envoyé avec succès. Veuillez vérifier votre boîte de réception.",
+    "verificationEmailFailed": "Échec de l'envoi de l'email de vérification. Veuillez réessayer.",
+    "noEmailFound": "Aucune adresse email trouvée pour le propriétaire principal."
+  },
+  "emailVerification": {
+    "title": "Vérification de l'email requise",
+    "description": "Veuillez vérifier votre adresse email avant de continuer.",
+    "sentMessage": "Un email de vérification a été envoyé. Veuillez vérifier votre boîte de réception et cliquer sur le lien de vérification.",
+    "button": {
+      "sending": "Envoi en cours...",
+      "send": "Envoyer l'email de vérification",
+      "resend": "Renvoyer l'email de vérification"
+    }
+  },
+  "guideBot": {
+    "title": "Votre guide Srenova",
+    "initialMessage": "Votre demande de viager avance bien. L'ajout de contacts professionnels comme un avocat et un conseiller financier peut considérablement renforcer votre demande et vous apporter un soutien précieux tout au long du processus.",
+    "suggestedQuestions": {
+      "requiredDocuments": "Quels documents me faudra-t-il pour la prochaine étape ?",
+      "processTimeline": "Combien de temps dure généralement le processus de viager ?",
+      "postSubmission": "Que se passe-t-il après avoir soumis ma demande ?"
+    },
+    "responses": {
+      "required_documents": "Pour la prochaine étape, vous aurez besoin de : 1) Preuve d'identité (passeport/permis de conduire), 2) Factures récentes de services publics, 3) Documentation de propriété (actes, relevés d'hypothèque), 4) Relevés financiers. Nous vous fournirons une liste détaillée une fois que vous serez prêt à procéder.",
+      "process_timeline": "Le processus typique de viager prend de 8 à 12 semaines, de la demande à la finalisation. Cela comprend l'évaluation du bien, les vérifications juridiques et la finalisation des accords. Nous vous tiendrons informé à chaque étape et travaillerons pour accélérer le processus lorsque c'est possible.",
+      "post_submission": "Après la soumission, notre équipe examinera votre demande dans les 48 heures. Nous organiserons ensuite une évaluation du bien et vous mettrons en contact avec notre équipe juridique. Vous recevrez des mises à jour régulières par e-mail et par l'intermédiaire de votre conseiller dédié."
+    }
+  },
+  "nextSteps": {
+    "title": "Prochaines étapes",
+    "step1": "Examinez les détails de votre demande",
+    "step2": "Complétez la liste de recommandations Srenova",
+    "step3": "Examinez les considérations clés"
+  },
+  "contemplationPhase": {
+    "title": "Phase de Réflexion",
+    "description": "Il s'agit d'une décision importante dans votre vie. Nous vous recommandons de prendre le temps de réfléchir à tous les aspects avant de passer aux étapes suivantes.",
+    "remember": "N'oubliez pas : Prenez au moins 24 heures pour considérer toutes les implications avant de continuer. Vous voudrez peut-être en discuter avec votre réseau de soutien et vos conseillers de confiance."
+  },
+  "nonBindingDisclaimer": {
+    "title": "Important",
+    "text": "Cette demande n'est pas contraignante jusqu'à ce que vous acceptiez une offre à une étape ultérieure de ce processus. Vous êtes libre de vous retirer à tout moment avant d'accepter une offre formelle, sans aucune obligation."
+  },
+  "chatbot": {
+    "title": "Assistant de Chat IA",
+    "initialMessage": "Bonjour ! Je peux vous aider à comprendre le modèle viager et répondre à vos questions sur le processus d'examen. Que souhaitez-vous savoir ?",
+    "suggestedQuestions": {
+      "financialAdvisor": "Devrais-je consulter un conseiller financier?",
+      "inheritance": "Comment cela affecte-t-il l'héritage de mes enfants?",
+      "familyInvolvement": "Les membres de la famille peuvent-ils être impliqués dans le processus?",
+      "legalProtections": "Quelles protections juridiques ai-je?",
+      "taxImplications": "Quelles implications fiscales devrais-je considérer?"
+    }
+  }
+}
+
+

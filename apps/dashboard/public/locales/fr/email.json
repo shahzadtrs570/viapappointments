@@ -1,0 +1,26 @@
+{
+  "magicLink": {
+    "subject": "Lien Magique de Connexion/Inscription",
+    "previewText": "Lien Magique de Connexion/Inscription",
+    "title": "Lien Magique de Connexion/Inscription",
+    "greeting": "Cher utilisateur,",
+    "description": "Cliquez et confirmez que vous souhaitez vous connecter à Srenova.",
+    "buttonText": "Se Connecter/S'inscrire",
+    "linkText": "Ou connectez-vous/inscrivez-vous en utilisant ce lien :",
+    "message": "N'hésitez pas à nous contacter si vous avez des questions ou des commentaires. Je suis toujours là pour vous aider !",
+    "signature": "Vos amis chez Srenova"
+  },
+  "propertyStatus": {
+    "preview": "Mise à jour du statut de la propriété - {{stage}}",
+    "title": "Mise à jour du statut de la propriété",
+    "updateIntro": "Nous avons une mise à jour concernant votre propriété :",
+    "reference": "Référence : {{referenceNumber}}",
+    "currentStage": "Étape actuelle : {{stage}}",
+    "requiredActions": "Actions requises :",
+    "dueBy": "À effectuer avant le : {{date}}",
+    "urgentAction": "⚠️ Action urgente requise",
+    "viewDashboard": "Voir les détails dans le tableau de bord",
+    "needHelp": "Besoin d'aide ? Contactez notre équipe de support à",
+    "supportEmail": "support@srenova.com"
+  }
+} 

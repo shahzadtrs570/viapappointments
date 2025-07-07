@@ -1,0 +1,25 @@
+{
+  "banner": {
+    "title": "Welcome to Our Preview! 🚀",
+    "subtitle": "You're experiencing the future",
+    "description": "This is a <strong>pre-production environment</strong> designed for testing and feedback. Everything you see is simulated - no real transactions, meetings, or commitments.",
+    "features": {
+      "safeEnvironment": {
+        "title": "Safe Testing Environment",
+        "description": "No payments, no real data, no commitments"
+      },
+      "fullAccess": {
+        "title": "Full Feature Access",
+        "description": "Try property valuations, flows, and more"
+      },
+      "helpImprove": {
+        "title": "Help Us Improve",
+        "description": "Your feedback shapes our final product"
+      }
+    },
+    "buttons": {
+      "startExploring": "Start Exploring →",
+      "closeMessage": "Click here to close this message"
+    }
+  }
+} 

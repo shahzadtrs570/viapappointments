@@ -1,0 +1,41 @@
+{
+  "formSchema": {
+    "firstNameRequired": "Il nome è obbligatorio",
+    "lastNameRequired": "Il cognome è obbligatorio",
+    "emailInvalid": "Indirizzo email non valido",
+    "acceptTermsRequired": "Devi accettare i termini e le condizioni"
+  },
+  "toastMessages": {
+    "errorTitle": "Errore",
+    "emailVerificationFailed": "Impossibile inviare l'email di verifica. Riprova.",
+    "unexpectedError": "Si è verificato un errore imprevisto. Riprova.",
+    "mustAcceptTerms": "Devi accettare i termini e le condizioni per continuare"
+  },
+  "cardHeader": {
+    "title": "Crea il tuo account",
+    "description": "Fornisci i tuoi dati di base per iniziare con Srenova. Potrai completare il tuo profilo in seguito."
+  },
+  "form": {
+    "firstNameLabel": "Nome",
+    "firstNamePlaceholder": "Mario",
+    "lastNameLabel": "Cognome",
+    "lastNamePlaceholder": "Rossi",
+    "emailLabel": "Indirizzo Email",
+    "emailPlaceholder": "mario.rossi@example.com",
+    "emailHint": "Useremo questa email per tenerti aggiornato sulla tua candidatura.",
+    "termsLabelPart1": "Accetto i",
+    "termsOfServiceLink": "Termini di Servizio",
+    "termsAnd": "e la",
+    "privacyPolicyLink": "Politica sulla Privacy",
+    "marketingLabel": "Per favore tienimi aggiornato sulla mia candidatura Srenova e puoi annullare l'iscrizione in qualsiasi momento."
+  },
+  "buttons": {
+    "back": "Indietro",
+    "loading": "Creazione del tuo account...",
+    "getStarted": "Inizia"
+  },
+  "emailDialog": {
+    "title": "Controlla la tua email",
+    "description": "Un link di accesso è stato inviato al tuo indirizzo email, {{email}}. Clicca sul link per accedere al tuo account."
+  }
+}

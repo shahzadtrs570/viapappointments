@@ -1,0 +1,130 @@
+{
+  "toasts": {
+    "savedSuccess": "[fr] Eligibility information saved successfully",
+    "savedError": "[fr] There was an error saving your information",
+    "syncError": "[fr] Your progress is saved locally but couldn't be synced to your account"
+  },
+  "errors": {
+    "syncError": "[fr] Failed to save eligibility data to database",
+    "processingData": "[fr] Error processing eligibility data"
+  },
+  "logs": {
+    "savedFromURL": "[fr] Eligibility data saved to localStorage from URL",
+    "syncedFromDatabase": "[fr] Eligibility data synced from database to localStorage"
+  },
+  "pageTitle": "[fr] Eligibility Assessment",
+  "pageDescription": "[fr] Please answer the following questions to help us determine if our services are right for you.",
+  "questions": {
+    "age": {
+      "label": "[fr] What is your age range?",
+      "options": {
+        "under-55": "[fr] Under 55",
+        "55-64": "[fr] 55-64",
+        "65-74": "[fr] 65-74",
+        "75+": "[fr] 75+"
+      }
+    },
+    "ownership": {
+      "label": "[fr] What is your ownership status?",
+      "options": {
+        "sole-owner": "[fr] Sole owner",
+        "joint-owner": "[fr] Joint owner",
+        "other": "[fr] Other"
+      }
+    },
+    "propertyType": {
+      "label": "[fr] What type of property do you own?",
+      "options": {
+        "house": "[fr] House",
+        "flat": "[fr] Flat/Apartment",
+        "bungalow": "[fr] Bungalow",
+        "other": "[fr] Other"
+      }
+    },
+    "mainResidence": {
+      "label": "[fr] Is this your main residence?",
+      "options": {
+        "yes": "[fr] Yes",
+        "no": "[fr] No"
+      }
+    },
+    "financialGoals": {
+      "label": "[fr] What are your financial goals? (Select all that apply)",
+      "options": {
+        "goal-lump-sum": "[fr] Receive a lump sum",
+        "goal-monthly-income": "[fr] Generate monthly income",
+        "goal-inheritance": "[fr] Leave an inheritance",
+        "goal-other": "[fr] Other"
+      }
+    },
+    "country": {
+      "label": "[fr] Where is your property located?",
+      "options": {
+        "united-kingdom": "[fr] United Kingdom",
+        "other": "[fr] Other"
+      }
+    },
+    "propertyOwnership": {
+      "label": "[fr] Do you own your property outright?",
+      "options": {
+        "yes": "[fr] Yes",
+        "no": "[fr] No"
+      }
+    },
+    "jointOwnership": {
+      "label": "[fr] Is the property jointly owned?",
+      "options": {
+        "yes": "[fr] Yes",
+        "no": "[fr] No"
+      }
+    },
+    "spouseAge": {
+      "label": "[fr] What is your spouse/partner's age range?",
+      "options": {
+        "under-55": "[fr] Under 55",
+        "55-64": "[fr] 55-64",
+        "65-74": "[fr] 65-74",
+        "75+": "[fr] 75+"
+      }
+    },
+    "childrenHeirs": {
+      "label": "[fr] Do you have children or other intended heirs?",
+      "options": {
+        "yes": "[fr] Yes",
+        "no": "[fr] No"
+      }
+    },
+    "inheritanceImportance": {
+      "label": "[fr] How important is it to leave an inheritance?",
+      "options": {
+        "very-important": "[fr] Very important",
+        "somewhat-important": "[fr] Somewhat important",
+        "not-important": "[fr] Not important",
+        "not-sure": "[fr] Not sure"
+      }
+    },
+    "confidentUnderstanding": {
+      "label": "[fr] How confident are you in understanding equity release options?",
+      "options": {
+        "very-confident": "[fr] Very confident",
+        "somewhat-confident": "[fr] Somewhat confident",
+        "not-confident": "[fr] Not confident",
+        "no-knowledge": "[fr] No knowledge"
+      }
+    },
+    "discussOptions": {
+      "label": "[fr] Would you like to discuss your options with a financial advisor?",
+      "options": {
+        "yes": "[fr] Yes",
+        "no": "[fr] No",
+        "not-sure": "[fr] Not sure"
+      }
+    }
+  },
+  "buttons": {
+    "next": "[fr] Next",
+    "previous": "[fr] Previous",
+    "submit": "[fr] Submit",
+    "saving": "[fr] Saving..."
+  }
+} 

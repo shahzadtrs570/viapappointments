@@ -1,0 +1,130 @@
+{
+  "toasts": {
+    "savedSuccess": "Informazioni di idoneità salvate con successo",
+    "savedError": "Si è verificato un errore durante il salvataggio delle tue informazioni",
+    "syncError": "Il tuo progresso è stato salvato localmente ma non è stato possibile sincronizzarlo con il tuo account"
+  },
+  "errors": {
+    "syncError": "Impossibile salvare i dati di idoneità nel database",
+    "processingData": "Errore durante l'elaborazione dei dati di idoneità"
+  },
+  "logs": {
+    "savedFromURL": "Dati di idoneità salvati in localStorage dall'URL",
+    "syncedFromDatabase": "Dati di idoneità sincronizzati dal database a localStorage"
+  },
+  "pageTitle": "Valutazione di Idoneità",
+  "pageDescription": "Rispondi alle seguenti domande per aiutarci a determinare se i nostri servizi sono adatti a te.",
+  "questions": {
+    "age": {
+      "label": "Qual è la tua fascia d'età?",
+      "options": {
+        "under-55": "Meno di 55",
+        "55-64": "55-64",
+        "65-74": "65-74",
+        "75+": "75+"
+      }
+    },
+    "ownership": {
+      "label": "Qual è il tuo stato di proprietà?",
+      "options": {
+        "sole-owner": "Unico proprietario",
+        "joint-owner": "Comproprietario",
+        "other": "Altro"
+      }
+    },
+    "propertyType": {
+      "label": "Che tipo di proprietà possiedi?",
+      "options": {
+        "house": "Casa",
+        "flat": "Appartamento",
+        "bungalow": "Villetta",
+        "other": "Altro"
+      }
+    },
+    "mainResidence": {
+      "label": "Questa è la tua residenza principale?",
+      "options": {
+        "yes": "Sì",
+        "no": "No"
+      }
+    },
+    "financialGoals": {
+      "label": "Quali sono i tuoi obiettivi finanziari? (Seleziona tutto ciò che è applicabile)",
+      "options": {
+        "goal-lump-sum": "Ricevere una somma forfettaria",
+        "goal-monthly-income": "Generare un reddito mensile",
+        "goal-inheritance": "Lasciare un'eredità",
+        "goal-other": "Altro"
+      }
+    },
+    "country": {
+      "label": "Dove si trova la tua proprietà?",
+      "options": {
+        "united-kingdom": "Regno Unito",
+        "other": "Altro"
+      }
+    },
+    "propertyOwnership": {
+      "label": "Possiedi la tua proprietà senza mutuo?",
+      "options": {
+        "yes": "Sì",
+        "no": "No"
+      }
+    },
+    "jointOwnership": {
+      "label": "La proprietà è in comproprietà?",
+      "options": {
+        "yes": "Sì",
+        "no": "No"
+      }
+    },
+    "spouseAge": {
+      "label": "Qual è la fascia d'età del tuo coniuge/partner?",
+      "options": {
+        "under-55": "Meno di 55",
+        "55-64": "55-64",
+        "65-74": "65-74",
+        "75+": "75+"
+      }
+    },
+    "childrenHeirs": {
+      "label": "Hai figli o altri eredi designati?",
+      "options": {
+        "yes": "Sì",
+        "no": "No"
+      }
+    },
+    "inheritanceImportance": {
+      "label": "Quanto è importante per te lasciare un'eredità?",
+      "options": {
+        "very-important": "Molto importante",
+        "somewhat-important": "Abbastanza importante",
+        "not-important": "Non importante",
+        "not-sure": "Non sono sicuro"
+      }
+    },
+    "confidentUnderstanding": {
+      "label": "Quanto ti senti sicuro nella comprensione delle opzioni di liberazione del capitale?",
+      "options": {
+        "very-confident": "Molto sicuro",
+        "somewhat-confident": "Abbastanza sicuro",
+        "not-confident": "Non sicuro",
+        "no-knowledge": "Nessuna conoscenza"
+      }
+    },
+    "discussOptions": {
+      "label": "Vorresti discutere le tue opzioni con un consulente finanziario?",
+      "options": {
+        "yes": "Sì",
+        "no": "No",
+        "not-sure": "Non sono sicuro"
+      }
+    }
+  },
+  "buttons": {
+    "next": "Avanti",
+    "previous": "Indietro",
+    "submit": "Invia",
+    "saving": "Salvataggio in corso..."
+  }
+} 

@@ -1,0 +1,14 @@
+{
+  "title": "Inserisci l'indirizzo della tua proprietà",
+  "placeholder": "es. Via Roma 123, Milano, Lombardia, 20121",
+  "helperText": {
+    "initialized": "Inizia a digitare per cercare il tuo indirizzo, o inseriscilo manualmente",
+    "notInitialized": "Per risultati migliori, includi via, città, provincia e CAP separati da virgole"
+  },
+  "errors": {
+    "required": "Inserisci un indirizzo per continuare",
+    "serviceUnavailable": "Servizio di ricerca indirizzi non disponibile. Inserisci manualmente il tuo indirizzo.",
+    "searchError": "Errore nella ricerca degli indirizzi. Riprova o inserisci manualmente.",
+    "initializationError": "Impossibile inizializzare la ricerca dell'indirizzo. Inserisci manualmente il tuo indirizzo."
+  }
+}

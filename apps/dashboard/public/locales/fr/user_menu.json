@@ -1,0 +1,26 @@
+{
+  "roles": {
+    "SELLER": "Vendeur",
+    "FUND_BUYER": "Acheteur de Fonds",
+    "VALUER": "Évaluateur",
+    "CONVEYANCER": "Notaire",
+    "FAMILY_SUPPORTER": "Soutien Familial"
+  },
+  "dashboardLabel": {
+    "SUPER_ADMIN": "Super Admin",
+    "ADMIN": "Admin",
+    "USER": "Utilisateur"
+  },
+  "menuItems": {
+    "adminDashboard": "Admin",
+    "myProperties": "Mes Propriétés",
+    "profile": "Profil",
+    "giveFeedback": "Donner un avis",
+    "signOut": "Se déconnecter"
+  },
+  "srOnly": {
+    "toggleUserMenu": "Basculer le menu utilisateur"
+  }
+}
+
+

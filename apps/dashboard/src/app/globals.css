@@ -1,0 +1,150 @@
+@import url("@package/tailwind-config/styles.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SurveyJS Styles */
+@import "survey-core/defaultV2.min.css";
+@import "survey-creator-core/survey-creator-core.min.css";
+
+/* Add custom CSS at the end of the file */
+
+/* SurveyJS custom styling */
+.survey-container {
+  --primary: hsl(var(--primary));
+  --primary-light: hsl(var(--primary) / 0.1);
+  --primary-dark: hsl(var(--primary) / 0.8);
+  --secondary: hsl(var(--secondary));
+  --background: hsl(var(--background));
+  --foreground: hsl(var(--foreground));
+  --border: hsl(var(--border));
+  --muted: hsl(var(--muted));
+  --card: hsl(var(--card));
+  
+  font-family: inherit !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.survey-container .sv-root-modern {
+  background: var(--card);
+  border-radius: 0.5rem;
+  color: var(--foreground);
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.survey-container .sv-container-modern {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.survey-container .sv-body {
+  padding: 1rem !important;
+}
+
+.survey-container .sv-question__content {
+  max-width: 100% !important;
+  padding: 1rem !important;
+}
+
+.survey-container .sv-row {
+  max-width: 100% !important;
+}
+
+.survey-container .sv-page__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--foreground);
+}
+
+.survey-container .sv-title {
+  font-weight: 600;
+}
+
+.survey-container .sv-btn {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.survey-container .sv-btn:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.survey-container .sv-btn--navigation {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.survey-container .sv-footer__prev-btn {
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.survey-container .sv-footer__prev-btn:hover {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.survey-container .sv-progress__bar {
+  background-color: var(--primary);
+}
+
+.survey-container .sv-rating__item--selected {
+  background-color: var(--primary);
+}
+
+.survey-container .sv-rating__item:hover {
+  background-color: var(--primary-light);
+}
+
+.survey-container .sv-checkbox__svg {
+  border-color: var(--border);
+}
+
+.survey-container .sv-checkbox--checked .sv-checkbox__svg {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Additional spacing and styling for inputs */
+.survey-container .sv-text {
+  width: 100% !important;
+}
+
+.survey-container .sv-comment {
+  width: 100% !important;
+  min-height: 120px !important;
+}
+
+.survey-container .sv-file {
+  width: 100% !important;
+}
+
+/* Improve header styling */
+.survey-container .sv-header__text {
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  color: var(--primary) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Make dropdown fields larger */
+.survey-container .sv-dropdown {
+  width: 100% !important;
+}
+
+/* Adjust nested tabs in DDQA form to use more space */
+.tabs-content .sv-question {
+  padding: 0 !important;
+}

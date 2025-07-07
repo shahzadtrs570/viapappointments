@@ -1,0 +1,201 @@
+{
+  "solicitorDetails": {
+    "title": "Dettagli del Tuo Avvocato",
+    "description": "Fornisci i dettagli del tuo avvocato o conferma se desideri procedere senza. Ti consigliamo di utilizzare un avvocato per garantire che i tuoi interessi siano protetti.",
+    "question": "Hai un avvocato?",
+    "choices": {
+      "hasSolicitor": "Sì, ho un avvocato",
+      "noSolicitor": "No, non voglio un avvocato",
+      "recommendSolicitor": "No, vorrei che mi consigliaste un avvocato"
+    },
+    "form": {
+      "solicitorName": {
+        "label": "Nome dell'Avvocato",
+        "placeholder": "Inserisci il nome dell'avvocato",
+        "validationRequired": "Il nome dell'avvocato è obbligatorio"
+      },
+      "firmName": {
+        "label": "Nome dello Studio Legale",
+        "placeholder": "Inserisci il nome dello studio"
+      },
+      "email": {
+        "label": "Indirizzo Email",
+        "placeholder": "Inserisci l'indirizzo email",
+        "validationInvalid": "Inserisci un indirizzo email valido"
+      },
+      "phone": {
+        "label": "Numero di Telefono",
+        "placeholder": "Inserisci il numero di telefono",
+        "validationInvalid": "Inserisci un numero di telefono valido (minimo 10 cifre)"
+      },
+      "address": {
+        "label": "Indirizzo",
+        "placeholder": "Inserisci l'indirizzo"
+      },
+      "buttons": {
+        "delete": "Elimina Avvocato",
+        "cancel": "Annulla",
+        "save": "Salva Dettagli"
+      }
+    },
+    "recommendedSolicitors": {
+      "title": "Avvocati Consigliati",
+      "description": "Ecco alcuni avvocati esperti in transazioni viager che consigliamo:",
+      "visitWebsite": "Visita il Sito Web",
+      "smithAndPartners": {
+        "name": "Smith & Partners LLP",
+        "specialty": "Specialisti in diritto immobiliare e transazioni viager",
+        "location": "📍 Londra, Manchester, Birmingham",
+        "phone": "📞 0800 123 4567"
+      },
+      "johnsonAndBrown": {
+        "name": "Johnson & Brown Solicitors",
+        "specialty": "Servizi esperti di trasferimento immobiliare",
+        "location": "📍 Bristol, Cardiff, Southampton",
+        "phone": "📞 0800 987 6543"
+      },
+      "wilsonPropertyLaw": {
+        "name": "Wilson Property Law",
+        "specialty": "Specialisti dedicati in viager e proprietà immobiliari",
+        "location": "📍 Edimburgo, Glasgow, Aberdeen",
+        "phone": "📞 0800 456 7890"
+      }
+    },
+    "savedDetails": {
+      "title": "Il Tuo Avvocato",
+      "editButton": "Modifica Dettagli",
+      "nameLabel": "Nome",
+      "firmLabel": "Studio",
+      "emailLabel": "Email",
+      "phoneLabel": "Telefono",
+      "addressLabel": "Indirizzo"
+    },
+    "noSolicitorWarning": {
+      "title": "Avviso Importante",
+      "recommendation": "Consigliamo vivamente di utilizzare un avvocato per questa transazione. Un avvocato può:",
+      "benefits": [
+        "Garantire che i tuoi interessi legali siano protetti",
+        "Rivedere tutta la documentazione per tuo conto",
+        "Spiegare i termini e le condizioni in dettaglio",
+        "Identificare potenziali problemi prima del completamento"
+      ],
+      "waiverInfo": "Se procedi senza un avvocato, dovrai firmare una rinuncia riconoscendo di comprendere i rischi."
+    }
+  },
+  "conveyancingStatus": {
+    "title": "Stato del Processo di Trasferimento",
+    "description": "Tieni traccia dell'avanzamento della tua domanda viager attraverso il processo di trasferimento. Il tuo consulente dedicato è disponibile per rispondere a qualsiasi domanda tu possa avere.",
+    "steps": {
+      "applicationAccepted": "Domanda Accettata",
+      "legalDocumentation": "Documentazione Legale",
+      "propertyValuation": "Valutazione della Proprietà",
+      "conveyancing": "Trasferimento",
+      "completion": "Completamento"
+    },
+    "status": {
+      "inProgress": "In Corso",
+      "pending": "In Attesa",
+      "completedOn": "Completato il {{date}}",
+      "completedOnNoDate": "Completato il"
+    },
+    "currentStagePrefix": "Fase attuale: ",
+    "processDetails": {
+      "initialDocsSent": "Documentazione iniziale inviata al tuo avvocato",
+      "valuationCompleted": "Valutazione della proprietà completata",
+      "solicitorReviewing": "Avvocato in fase di revisione della documentazione",
+      "exchangeContracts": "Scambio dei contratti",
+      "completion": "Completamento"
+    },
+    "expectedCompletionPrefix": "Completamento previsto: ",
+    "expectedPrefix": "Previsto: "
+  },
+  "nextActionRequired": {
+    "title": "Prossima Azione Richiesta",
+    "description": "Il tuo avvocato ti contatterà per organizzare un incontro per firmare la documentazione necessaria. Assicurati di avere pronti i tuoi documenti di identificazione.",
+    "scheduleMeetingButton": "Programma Incontro"
+  },
+  "documentChecklist": {
+    "title": "Lista di Controllo dei Documenti",
+    "description": "Tieni traccia dello stato dei documenti importanti nel tuo processo di trasferimento:",
+    "headers": {
+      "document": "Documento",
+      "status": "Stato",
+      "date": "Data",
+      "action": "Azione"
+    },
+    "items": {
+      "propertyInfoForm": "Modulo Informazioni sulla Proprietà",
+      "sellersQuestionnaire": "Questionario del Venditore",
+      "valuationReport": "Rapporto di Valutazione della Proprietà",
+      "draftContract": "Bozza del Contratto",
+      "transferDeed": "Atto di Trasferimento"
+    },
+    "statuses": {
+      "completed": "Completato",
+      "inReview": "In Revisione",
+      "pending": "In Attesa"
+    },
+    "viewAction": "Visualizza"
+  },
+  "keyContacts": {
+    "title": "Contatti Chiave",
+    "description": "Contatti importanti per il tuo processo di trasferimento:",
+    "owner": "Proprietario",
+    "srenovaAdvisor": {
+      "role": "Il Tuo Consulente Srenova",
+      "name": "Sarah Johnson",
+      "email": "Email: sarah.johnson@srenova.com",
+      "phone": "Telefono: 0800 123 4567"
+    },
+    "yourSolicitor": {
+      "role": "Il Tuo Avvocato",
+      "name": "John Smith",
+      "email": "Email: john.smith@example.com",
+      "phone": "Telefono: 07123 456789"
+    }
+  },
+  "customerSupportChat": {
+    "title": "Chat di Assistenza Clienti",
+    "greeting": "Ciao! Sono Sarah, la tua consulente dedicata. Come posso aiutarti oggi con il tuo processo di trasferimento?",
+    "inputPlaceholder": "Scrivi il tuo messaggio..."
+  },
+  "timeline": {
+    "title": "Cronologia",
+    "items": {
+      "applicationAccepted": "Domanda accettata ({{date}})",
+      "applicationAcceptedNoDate": "Domanda accettata",
+      "legalDocumentation": "Documentazione legale ({{date}})",
+      "legalDocumentationNoDate": "Documentazione legale",
+      "propertyValuation": "Valutazione della proprietà ({{date}})",
+      "propertyValuationNoDate": "Valutazione della proprietà",
+      "conveyancing": "Trasferimento (In corso)",
+      "completion": "Completamento (Previsto: {{date}})",
+      "completionNoDate": "Completamento",
+      "completionExpectedNoDate": "Completamento (Previsto: "
+    }
+  },
+  "toasts": {
+    "statusSavedSuccess": "Stato finale salvato con successo",
+    "statusUpdatedSuccess": "Stato finale aggiornato con successo",
+    "statusDeletedSuccess": "Stato finale eliminato con successo",
+    "failedToSaveSolicitor": "Impossibile salvare i dettagli dell'avvocato",
+    "propertyIdRequiredError": "L'ID della proprietà è richiesto per aggiornare lo stato",
+    "statusRefreshedSuccess": "Stato aggiornato con successo",
+    "noSolicitorDetailsFound": "Nessun dettaglio dell'avvocato trovato",
+    "addSolicitorPrompt": "Seleziona 'Sì, ho un avvocato' e aggiungi i dettagli del tuo avvocato per iniziare."
+  },
+  "buttons": {
+    "refreshStatus": "Aggiorna Stato",
+    "refreshing": "Aggiornamento in corso..."
+  },
+  "status": {
+    "title": "Stato",
+    "progress": "Progresso",
+    "loading": "Caricamento...",
+    "approved": "Approvato",
+    "processing": "In elaborazione",
+    "pending": "In attesa",
+    "rejected": "Rifiutato",
+    "in_process": "In corso"
+  }
+}

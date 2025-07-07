@@ -1,0 +1,214 @@
+{
+  "pageTitle": "Dettagli della Proprietà",
+  "pageDescription": "Per favore fornisci informazioni sulla tua proprietà. Questo ci aiuta a comprendere il suo valore e l'idoneità per i nostri servizi.",
+  "addressSearchSection": {
+    "label": "Inserisci l'indirizzo della tua proprietà",
+    "placeholder": "es. Via Roma 123, Milano, Lombardia, 20100",
+    "buttonGo": "Vai",
+    "helpText": "Per risultati migliori, includi via, città, provincia e codice postale separati da virgole",
+    "noAddressEntered": "Per favore inserisci un indirizzo per continuare",
+    "validationRequired": "Per favore inserisci un indirizzo per continuare",
+    "manualEntryButton": "Inserisci manualmente il mio indirizzo"
+  },
+  "manualEntryForm": {
+    "locationTitle": "Posizione della Proprietà",
+    "detailsTitle": "Dettagli della Proprietà",
+    "conditionTitle": "Condizioni della Proprietà",
+    "photosTitle": "Foto della Proprietà",
+    "form": {
+      "address": {
+        "label": "Indirizzo della Proprietà",
+        "placeholder": "Inserisci l'indirizzo della tua proprietà",
+        "validationRequired": "L'indirizzo della proprietà è obbligatorio"
+      },
+      "postcode": {
+        "label": "Codice Postale",
+        "validationRequired": "Il codice postale è obbligatorio"
+      },
+      "townCity": {
+        "label": "Città",
+        "validationRequired": "La città è obbligatoria"
+      },
+      "county": {
+        "label": "Provincia",
+        "validationRequired": "La provincia è obbligatoria"
+      },
+      "propertyType": {
+        "label": "Tipo di Proprietà",
+        "validationRequired": "Per favore seleziona un tipo di proprietà",
+        "options": {
+          "house": "Casa",
+          "flat": "Appartamento",
+          "bungalow": "Villetta",
+          "other": "Altro"
+        }
+      },
+      "propertyStatus": {
+        "label": "Stato della Proprietà",
+        "validationRequired": "Per favore seleziona lo stato della proprietà",
+        "options": {
+          "freehold": "Proprietà Assoluta",
+          "leasehold": "Diritto di Superficie"
+        }
+      },
+      "leaseLength": {
+        "label": "Durata Residua del Contratto (anni)"
+      },
+      "estimatedValue": {
+        "label": "Valore Stimato della Proprietà (€)",
+        "placeholder": "es. 250000",
+        "validationRequired": "Per favore inserisci il valore stimato della proprietà"
+      },
+      "bedrooms": {
+        "label": "Numero di Camere da Letto",
+        "placeholder": "Seleziona il numero di camere da letto",
+        "validationRequired": "Per favore seleziona il numero di camere da letto",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5+": "5+"
+        }
+      },
+      "bathrooms": {
+        "label": "Numero di Bagni",
+        "placeholder": "Seleziona il numero di bagni",
+        "validationRequired": "Per favore seleziona il numero di bagni",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3+": "3+"
+        }
+      },
+      "yearBuilt": {
+        "label": "Anno di Costruzione",
+        "validationRequired": "Per favore inserisci un anno valido"
+      },
+      "propertySize": {
+        "label": "Dimensione della Proprietà (metri quadrati)",
+        "validationRequired": "Per favore inserisci la dimensione della proprietà"
+      },
+      "propertySizeFt": {
+        "label": "Dimensione della Proprietà (piedi quadrati)",
+        "validationRequired": "Per favore inserisci la dimensione della proprietà"
+      },
+      "features": {
+        "label": "Caratteristiche della Proprietà",
+        "options": {
+          "garden": "Giardino",
+          "garage": "Garage",
+          "parking": "Parcheggio",
+          "centralHeating": "Riscaldamento Centralizzato",
+          "doubleGlazing": "Doppi Vetri",
+          "conservatory": "Veranda"
+        }
+      },
+      "condition": {
+        "label": "Condizione Generale",
+        "validationRequired": "Per favore seleziona la condizione della proprietà",
+        "options": {
+          "excellent": "Eccellente",
+          "good": "Buono",
+          "fair": "Discreto",
+          "needs_renovation": "Necessita Ristrutturazione"
+        }
+      },
+      "conditionNotes": {
+        "label": "Note Aggiuntive",
+        "placeholder": "Per favore fornisci qualsiasi informazione aggiuntiva sulle condizioni della proprietà..."
+      }
+    }
+  },
+  "photoUploadSection": {
+    "label": "Carica foto",
+    "description": "PNG, JPG, GIF fino a 10MB ciascuna",
+    "altText": "Proprietà ",
+    "title": "Foto della Proprietà",
+    "uploadLabel": "Carica foto"
+  },
+  "buttons": {
+    "continueToReview": "Continua alla Revisione e Raccomandazioni",
+    "back": "Indietro"
+  },
+  "toasts": {
+    "savedSuccess": "Dettagli della proprietà salvati con successo",
+    "updatedSuccess": "Dettagli della proprietà aggiornati con successo",
+    "formError": "Tipo di proprietà, stato, camere da letto, bagni e condizione sono obbligatori",
+    "saveSuccessTitle": "Dettagli Salvati",
+    "saveSuccessDescription": "I dettagli della tua proprietà sono stati salvati con successo."
+  },
+  "errors": {
+    "parsingStoredPhotos": "Errore nell'analisi delle foto salvate:",
+    "submitFailed": "Impossibile inviare il modulo"
+  },
+  "validation": {
+    "propertyTypeRequired": "Per favore seleziona un tipo di proprietà",
+    "propertyStatusRequired": "Per favore seleziona lo stato della proprietà",
+    "leaseLengthInvalid": "Durata del contratto non valida",
+    "leaseLengthMax": "Durata massima del contratto superata",
+    "bedroomsRequired": "Per favore seleziona il numero di camere da letto",
+    "bathroomsRequired": "Per favore seleziona il numero di bagni",
+    "yearBuiltInvalid": "Per favore inserisci un anno valido",
+    "yearBuiltInFuture": "L'anno di costruzione non può essere nel futuro",
+    "yearBuiltTooOld": "L'anno di costruzione è troppo vecchio",
+    "propertySizeRequired": "Per favore inserisci la dimensione della proprietà",
+    "addressRequired": "L'indirizzo della proprietà è obbligatorio",
+    "postcodeRequired": "Il codice postale è obbligatorio",
+    "townRequired": "La città è obbligatoria",
+    "countyRequired": "La provincia è obbligatoria",
+    "conditionRequired": "Per favore seleziona la condizione della proprietà",
+    "estimatedValueRequired": "Per favore inserisci il valore stimato della proprietà"
+  },
+  "guideBot": {
+    "title": "La Tua Guida Srenova",
+    "initialMessage": "Fornire informazioni accurate sulla tua proprietà ci aiuta a darti le raccomandazioni più pertinenti. Non preoccuparti se non conosci tutti i dettagli - potrai sempre aggiornare queste informazioni in seguito.",
+    "suggestedQuestions": {
+      "valuation": "Come verrà valutata la mia proprietà?",
+      "nextSteps": "Cosa succede dopo aver inviato queste informazioni?",
+      "photoRequirement": "Devo fornire delle foto?",
+      "propertyValuation": "Come verrà valutata la mia proprietà?"
+    },
+    "responses": {
+      "property_valuation": "Utilizziamo una combinazione delle informazioni da te fornite, dei dati del mercato locale e dei metodi di valutazione professionale per valutare il valore della tua proprietà. Questo ci aiuta a offrirti l'offerta più accurata e competitiva.",
+      "next_steps": "Dopo aver inviato le informazioni sulla tua proprietà, il nostro team esaminerà i dettagli e potrebbe programmare un'ispezione della proprietà se necessario. Ti forniremo quindi raccomandazioni personalizzate e un'offerta provvisoria.",
+      "photo_requirement": "Sebbene non sia obbligatorio, fornire foto ci aiuta a comprendere meglio le condizioni e le caratteristiche della tua proprietà. Questo può portare a valutazioni più accurate e a un'elaborazione più rapida della tua domanda.",
+      "propertyValuation": "Utilizziamo una combinazione delle informazioni da te fornite, dei dati del mercato locale e dei metodi di valutazione professionale per valutare il valore della tua proprietà. Questo ci aiuta a offrirti l'offerta più accurata e competitiva.",
+      "nextSteps": "Dopo aver inviato le informazioni sulla tua proprietà, il nostro team esaminerà i dettagli e potrebbe programmare un'ispezione della proprietà se necessario. Ti forniremo quindi raccomandazioni personalizzate e un'offerta provvisoria.",
+      "photoRequirement": "Sebbene non sia obbligatorio, fornire foto ci aiuta a comprendere meglio le condizioni e le caratteristiche della tua proprietà. Questo può portare a valutazioni più accurate e a un'elaborazione più rapida della tua domanda."
+    }
+  },
+  "valuationTips": {
+    "title": "Consigli per la Valutazione della Proprietà",
+    "description": "Comprendere il valore reale della tua casa può aiutarti a prendere decisioni più informate. Ecco alcuni modi per ottenere una visione più chiara.",
+    "tip1": {
+      "title": "Vendite Recenti",
+      "description": "Controlla le vendite recenti di proprietà simili nella tua zona"
+    },
+    "tip2": {
+      "title": "La Condizione è Importante",
+      "description": "Prendi nota di eventuali ristrutturazioni recenti o problemi che potrebbero influenzare il valore"
+    },
+    "tip3": {
+      "title": "Sii Realistico",
+      "description": "Usa gli strumenti di valutazione online come guida, ma tieni presente che potrebbero non essere completamente accurati"
+    }
+  },
+  "nextStepsSidebar": {
+    "title": "Prossimi Passi",
+    "step1": "Completa le tue informazioni di venditore",
+    "step2": "Fornisci i dettagli della proprietà",
+    "step3": "Ricevi raccomandazioni personalizzate"
+  },
+  "chatbot": {
+    "title": "Assistente Chat IA",
+    "initialMessage": "Posso aiutarti a rispondere a domande sul processo di informazioni sulla proprietà. Cosa vorresti sapere?",
+    "suggestedQuestions": {
+      "property_type": "Quali tipi di proprietà sono idonei?",
+      "property_value": "Come viene valutata la mia proprietà?",
+      "mortgage": "Cosa succede se ho un mutuo in corso?",
+      "required_repairs": "Chi è responsabile della manutenzione e delle riparazioni della proprietà?",
+      "renovations": "Posso fare ristrutturazioni o modificare la mia casa?"
+    }
+  }
+}

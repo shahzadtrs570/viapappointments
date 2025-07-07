@@ -1,0 +1,109 @@
+---
+description: Monorepo structure, project organization, and core architecture principles
+globs: **/*
+---
+# Core Architecture and Structure
+
+## Project Overview
+
+This document outlines the core architecture and structure for the NextJet SaaS starter kit project, covering monorepo organization, application patterns, and best practices.
+
+### Primary Goals
+- Establish a comprehensive SaaS foundation for efficient development of web applications
+- Support authentication flows, subscription management, role-based access control, email notifications, analytics integration, and other core SaaS functionalities
+
+## Monorepo Structure
+
+### Core Directories
+- **Monorepo Structure:**
+  - `apps/`
+    - `dashboard/` - Main SaaS application
+    - `marketing/` - Public-facing marketing site
+  - `packages/`
+    - `api/` - tRPC API definitions
+    - `auth/` - Authentication logic
+    - `db/` - Prisma database schema and migrations
+    - `ui/` - Shared UI components
+
+### Key Files
+- `apps/dashboard/app/layout.tsx` - Implements Next.js 14 root layout patterns
+- `packages/configs/tailwind-config/styles.css` - Core styles for Tailwind CSS
+- `packages/db/prisma/schema.prisma` - Database schema definition
+
+### Codebase Organization
+- **Apps & Packages Separation:** Applications reside in `apps/` while reusable packages belong in `packages/`
+- **Dependency Management:** Shared dependencies are centrally managed
+- **Code Linting & Formatting:** Prettier and ESLint enforce consistent coding styles
+
+### Project Structure Documentation
+- **Structure File:** Maintain an up-to-date project structure file at `documentation/structure/project-structure.md`
+- **Update Frequency:** Update after adding, removing, or restructuring files and directories
+- **Automation:** Use the provided commands to automatically generate the structure file:
+  ```bash
+  # For Unix/Linux/macOS
+  find . -type f -not -path "*/node_modules/*" -not -path "*/\.git/*" -not -path "*/.next/*" | sort > documentation/structure/project-structure.md
+  
+  # For Windows PowerShell
+  Get-ChildItem -Path . -Recurse -File | Where-Object { $_.FullName -notmatch "node_modules|\.git|\.next" } | Select-Object -ExpandProperty FullName | Sort-Object | Out-File -FilePath documentation/structure/project-structure.md
+  ```
+- **Purpose:** Enables AI tools to understand the codebase organization without scanning the entire project
+- **Documentation:** For detailed guidelines, see `documentation/general/project_structure_maintenance.md`
+
+## Application Architecture
+
+### Next.js App Router
+This project uses Next.js App Router for routing and application structure. For comprehensive Next.js App Router guidelines, please refer to the [nextjs-patterns.mdc](mdc:nextjs-patterns.mdc) file.
+
+### Dashboard Application Structure
+The dashboard application follows a specific structure for organization and maintainability. For detailed dashboard UI implementation, please refer to the [dashboard-ui.mdc](mdc:dashboard-ui.mdc) file.
+
+### Marketing Site Structure
+The marketing site has its own structure for content organization. For detailed marketing UI implementation, please refer to the [marketing-ui.mdc](mdc:marketing-ui.mdc) file.
+
+## Core Principles
+
+- **Scalability:** Design components and services to handle growth
+- **Clean code:** Maintain readable, maintainable code with consistent patterns
+- **Best practices:** Follow established patterns for each technology
+- **Customization:** Enable easy theming and feature customization
+- **Developer experience:** Prioritize clear APIs and developer-friendly tooling
+- **Speed of development:** Leverage pre-built components and utilities
+- **Teamwork:** Structure code to enable collaborative development
+
+## Architecture Patterns
+
+- Follow the monorepo structure with apps and packages
+- Use feature-based folder organization
+- Implement the Repository pattern for data access
+- Use the Service pattern for business logic
+- Apply CQRS principles where appropriate (Command Query Responsibility Segregation)
+
+## Security Guidelines
+
+- Never store sensitive data in client-side code
+- Use environment variables for secrets
+- Implement proper authentication and authorization checks (see [auth-implementation.mdc](mdc:auth-implementation.mdc))
+- Sanitize all user inputs
+- Follow the principle of least privilege
+- Implement proper error handling without leaking sensitive information (see [error-handling.mdc](mdc:error-handling.mdc))
+
+## Performance Considerations
+
+- Optimize bundle sizes with code splitting
+- Implement lazy loading for components and routes
+- Use React.memo and useMemo/useCallback for performance optimization
+- Optimize database queries with proper indexing
+- Implement caching strategies where appropriate
+
+## Development Workflow
+
+- **Branching Strategy:** Follow a feature-branch workflow with a `main` branch for production-ready code
+- **Pull Request Guidelines:** PRs require at least one approval before merging
+- **CI/CD Guidelines:** Implement automated testing and deployment pipelines
+
+## Additional Resources
+
+- Next.js Documentation: https://nextjs.org/docs
+- tRPC Documentation: https://trpc.io/docs
+- Prisma Documentation: https://www.prisma.io/docs
+- Auth.js Documentation: https://authjs.dev/documentation

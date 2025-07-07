@@ -1,0 +1,42 @@
+{
+  "greeting": "Bonjour (Tableau de bord)",
+  "navigation": {
+    "home": "Accueil",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "settings": "Paramètres"
+  },
+  "save": "Enregistrer",
+  "cancel": "Annuler",
+  "loading": "Chargement...",
+  "error": "Erreur",
+  "success": "Succès",
+  "confirm": "Confirmer",
+  "back": "Retour",
+  "next": "Suivant",
+  "previous": "Précédent",
+  "close": "Fermer",
+  "open_menu": "Ouvrir le menu",
+  "view_details": "Voir les détails",
+  "actions": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier"
+  },
+  "created_at": "Créé le",
+  "toast": {
+    "rate_limit": {
+      "title": "Trop de Requêtes",
+      "description": "Vous faites des requêtes trop rapidement. Veuillez attendre un moment et réessayer.",
+      "auth_title": "Authentification Limitée",
+      "auth_description": "Trop de tentatives d'authentification. Veuillez attendre avant de réessayer.",
+      "api_title": "API Limitée",
+      "api_description": "Vous avez dépassé la limite de requêtes API. Veuillez attendre avant de faire plus de requêtes.",
+      "critical_title": "Sécurité Limitée",
+      "critical_description": "Trop de requêtes liées à la sécurité. Veuillez attendre avant de réessayer."
+    }
+  }
+}
+
+

@@ -1,0 +1,208 @@
+---
+name: coding-standards.mdc
+description: Code standards, linting rules, and import conventions
+globs: **/*.{ts,tsx,js,jsx}
+---
+# Coding Standards and Best Practices
+
+This document outlines the coding standards and best practices for the NextJet project.
+
+## General Coding Standards
+
+- Use TypeScript for type safety
+- Implement ESLint and Prettier for code formatting
+- Follow naming conventions:
+  - **PascalCase** for components and types
+  - **camelCase** for variables, functions, and properties
+  - **UPPER_SNAKE_CASE** for constants
+- Write meaningful comments for complex logic
+- Create comprehensive documentation for APIs and components
+
+## ESLint Configuration Best Practices
+
+When working with ESLint configurations in the project:
+
+- Always use the shorthand name for ESLint configuration packages in the extends array:
+  ```javascript
+  // ❌ Bad
+  extends: ["eslint:recommended", "prettier", "eslint-config-turbo"]
+  
+  // ✅ Good
+  extends: ["eslint:recommended", "prettier", "turbo"]
+  ```
+  
+- When updating ESLint or its plugins, check for any breaking changes in module formats
+- For packages named `eslint-config-X`, reference them as just `X` in the extends array
+- This prevents errors like "Unexpected top-level property 'default'" that can occur with module format mismatches
+
+## Import Path Conventions
+
+### Import Aliases
+
+Use structured import aliases for better maintainability:
+- `~` for root-level package imports
+- `@/` for application source directory imports
+- `@package/` for shared package imports
+
+Example:
+```typescript
+// ✅ Good
+import { something } from '~/package-name';
+import { Button } from '@package/ui/button';
+import { api } from '@package/api';
+```
+
+### Avoiding Relative Imports
+
+Avoid deep relative imports, except within the same directory or one level up:
+```typescript
+// ❌ Bad - Deep relative import
+import { Button } from '../../../components/ui/button';
+
+// ✅ Good - Alias import
+import { Button } from '@package/ui/button';
+```
+
+### Import Ordering
+
+Follow a structured order:
+1. External packages
+2. Absolute imports from packages
+3. Absolute imports from the app
+4. Relative imports
+
+**Always include a blank line between each import group** to improve readability.
+
+Example:
+```typescript
+// Group 1: External packages
+import { useState, useEffect } from 'react';
+import { toast } from 'sonner';
+
+// Group 2: Absolute imports from packages
+import { api } from '@package/api';
+
+// Group 3: Absolute imports from the app
+import { useAuth } from '@/hooks/useAuth';
+
+// Group 4: Relative imports
+import { calculateTotal } from './utils';
+```
+
+## Type Safety Guidelines
+
+### Avoid `any`
+
+```typescript
+// ❌ Bad
+const processData = (data: any) => data.someProperty;
+
+// ✅ Good
+interface DataType { someProperty: string; }
+const processData = (data: DataType) => data.someProperty;
+```
+
+### Use `unknown` Instead of `any`
+
+```typescript
+// ✅ Better
+const externalData: unknown = fetchExternalData();
+if (typeof externalData === 'object' && externalData !== null && 'property' in externalData) {
+  const value = (externalData as { property: string }).property;
+}
+```
+
+### Type Imports
+
+```typescript
+// ✅ Explicit type import
+import type { User } from '@package/db';
+```
+
+## React Hook Rules
+
+### Always Specify Dependencies
+
+```typescript
+// ❌ Missing dependency
+useEffect(() => { fetchData(userId); }, []);
+
+// ✅ Correct
+useEffect(() => { fetchData(userId); }, [userId, fetchData]);
+```
+
+### Use Function Form of `setState`
+
+```typescript
+// ❌ Potential stale state
+setCount(count + 1);
+
+// ✅ Correct
+setCount((prevCount) => prevCount + 1);
+```
+
+## Environment Variables
+
+### Declaration and Validation
+
+Define environment variables in `turbo.json` and validate at startup.
+
+```
+
+```typescript
+const requiredEnvVars = ['DATABASE_URL', 'NEXTAUTH_SECRET', 'N8N_API_URL'];
+export function validateEnv() {
+  const missing = requiredEnvVars.filter((envVar) => !process.env[envVar]);
+  if (missing.length > 0) {
+    throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+  }
+}
+```
+
+## Async/Promise Handling
+
+### Use `try/catch`
+
+```typescript
+// ❌ Unhandled promise rejection
+const data = await fetchData();
+processData(data);
+
+// ✅ Correct
+try {
+  const data = await fetchData();
+  processData(data);
+} catch (error) {
+  console.error('Failed to fetch data:', error);
+}
+```
+
+### Use `Promise.all` for Parallel Execution
+
+```typescript
+// ❌ Sequential
+const userData = await fetchUserData(userId);
+const postsData = await fetchUserPosts(userId);
+
+// ✅ Parallel
+const [userData, postsData] = await Promise.all([
+  fetchUserData(userId),
+  fetchUserPosts(userId)
+]);
+```
+
+## Automated Checks
+
+Before committing, run:
+```bash
+pnpm typecheck  # TypeScript validation
+pnpm lint       # Linting
+pnpm test       # Tests
+pnpm format     # Code formatting
+```
+
+## Related Documentation
+
+- For error handling guidelines, see [error-handling.mdc](mdc:error-handling.mdc)
+- For database operations, see [data-layer.mdc](mdc:data-layer.mdc)
+- For UI component guidelines, see [design-system.mdc](mdc:design-system.mdc)

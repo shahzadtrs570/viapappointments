@@ -1,0 +1,202 @@
+---
+description: Database schema, API development, and data operations guidelines
+globs:  packages/db/prisma/**/*.{prisma,ts}, packages/api/src/**/*.{ts,tsx}
+---
+# CRITICAL: Schema Implementation Requirements
+
+When implementing database schemas, API routes, or data validation:
+
+1. **ALWAYS CHECK** if `documentation/project/data-schema.md` exists first
+2. If it exists, **STRICTLY ADHERE** to the schemas defined in that file
+3. **DO NOT** create tables, fields, or relationships beyond what is explicitly defined
+4. **DO NOT** infer additional requirements or "fill in gaps" with assumptions
+5. Use **EXACTLY** the structure defined in the Prisma schema section of the document
+6. **ASK FOR CLARIFICATION** if schema implementation details are unclear
+7. When handling implementation requests, **VERIFY** the final result against the schema document
+8. When trying to remove feilds from the prsima schema, check if it is likely to break or disable existing functionality and confirm with the user what they want o do (continue to remove/do something else)
+
+# Data Layer Implementation
+
+This document outlines the guidelines for database schema, API development, and data operations in the NextJet project.
+
+## Database Schema (Prisma)
+
+### Schema Design
+
+- Create clear, well-defined schema models with appropriate relations
+- Important models should include:
+  - User model with role-based permissions
+  - Subscription model for payment tracking
+  - Various content-related models specific to the application needs
+
+### Model Creation Guidelines
+
+- When creating new models:
+  - Use descriptive names in PascalCase
+  - Add meaningful field names in camelCase
+  - Include appropriate @relation directives
+  - Define indexes for frequently queried fields
+  - Set up cascade delete behavior where appropriate
+  - Use enums for fields with fixed value sets
+
+### Database Operations
+
+- Use migrations for all database schema changes:
+  ```bash
+  pnpm db:migrate    # Create a new migration
+  pnpm db:generate   # Generate Prisma client
+  pnpm db:push       # Push schema changes
+  pnpm db:deploy     # Deploy migrations
+  pnpm db:reset      # Reset database
+  ```
+- Optimize database queries to minimize latency
+- When implementing CRUD operations, use Prisma's transaction API for operations that modify multiple tables
+
+## API Development (tRPC)
+
+### API Structure
+
+- Organize routers by feature or resource in `packages/api/src/routers/`
+- Follow the structure:
+  ```
+  routers/
+    ├── [feature]/
+    │   ├── [feature].router.ts
+    │   ├── service/
+    │   │   ├── [feature].service.ts
+    │   │   ├── [feature].input.ts
+    │   ├── repository/
+    │   │   ├── [feature].repository.ts
+  ```
+
+When implementing routers, reporisories etc, I suggest adding a comment detailingn prisma model in use for the route (this will help the ai ensure that the table/model properties are easily available and speed up development)
+
+### Input Validation
+
+- Use Zod schemas for input validation in `[feature].input.ts`
+- Implement proper error handling using TRPCError with appropriate error codes
+
+### Authentication and Authorization
+
+- Use protected procedures for authenticated routes:
+  ```typescript
+  export const protectedExampleRouter = createTRPCRouter({
+    get: protectedProcedure.query(({ ctx }) => {
+      // Protected route logic
+    }),
+  });
+  ```
+- Use public procedures only for truly public endpoints
+- For detailed authentication implementation, see [auth-implementation.mdc](mdc:auth-implementation.mdc)
+
+### API Design Patterns
+
+- Implement middleware for common functionality across procedures
+- Keep business logic in service classes
+- Repository pattern for database operations
+- Use meaningful naming for procedures:
+  - get/getMany/getOne for retrieval operations
+  - create for creation operations
+  - update for update operations
+  - delete for deletion operations
+
+### API Documentation Guidelines
+
+- **JSDoc Comments**: Add comprehensive JSDoc comments for each procedure/endpoint:
+  ```typescript
+  /**
+   * Creates a new user in the system
+   * @description Registers a new user with the provided details and assigns them a role
+   * 
+   * @param {CreateUserInput} input - User creation data
+   * @returns {Promise<User>} Newly created user object
+   * 
+   * @throws {TRPCError} 
+   * - 'CONFLICT' if email already exists
+   * - 'BAD_REQUEST' if validation fails
+   * 
+   * @example
+   * ```ts
+   * const user = await createUser({
+   *   email: "user@example.com",
+   *   name: "John Doe",
+   *   role: "USER"
+   * });
+   * ```
+   */
+  ```
+
+- **Input/Output Type Definitions**: Define and document all input and output types:
+  ```typescript
+  // user.input.ts
+  /**
+   * Schema for creating a new user
+   * @description Validates user creation data with required fields and constraints
+   */
+  export const createUserSchema = z.object({
+    email: z.string().email(),
+    name: z.string().min(2),
+    role: z.enum(['USER', 'ADMIN'])
+  });
+
+  export type CreateUserInput = z.infer<typeof createUserSchema>;
+  ```
+
+- **Authentication Requirements**: Clearly document authentication and permission requirements:
+  ```typescript
+  /**
+   * @requires Authentication
+   * @permission ADMIN
+   */
+  export const adminRouter = createTRPCRouter({
+    // Admin-only operations
+  });
+  ```
+
+- **Repository Documentation**: Document database operations with optimization notes:
+  ```typescript
+  /**
+   * User repository for database operations
+   * @description Handles all user-related database queries with optimized performance
+   */
+  export class UserRepository {
+    /**
+     * Finds a user by email with minimal fields for authentication
+     * @optimization Uses compound index on email
+     */
+    async findByEmail(email: string) {
+      // Implementation
+    }
+  }
+  ```
+
+- **Service Layer Documentation**: Document business logic and rules:
+  ```typescript
+  /**
+   * User service handling business logic
+   * @description Manages user-related operations and business rules
+   */
+  export class UserService {
+    /**
+     * Creates a new user with proper validation and email verification
+     * @businessRule Users must have verified email before accessing premium features
+     */
+    async createUser(input: CreateUserInput) {
+      // Implementation
+    }
+  }
+  ```
+
+- **Error Documentation**: Document all possible error cases with standardized codes and messages
+
+### Error Handling
+
+- Implement robust error handling and validation using Zod schemas
+- Return appropriate status codes and error messages
+- For detailed error handling guidelines, see [error-handling.mdc](mdc:error-handling.mdc)
+
+## Integration with Other Systems
+
+- For integration with authentication system, see [auth-implementation.mdc](mdc:auth-implementation.mdc)
+- For integration with payment system, see [payment-implementation.mdc](mdc:payment-implementation.mdc)
+- For integration with AI features, see [ai-integration.mdc](mdc:ai-integration.mdc)

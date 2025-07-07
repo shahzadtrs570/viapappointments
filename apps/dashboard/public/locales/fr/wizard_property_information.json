@@ -1,0 +1,217 @@
+{
+  "pageTitle": "Détails de la propriété",
+  "pageDescription": "Veuillez fournir des informations sur votre propriété. Cela nous aide à comprendre sa valeur et son adéquation à nos services.",
+  "addressSearchSection": {
+    "label": "Entrez l'adresse de votre propriété",
+    "placeholder": "ex. 123 Rue Principale, Paris, Île-de-France, 75001",
+    "buttonGo": "Valider",
+    "helpText": "Pour de meilleurs résultats, incluez la rue, la ville, le département et le code postal séparés par des virgules",
+    "noAddressEntered": "Veuillez entrer une adresse pour continuer",
+    "manualEntryButton": "Saisir mon adresse manuellement",
+    "searchSubtitle": "Entrez l'adresse de votre propriété"
+  },
+  "manualEntryForm": {
+    "locationTitle": "Localisation de la propriété",
+    "detailsTitle": "Détails de la propriété",
+    "conditionTitle": "État de la propriété",
+    "photosTitle": "Photos de la propriété",
+    "form": {
+      "address": {
+        "label": "Adresse de la propriété",
+        "placeholder": "Entrez l'adresse de votre propriété",
+        "validationRequired": "L'adresse de la propriété est requise"
+      },
+      "postcode": {
+        "label": "Code postal",
+        "validationRequired": "Le code postal est requis"
+      },
+      "townCity": {
+        "label": "Ville",
+        "validationRequired": "La ville est requise"
+      },
+      "county": {
+        "label": "Département",
+        "validationRequired": "Le département est requis"
+      },
+      "propertyType": {
+        "label": "Type de propriété",
+        "validationRequired": "Veuillez sélectionner un type de propriété",
+        "options": {
+          "house": "Maison",
+          "flat": "Appartement",
+          "bungalow": "Bungalow",
+          "other": "Autre"
+        }
+      },
+      "propertyStatus": {
+        "label": "Statut de la propriété",
+        "validationRequired": "Veuillez sélectionner un statut de propriété",
+        "options": {
+          "freehold": "Pleine propriété",
+          "leasehold": "Bail emphytéotique"
+        }
+      },
+      "leaseLength": {
+        "label": "Durée restante du bail (années)"
+      },
+      "estimatedValue": {
+        "label": "Valeur estimée de la propriété (€)",
+        "placeholder": "ex. 250000",
+        "validationRequired": "Veuillez entrer la valeur estimée de la propriété"
+      },
+      "bedrooms": {
+        "label": "Nombre de chambres",
+        "placeholder": "Sélectionnez le nombre de chambres",
+        "validationRequired": "Veuillez sélectionner le nombre de chambres",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5+": "5+"
+        }
+      },
+      "bathrooms": {
+        "label": "Nombre de salles de bain",
+        "placeholder": "Sélectionnez le nombre de salles de bain",
+        "validationRequired": "Veuillez sélectionner le nombre de salles de bain",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3+": "3+"
+        }
+      },
+      "yearBuilt": {
+        "label": "Année de construction",
+        "validationRequired": "Veuillez entrer une année valide"
+      },
+      "propertySize": {
+        "label": "Superficie de la propriété (mètres carrés)",
+        "validationRequired": "Veuillez entrer la superficie de la propriété"
+      },
+      "propertySizeFt": {
+        "label": "Superficie de la propriété (pieds carrés)",
+        "validationRequired": "Veuillez entrer la superficie de la propriété"
+      },
+      "features": {
+        "label": "Caractéristiques de la propriété",
+        "options": {
+          "garden": "Jardin",
+          "garage": "Garage",
+          "parking": "Parking",
+          "centralHeating": "Chauffage central",
+          "doubleGlazing": "Double vitrage",
+          "conservatory": "Véranda"
+        }
+      },
+      "condition": {
+        "label": "État général",
+        "validationRequired": "Veuillez sélectionner l'état de la propriété",
+        "options": {
+          "excellent": "Excellent",
+          "good": "Bon",
+          "fair": "Correct",
+          "needs_renovation": "Nécessite Rénovation"
+        }
+      },
+      "conditionNotes": {
+        "label": "Notes supplémentaires",
+        "placeholder": "Veuillez fournir toute information supplémentaire sur l'état de la propriété..."
+      }
+    }
+  },
+  "photoUploadSection": {
+    "label": "Télécharger des photos",
+    "description": "PNG, JPG, GIF jusqu'à 10MB chacune",
+    "altText": "Propriété ",
+    "title": "Photos de la propriété",
+    "uploadLabel": "Télécharger des photos"
+  },
+  "buttons": {
+    "continueToReview": "Continuer vers Examen et Recommandations",
+    "back": "Retour"
+  },
+  "toasts": {
+    "savedSuccess": "Détails de la propriété enregistrés avec succès",
+    "updatedSuccess": "Détails de la propriété mis à jour avec succès",
+    "formError": "Le type de propriété, le statut, le nombre de chambres, de salles de bain et l'état sont requis",
+    "saveSuccessTitle": "Détails enregistrés",
+    "saveSuccessDescription": "Les détails de votre propriété ont été enregistrés avec succès."
+  },
+  "errors": {
+    "parsingStoredPhotos": "Erreur lors de l'analyse des photos enregistrées :",
+    "submitFailed": "Échec de la soumission du formulaire"
+  },
+  "validation": {
+    "propertyTypeRequired": "Veuillez sélectionner un type de propriété",
+    "propertyStatusRequired": "Veuillez sélectionner un statut de propriété",
+    "leaseLengthInvalid": "Durée de bail invalide",
+    "leaseLengthMax": "Durée de bail maximale dépassée",
+    "bedroomsRequired": "Veuillez sélectionner le nombre de chambres",
+    "bathroomsRequired": "Veuillez sélectionner le nombre de salles de bain",
+    "yearBuiltInvalid": "Veuillez entrer une année valide",
+    "yearBuiltInFuture": "L'année de construction ne peut pas être dans le futur",
+    "yearBuiltTooOld": "L'année de construction est trop ancienne",
+    "propertySizeRequired": "Veuillez entrer la superficie de la propriété",
+    "addressRequired": "L'adresse de la propriété est requise",
+    "postcodeRequired": "Le code postal est requis",
+    "townRequired": "La ville est requise",
+    "countyRequired": "Le département est requis",
+    "conditionRequired": "Veuillez sélectionner l'état de la propriété",
+    "estimatedValueRequired": "Veuillez entrer la valeur estimée de la propriété"
+  },
+  "guideBot": {
+    "title": "Votre guide Srenova",
+    "initialMessage": "Fournir des informations précises sur votre propriété nous aide à vous donner les recommandations les plus pertinentes. Ne vous inquiétez pas si vous ne connaissez pas tous les détails - vous pourrez toujours mettre à jour ces informations ultérieurement.",
+    "suggestedQuestions": {
+      "valuation": "Comment ma propriété sera-t-elle évaluée ?",
+      "nextSteps": "Que se passe-t-il après avoir soumis ces informations ?",
+      "photoRequirement": "Dois-je fournir des photos ?",
+      "propertyValuation": "Comment ma propriété sera-t-elle évaluée ?"
+    },
+    "responses": {
+      "property_valuation": "Nous utilisons une combinaison de vos informations fournies, des données du marché local et des méthodes d'évaluation professionnelles pour évaluer la valeur de votre propriété. Cela nous aide à vous faire l'offre la plus précise et compétitive.",
+      "next_steps": "Après avoir soumis les informations sur votre propriété, notre équipe examinera les détails et pourra programmer une inspection de la propriété si nécessaire. Nous vous fournirons ensuite des recommandations personnalisées et une offre provisoire.",
+      "photo_requirement": "Bien que ce ne soit pas obligatoire, fournir des photos nous aide à mieux comprendre l'état et les caractéristiques de votre propriété. Cela peut conduire à des évaluations plus précises et un traitement plus rapide de votre demande.",
+      "propertyValuation": "Nous utilisons une combinaison de vos informations fournies, des données du marché local et des méthodes d'évaluation professionnelles pour évaluer la valeur de votre propriété. Cela nous aide à vous faire l'offre la plus précise et compétitive.",
+      "nextSteps": "Après avoir soumis les informations sur votre propriété, notre équipe examinera les détails et pourra programmer une inspection de la propriété si nécessaire. Nous vous fournirons ensuite des recommandations personnalisées et une offre provisoire.",
+      "photoRequirement": "Bien que ce ne soit pas obligatoire, fournir des photos nous aide à mieux comprendre l'état et les caractéristiques de votre propriété. Cela peut conduire à des évaluations plus précises et un traitement plus rapide de votre demande."
+    }
+  },
+  "valuationTips": {
+    "title": "Conseils d'évaluation de propriété",
+    "description": "Comprendre la valeur réelle de votre maison peut vous aider à prendre des décisions plus informées. Voici quelques façons de vous donner une image plus claire.",
+    "tip1": {
+      "title": "Ventes récentes",
+      "description": "Vérifiez les ventes récentes de propriétés similaires dans votre région"
+    },
+    "tip2": {
+      "title": "L'état compte",
+      "description": "Notez les rénovations récentes ou les problèmes qui pourraient affecter la valeur"
+    },
+    "tip3": {
+      "title": "Soyez réaliste",
+      "description": "Utilisez les outils d'évaluation en ligne comme guide, mais sachez qu'ils peuvent ne pas être entièrement précis"
+    }
+  },
+  "nextStepsSidebar": {
+   "title": "Prochaines étapes",
+    "step1": "Complétez vos informations de vendeur",
+    "step2": "Fournir les détails de la propriété",
+    "step3": "Recevoir des recommandations personnalisées"
+  },
+  "chatbot": {
+    "title": "Assistant de Chat IA",
+    "initialMessage": "Je peux vous aider à répondre aux questions sur le processus d'information sur la propriété. Que souhaitez-vous savoir ?",
+    "suggestedQuestions": {
+      "property_type": "Quels types de propriétés sont éligibles ?",
+      "property_value": "Comment ma propriété est-elle évaluée ?",
+      "mortgage": "Que se passe-t-il si j'ai un prêt hypothécaire en cours ?",
+      "required_repairs": "Qui est responsable de l'entretien et des réparations de la propriété ?",
+      "renovations": "Puis-je faire des rénovations ou modifier ma maison ?"
+    }
+    
+  }
+}
+
+

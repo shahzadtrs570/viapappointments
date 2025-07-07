@@ -1,0 +1,29 @@
+{
+  "name": "@package/ai_audio",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --ext ts --report-unused-disable-directives",
+    "format": "eslint . --ext ts --fix"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.29.0",
+    "@aws-sdk/client-s3": "^3.674.0",
+    "axios": "^1.7.7",
+    "music-metadata": "^10.5.1",
+    "node-id3": "^0.2.6",
+    "openai": "^4.67.3",
+    "@package/file_storage": "workspace:*"
+  },
+  "devDependencies": {
+    "@package/eslint-config": "workspace:*",
+    "@package/prettier-config": "workspace:*",
+    "@package/typescript-config": "workspace:*"
+  },
+  "peerDependencies": {
+    "openai": "^4.67.3"
+  }
+}

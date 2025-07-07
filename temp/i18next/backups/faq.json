@@ -1,0 +1,22 @@
+{
+  "title": "Questions Fréquentes",
+  "description": "Explorez les questions fréquentes ici, ou discutez avec notre <span>Guide Srenova</span>",
+  "faqs": [
+    {
+      "question": "Comment mon paiement est-il calculé ?",
+      "answer": "Votre paiement est calculé en fonction de plusieurs facteurs, notamment la valeur marchande de votre maison, votre âge, l'état de la propriété et son emplacement. Nous utilisons des modèles actuariels pour garantir des offres équitables qui reflètent la valeur de votre propriété tout en vous offrant des avantages financiers significatifs."
+    },
+    {
+      "question": "Quelles protections juridiques ai-je ?",
+      "answer": "Vos droits sont protégés par une documentation juridique complète. Vous conservez le droit légalement protégé d'occuper votre maison à vie. Tous les accords sont préparés par des avocats spécialisés et définissent clairement toutes les conditions, y compris vos droits d'occupation, vos responsabilités d'entretien et votre calendrier de paiement."
+    },
+    {
+      "question": "Puis-je inclure mon conjoint/partenaire ?",
+      "answer": "Oui, nous encourageons l'inclusion de votre conjoint ou partenaire dans l'accord. Cela garantit que vous avez tous deux des droits d'occupation à vie, quel que soit celui qui décède en premier. Cela offre une sécurité importante et une tranquillité d'esprit pour les couples."
+    },
+    {
+      "question": "Que se passe-t-il si j'ai besoin de déménager ?",
+      "answer": "Si votre situation change et que vous devez déménager, nos accords offrent de la flexibilité. Les options comprennent la location de votre propriété (avec les revenus locatifs qui vous reviennent), la demande d'un arrangement de rachat ou, dans certains cas, le transfert de vos droits d'occupation à une autre propriété de notre portefeuille."
+    }
+  ]
+} 

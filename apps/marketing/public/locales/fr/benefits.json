@@ -1,0 +1,34 @@
+{
+  "title": {
+    "benefits_for": "Avantages pour",
+    "homeowners": "Propriétaires"
+  },
+  "description": "Inspiré du système français traditionnel du viager, notre approche moderne offre une sécurité financière tout en vous permettant de continuer à vivre dans votre maison.",
+  "benefits_list": [
+    {
+      "title": "Restez dans votre maison à vie"
+    },
+    {
+      "title": "Recevez un revenu garanti"
+    },
+    {
+      "title": "Plus de frais d'entretien immobilier"
+    },
+    {
+      "title": "Éliminez les paiements hypothécaires"
+    },
+    {
+      "title": "Sauvegardez votre indépendance"
+    }
+  ],
+  "download_button": "Télécharger le Guide Viager",
+  "testimonial": {
+    "quote": "Paul et Denise pourraient utiliser Srenova pour débloquer le capital immobilisé dans leur propriété, leur donnant la liberté de voyager à travers le monde tout en conservant leur base permanente. Avec Srenova, ils pourraient profiter d'aventures mondiales sans le coût émotionnel de quitter leur maison bien-aimée.",
+    "author": "Paul et Denise, 68 et 67 ans — Bath, Royaume-Uni"
+  },
+  "alt_text": {
+    "checkmark": "coche",
+    "download": "télécharger",
+    "homeowners": "Propriétaires heureux utilisant Srenova"
+  }
+} 

@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  /* Default light theme (blue) */
+  :root {
+    --background: 228 98.65% 98.26%;
+    --background-2: 234, 100%, 10%;
+    --background-3:222, 100%, 97%;
+    --background-gradient: linear-gradient(to right, #FBFCFF, #F1F6FF);
+    --background-gradient-gold: linear-gradient(to right, #CA8A04, #F5B329, #F5B329);
+    --foreground: 228 7.3% 0.52%;
+    --muted: 228 7.3% 91.3%;
+    --muted-foreground: 228 3.65% 41.3%;
+    --popover: 228 31.6% 100%;
+    --popover-foreground: 228 7.3% 0.65%;
+    --card: 228 31.6% 100%;
+    --card-foreground: 228 7.3% 0.65%;
+    --border: 228 12.3% 89.52%;
+    --input: 228 12.3% 89.52%;
+    --primary: 39 91% 56%;
+    --primary-foreground: 39 8.2% 97.2%;
+    --secondary: 168 100% 44%;
+    --secondary-foreground: 168 5.38% 11.3%;
+    --accent: 228 41.61% 89.56%;
+    --accent-foreground: 228 5.38% 11.3%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 228 73% 13%;
+    --success: 142 69% 58%;
+    --radius: 0.5rem;
+  }
+
+  /* Default dark theme (blue) */
+  .dark {
+    --background: 215 53.3% 3.52%;
+    --background-2: 215 50% 5%;
+    --background-3: 215 53.3% 3.52%;
+    --foreground: 215 8.2% 97.2%;
+    --muted: 215 41% 13.2%;
+    --muted-foreground: 215 8.2% 54.4%;
+    --popover: 215 48.6% 5.72%;
+    --popover-foreground: 215 8.2% 97.2%;
+    --card: 215 48.6% 5.72%;
+    --card-foreground: 215 8.2% 97.2%;
+    --border: 215 41% 13.2%;
+    --input: 215 41% 13.2%;
+    --primary: 39 91% 56%;
+    --primary-foreground: 39 8.2% 97.2%;
+    --secondary: 168 100% 44%;
+    --secondary-foreground: 168 8.2% 97.2%;
+    --accent: 215 41% 13.2%;
+    --accent-foreground: 215 8.2% 97.2%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 215 8.2% 97.2%;
+    --ring: 39 91% 56%;
+    --success: 142 69% 58%;
+  }
+
+  
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    @apply text-balance;
+  }
+  p {
+    @apply text-pretty;
+  }
+}
+
+/*
+-----------------------------------------------------------------------------
+Scrollbars
+-----------------------------------------------------------------------------
+*/
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: hsl(var(--muted));
+}
+
+/* Firefox */
+:root {
+  scrollbar-color: hsl(var(--muted-foreground)) hsl(var(--muted)) !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: hsl(var(--muted)) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background-color: hsl(var(--muted-foreground)) !important;
+}
+
+/*
+-----------------------------------------------------------------------------
+Custom Slider
+-----------------------------------------------------------------------------
+*/
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: url(/images/slider.svg) no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-top: -7px;
+}
+
+.custom-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: url(/images/slider.svg) no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
+
+.custom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  outline: none;
+}
+
+.custom-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    #000000 var(--thumb-percent, 0%),
+    #e5e7eb var(--thumb-percent, 0%)
+  );
+  border-radius: 4px;
+}
+
+.custom-slider::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+.custom-slider::-moz-range-progress {
+  background-color: #000000;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent; /* Optional: fully transparent */
+}
+
+.scrollbar-none::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.scrollbar-none::-webkit-scrollbar-track {
+  background: transparent;
+}

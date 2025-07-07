@@ -1,0 +1,297 @@
+{
+  "meta": {
+    "title": "Srenova | Sblocca il valore della tua casa mentre ci vivi",
+    "description": "Srenova aiuta i proprietari di casa ad accedere al valore della loro proprietà mantenendo il diritto di viverci. Opzioni di pagamento flessibili, processo trasparente e supporto professionale."
+  },
+  "hero": {
+    "badge": "Libertà finanziaria per i proprietari di casa",
+    "title": "Dove la pensione incontra il <span class='text-primary'>rinnovamento</span>",
+    "description": "Trasforma la tua casa in sicurezza finanziaria con Srenova. La nostra innovativa soluzione viager ti aiuta ad accedere al valore della tua proprietà mentre rimani nella casa che ami - dandoti libertà finanziaria per la pensione.",
+    "primary_button": "Verifica la tua idoneità",
+    "secondary_button": "Scopri come funziona",
+    "feature_1": "Resta nella tua casa",
+    "feature_2": "Reddito garantito a vita",
+    "feature_3": "Supporto affidabile",
+    "alt_text": "Proprietario senior felice che gode della libertà finanziaria"
+  },
+  "trust_indicators": {
+    "title": "Perché fidarsi di Srenova",
+    "items": [
+      {
+        "title": "Regolamentato dalla FCA"
+      },
+      {
+        "title": "Membro del Consiglio per il rilascio di capitale"
+      },
+      {
+        "title": "Valutato 5 stelle su Trustpilot"
+      }
+    ]
+  },
+  "what_is": {
+    "title": "Cos'è Srenova?",
+    "description": "Srenova è pioniere nelle transazioni viager in Europa, aiutando i proprietari di casa over 55 ad accedere al valore della loro proprietà continuando a viverci. Il nostro approccio innovativo combina il concetto tradizionale del viager con il supporto istituzionale e l'efficienza digitale, offrendo ai proprietari un reddito garantito a vita e agli investitori rendimenti stabili garantiti dal settore immobiliare."
+  },
+  "explore_options": {
+    "title": "Esplora le tue opzioni",
+    "calculator": {
+      "title": "Calcolatore finanziario",
+      "description": "Stima quanto potresti ricevere dalla tua proprietà con il nostro calcolatore facile da usare.",
+      "button": "Prova il calcolatore"
+    },
+    "resources": {
+      "title": "Risorse di apprendimento",
+      "description": "Accedi a guide e video completi per capire come funziona Srenova.",
+      "button": "Visualizza risorse"
+    }
+  },
+  "info_section": {
+    "title": "Come funziona Srenova",
+    "step_1_title": "Valutazione della proprietà",
+    "step_1_description": "Valuteremo la tua proprietà e discuteremo i tuoi obiettivi finanziari per comprendere la tua situazione.",
+    "step_2_title": "Opzioni personalizzate",
+    "step_2_description": "Ricevi soluzioni personalizzate basate sul valore della tua proprietà e sulle tue esigenze personali.",
+    "step_3_title": "Accordo semplice",
+    "step_3_description": "Seleziona l'opzione che funziona meglio per te con termini e documentazione trasparenti.",
+    "step_4_title": "Accedi al tuo valore",
+    "step_4_description": "Ricevi i tuoi fondi continuando a vivere nella tua casa con sicurezza e tranquillità."
+  },
+  "pain_section": {
+    "title": "Stai affrontando queste sfide immobiliari?",
+    "description": "Molti proprietari di casa hanno bisogno di flessibilità finanziaria senza voler lasciare le loro amate case. Srenova offre la soluzione a queste sfide comuni.",
+    "challenge_1_title": "Ricco di proprietà, povero di liquidità",
+    "challenge_1_description": "La tua casa rappresenta un valore significativo, ma non puoi accedere a questa ricchezza senza vendere e trasferirti altrove.",
+    "challenge_2_title": "Pressione finanziaria",
+    "challenge_2_description": "L'aumento del costo della vita e le spese impreviste creano stress quando il reddito pensionistico non è sufficiente per le tue esigenze.",
+    "challenge_3_title": "Opzioni limitate",
+    "challenge_3_description": "Le opzioni tradizionali di rilascio di capitale possono essere complesse, costose e non offrono la flessibilità necessaria per la tua situazione unica."
+  },
+  "social_proof": {
+    "title": "Non fidarti solo della nostra parola",
+    "subtitle": "Ecco cosa dicono i nostri clienti della loro esperienza con Srenova",
+    "testimonial_1_name": "Margherita G.",
+    "testimonial_1_location": "Florida",
+    "testimonial_1_text": "Srenova mi ha permesso di rimanere nella casa che amo mentre accedevo al capitale di cui avevo bisogno per la mia pensione. Il processo è stato semplice e il loro team mi ha supportato in ogni fase.",
+    "testimonial_2_name": "Roberto e Susanna T.",
+    "testimonial_2_location": "Arizona",
+    "testimonial_2_text": "Stavamo cercando un modo per contribuire a pagare i costi sanitari senza trasferirci dalla nostra casa di famiglia. Srenova ci ha fornito la soluzione perfetta e un servizio eccezionale.",
+    "testimonial_3_name": "Guglielmo P.",
+    "testimonial_3_location": "California",
+    "testimonial_3_text": "Dopo aver ricercato molte opzioni, Srenova si è distinta per il suo approccio trasparente e le soluzioni flessibili. Sono riuscito a sbloccare il valore della mia casa mantenendo la mia indipendenza."
+  },
+  "features": {
+    "title": "Perché scegliere Srenova",
+    "subtitle": "Il nostro approccio mette i proprietari di casa al primo posto con soluzioni trasparenti e flessibili",
+    "feature_1_title": "Processo trasparente",
+    "feature_1_description": "Documentazione chiara e termini diretti senza costi nascosti o strutture complicate.",
+    "feature_2_title": "Soluzioni su misura",
+    "feature_2_description": "Opzioni personalizzate basate sulla tua proprietà unica, situazione finanziaria e obiettivi personali.",
+    "feature_3_title": "Supporto professionale",
+    "feature_3_description": "Consulenti dedicati ti guidano attraverso ogni fase del processo con competenza e cura.",
+    "feature_4_title": "Accesso rapido ai fondi",
+    "feature_4_description": "Un processo efficiente ti permette di accedere al valore della tua proprietà quando ne hai più bisogno.",
+    "feature_5_title": "Proprietà mantenuta",
+    "feature_5_description": "Soluzioni che rispettano il tuo legame con la tua casa e la tua comunità.",
+    "feature_6_title": "Opzioni di pagamento flessibili",
+    "feature_6_description": "Varie strutture disponibili per adattarsi alla tua situazione finanziaria e alle tue preferenze.",
+    "group_one": {
+      "stay_home": {
+        "title": "Resta nella tua casa",
+        "text": "Continua a vivere nella tua proprietà per tutto il tempo che desideri accedendo al suo valore. Il nostro quadro giuridico garantisce che i tuoi diritti di occupazione siano completamente protetti, offrendoti sia libertà finanziaria che tranquillità."
+      },
+      "no_repayments": {
+        "title": "Nessun pagamento mensile",
+        "text": "A differenza dei prestiti tradizionali, non ci sono pagamenti mensili di cui preoccuparsi. Il prestito viene rimborsato solo quando scegli di lasciare la tua casa, offrendoti completa flessibilità finanziaria durante la pensione."
+      },
+      "fca": {
+        "title": "Regolamentato dalla FCA",
+        "text": "In quanto fornitore completamente regolamentato dalla Financial Conduct Authority e membro dell'Equity Release Council, aderiamo a standard rigorosi che garantiscono che i tuoi interessi siano sempre protetti."
+      },
+      "guidance": {
+        "title": "Consulenza esperta",
+        "text": "Il nostro team di consulenti finanziari e specialisti immobiliari è qui per guidarti in ogni fase. Ottieni consigli personalizzati e supporto per prendere decisioni informate sul capitale della tua proprietà."
+      }
+    },
+    "group_two": {
+      "how_works": {
+        "title": "Come funziona Srenova?",
+        "text": "Srenova ti permette di liberare capitale dalla tua casa continuando a viverci. Puoi ricevere un pagamento forfettario e/o un reddito mensile regolare in cambio di una quota del valore futuro della tua proprietà."
+      },
+      "eligibility": {
+        "title": "Sono idoneo per Srenova?",
+        "text": "Per essere idoneo, generalmente devi avere più di 55 anni, possedere la tua proprietà (o avere un piccolo mutuo), e la proprietà deve essere la tua residenza principale. Fai il nostro rapido controllo di idoneità per vedere se sei qualificato."
+      },
+      "receive": {
+        "title": "Quanto potrei ricevere?",
+        "text": "L'importo che puoi ricevere dipende da fattori come la tua età, il valore della proprietà e la tua salute. Usa il nostro calcolatore per ottenere una stima, o parla con un consulente per una valutazione personalizzata."
+      },
+      "maintenance": {
+        "title": "Manutenzione della proprietà",
+        "text": "Ti aiutiamo a garantire che la tua proprietà rimanga ben mantenuta, preservando il suo valore e fornendoti un ambiente di vita confortevole per tutta la durata dell'accordo."
+      }
+    }
+  },
+  "faq": {
+    "title": "Domande frequenti",
+    "subtitle": "Ottieni risposte alle domande comuni sulle nostre soluzioni di accesso al valore immobiliare",
+    "questions": [
+      {
+        "question": "In che modo Srenova differisce da una vendita immobiliare tradizionale?",
+        "answer": "A differenza di una vendita tradizionale dove devi lasciare la tua proprietà, Srenova ti permette di accedere al valore della tua casa continuando a viverci. Mantieni i diritti di occupazione mentre ricevi fondi che possono essere utilizzati per la pensione, l'assistenza sanitaria o altre necessità finanziarie."
+      },
+      {
+        "question": "Quali opzioni di pagamento sono disponibili con Srenova?",
+        "answer": "Srenova offre strutture di pagamento flessibili che includono pagamenti forfettari, rate mensili o una combinazione di entrambi. I nostri consulenti finanziari lavorano con te per creare una soluzione personalizzata adatta alle tue esigenze e circostanze specifiche."
+      },
+      {
+        "question": "Chi è idoneo per le soluzioni Srenova?",
+        "answer": "L'idoneità richiede tipicamente che i proprietari di casa abbiano almeno 55 anni con un capitale significativo nella loro proprietà. La casa deve soddisfare determinati criteri di valutazione, e i richiedenti sono sottoposti a una valutazione finanziaria per garantire che la soluzione sia appropriata per la loro situazione."
+      },
+      {
+        "question": "Cosa succede alla mia proprietà dopo la mia morte?",
+        "answer": "I tuoi eredi avranno opzioni basate sul tuo accordo specifico. In genere, possono riacquistare la proprietà al valore di mercato, consentire all'investitore di vendere la proprietà (con qualsiasi valore in eccesso dopo l'adempimento dell'accordo restituito alla tua eredità), o facilitare la transizione secondo i termini del tuo contratto."
+      },
+      {
+        "question": "Ci sono costi continuativi o responsabilità di manutenzione?",
+        "answer": "Mentre continui a vivere nella casa, generalmente rimani responsabile dei costi correnti come le tasse sulla proprietà, l'assicurazione e la manutenzione. Queste responsabilità sono chiaramente delineate nel tuo accordo, e il nostro team può aiutarti a comprendere e pianificare queste spese."
+      }
+    ]
+  },
+  "keyBenefits": {
+    "sectionTitle": "Vantaggi chiave",
+    "benefits": [
+      {
+        "title": "Rimani a casa tua",
+        "description": "Continua a vivere nella tua proprietà per tutto il tempo che desideri"
+      },
+      {
+        "title": "Opzioni di pagamento flessibili",
+        "description": "Scegli tra somma forfettaria, reddito mensile o entrambi"
+      },
+      {
+        "title": "Nessun rimborso mensile",
+        "description": "Il prestito viene rimborsato quando lasci la tua casa"
+      }
+    ]
+  },
+  "lead_capture": {
+    "title": "Pronto a esplorare le tue opzioni con Srenova?",
+    "subtitle": "Raccontaci della tua proprietà e delle tue esigenze finanziarie, e il nostro team creerà una soluzione personalizzata adatta alla tua situazione.",
+    "form_name_label": "Nome completo",
+    "form_name_placeholder": "Inserisci il tuo nome completo",
+    "form_email_label": "Indirizzo email",
+    "form_email_placeholder": "Inserisci il tuo indirizzo email",
+    "form_phone_label": "Numero di telefono",
+    "form_phone_placeholder": "Inserisci il tuo numero di telefono",
+    "form_property_label": "Valore della proprietà (stimato)",
+    "form_property_placeholder": "Valore approssimativo della tua proprietà",
+    "form_submit": "Ottieni la tua valutazione gratuita",
+    "form_disclaimer": "Inviando questo modulo, accetti la nostra politica sulla privacy e i termini di servizio. Non condivideremo mai le tue informazioni con terze parti.",
+    "form_company_label": "Azienda",
+    "form_company_placeholder": "Inserisci il nome della tua azienda",
+    "form_interest_label": "Interesse",
+    "form_interest_placeholder": "Seleziona il tuo interesse",
+    "form_message_label": "Messaggio",
+    "form_message_placeholder": "Il tuo messaggio",
+    "optional": "opzionale",
+    "submitting": "Invio in corso...",
+    "success_title": "Successo",
+    "success_message": "Grazie per il tuo interesse! Ti contatteremo presto.",
+    "error_title": "Errore",
+    "error_message": "Invio delle informazioni non riuscito. Riprova per favore.",
+    "validation": {
+      "name_required": "Il nome è obbligatorio",
+      "email_required": "L'email è obbligatoria",
+      "email_valid": "Inserisci un indirizzo email valido",
+      "interest_required": "L'interesse è obbligatorio"
+    }
+  },
+  "cta": {
+    "discover_button": "Scopri le tue opzioni",
+    "cta_first_text": "Scopri come Srenova può aiutarti ad accedere al valore della tua casa mantenendo il diritto di viverci. Il nostro processo trasparente offre tranquillità e flessibilità finanziaria.",
+    "cta_first_title": "Sblocca il valore della tua casa senza trasferirti",
+    "get_started_button": "Inizia oggi",
+    "cta_second_text": "Unisciti a migliaia di proprietari di casa che hanno trovato la libertà finanziaria con Srenova. Il nostro team è pronto ad aiutarti ad accedere al valore della tua casa mentre continui a viverci.",
+    "cta_second_title": "Prendi il controllo del tuo futuro finanziario"
+  },
+  "guide_bot": {
+    "title": "La tua guida Srenova",
+    "welcome_message": "Benvenuto in Srenova! Sono la tua guida dedicata per comprendere le nostre soluzioni immobiliari viager. Sono qui per spiegarti come puoi sbloccare il valore della tua proprietà continuando a viverci.\n\nPosso aiutarti a capire:\n• Come funziona il viager\n• I vantaggi e le garanzie\n• Il nostro processo semplice\n• La tua idoneità\n• Le opzioni di pagamento\n\nNon esitare a fare domande o cliccare su uno degli argomenti suggeriti qui sotto.",
+    "input_placeholder": "Fai una domanda...",
+    "follow_up_prompt": "Potresti anche voler sapere:",
+    "generic_response": "Grazie per la tua domanda. Lascia che ti aiuti. Per fornire le informazioni più accurate, potresti essere più specifico su cosa vorresti sapere?",
+    "suggested_questions": [
+      {
+        "id": "what-is",
+        "text": "Cos'è un viager?",
+        "category": "basics",
+        "followUp": ["process", "benefits", "right-for-me"]
+      },
+      {
+        "id": "process",
+        "text": "Come funziona il processo?",
+        "category": "process",
+        "followUp": ["timeline", "guarantees", "right-for-me"]
+      },
+      {
+        "id": "right-for-me",
+        "text": "Il viager fa per me?",
+        "category": "eligibility",
+        "followUp": ["benefits", "guarantees", "process"]
+      },
+      {
+        "id": "benefits",
+        "text": "Quali sono i vantaggi di scegliere Srenova?",
+        "category": "benefits",
+        "followUp": ["guarantees", "process", "timeline"]
+      },
+      {
+        "id": "guarantees",
+        "text": "Quali garanzie ho?",
+        "category": "security",
+        "followUp": ["process", "timeline", "right-for-me"]
+      },
+      {
+        "id": "timeline",
+        "text": "Quanto tempo richiede il processo?",
+        "category": "process",
+        "followUp": ["process", "guarantees", "right-for-me"]
+      }
+    ],
+    "bot_responses": {
+      "what-is": "Un viager è una transazione immobiliare unica che ti permette di sbloccare il valore della tua casa continuando a viverci. Ricevi un pagamento iniziale forfettario (bouquet) e pagamenti mensili regolari (rendita) a vita. Questo accordo offre sicurezza finanziaria mantenendo il tuo diritto di rimanere nella tua casa.",
+      "process": "Il processo viager Srenova è semplice e sicuro:\n\n1. Consultazione iniziale: Valutiamo la tua proprietà e discutiamo le tue esigenze\n2. Valutazione: Valutazione professionale del valore di mercato della tua proprietà\n3. Creazione dell'offerta: Calcoliamo i tuoi pagamenti bouquet e rendita\n4. Revisione legale: I nostri esperti gestiscono tutta la documentazione legale\n5. Atto notarile: Completamento ufficiale con un notaio\n\nIl nostro team ti guida in ogni fase, assicurandoci che tu sia pienamente informato e a tuo agio.",
+      "right-for-me": "Un viager potrebbe essere ideale per te se:\n\n• Possiedi la tua proprietà\n• Hai 55 anni o più\n• Vuoi mantenere l'indipendenza nella tua casa\n• Hai bisogno di un reddito regolare aggiuntivo\n• Vuoi ottimizzare la tua pianificazione patrimoniale\n\nPossiamo fornire una valutazione personalizzata della tua situazione per aiutarti a prendere una decisione informata.",
+      "benefits": "Scegliere Srenova offre numerosi vantaggi:\n\n• Diritto garantito a vita di rimanere nella tua casa\n• Pagamento forfettario immediato più reddito mensile\n• Nessuna spesa di manutenzione o tasse sulla proprietà\n• Supporto professionale durante tutto il processo\n• Regolamentato dalla FCA e dall'Equity Release Council\n• Trasparenza totale e nessun costo nascosto",
+      "guarantees": "In Srenova, forniamo solide garanzie:\n\n• Protezione legale dei tuoi diritti di occupazione\n• Pagamenti mensili garantiti a vita\n• Conformità alla regolamentazione FCA\n• Adesione all'Equity Release Council\n• Assicurazione di responsabilità professionale\n• Documentazione e contratti trasparenti",
+      "timeline": "Il tempo tipico dalla consultazione iniziale al completamento è di 8-12 settimane. Questo include:\n\n• Consultazione iniziale (1-2 settimane)\n• Valutazione della proprietà (1 settimana)\n• Preparazione dell'offerta (1 settimana)\n• Elaborazione legale (4-6 settimane)\n• Completamento notarile (2 settimane)\n\nGestiamo l'intero processo per garantire una progressione fluida."
+    }
+  },
+  "features_section": {
+    "title": "Come funziona Srenova",
+    "description": "La nostra piattaforma offre un modo semplice per accedere al valore della tua proprietà mantenendo il diritto di viverci. Scopri le nostre caratteristiche principali qui sotto."
+  },
+  "newsletter": {
+    "title": "Iscriviti",
+    "description": "Rimani aggiornato con le nostre ultime novità e lanci di prodotti",
+    "buttonText": "Iscriviti",
+    "successMessage": "Grazie per l'iscrizione! Controlla la tua email per confermare l'iscrizione."
+  },
+  "landing.cta_second_title": "Prendi il controllo del tuo futuro finanziario",
+  "newsletter.title": "Iscriviti",
+  "newsletter.description": "Rimani aggiornato con le nostre ultime novità e lanci di prodotti",
+  "newsletter.buttonText": "Iscriviti",
+  "newsletter.successMessage": "Grazie per l'iscrizione! Controlla la tua email per confermare l'iscrizione.",
+  "chatbot": {
+    "title": "Assistente chat AI",
+    "initial_message": "Ciao! Sono il tuo assistente FAQ. Posso aiutarti a rispondere alle domande sui nostri prodotti e servizi. Cosa vorresti sapere?",
+    "questions": {
+      "what_is": "Cos'è un viager?",
+      "process": "Come funziona il processo?",
+      "right_for_me": "Il viager fa per me?",
+      "benefits": "Quali sono i vantaggi?",
+      "guarantees": "Quali garanzie ho?",
+      "timeline": "Quanto tempo richiede il processo?"
+    }
+  }
+}

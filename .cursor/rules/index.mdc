@@ -1,0 +1,62 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Index of all project rules and guidelines with improved organization
+globs: alwaysApply: false
+---
+# NextJet SaaS Template Documentation Index
+
+This document serves as a central navigation hub for all project rules and guidelines, organized by category for easier reference.
+
+## 1. Core Architecture and Structure
+
+| Rule File | Description | Primary Use Case |
+|-----|----|---|
+| [core-architecture.mdc](mdc:core-architecture.mdc) | Monorepo structure, project organization, structure documentation, and core principles | Understanding overall project architecture and maintaining structure documentation |
+| [nextjs-patterns.mdc](mdc:nextjs-patterns.mdc) | Next.js App Router implementation and best practices | Next.js routing and page structure |
+
+## 2. Feature-specific Implementation Guides
+
+| Rule File | Description | Primary Use Case |
+|-----|----|---|
+| [auth-implementation.mdc](mdc:auth-implementation.mdc) | Authentication and authorization implementation | User authentication flows |
+| [payment-implementation.mdc](mdc:payment-implementation.mdc) | Payment provider integration and subscription management | Subscription and payment features |
+| [email-system.mdc](mdc:email-system.mdc) | Email template development and sending | Email notification system |
+| [ai-integration.mdc](mdc:ai-integration.mdc) | AI features and services integration | AI-powered functionality |
+| [data-layer.mdc](mdc:data-layer.mdc) | Database schema, API development, and data operations | Database and API implementation |
+| [api-documentation.mdc](mdc:api-documentation.mdc) | Guidelines for documenting APIs | API documentation standards |
+
+## 3. Development Standards and Practices
+
+| Rule File | Description | Primary Use Case |
+|-----|----|---|
+| [coding-standards.mdc](mdc:coding-standards.mdc) | Code standards, linting rules, and import conventions | Day-to-day coding practices |
+| [error-handling.mdc](mdc:error-handling.mdc) | Error analysis and resolution approach | Debugging and error handling |
+
+## 4. UI/UX and Design System
+
+| Rule File | Description | Primary Use Case |
+|-----|----|---|
+| [design-system.mdc](mdc:design-system.mdc) | UI component guidelines and design principles | Frontend component development |
+| [dashboard-ui.mdc](mdc:dashboard-ui.mdc) | SaaS dashboard UI implementation | Dashboard interface development |
+| [marketing-ui.mdc](mdc:marketing-ui.mdc) | Marketing website UI implementation | Public-facing site development |
+
+## Getting Started for New Developers
+
+New team members should start by reviewing these files in order:
+
+1. **core-architecture.mdc** - For overall project structure and principles
+2. **coding-standards.mdc** - For coding conventions and practices
+3. **design-system.mdc** - For UI component development guidelines
+4. **api-documentation.mdc** - For API documentation standards
+5. **The specific feature guides** relevant to your assigned tasks
+
+## How to Use These Rules
+
+- Rules are automatically applied in Cursor when working with files that match the specified glob patterns
+- Reference these documents when planning new features or reviewing code
+- When in doubt about implementation details, consult the relevant rule file
+- Cross-references between files help navigate related topics

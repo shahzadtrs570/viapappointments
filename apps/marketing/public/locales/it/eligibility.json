@@ -1,0 +1,409 @@
+{
+  "alert": {
+    "selectOption": "Seleziona un'opzione per continuare."
+  },
+  "header": {
+    "title": "Verifica Idoneità Srenova",
+    "description": "Scopriamo se le nostre soluzioni immobiliari fanno al caso tuo. Rispondi a qualche semplice domanda per determinare la tua idoneità.",
+    "button": "Parla con un consulente"
+  },
+  "navigation": {
+    "title": "Verifica idoneità"
+  },
+  "main": {
+    "title": "Verifica la tua idoneità",
+    "progress": "Passo {{current}} di {{total}}"
+  },
+  "progress": {
+    "question": "Domanda {{current}} di {{total}}",
+    "percent": "{{percent}}% Completato"
+  },
+  "section": {
+    "eligibilityAndAge": "Idoneità ed Età",
+    "familyInvolvement": "Coinvolgimento familiare",
+    "propertyDetails": "Dettagli proprietà",
+    "financialSituation": "Situazione finanziaria",
+    "adviceAndConsent": "Consulenza e Consenso"
+  },
+  "button": {
+    "back": "Indietro",
+    "next": "Avanti",
+    "finish": "Termina e vedi i risultati",
+    "startOver": "Ricomincia",
+    "continue": "Continua",
+    "stayInTouch": "Rimani in contatto",
+    "goBack": "Torna indietro",
+    "continueAnyway": "Continua comunque",
+    "cancel": "Annulla"
+  },
+  "feedback": {
+    "eligibleTitle": "Potresti essere idoneo",
+    "ineligibleTitle": "Grazie per il tuo interesse",
+    "eligible": "In base alle tue risposte, Srenova potrebbe essere perfetta per te. Nel prossimo passaggio ti chiederemo il tuo nome e indirizzo email, e se desideri iniziare con una richiesta per vendere la tua casa nel modo Srenova. Hai il controllo del processo e nulla è vincolante in questa fase — è un'opportunità per conoscerci meglio e per noi di conoscere te e la tua casa.",
+    "ineligible": "In base alle tue risposte, Srenova potrebbe non essere adatta a te in questo momento. Ma rimaniamo in contatto perché potremmo essere perfetti per te in futuro.",
+    "ineligibleConfirmed": "Grazie per la conferma. Sebbene Srenova potrebbe non essere adatta ora, sentiti libero di rimanere in contatto per aggiornamenti futuri o per discutere potenziali alternative."
+  },
+  "contactForm": {
+    "title": "Rimaniamo in contatto",
+    "description": "Lascia i tuoi dati di contatto e ti terremo aggiornato sui nostri servizi.",
+    "success": {
+      "title": "Grazie!",
+      "description": "Abbiamo ricevuto le tue informazioni e ti contatteremo presto.",
+      "message": "Ti contatteremo presto con aggiornamenti e informazioni che potrebbero essere utili per la tua situazione."
+    },
+    "error": {
+      "title": "Invio fallito",
+      "message": "Spiacenti, si è verificato un errore durante l'invio delle informazioni. Riprova."
+    },
+    "label": {
+      "name": "Nome completo",
+      "email": "Indirizzo email",
+      "phone": "Numero di telefono (Opzionale)",
+      "message": "Messaggio (Opzionale)"
+    },
+    "placeholder": {
+      "name": "Inserisci il tuo nome completo",
+      "email": "tu@esempio.com",
+      "phone": "Inserisci il tuo numero di telefono",
+      "message": "Raccontaci qualcosa in più sulla tua situazione o domande specifiche..."
+    },
+    "note": {
+      "message": "Fornire maggiori dettagli può aiutarci a comprendere meglio le tue esigenze."
+    },
+    "privacyNote": "Inviando questo modulo, accetti di ricevere aggiornamenti sui nostri servizi. Rispettiamo la tua privacy e non condivideremo le tue informazioni con terze parti.",
+    "button": {
+      "submitting": "Invio in corso...",
+      "submit": "Invia informazioni",
+      "retrying": "Tentativo in corso...",
+      "retry": "Riprova invio"
+    }
+  },
+  "confirmDialog": {
+    "title": "Informazioni importanti sull'idoneità",
+    "description": "In base alla tua selezione, potresti non essere idoneo per i nostri servizi.",
+    "content": {
+      "country": "I nostri servizi sono attualmente disponibili completamente solo nel Regno Unito, con servizi limitati in alcuni paesi dell'UE.",
+      "ownership": "I nostri servizi richiedono la proprietà dell'immobile poiché sono specificamente progettati per i proprietari di casa.",
+      "ageUnder60": "I nostri servizi sono specificamente progettati per persone di età pari o superiore a 60 anni.",
+      "age75plus": "I nostri servizi standard sono generalmente progettati per persone di età compresa tra 60 e 74 anni. Tuttavia, disponiamo di opzioni specializzate per gli anziani nella tua fascia di età che i nostri consulenti possono discutere con te.",
+      "spouseAge": "Per le proprietà detenute congiuntamente, i nostri servizi standard richiedono generalmente che entrambi i proprietari abbiano 60 anni o più. Tuttavia, potremmo avere opzioni alternative che i nostri consulenti possono discutere con te.",
+      "inheritanceTopPriority": "Le nostre soluzioni standard potrebbero influire sul valore di eredità della tua proprietà. Se preservare l'eredità è la tua massima priorità, potresti voler esplorare opzioni alternative. Possiamo comunque discutere soluzioni specializzate che potrebbero allinearsi meglio con i tuoi obiettivi di eredità.",
+      "discussOptionsNo": "Comprendere le tue opzioni è una parte cruciale per prendere una decisione informata. Senza discutere le tue opzioni con un consulente, non possiamo garantire che avrai tutte le informazioni necessarie per fare la scelta migliore per la tua situazione."
+    }
+  },
+  "sidebar": {
+    "criteria": {
+      "title": "Criteri di idoneità"
+    },
+    "privacy": {
+      "title": "La tua Privacy",
+      "description": "Le tue risposte vengono memorizzate localmente nel tuo browser e non verranno condivise senza il tuo permesso. Prendiamo sul serio la tua privacy.",
+      "secureNote": "I tuoi dati sono sicuri e crittografati"
+    },
+    "help": {
+      "title": "Serve aiuto?",
+      "description": "I nostri consulenti sono pronti ad assisterti per qualsiasi domanda.",
+      "button": "Chiama un consulente"
+    },
+    "chatbot": {
+      "title": "Assistente Chat IA",
+      "welcome": "Ciao! Sono qui per aiutarti a rispondere alle tue domande sul nostro programma viager. Cosa vorresti sapere?",
+      "eligibility": {
+        "minimum_age": "Quali sono i requisiti minimi di età?",
+        "property_types": "Quali tipi di proprietà sono idonei?",
+        "valuation": "Come viene valutata la mia proprietà?",
+        "mortgage": "Cosa succede se ho un mutuo in corso?",
+        "viager_model": "Cos'è il programma viager di Srenova?",
+        "process_time": "Quanto tempo richiede il processo?"
+      },
+      "family": {
+        "inheritance": "Come influisce sull'eredità per i miei figli?",
+        "family_receive": "La mia famiglia riceverà qualcosa dalla vendita in futuro?",
+        "family_involvement": "I membri della famiglia possono essere coinvolti nel processo?",
+        "family_siblings": "Possono essere elencati più fratelli come contatti?",
+        "spouse_dies": "Cosa succede se un coniuge/partner muore?",
+        "divorce": "Cosa succede in caso di separazione o divorzio?"
+      },
+      "advice": {
+        "tax_implications": "Quali implicazioni fiscali dovrei considerare?",
+        "benefits_eligibility": "Questo influenzerà la mia idoneità ai benefici basati sul reddito?",
+        "legal_protections": "Quali protezioni legali ho?",
+        "business_protection": "Cosa succede se Srenova o l'acquirente fallisce?",
+        "buyer_defaults": "Cosa succede se l'acquirente non rispetta i pagamenti?",
+        "support_offered": "Quale supporto offre Srenova durante il processo?"
+      }
+    }
+  },
+  "criteria": {
+    "age": {
+      "title": "Età pari o superiore a 65 anni",
+      "description": "Devi avere almeno 65 anni per qualificarti"
+    },
+    "ownership": {
+      "title": "Proprietà dell'immobile",
+      "description": "Dovresti possedere la tua proprietà o avere un piccolo mutuo"
+    },
+    "residence": {
+      "title": "Residenza principale",
+      "description": "La proprietà deve essere la tua residenza principale"
+    }
+  },
+  "country": {
+    "question": "In quale paese ti trovi?",
+    "description": "I nostri servizi sono attualmente disponibili in regioni selezionate. La tua posizione ci aiuta a determinare se possiamo assisterti.",
+    "options": {
+      "uk": {
+        "label": "Regno Unito",
+        "description": "Servizio completo disponibile"
+      },
+      "eu": {
+        "label": "Unione Europea",
+        "description": "Servizi selezionati disponibili in alcuni paesi"
+      },
+      "other": {
+        "label": "Altro",
+        "description": "Disponibilità limitata"
+      }
+    }
+  },
+  "propertyOwnership": {
+    "question": "Sei proprietario dell'immobile?",
+    "description": "La proprietà del tuo immobile è un requisito fondamentale per i nostri servizi.",
+    "options": {
+      "yes": {
+        "label": "Sì",
+        "description": "Possiedo l'immobile a titolo definitivo o ho un piccolo mutuo"
+      },
+      "no": {
+        "label": "No",
+        "description": "Non possiedo la mia attuale residenza"
+      }
+    }
+  },
+  "age": {
+    "question": "Quanti anni hai?",
+    "description": "L'età è un fattore importante per determinare l'idoneità alle soluzioni finanziarie basate sulla proprietà.",
+    "options": {
+      "under60": {
+        "label": "Meno di 60 anni",
+        "description": "Non ancora idoneo per i servizi legati all'età"
+      },
+      "60to64": {
+        "label": "60-64 anni",
+        "description": "Soddisfa i requisiti minimi di età"
+      },
+      "65to74": {
+        "label": "65-74 anni",
+        "description": "Entro l'intervallo di età ideale"
+      },
+      "over75": {
+        "label": "75+ anni",
+        "description": "Qualifica senior"
+      }
+    }
+  },
+  "jointOwnership": {
+    "question": "La proprietà è detenuta congiuntamente con un coniuge o partner?",
+    "description": "La comproprietà influisce sul modo in cui strutturiamo le nostre soluzioni a beneficio di tutti i proprietari.",
+    "options": {
+      "yes": {
+        "label": "Sì",
+        "description": "Condivido la proprietà con il mio coniuge/partner"
+      },
+      "no": {
+        "label": "No",
+        "description": "Sono l'unico proprietario"
+      }
+    }
+  },
+  "spouseAge": {
+    "question": "Anche il tuo coniuge o partner ha più di 60 anni?",
+    "description": "Entrambi i proprietari devono generalmente soddisfare i requisiti di età per le proprietà detenute congiuntamente.",
+    "options": {
+      "yes": {
+        "label": "Sì",
+        "description": "Il mio coniuge/partner ha 60 anni o più"
+      },
+      "no": {
+        "label": "No",
+        "description": "Il mio coniuge/partner ha meno di 60 anni"
+      }
+    }
+  },
+  "childrenHeirs": {
+    "question": "Hai figli o eredi che potrebbero aspettarsi di ereditare la tua casa o il tuo patrimonio?",
+    "description": "Comprendere la tua situazione familiare ci aiuta a consigliarti l'approccio migliore per le tue circostanze.",
+    "options": {
+      "yes": {
+        "label": "Sì",
+        "description": "Ho figli o altri eredi designati"
+      },
+      "no": {
+        "label": "No",
+        "description": "Non ho figli o eredi designati"
+      }
+    }
+  },
+  "inheritanceImportance": {
+    "question": "Quanto è importante per te lasciare questa proprietà o il suo valore alla tua famiglia come eredità?",
+    "description": "Questo ci aiuta a comprendere le tue priorità e a raccomandare le opzioni appropriate.",
+    "options": {
+      "topPriority": {
+        "label": "Sì, l'eredità è una priorità assoluta",
+        "description": "Preservare il valore dell'eredità è molto importante per me"
+      },
+      "notPriority": {
+        "label": "No, l'eredità non è una priorità assoluta",
+        "description": "Sono più concentrato sui miei bisogni finanziari attuali"
+      },
+      "notSure": {
+        "label": "Non sono sicuro",
+        "description": "Sono indeciso o ho bisogno di maggiori informazioni"
+      }
+    }
+  },
+  "propertyValue": {
+    "question": "Qual è il valore stimato della tua proprietà?",
+    "description": "Il valore della proprietà aiuta a determinare il potenziale importo del capitale accessibile.",
+    "options": {
+      "under150k": {
+        "label": "Meno di £150.000",
+        "description": "Potrebbe essere sotto la soglia minima"
+      },
+      "150kto250k": {
+        "label": "£150.000 - £250.000",
+        "description": "Potenziale idoneità"
+      },
+      "250kto500k": {
+        "label": "£250.000 - £500.000",
+        "description": "Intervallo di idoneità comune"
+      },
+      "500kto1m": {
+        "label": "£500.000 - £1 milione",
+        "description": "Proprietà di valore superiore"
+      },
+      "over1m": {
+        "label": "Oltre £1 milione",
+        "description": "Proprietà di alto valore"
+      }
+    }
+  },
+  "propertyType": {
+    "question": "Che tipo di proprietà possiedi?",
+    "description": "Il tipo di proprietà può influenzare l'idoneità e le condizioni offerte.",
+    "options": {
+      "house": {
+        "label": "Casa (Indipendente, Semi-indipendente, A schiera)",
+        "description": "Tipo di proprietà standard"
+      },
+      "apartment": {
+        "label": "Appartamento",
+        "description": "Può avere criteri specifici"
+      },
+      "other": {
+        "label": "Altro (es: Maisonette, Bungalow)",
+        "description": "Soggetto a revisione"
+      }
+    }
+  },
+  "mortgageStatus": {
+    "question": "Hai attualmente un mutuo o un prestito garantito sulla proprietà?",
+    "description": "I debiti esistenti garantiti sulla proprietà devono essere considerati.",
+    "options": {
+      "noMortgage": {
+        "label": "No, è di mia proprietà",
+        "description": "Nessun mutuo esistente"
+      },
+      "smallMortgage": {
+        "label": "Sì, un piccolo mutuo/prestito",
+        "description": "Il rapporto prestito-valore è importante"
+      },
+      "largeMortgage": {
+        "label": "Sì, un mutuo/prestito significativo",
+        "description": "Potrebbe influenzare l'idoneità o l'importo disponibile"
+      }
+    }
+  },
+  "incomeNeeds": {
+    "question": "Quali sono le tue principali esigenze finanziarie?",
+    "description": "Comprendere i tuoi obiettivi aiuta a personalizzare la soluzione.",
+    "options": {
+      "lumpSum": {
+        "label": "Ho bisogno di una somma forfettaria ora",
+        "description": "Per spese immediate o investimenti"
+      },
+      "regularIncome": {
+        "label": "Ho bisogno di un'integrazione al reddito regolare",
+        "description": "Per integrare la pensione o altri redditi"
+      },
+      "both": {
+        "label": "Ho bisogno sia di una somma forfettaria che di un reddito regolare",
+        "description": "Combinazione di esigenze immediate e continue"
+      },
+      "unsure": {
+        "label": "Incerto / Esplorando le opzioni",
+        "description": "Aperto a discutere le possibilità"
+      }
+    }
+  },
+  "financialAdvice": {
+    "question": "Hai consultato un consulente finanziario indipendente riguardo alla liberazione del capitale o prodotti simili?",
+    "description": "Raccomandiamo vivamente di consultare un consulente indipendente.",
+    "options": {
+      "yes": {
+        "label": "Sì, ho parlato con un consulente",
+        "description": "Buon passo per decisioni informate"
+      },
+      "no": {
+        "label": "No, non ancora",
+        "description": "Considera di consultare un consulente indipendente"
+      }
+    }
+  },
+  "contactPermission": {
+    "question": "Sei d'accordo che ti contattiamo per discutere ulteriormente le tue opzioni?",
+    "description": "Abbiamo bisogno del tuo permesso per dare seguito alle tue risposte.",
+    "options": {
+      "yes": {
+        "label": "Sì, potete contattarmi",
+        "description": "Ti contatteremo utilizzando i dettagli forniti"
+      },
+      "no": {
+        "label": "No, grazie",
+        "description": "Rispettiamo la tua decisione"
+      }
+    }
+  },
+  "confidentUnderstanding": {
+    "question": "Ti senti sicuro di comprendere tutti i dettagli e le implicazioni da solo?",
+    "description": "Le decisioni finanziarie riguardanti la tua proprietà possono essere complesse. Siamo qui per aiutarti a spiegare tutto.",
+    "options": {
+      "yes": {
+        "label": "Sì",
+        "description": "Comprendo il processo e le implicazioni"
+      },
+      "no": {
+        "label": "No",
+        "description": "Vorrei assistenza per comprendere i dettagli"
+      },
+      "notSure": {
+        "label": "Non sono sicuro",
+        "description": "Comprendo alcuni aspetti ma ho domande"
+      }
+    }
+  },
+  "discussOptions": {
+    "question": "Vorresti discutere le tue opzioni?",
+    "description": "I nostri consulenti possono aiutarti a comprendere le opzioni disponibili in base alla tua situazione.",
+    "options": {
+      "yes": {
+        "label": "Sì",
+        "description": "Vorrei parlare con un consulente"
+      },
+      "no": {
+        "label": "No",
+        "description": "Continuerò da solo per ora"
+      }
+    }
+  }
+}

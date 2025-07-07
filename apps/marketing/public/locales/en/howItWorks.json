@@ -1,0 +1,50 @@
+{
+  "title": {
+    "how_to": "How to",
+    "get_started": "Get Started"
+  },
+  "description": "Our transparent process guides you from initial enquiry to financial security, with expert support at every step.",
+  "steps": [
+    {
+      "number": 1,
+      "title": "Eligibility Check",
+      "items": [
+        "Simple online assessment",
+        "Extensive property evaluation",
+        "Reassuring personal situation review",
+        "No-obligation consultation"
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Property Valuation",
+      "items": [
+        "Professional assessment",
+        "Market analysis",
+        "Fair value determination",
+        "Transparent process"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Personalised Offer",
+      "items": [
+        "Personalised Srenova Dashboard",
+        "Flexible payment options",
+        "Clear documentation",
+        "Expert consultation"
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Agreement & Support",
+      "items": [
+        "Comprehensive legal protection",
+        "Guaranteed lifetime payments",
+        "Ongoing support",
+        "Complete peace of mind"
+      ]
+    }
+  ],
+  "cta_button": "Check Your Eligibility Now"
+} 

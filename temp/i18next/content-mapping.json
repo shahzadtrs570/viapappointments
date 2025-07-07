@@ -1,0 +1,261 @@
+{
+  "source_document": "Srenova marketing site content.md",
+  "usage_tracking": [
+    {
+      "source_location": "Line 3",
+      "source_text": "Menu",
+      "destination_file": null,
+      "destination_key": null,
+      "status": "not_applicable",
+      "notes": "Content header, not actual content"
+    },
+    {
+      "source_location": "Line 5",
+      "source_text": "Fonctionnement",
+      "destination_file": "navbar.json",
+      "destination_key": "menuItems.howItWorks",
+      "status": "mapped",
+      "notes": "Updated menu item label"
+    },
+    {
+      "source_location": "Line 7",
+      "source_text": "Acheteurs",
+      "destination_file": null,
+      "destination_key": null,
+      "status": "unmapped",
+      "notes": "No matching menu item in current structure"
+    },
+    {
+      "source_location": "Line 9",
+      "source_text": "À propos",
+      "destination_file": "navbar.json",
+      "destination_key": "menuItems.aboutSrenova",
+      "status": "mapped",
+      "notes": "Simplified menu label"
+    },
+    {
+      "source_location": "Line 11",
+      "source_text": "Avantages",
+      "destination_file": "navbar.json",
+      "destination_key": "menuItems.benefits",
+      "status": "mapped",
+      "notes": "Unchanged menu label"
+    },
+    {
+      "source_location": "Line 17",
+      "source_text": "Se connecter",
+      "destination_file": "navbar.json",
+      "destination_key": "actions.login",
+      "status": "mapped",
+      "notes": "Already using correct translation"
+    },
+    {
+      "source_location": "Line 19",
+      "source_text": "Vérifier mon éligibilité",
+      "destination_file": "navbar.json",
+      "destination_key": "actions.checkEligibility",
+      "status": "partial_match",
+      "notes": "Current translation includes 'maintenant' which could be removed for consistency"
+    },
+    {
+      "source_location": "Line 21",
+      "source_text": "Débloquez la valeur de votre logement et restez-y pour toujours",
+      "destination_file": "hero.json",
+      "destination_key": "hero.heading",
+      "status": "mapped",
+      "notes": "Updated hero heading with grammatical corrections"
+    },
+    {
+      "source_location": "Line 23",
+      "source_text": "Transformez votre logement en sécurité financière avec Srenova. Accédez à la valeur de votre bien tout en continuant à vivre dans la maison que vous aimez.",
+      "destination_file": "hero.json",
+      "destination_key": "hero.description",
+      "status": "mapped",
+      "notes": "Updated hero description"
+    },
+    {
+      "source_location": "Line 33",
+      "source_text": "Plébiscité par les propriétaires dans toute l'Europe",
+      "destination_file": "hero.json",
+      "destination_key": "hero.trust.label",
+      "status": "mapped",
+      "notes": "Updated trust label with grammatical correction"
+    },
+    {
+      "source_location": "Lines 41-43",
+      "source_text": "Jean et Claudine pourraient bénéficier de Srenova en libérant une partie de la valeur de leur maison pour augmenter leur revenu de retraite – sans le stress émotionnel de la vente ou du déménagement. Ils pourraient utiliser les fonds supplémentaires pour voyager, aider leurs petits‑enfants et profiter de leurs vieux jours tout en restant dans la maison qu'ils aiment.",
+      "destination_file": "hero.json",
+      "destination_key": "hero.testimonials.testimonial1.text",
+      "status": "mapped",
+      "notes": "Updated testimonial text"
+    },
+    {
+      "source_location": "Lines 47-49",
+      "source_text": "Margaret pourrait utiliser Srenova pour rester indépendante dans sa maison familiale tout en s'assurant un revenu mensuel garanti. Au lieu de trouver un logement plus petit ou de dépendre de ses enfants, elle pourrait préserver son mode de vie, gérer ses frais de santé et profiter de sa retraite en toute sérénité.",
+      "destination_file": "hero.json",
+      "destination_key": "hero.testimonials.testimonial2.text",
+      "status": "mapped",
+      "notes": "Updated testimonial text"
+    },
+    {
+      "source_location": "Line 85",
+      "source_text": "Qu'est‑ce que Srenova ?",
+      "destination_file": "whatIsSrenova.json",
+      "destination_key": "title",
+      "status": "mapped",
+      "notes": "Updated with proper French spacing"
+    },
+    {
+      "source_location": "Line 87",
+      "source_text": "Srenova est une transaction de type viager : vous vendez votre logement tout en conservant le droit d'y vivre à vie. Vous recevez un versement initial et une rente mensuelle garantie à vie.",
+      "destination_file": "whatIsSrenova.json",
+      "destination_key": "description",
+      "status": "mapped",
+      "notes": "Updated description"
+    },
+    {
+      "source_location": "Line 95",
+      "source_text": "Simulateur de paiement",
+      "destination_file": "calculator.json",
+      "destination_key": "title",
+      "status": "mapped",
+      "notes": "Updated calculator title"
+    },
+    {
+      "source_location": "Line 97",
+      "source_text": "Utilisez ce simulateur pour estimer le montant que vous pourriez obtenir en vendant votre logement avec Srenova.",
+      "destination_file": "calculator.json",
+      "destination_key": "description",
+      "status": "mapped",
+      "notes": "Updated calculator description"
+    },
+    {
+      "source_location": "Lines 107-115",
+      "source_text": "Exemple de résultat calculation",
+      "destination_file": null,
+      "destination_key": null,
+      "status": "unmapped",
+      "notes": "Calculator example values likely handled by application logic"
+    },
+    {
+      "source_location": "Line 131",
+      "source_text": "Autonomie financière",
+      "destination_file": "benefits.json",
+      "destination_key": "sections.financialFreedom.title",
+      "status": "mapped",
+      "notes": "Updated benefit category title"
+    },
+    {
+      "source_location": "Lines 133-137",
+      "source_text": "Benefits list for financial freedom",
+      "destination_file": "benefits.json",
+      "destination_key": "sections.financialFreedom.benefits",
+      "status": "mapped",
+      "notes": "Updated list of benefits"
+    },
+    {
+      "source_location": "Line 141",
+      "source_text": "Tranquillité d'esprit",
+      "destination_file": "benefits.json",
+      "destination_key": "sections.peaceOfMind.title",
+      "status": "mapped",
+      "notes": "Updated benefit category title"
+    },
+    {
+      "source_location": "Lines 143-147",
+      "source_text": "Benefits list for peace of mind",
+      "destination_file": "benefits.json",
+      "destination_key": "sections.peaceOfMind.benefits",
+      "status": "mapped",
+      "notes": "Updated list of benefits"
+    },
+    {
+      "source_location": "Line 151",
+      "source_text": "Comment démarrer",
+      "destination_file": "howItWorks.json",
+      "destination_key": "title",
+      "status": "mapped",
+      "notes": "Updated section title"
+    },
+    {
+      "source_location": "Line 153",
+      "source_text": "Notre processus transparent vous guide, de la première prise de contact jusqu'à la sécurité financière, avec un accompagnement d'experts à chaque étape.",
+      "destination_file": "howItWorks.json",
+      "destination_key": "description",
+      "status": "mapped",
+      "notes": "Updated description"
+    },
+    {
+      "source_location": "Line 157",
+      "source_text": "Vérification d'éligibilité",
+      "destination_file": "howItWorks.json",
+      "destination_key": "steps.0.title",
+      "status": "mapped",
+      "notes": "Updated step title"
+    },
+    {
+      "source_location": "Lines 159-163",
+      "source_text": "Eligibility verification steps",
+      "destination_file": "howItWorks.json",
+      "destination_key": "steps.0.description",
+      "status": "mapped",
+      "notes": "Updated step description list"
+    },
+    {
+      "source_location": "Line 209",
+      "source_text": "Comment mon paiement est‑il calculé ?",
+      "destination_file": "faq.json",
+      "destination_key": "questions.0.question",
+      "status": "mapped",
+      "notes": "Updated FAQ question with proper French spacing"
+    },
+    {
+      "source_location": "Line 211",
+      "source_text": "Quelles sont les protections juridiques dont je bénéficie ?",
+      "destination_file": "faq.json",
+      "destination_key": "questions.1.question",
+      "status": "mapped",
+      "notes": "Updated FAQ question"
+    },
+    {
+      "source_location": "Line 217",
+      "source_text": "Solidité institutionnelle",
+      "destination_file": "trustIndicators.json",
+      "destination_key": "sections.0.title",
+      "status": "mapped",
+      "notes": "Updated trust indicator title"
+    },
+    {
+      "source_location": "Lines 219-223",
+      "source_text": "Trust indicator items",
+      "destination_file": "trustIndicators.json",
+      "destination_key": "sections.0.items",
+      "status": "mapped",
+      "notes": "Updated trust indicator items"
+    },
+    {
+      "source_location": "Line 245",
+      "source_text": "Srenova aide les propriétaires à libérer la valeur de leur bien tout en restant dans la maison qu'ils aiment – offrant ainsi une liberté financière pour la retraite.",
+      "destination_file": "footer.json",
+      "destination_key": "description",
+      "status": "mapped",
+      "notes": "Updated footer description"
+    },
+    {
+      "source_location": "Line 253",
+      "source_text": "À propos • Notre histoire • Notre équipe • Presse • Carrières • Contact",
+      "destination_file": "footer.json",
+      "destination_key": "links.company",
+      "status": "mapped",
+      "notes": "Updated company links in footer"
+    },
+    {
+      "source_location": "Line 257",
+      "source_text": "Fonctionnement • FAQ • Blog • Guide du viager • Planification retraite",
+      "destination_file": "footer.json",
+      "destination_key": "links.resources",
+      "status": "mapped",
+      "notes": "Updated resources links in footer"
+    }
+  ]
+} 

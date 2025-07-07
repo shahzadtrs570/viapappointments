@@ -1,0 +1,99 @@
+---
+description: Payment provider integration and subscription management guidelines
+globs: packages/payments/**/*.{ts,tsx}
+---
+# Payment Integration and Subscription Management
+
+This document outlines the payment integration and subscription management guidelines for the NextJet project.
+
+## Payment Providers
+
+- Support both Stripe and Lemon Squeezy as payment providers
+- Configure payment provider selection through feature flags:
+  ```typescript
+  export const featureFlags: FeatureFlags = {
+    payments: PaymentProviderType.Stripe, // or PaymentProviderType.LemonSqueezy
+    // other flags...
+  };
+  ```
+
+## Subscription Plans
+
+- Define subscription plans in `packages/utils/src/constants/subscriptionPlans.ts`:
+  ```typescript
+  export const subscriptionPlans = {
+    BASIC: {
+      name: 'Basic',
+      price: {
+        monthly: {
+          amount: 10,
+          priceIds: {
+            test: 'price_test_monthly',
+            production: 'price_prod_monthly',
+          },
+        },
+        yearly: {
+          amount: 100,
+          priceIds: {
+            test: 'price_test_yearly',
+            production: 'price_prod_yearly',
+          },
+        },
+      },
+      features: ['Feature 1', 'Feature 2', 'Feature 3'],
+    },
+    // ... other plans
+  };
+  ```
+
+## Feature Entitlements
+
+- Implement feature access control through entitlements:
+  ```typescript
+  // entitlements.ts
+  export const entitlements = {
+    BASIC: {
+      features: ['feature1', 'feature2'],
+      limits: {
+        requests: 100,
+        storage: 5
+      }
+    },
+    // ... other plans
+  };
+  ```
+
+## Webhook Handling
+
+- Implement secure webhook handling for payment events
+- Properly track subscription status and entitlements
+- Handle payment failures gracefully with appropriate user notifications
+
+## Security
+
+- Securely manage API keys through environment variables:
+  ```
+  # Stripe
+  STRIPE_SECRET_KEY=your_secret_key
+  STRIPE_PUBLISHABLE_KEY=your_publishable_key
+  STRIPE_WEBHOOK_SECRET=your_webhook_secret
+  
+  # OR Lemon Squeezy
+  LEMONSQUEEZY_API_KEY=your_api_key
+  LEMONSQUEEZY_STORE_ID=your_store_id
+  LEMONSQUEEZY_WEBHOOK_SECRET=your_webhook_secret
+  ```
+
+## Error Handling
+
+- Implement proper error handling for payment processing failures
+- For detailed error handling guidelines, see [error-handling.mdc](mdc:error-handling.mdc)
+
+## User Interface
+
+- Set up customer portal configuration for subscription management
+- For dashboard subscription UI implementation, see [dashboard-ui.mdc](mdc:dashboard-ui.mdc)
+
+## Integration with Authentication
+
+- For integration with authentication system, see [auth-implementation.mdc](mdc:auth-implementation.mdc)

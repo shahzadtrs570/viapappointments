@@ -1,0 +1,28 @@
+{
+  "name": "@package/crisp",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
+    "format": "eslint . --ext ts,tsx --fix"
+  },
+  "dependencies": {
+    "crisp-sdk-web": "^1.0.25",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@package/eslint-config": "workspace:*",
+    "@package/prettier-config": "workspace:*",
+    "@package/typescript-config": "workspace:*",
+    "@types/node": "^20.16.10",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0"
+  },
+  "peerDependencies": {
+    "next": "^14.2.3",
+    "react": "^18.2.0"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@package/payments",
+  "version": "0.0.0",
+  "private": true,
+  "exports": "./src/index.ts",
+  "scripts": {
+    "stripe": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
+    "format": "eslint . --ext ts,tsx --fix"
+  },
+  "dependencies": {
+    "@lemonsqueezy/lemonsqueezy.js": "^3.3.1",
+    "stripe": "^14.25.0"
+  },
+  "devDependencies": {
+    "@package/eslint-config": "workspace:*",
+    "@package/prettier-config": "workspace:*",
+    "@package/typescript-config": "workspace:*"
+  }
+}

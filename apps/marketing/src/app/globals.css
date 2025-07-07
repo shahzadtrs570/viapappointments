@@ -1,0 +1,9 @@
+@import url("@package/tailwind-config/styles.css");
+
+/* 
+ * Note: All custom CSS has been moved to the Tailwind configuration
+ * Custom colors now available as: text-srenova-navy, text-srenova-gold, etc.
+ * Animation delays now available as: animate-delay-100, animate-delay-200, etc.
+ * Custom container available as: container-custom 
+ */
+

@@ -1,0 +1,12 @@
+{
+  "preview": "Property Status Update - {{currentStage}}",
+  "title": "Property Status Update",
+  "updateIntro": "We have an update regarding your property:",
+  "currentStage": "Current Stage: {{currentStage}}",
+  "requiredActions": "Required Actions:",
+  "dueBy": "Due by: {{date}}",
+  "urgentAction": "⚠️ Urgent Action Required",
+  "viewInDashboard": "View in Dashboard",
+  "questions": "Let us know if you have any questions or feedback. We're always happy to help!",
+  "signature": "Your friends at Srenova"
+} 

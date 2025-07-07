@@ -1,0 +1,43 @@
+{
+  "formSchema": {
+    "firstNameRequired": "Le prénom est requis",
+    "lastNameRequired": "Le nom de famille est requis",
+    "emailInvalid": "Adresse e-mail invalide",
+    "acceptTermsRequired": "Vous devez accepter les termes et conditions"
+  },
+  "toastMessages": {
+    "errorTitle": "Erreur",
+    "emailVerificationFailed": "Échec de l'envoi de l'e-mail de vérification. Veuillez réessayer.",
+    "unexpectedError": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+    "mustAcceptTerms": "Vous devez accepter les termes et conditions pour continuer"
+  },
+  "cardHeader": {
+    "title": "Créez votre compte",
+    "description": "Veuillez fournir vos informations de base pour commencer avec Srenova. Vous pourrez compléter votre profil plus tard."
+  },
+  "form": {
+    "firstNameLabel": "Prénom",
+    "firstNamePlaceholder": "Jean",
+    "lastNameLabel": "Nom de famille",
+    "lastNamePlaceholder": "Dupont",
+    "emailLabel": "Adresse E-mail",
+    "emailPlaceholder": "jean.dupont@example.com",
+    "emailHint": "Nous l'utiliserons pour vous tenir informé de votre candidature.",
+    "termsLabelPart1": "J'accepte les",
+    "termsOfServiceLink": "Conditions d'Utilisation",
+    "termsAnd": "et la",
+    "privacyPolicyLink": "Politique de Confidentialité",
+    "marketingLabel": "Veuillez me tenir informé de ma candidature Srenova et vous pouvez vous désabonner à tout moment."
+  },
+  "buttons": {
+    "back": "Retour",
+    "loading": "Création de votre compte...",
+    "getStarted": "Commencer"
+  },
+  "emailDialog": {
+    "title": "Vérifiez votre messagerie",
+    "description": "Un lien de connexion a été envoyé à votre adresse e-mail, {{email}}. Cliquez sur le lien pour accéder à votre compte."
+  }
+}
+
+

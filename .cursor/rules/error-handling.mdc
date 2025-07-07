@@ -1,0 +1,157 @@
+---
+description: Error analysis and resolution approach for the NextJet project
+globs: **/*.{ts,tsx,js,jsx}, **/*.prisma, **/*.json, **/.env*
+---
+# Error Handling Guidelines
+
+This document outlines the systematic approach for error analysis and resolution in the NextJet project.
+
+## Systematic Error Analysis Process
+
+When encountering errors in the NextJet project, follow this structured approach:
+
+1. **Identify the Error**: 
+   - Capture the exact error message and error code
+   - Note where the error appears (console, browser, terminal)
+   - Identify which command or action triggered the error
+
+2. **Trace the Error Source**:
+   - Check the specific file and line number referenced in the error
+   - Examine the component or function where the error occurs
+   - Review related dependencies and imports
+   - Check for environment variables or configuration issues
+
+3. **Understand Expected Behavior**:
+   - Review documentation or related code to understand intended functionality
+   - Identify discrepancies between expected and actual behavior
+
+4. **Solution Development**:
+   - Start with simple fixes (typos, syntax errors)
+   - Consider configuration issues (environment variables, settings)
+   - Examine logical or algorithmic issues
+   - Check for version compatibility problems
+
+5. **Solution Evaluation**:
+   - Consider performance implications
+   - Evaluate impact on other components or systems
+   - Check for potential regressions
+   - Assess adherence to project patterns and practices
+
+6. **Implementation Strategy**:
+   - Make targeted, minimal changes when possible
+   - Add appropriate tests to verify the solution
+   - Include comments explaining non-obvious fixes
+   - Update documentation if the error was due to unclear instructions
+
+7. **Verification Process**:
+   - Run specific tests related to the fixed functionality
+   - Verify in development environment
+   - Check related functionality that might be affected
+   - Consider edge cases that might reintroduce the error
+
+## Common NextJet Error Patterns and Solutions
+
+### Environment Variable Errors
+
+```
+error: N8N_API_URL is not listed as a dependency in turbo.json
+```
+
+**Resolution Steps**:
+1. Add the missing variable to `.env.local`
+2. Add the variable to `turbo.json` under the appropriate command:
+
+   ```
+3. Restart the development server
+
+### Type Safety Errors
+
+```
+Unexpected any. Specify a different type @typescript-eslint/no-explicit-any
+```
+
+**Resolution Steps**:
+1. Replace `any` with a more specific type when possible
+2. If a specific type isn't feasible, use a type assertion:
+   ```typescript
+   // Instead of any, use unknown with type assertion
+   const data: unknown = fetchData();
+   const processedData = (data as ResponseType).property;
+   ```
+3. For legitimate any uses, add a specific eslint disable comment:
+   ```typescript
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   const config: any = loadDynamicConfig();
+   ```
+
+### React Hook Errors
+
+```
+React Hook "useEffect" has a missing dependency: "data"
+```
+
+**Resolution Steps**:
+1. Add the missing dependency to the dependency array
+2. If the dependency would cause infinite loops, consider:
+   - Using useCallback or useMemo to stabilize the dependency
+   - Creating a ref to store mutable values without triggering re-renders
+   - Adding a specific eslint disable comment with clear explanation
+
+### Prisma Database Errors
+
+```
+PrismaClientKnownRequestError: Invalid `prisma.user.findUnique()`
+```
+
+**Resolution Steps**:
+1. Check schema definitions in `packages/db/prisma/schema.prisma`
+2. Verify that model fields match your query
+3. Check for missing migrations with `pnpm db:migrate`
+4. Generate fresh Prisma client with `pnpm db:generate`
+
+### Authentication Errors
+
+```
+Error: No auth session
+```
+
+**Resolution Steps**:
+1. Verify Auth.js configuration in `packages/auth/src/index.ts`
+2. Check environment variables (NEXTAUTH_SECRET, NEXTAUTH_URL)
+3. Examine provider configuration (Google, GitHub, Magic Link)
+4. Verify route protection with correct middleware
+
+## Error Prevention Guidelines
+
+1. **Always run type checking before committing**:
+   ```bash
+   pnpm typecheck
+   ```
+
+2. **Use ESLint to catch errors early**:
+   ```bash
+   pnpm lint
+   ```
+
+3. **When adding environment variables**:
+   - Add to project's `.env.example`
+   - Add to `turbo.json`
+   - Update documentation
+   - Consider adding validation checks
+
+4. **Break the error loop**:
+   - Address root causes, not just symptoms
+   - Add tests that would catch the same error in future
+   - Document tricky errors in team knowledge base
+
+5. **When stuck in a hard-to-resolve error**:
+   - Create a minimal reproduction case
+   - Review related documentation and examples
+   - Check GitHub issues for similar problems
+   - Seek help from teammates with clear error details
+
+## Related Documentation
+
+- For coding standards, see [coding-standards.mdc](mdc:coding-standards.mdc)
+- For database operations, see [data-layer.mdc](mdc:data-layer.mdc)
+- For authentication implementation, see [auth-implementation.mdc](mdc:auth-implementation.mdc)

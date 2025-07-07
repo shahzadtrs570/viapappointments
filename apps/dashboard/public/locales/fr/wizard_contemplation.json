@@ -1,0 +1,138 @@
+{
+  "title": "Merci pour votre candidature !",
+  "subtitle": "Votre parcours pour libérer la valeur de votre propriété est en cours",
+  "application_received": "Candidature reçue",
+  "what_happens_next": "Que se passe-t-il ensuite ?",
+  "steps": {
+    "review": {
+      "title": "Examen de la candidature",
+      "description": "Nos spécialistes examinent attentivement les détails de votre candidature. Nous vérifions votre éligibilité et nous assurons que toutes les informations sont exactes pour vous offrir la meilleure offre possible.",
+      "timeframe": "Délai",
+      "timeframe_value": "Généralement 24-48 heures"
+    },
+    "verification": {
+      "title": "Évaluation et vérification du bien",
+      "description": "Notre équipe d'experts évalue les détails de votre propriété et les informations de propriété. Ce processus approfondi garantit que nous pouvons vous offrir des conditions équitables et transparentes.",
+      "process": "Processus de vérification",
+      "process_value": "Vérification des documents électroniques, confirmation du cadastre et analyse du marché"
+    },
+    "offer": {
+      "title": "Offre provisoire",
+      "description": "Une fois la vérification terminée, nous vous présenterons une offre provisoire personnalisée. Cela inclut votre versement initial, les paiements mensuels et toutes les conditions.",
+      "expect": "À quoi s'attendre",
+      "expect_value": "Détails complets de l'offre avec analyse financière complète et période d'examen sans engagement"
+    }
+  },
+  "about_section": {
+    "title": "À propos de Srenova et du Viager",
+    "viager": {
+      "title": "Qu'est-ce que le Viager ?",
+      "description": "Le viager est un arrangement de vente immobilière unique issu de la tradition immobilière française. Vous vendez votre maison tout en conservant le droit d'y vivre à vie (connu sous le nom de \"usufruit\"). Cette structure vous fournit un capital immédiat tout en garantissant vos besoins en logement aussi longtemps que vous souhaitez rester dans votre maison."
+    },
+    "benefits": {
+      "title": "Avantages financiers",
+      "description": "L'arrangement viager offre des avantages financiers importants : un versement initial (généralement 20-40% de la valeur du bien) suivi de paiements mensuels garantis à vie. Cela crée un revenu fiable sans avoir à déménager, réduire la taille ou gérer des propriétés locatives, tout en éliminant les taxes foncières et les frais d'entretien."
+    },
+    "difference": {
+      "title": "La différence Srenova",
+      "description": "Chez Srenova, nous modernisons le concept traditionnel du viager avec des conditions transparentes, des évaluations équitables et un soutien continu. Notre approche innovante combine la sécurité d'un viager traditionnel avec des protections financières modernes et de la flexibilité, le tout géré via notre plateforme numérique facile à utiliser et nos conseillers dédiés."
+    },
+    "peace": {
+      "title": "Tranquillité d'esprit",
+      "description": "Nos arrangements viager sont légalement structurés pour protéger votre droit de rester dans votre maison à vie. Contrairement aux hypothèques inversées ou aux schémas de libération de capital, il n'y a pas d'accumulation de dette, pas de frais d'intérêt et pas de risque de saisie. Vos paiements mensuels sont garantis indépendamment des conditions du marché."
+    }
+  },
+  "testimonial": {
+    "quote": "\"La solution viager de Srenova nous a permis de libérer la valeur de notre maison tout en continuant à y vivre. Les paiements mensuels ont transformé notre retraite, nous donnant une liberté financière sans avoir à déménager.\"",
+    "author": "— Margaret & John, clients Srenova depuis 2021"
+  },
+  "status": {
+    "title": "État de la candidature",
+    "progress": "Progression de la vérification",
+    "in_process": "En cours",
+    "pending": "En attente d'examen",
+    "processing": "En traitement",
+    "approved": "Approuvé",
+    "rejected": "Refusé",
+    "application_id": "ID de candidature",
+    "submission_date": "Date de soumission",
+    "estimated_completion": "Réponse estimée",
+    "completion_time": "Généralement moins d'un jour ouvrable",
+    "check_status_info": "Vous pouvez vérifier l'état de votre candidature à tout moment en cliquant sur le bouton \"Vérifier l'état de la vérification\"."
+  },
+  "guidebot": {
+    "initial_message": "Pendant que vous attendez la vérification de votre candidature, n'hésitez pas à me poser des questions sur Srenova, le processus viager ou ce qui vous attend ensuite.",
+    "title": "Votre guide Srenova",
+    "responses": {
+      "verification_time": "Notre processus de vérification prend généralement 24-48 heures. Pendant ce temps, notre équipe examine les détails de votre propriété, les informations de propriété et effectue des évaluations initiales pour préparer votre offre provisoire.",
+      "documents_needed": "À ce stade, aucun document supplémentaire n'est nécessaire. Une fois votre candidature vérifiée, nous pourrons demander la documentation du bien, la preuve de propriété et l'identification pour les prochaines étapes du processus.",
+      "change_information": "Vous pouvez modifier les informations de votre candidature si nécessaire. Veuillez contacter notre équipe d'assistance à support@srenova.com ou appeler notre ligne d'assistance au 0800-123-4567 pour demander des modifications.",
+      "financial_benefits": "Les avantages financiers d'un arrangement viager comprennent : 1) Un versement initial substantiel, 2) Un revenu mensuel garanti à vie, 3) Pas de taxes foncières ni de frais d'entretien, 4) Pas de risque d'accumulation de dette, et 5) La possibilité de rester dans votre maison avec une protection juridique complète.",
+      "family_implications": "Il est important de discuter de vos projets viager avec les membres de votre famille. Bien que la propriété ne fasse pas partie de votre succession, les avantages financiers peuvent vous fournir plus de ressources pour soutenir votre famille pendant votre vie. De nombreux clients trouvent cet arrangement bénéfique pour leur planification financière familiale globale."
+    },
+    "questions": {
+      "verification_time": "Combien de temps prend la vérification ?",
+      "documents_needed": "Dois-je fournir des documents ?",
+      "financial_benefits": "Quels sont les principaux avantages financiers ?",
+      "family_implications": "Comment cela affecte-t-il ma famille ?"
+    }
+  },
+  "resources": {
+    "title": "Ressources utiles",
+    "guide": {
+      "title": "Guide complet du Viager",
+      "description": "Notre guide complet explique tous les aspects du processus viager, de l'évaluation à l'achèvement, avec des études de cas réels et des conseils d'experts.",
+      "link": "Lire le guide →"
+    },
+    "calculator": {
+      "title": "Calculateur d'avantages financiers",
+      "description": "Notre calculateur interactif vous aide à explorer différents scénarios et à voir les versements initiaux et mensuels potentiels basés sur les détails de votre propriété.",
+      "link": "Essayer le calculateur →"
+    },
+    "faq": {
+      "title": "FAQ Viager & Centre d'information",
+      "description": "Trouvez des réponses aux questions les plus courantes sur les arrangements viager, les considérations juridiques et le processus Srenova.",
+      "link": "Explorer les FAQ →"
+    }
+  },
+  "buttons": {
+    "back": "Retour",
+    "check_status": "Vérifier l'état de la vérification",
+    "checking": "Vérification en cours..."
+  },
+  "toast": {
+    "verification_complete": {
+      "title": "Vérification terminée",
+      "description": "Votre candidature a été vérifiée. Passage à votre offre."
+    },
+    "still_review": {
+      "title": "En attente d'examen",
+      "description": "Votre candidature est actuellement en attente d'examen initial par notre équipe. Nous commencerons à la traiter très bientôt."
+    },
+    "processing": {
+      "title": "Candidature en traitement",
+      "description": "Votre candidature est actuellement en cours de traitement par notre équipe de vérification. C'est une étape positive."
+    },
+    "rejected": {
+      "title": "Candidature nécessite attention",
+      "description": "Nous avons identifié des problèmes avec votre candidature qui doivent être résolus. Veuillez contacter notre équipe d'assistance."
+    },
+    "error": {
+      "title": "Erreur lors de la vérification",
+      "description": "Nous avons rencontré une erreur lors de la vérification de votre état. Veuillez réessayer plus tard."
+    }
+  },
+  "chatbot": {
+    "title": "Assistant de Chat IA",
+    "initialMessage": "Bonjour ! Je peux vous aider à répondre aux questions sur le processus de vérification. Que souhaitez-vous savoir?",
+    "suggestedQuestions": {
+      "processTime": "Combien de temps prend le processus?",
+      "nextSteps": "Quelles sont les prochaines étapes du processus?",
+      "verificationProcess": "Que se passe-t-il pendant le processus de vérification?",
+      "changeMind": "Puis-je changer d'avis pendant cette période?",
+      "familyInvolvement": "Les membres de la famille peuvent-ils être impliqués dans le processus?"
+    }
+  }
+}
+
+

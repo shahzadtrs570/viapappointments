@@ -1,0 +1,38 @@
+{
+  "title": {
+    "the": "Il",
+    "srenova": "Metodo",
+    "way": "Srenova"
+  },
+  "description": "Il nostro approccio innovativo ti aiuta ad accedere al valore della tua proprietà mantenendo la sicurezza della tua casa.",
+  "features": [
+    {
+      "title": "Indipendenza Finanziaria",
+      "benefits": [
+        "Accedi al valore della tua casa senza trasferirti o assumere debiti",
+        "Ricevi un reddito mensile garantito a vita",
+        "Ottieni un pagamento anticipato (bouquet) se necessario",
+        "Mantieni l'indipendenza finanziaria in pensione"
+      ]
+    },
+    {
+      "title": "Tranquillità",
+      "benefits": [
+        "Rimani nella tua amata casa per tutta la vita",
+        "Nessuna rata mensile del mutuo",
+        "Protetto da accordi legali trasparenti",
+        "Guida esperta durante tutto il tuo percorso"
+      ]
+    },
+    {
+      "title": "Supporto Professionale",
+      "benefits": [
+        "Soluzioni di livello istituzionale",
+        "Processo chiaro e trasparente",
+        "Consulenti esperti ti guidano ad ogni passo",
+        "Supportato da partner finanziari affidabili"
+      ]
+    }
+  ],
+  "cta_button": "Verifica la Tua Idoneità Ora"
+} 

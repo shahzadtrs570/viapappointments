@@ -1,0 +1,46 @@
+{
+  "title": {
+    "why_trust": "Why Trust ",
+    "srenova": "Srenova",
+    "question_mark": "?"
+  },
+  "description": "Our institutional backing and expertise ensure your financial security and peace of mind.",
+  "columns": [
+    {
+      "title": "Institutional Reliability",
+      "features": [
+        "Backed by reputable investment partners",
+        "Guaranteed lifetime payments",
+        "Standardised, transparent processes",
+        "Financial strength and stability"
+      ]
+    },
+    {
+      "title": "Expert Support",
+      "features": [
+        "Specialised viager knowledge",
+        "Legal and financial expertise",
+        "Personalised guidance",
+        "Ongoing customer care"
+      ]
+    },
+    {
+      "title": "European Leadership",
+      "features": [
+        "Pan-European presence",
+        "Industry pioneers in the UK and Italy",
+        "Standardising viager transactions",
+        "Building a new category of retirement finance"
+      ]
+    }
+  ],
+  "partners": {
+    "title": "Trusted by leading financial institutions",
+    "logos": [
+      {"name": "Partner 1"},
+      {"name": "Partner 2"},
+      {"name": "Partner 3"},
+      {"name": "Partner 4"}
+    ]
+  }
+} 

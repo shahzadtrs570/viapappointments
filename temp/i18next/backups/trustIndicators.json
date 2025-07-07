@@ -1,0 +1,46 @@
+{
+  "title": {
+    "why_trust": "Pourquoi Faire Confiance à ",
+    "srenova": "Srenova",
+    "question_mark": "?"
+  },
+  "description": "Notre soutien institutionnel et notre expertise assurent votre sécurité financière et votre tranquillité d'esprit.",
+  "columns": [
+    {
+      "title": "Fiabilité Institutionnelle",
+      "features": [
+        "Soutenu par des partenaires d'investissement réputés",
+        "Paiements à vie garantis",
+        "Processus standardisés et transparents",
+        "Force et stabilité financières"
+      ]
+    },
+    {
+      "title": "Support Expert",
+      "features": [
+        "Connaissance spécialisée du viager",
+        "Expertise juridique et financière",
+        "Accompagnement personnalisé",
+        "Service client continu"
+      ]
+    },
+    {
+      "title": "Leadership Européen",
+      "features": [
+        "Présence paneuropéenne",
+        "Pionniers de l'industrie au Royaume-Uni et en Italie",
+        "Standardisation des transactions viager",
+        "Construction d'une nouvelle catégorie de finance de retraite"
+      ]
+    }
+  ],
+  "partners": {
+    "title": "Approuvé par des institutions financières de premier plan",
+    "logos": [
+      {"name": "Partenaire 1"},
+      {"name": "Partenaire 2"},
+      {"name": "Partenaire 3"},
+      {"name": "Partenaire 4"}
+    ]
+  }
+} 

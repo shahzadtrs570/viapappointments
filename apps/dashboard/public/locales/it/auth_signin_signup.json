@@ -1,0 +1,49 @@
+{
+  "cardTitle": {
+    "signUp": "Registrati",
+    "signIn": "Accedi"
+  },
+  "cardDescription": {
+    "signUp": "Inserisci la tua email qui sotto per registrarti",
+    "signIn": "Inserisci la tua email qui sotto per accedere al tuo account"
+  },
+  "form": {
+    "emailLabel": "Email",
+    "orSeparator": "o"
+  },
+  "buttons": {
+    "submit": {
+      "signUp": "Registrati",
+      "signIn": "Accedi"
+    },
+    "google": {
+      "signUp": "Registrati con Google",
+      "signIn": "Accedi con Google"
+    },
+    "github": {
+      "signUp": "Registrati con Github",
+      "signIn": "Accedi con Github"
+    }
+  },
+  "linkText": {
+    "prompt": {
+      "signUp": "Hai già un account?",
+      "signIn": "Non hai un account?"
+    },
+    "action": {
+      "signUp": "Accedi",
+      "signIn": "Registrati"
+    }
+  },
+  "emailDialog": {
+    "title": "Controlla la tua email",
+    "description": {
+      "signUp": "Un link di registrazione è stato inviato al tuo indirizzo email, {{email}}. Clicca sul link per registrarti.",
+      "signIn": "Un link di accesso è stato inviato al tuo indirizzo email, {{email}}. Clicca sul link per accedere."
+    }
+  },
+  "turnstileDialog": {
+    "title": "Verifica di Sicurezza",
+    "description": "Completa il controllo di sicurezza per continuare"
+  }
+}

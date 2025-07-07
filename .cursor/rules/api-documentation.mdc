@@ -1,0 +1,267 @@
+---
+description: Guidelines for documenting APIs to ensure clarity and maintainability
+globs: packages/api/src/**/*.{ts,tsx}
+---
+# API Documentation Guidelines
+
+This document provides comprehensive guidelines for documenting APIs in the NextJet project to ensure they are easily understandable by both AI and human developers.
+
+## Core Documentation Principles
+
+1. **Completeness**: Document all aspects of the API including purpose, inputs, outputs, errors, and examples
+2. **Clarity**: Use clear, concise language that explains the "what" and "why"
+3. **Consistency**: Follow consistent patterns and terminology throughout the codebase
+4. **Accessibility**: Make documentation accessible to developers of all experience levels
+
+## JSDoc Documentation Standards
+
+### Router and Procedure Documentation
+
+Every router and procedure should have comprehensive JSDoc comments:
+
+```typescript
+/**
+ * User management router
+ * @description Handles all user-related operations including creation, updates, and queries
+ */
+export const userRouter = createTRPCRouter({
+  /**
+   * Creates a new user in the system
+   * @description Registers a new user with the provided details and assigns them a role
+   * 
+   * @param {CreateUserInput} input - User creation data
+   * @returns {Promise<User>} Newly created user object
+   * 
+   * @throws {TRPCError} 
+   * - 'CONFLICT' if email already exists
+   * - 'BAD_REQUEST' if validation fails
+   * 
+   * @example
+   * ```ts
+   * const user = await api.users.create.mutate({
+   *   email: "user@example.com",
+   *   name: "John Doe",
+   *   role: "USER"
+   * });
+   * ```
+   */
+  create: protectedProcedure
+    .input(createUserSchema)
+    .mutation(({ ctx, input }) => {
+      // Implementation
+    }),
+});
+```
+
+### Input Schema Documentation
+
+All input schemas should be thoroughly documented:
+
+```typescript
+/**
+ * Schema for creating a new user
+ * @description Validates user creation data with required fields and constraints
+ */
+export const createUserSchema = z.object({
+  /**
+   * User's email address
+   * @description Must be a valid email format and unique in the system
+   */
+  email: z.string().email(),
+  
+  /**
+   * User's display name
+   * @description Must be at least 2 characters long
+   */
+  name: z.string().min(2),
+  
+  /**
+   * User's role in the system
+   * @description Determines permission level and access rights
+   */
+  role: z.enum(['USER', 'ADMIN'])
+});
+
+export type CreateUserInput = z.infer<typeof createUserSchema>;
+```
+
+### Service Layer Documentation
+
+Document business logic and rules in service classes:
+
+```typescript
+/**
+ * User service handling business logic
+ * @description Manages user-related operations and business rules
+ */
+export class UserService {
+  /**
+   * Creates a new user with proper validation and email verification
+   * 
+   * @param {CreateUserInput} input - User creation data
+   * @returns {Promise<User>} Newly created user
+   * 
+   * @businessRule Users must have verified email before accessing premium features
+   * @businessRule Usernames must be unique across the system
+   * 
+   * @throws {TRPCError} 'CONFLICT' if username already exists
+   */
+  async createUser(input: CreateUserInput): Promise<User> {
+    // Implementation
+  }
+}
+```
+
+### Repository Layer Documentation
+
+Document database operations with optimization notes:
+
+```typescript
+/**
+ * User repository for database operations
+ * @description Handles all user-related database queries with optimized performance
+ */
+export class UserRepository {
+  /**
+   * Finds a user by email with minimal fields for authentication
+   * 
+   * @param {string} email - User's email address
+   * @returns {Promise<User | null>} User if found, null otherwise
+   * 
+   * @optimization Uses compound index on email
+   * @optimization Selects only necessary fields for authentication
+   */
+  async findByEmail(email: string): Promise<User | null> {
+    // Implementation
+  }
+}
+```
+
+## Authentication and Authorization Documentation
+
+Clearly document authentication and permission requirements:
+
+```typescript
+/**
+ * Admin-only operations router
+ * 
+ * @requires Authentication
+ * @permission ADMIN
+ * @description Contains operations that can only be performed by administrators
+ */
+export const adminRouter = createTRPCRouter({
+  /**
+   * Deletes a user from the system
+   * 
+   * @param {string} id - ID of the user to delete
+   * @returns {Promise<void>}
+   * 
+   * @requires Authentication
+   * @permission ADMIN
+   * 
+   * @throws {TRPCError} 'UNAUTHORIZED' if user is not authenticated
+   * @throws {TRPCError} 'FORBIDDEN' if user is not an admin
+   * @throws {TRPCError} 'NOT_FOUND' if user does not exist
+   */
+  deleteUser: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(({ ctx, input }) => {
+      // Implementation
+    }),
+});
+```
+
+## Error Documentation
+
+Document all possible error cases with standardized codes and messages:
+
+```typescript
+/**
+ * Updates user subscription
+ * 
+ * @param {UpdateSubscriptionInput} input - Subscription update data
+ * @returns {Promise<Subscription>} Updated subscription
+ * 
+ * @throws {TRPCError} 
+ * - 'UNAUTHORIZED' if user is not authenticated
+ * - 'FORBIDDEN' if user doesn't have required permissions
+ * - 'NOT_FOUND' if subscription doesn't exist
+ * - 'BAD_REQUEST' if input validation fails
+ * - 'INTERNAL_SERVER_ERROR' if payment provider fails
+ */
+```
+
+## Client-Side Usage Documentation
+
+Include examples of how to use the API on the client side:
+
+```typescript
+/**
+ * Example of using the users API on the client
+ * 
+ * @example
+ * ```tsx
+ * import { api } from "~/utils/api";
+ * 
+ * // In a React component
+ * const createUser = api.users.create.useMutation({
+ *   onSuccess: (user) => {
+ *     console.log("User created:", user);
+ *   },
+ *   onError: (error) => {
+ *     if (error.data?.code === 'CONFLICT') {
+ *       // Handle duplicate user
+ *     } else {
+ *       // Handle other errors
+ *     }
+ *   }
+ * });
+ * 
+ * // Later in your component
+ * const handleSubmit = (data) => {
+ *   createUser.mutate(data);
+ * };
+ * ```
+ */
+```
+
+## Testing Documentation
+
+Document expected behavior in test descriptions:
+
+```typescript
+/**
+ * Tests for the user creation API
+ * 
+ * @tests
+ * - Should create a user with valid input
+ * - Should return CONFLICT error when email already exists
+ * - Should return BAD_REQUEST error with invalid input
+ * - Should require authentication
+ * - Should assign default role if not specified
+ */
+describe('User creation', () => {
+  it('should create a user with valid input', async () => {
+    // Test implementation
+  });
+  
+  it('should return CONFLICT error when email already exists', async () => {
+    // Test implementation
+  });
+  
+  // Additional tests
+});
+```
+
+## Documentation Maintenance
+
+1. **Keep Documentation Updated**: Update documentation whenever API changes
+2. **Review Documentation**: Regularly review documentation for accuracy and completeness
+3. **Automate Validation**: Use tools to validate that documentation matches implementation
+4. **Gather Feedback**: Collect feedback from developers using the API to improve documentation
+
+## Related Documentation
+
+- For general API development guidelines, see [data-layer.mdc](mdc:data-layer.mdc)
+- For error handling guidelines, see [error-handling.mdc](mdc:error-handling.mdc)
+- For authentication implementation, see [auth-implementation.mdc](mdc:auth-implementation.mdc) 

@@ -1,0 +1,60 @@
+{
+  "sellerInformation": {
+    "initialMessage": "Providing accurate contact information helps us communicate with you effectively throughout the process. Your data is secure and will only be used to process your application.",
+    "title": "Your Srenova Guide",
+    "botResponses": {
+      "info-usage": "Your information will be used solely for processing your application and communicating with you about your viager. We follow strict data protection guidelines and never share your information with unauthorized parties.",
+      "form-submission": "After submitting the form, our team will review your information and contact you within 1-2 business days to discuss the next steps. You'll also receive an email confirmation with a summary of your submitted information.",
+      "update-info": "Yes, you can update your information at any time by logging into your dashboard or contacting your dedicated advisor. We understand that contact details may change and make it easy to keep your information current."
+    },
+    "suggestedQuestions": [
+      {
+        "id": "info-usage",
+        "text": "How will this information be used?",
+        "category": "privacy",
+        "followUp": ["update-info", "form-submission"]
+      },
+      {
+        "id": "form-submission",
+        "text": "What happens after I submit this form?",
+        "category": "process",
+        "followUp": ["info-usage", "update-info"]
+      },
+      {
+        "id": "update-info",
+        "text": "Can I update my information later?",
+        "category": "process",
+        "followUp": ["info-usage", "form-submission"]
+      }
+    ]
+  },
+  "propertyInformation": {
+    "initialMessage": "Providing detailed property information helps us create an accurate valuation. Please be as specific as possible with all details about your property.",
+    "title": "Your Srenova Guide",
+    "botResponses": {
+      "property-valuation": "We use several factors to determine property value, including location, size, condition, local market trends, and comparable properties in the area.",
+      "required-documents": "You'll need to provide proof of ownership, recent property tax statements, and information about any existing mortgages or liens on the property.",
+      "property-photos": "High-quality photos help us better understand your property. You can upload photos of the interior, exterior, any special features, and the surrounding area."
+    },
+    "suggestedQuestions": [
+      {
+        "id": "property-valuation",
+        "text": "How is my property valued?",
+        "category": "process",
+        "followUp": ["required-documents"]
+      },
+      {
+        "id": "required-documents",
+        "text": "What documents will I need?",
+        "category": "process",
+        "followUp": ["property-photos", "property-valuation"]
+      },
+      {
+        "id": "property-photos",
+        "text": "Do I need to provide photos?",
+        "category": "documentation",
+        "followUp": ["required-documents"]
+      }
+    ]
+  }
+}
