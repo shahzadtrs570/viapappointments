@@ -35,7 +35,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Srenova | Institutional Investment with Social Impact",
+  title: "VIPAPPOINTMENTS | Unlock Your Vehicle By Choosing The Right Vehicle",
   description:
     "Partner with Srenova to build a diversified portfolio of viager properties. Our standardized approach offers stable returns backed by real estate with positive social impact.",
 }

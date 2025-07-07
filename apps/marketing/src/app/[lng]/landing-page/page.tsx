@@ -10,11 +10,11 @@ import { FAQ } from "./_components/FAQ"
 import { Features } from "./_components/Features"
 import { Hero } from "./_components/Hero"
 import { HowItWorks } from "./_components/HowItWorks"
+import { PreQualifyImage } from "./_components/PreQualifyImage"
+import { ScrollingBanner } from "./_components/ScrollingBanner"
 import { TrustIndicators } from "./_components/TrustIndicators"
 import { ValueProposition } from "./_components/ValueProposition"
 import { WhatIsSrenova } from "./_components/WhatIsSrenova"
-import { ScrollingBanner } from "./_components/ScrollingBanner"
-import { PreQualifyImage } from "./_components/PreQualifyImage"
 
 /* eslint-disable @typescript-eslint/no-unused-vars, react-hooks/rules-of-hooks */
 // Generate dynamic metadata from translations
@@ -28,7 +28,7 @@ export async function generateMetadata({
   return {
     title: t(
       "meta.title",
-      "Srenova | Unlock Your Home Equity While Staying in Your Home"
+      "VIPAPPOINTMENTS | Unlock Your Vehicle By Choosing The Right Vehicle"
     ),
     description: t(
       "meta.description",
