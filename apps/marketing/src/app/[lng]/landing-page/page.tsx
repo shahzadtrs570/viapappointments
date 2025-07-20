@@ -15,6 +15,7 @@ import { ScrollingBanner } from "./_components/ScrollingBanner"
 import { TrustIndicators } from "./_components/TrustIndicators"
 import { ValueProposition } from "./_components/ValueProposition"
 import { WhatIsSrenova } from "./_components/WhatIsSrenova"
+import { WheelPopupWrapper } from "./_components/WheelPopupWrapper"
 
 /* eslint-disable @typescript-eslint/no-unused-vars, react-hooks/rules-of-hooks */
 // Generate dynamic metadata from translations
@@ -60,6 +61,7 @@ export default async function LandingPage({
       <FAQ />
       <TrustIndicators />
       <CallToAction />
+      <WheelPopupWrapper />
     </section>
   )
 }

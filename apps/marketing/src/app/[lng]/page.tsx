@@ -9,6 +9,7 @@ import { ExploreCarMakes } from "./landing-page/_components/ExploreCarMakes"
 import { ExploreCarTypes } from "./landing-page/_components/ExploreCarTypes"
 import { BudgetCalculator } from "./landing-page/_components/BudgetCalculator"
 import { SearchComponent } from "./landing-page/_components/SearchComponent"
+import { WheelPopupWrapper } from "./landing-page/_components/WheelPopupWrapper"
 /* eslint-disable @typescript-eslint/no-unused-vars, react-hooks/rules-of-hooks */
 // Generate dynamic metadata from translations
 export async function generateMetadata({
@@ -21,7 +22,7 @@ export async function generateMetadata({
   return {
     title: t(
       "meta.title",
-      "Srenova | Unlock Your Home Equity While Staying in Your Home"
+      "VIPAPPOINTMENTS | Unlock Your Vehicle By Choosing The Right Vehicle"
     ),
     description: t(
       "meta.description",
@@ -48,15 +49,7 @@ export default async function LandingPage({
       <BudgetCalculator />
       <ExploreCarMakes />
       <ExploreCarTypes />
-      {/* <Features />
-      <WhatIsSrenova />
-      <Calculator />
-      <ValueProposition />
-      <HowItWorks />
-      <Benefits />
-      <FAQ />
-      <TrustIndicators />
-      <CallToAction /> */}
+      <WheelPopupWrapper />
     </section>
   )
 }

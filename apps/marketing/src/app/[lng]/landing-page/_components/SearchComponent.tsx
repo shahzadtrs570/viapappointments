@@ -3,45 +3,63 @@
 "use client"
 
 import { Container } from "@package/ui/container"
-import { useState } from "react"
+import { useState, useMemo } from "react"
+import carDataRaw from "../Car-MakeModel-Database-1950-to-present.json"
+
+// Types
+interface CarEntry {
+  Year: number
+  Make: string
+  Model: string
+}
+
+// Type assertion for the imported JSON data
+const carData = carDataRaw as CarEntry[]
 
 export function SearchComponent() {
   const [activeTab, setActiveTab] = useState<"buy" | "sell">("buy")
   const [searchData, setSearchData] = useState({
     // Buy tab data
     condition: "Used",
-    make: "Bentley",
-    model: "All models",
+    make: "",
+    model: "",
     zipCode: "",
     // Sell tab data
     licensePlate: "",
     state: "State",
   })
 
+  // Process car data to get unique makes and models per make
+  const { makes, modelsByMake } = useMemo(() => {
+    const makeSet = new Set<string>()
+    const modelMap = new Map<string, Set<string>>()
+
+    carData.forEach(({ Make, Model }: CarEntry) => {
+      makeSet.add(Make)
+
+      if (!modelMap.has(Make)) {
+        modelMap.set(Make, new Set<string>())
+      }
+      modelMap.get(Make)?.add(Model)
+    })
+
+    // Convert to sorted arrays
+    const sortedMakes = Array.from(makeSet).sort()
+    const sortedModelsByMake: Record<string, string[]> = {}
+
+    sortedMakes.forEach((make: string) => {
+      const models = Array.from(modelMap.get(make) || new Set<string>()).sort()
+      sortedModelsByMake[make] = models
+    })
+
+    return {
+      makes: sortedMakes,
+      modelsByMake: sortedModelsByMake,
+    }
+  }, [])
+
   const conditionOptions = ["New", "Used", "Certified Pre-Owned"]
-  const makeOptions = [
-    "Audi",
-    "BMW",
-    "Bentley",
-    "Honda",
-    "Toyota",
-    "Mercedes",
-    "Ford",
-    "Volkswagen",
-    "Lexus",
-    "Nissan",
-    "Porsche",
-    "Subaru",
-    "Chevrolet",
-    "Hyundai",
-  ]
-  const modelOptions = [
-    "All models",
-    "Continental",
-    "Bentayga",
-    "Flying Spur",
-    "Mulsanne",
-  ]
+
   const stateOptions = [
     "Alabama",
     "Alaska",
@@ -67,11 +85,52 @@ export function SearchComponent() {
     "Michigan",
     "Minnesota",
     "Mississippi",
+    "Missouri",
+    "Montana",
+    "Nebraska",
+    "Nevada",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "New York",
+    "North Carolina",
+    "North Dakota",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Vermont",
+    "Virginia",
+    "Washington",
+    "West Virginia",
+    "Wisconsin",
+    "Wyoming",
   ]
 
   const handleInputChange = (field: string, value: string) => {
-    setSearchData((prev) => ({ ...prev, [field]: value }))
+    setSearchData((prev) => {
+      const newData = { ...prev, [field]: value }
+
+      // If make changes, reset model to first available model for that make
+      if (field === "make") {
+        const availableModels = modelsByMake[value] || []
+        newData.model = availableModels.length > 0 ? availableModels[0] : ""
+      }
+
+      return newData
+    })
   }
+
+  // Get available models for the selected make
+  const availableModels = searchData.make
+    ? modelsByMake[searchData.make] || []
+    : []
 
   return (
     <section
@@ -140,9 +199,12 @@ export function SearchComponent() {
                 onChange={(e) => handleInputChange("make", e.target.value)}
                 className="w-full px-4 py-4 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white font-medium text-lg text-gray-700 border-0 outline-none transition-all duration-200"
               >
-                {makeOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
+                <option value="" disabled>
+                  Select Make
+                </option>
+                {makes.map((make) => (
+                  <option key={make} value={make}>
+                    {make}
                   </option>
                 ))}
               </select>
@@ -151,11 +213,15 @@ export function SearchComponent() {
               <select
                 value={searchData.model}
                 onChange={(e) => handleInputChange("model", e.target.value)}
-                className="w-full px-4 py-4 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white font-medium text-lg text-gray-700 border-0 outline-none transition-all duration-200"
+                disabled={!searchData.make}
+                className="w-full px-4 py-4 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white font-medium text-lg text-gray-700 border-0 outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {modelOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
+                <option value="" disabled>
+                  {searchData.make ? "Select Model" : "Select Make First"}
+                </option>
+                {availableModels.map((model) => (
+                  <option key={model} value={model}>
+                    {model}
                   </option>
                 ))}
               </select>

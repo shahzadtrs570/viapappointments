@@ -1,7 +1,8 @@
+/* eslint-disable */
 "use client"
 
 import type { ChangeEvent } from "react"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 
 import { useParams } from "next/navigation"
 
@@ -9,10 +10,9 @@ import { useTranslation } from "@/lib/i18n/client"
 
 // Helper to format currency
 const formatCurrency = (value: number, lng: string = "en") => {
-  return new Intl.NumberFormat(lng === "en" ? "en-GB" : lng, {
-    // Basic locale handling for currency
+  return new Intl.NumberFormat(lng === "en" ? "en-US" : lng, {
     style: "currency",
-    currency: lng === "en" ? "GBP" : "EUR", // Assuming GBP for EN, EUR for others as example
+    currency: lng === "en" ? "USD" : "EUR",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(value)
@@ -23,330 +23,37 @@ const stripCurrencyFormat = (value: string): string => {
   return value.replace(/[^0-9]/g, "")
 }
 
-interface CalculatorControlsProps {
-  t: (key: string, options?: Record<string, string | number>) => string
-  lng: string
-  homeValue: number
-  onHomeValueChange: (value: number) => void
-  paymentPreference: string | null
-  onPaymentPreferenceChange: (value: string | null) => void
+// Credit score ranges and their APRs
+const creditScoreRanges = [
+  { range: "800+", minScore: 800, apr: 5.99 },
+  { range: "750-799", minScore: 750, apr: 7.99 },
+  { range: "700-749", minScore: 700, apr: 9.99 },
+  { range: "650-699", minScore: 650, apr: 11.99 },
+  { range: "600-649", minScore: 600, apr: 13.99 },
+  { range: "Below 600", minScore: 0, apr: 18.99 },
+]
+
+// Get APR from credit score range
+const getAPRFromRange = (range: string): number => {
+  const scoreRange = creditScoreRanges.find((r) => r.range === range)
+  return scoreRange?.apr || 18.99
 }
 
-function CalculatorControls({
-  t,
-  lng,
-  homeValue,
-  onHomeValueChange,
-  paymentPreference,
-  onPaymentPreferenceChange,
-}: CalculatorControlsProps) {
-  // Track the input value separately from the actual homeValue
-  const [inputValue, setInputValue] = useState<string>(homeValue.toString())
-  const [isEditing, setIsEditing] = useState(false)
+// Calculate monthly payment using loan formula
+const calculateMonthlyPayment = (
+  principal: number,
+  apr: number,
+  termMonths: number
+): number => {
+  const monthlyRate = apr / 100 / 12
 
-  // Update the slider's visual appearance when value changes
-  const updateSliderAppearance = (value: number) => {
-    const slider = document.getElementById("home-value-slider")
-    if (slider) {
-      const min = parseFloat(slider.getAttribute("min") || "150000")
-      const max = parseFloat(slider.getAttribute("max") || "3000000")
-      const percent = ((value - min) / (max - min)) * 100
-      slider.style.setProperty("--thumb-percent", `${percent}%`)
-    }
+  if (monthlyRate === 0) {
+    return principal / termMonths
   }
-
-  // Initialize the slider's appearance and set up event listener
-  useEffect(() => {
-    const slider = document.getElementById("home-value-slider")
-    if (slider) {
-      // Initial setup
-      updateSliderAppearance(homeValue)
-    }
-  }, [])
-
-  // Update slider appearance whenever homeValue changes
-  useEffect(() => {
-    updateSliderAppearance(homeValue)
-  }, [homeValue])
-
-  const handleSliderChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number(event.target.value)
-    onHomeValueChange(newValue)
-    setInputValue(newValue.toString())
-  }
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const rawValue = stripCurrencyFormat(event.target.value)
-
-    // If user tries to enter more than 7 digits (>3M)
-    if (rawValue.length > 7) {
-      return // Ignore input that would exceed 3M
-    }
-
-    setInputValue(rawValue)
-
-    if (rawValue === "") {
-      // Don't update the homeValue to 0 when the field is empty
-      // This allows for natural backspace behavior
-      return
-    }
-
-    const numericValue = Number(rawValue)
-    if (!isNaN(numericValue)) {
-      // Strictly enforce max value during typing
-      const boundedValue = Math.min(numericValue, 3000000)
-
-      if (boundedValue !== numericValue) {
-        // If we had to cap the value, update the input field too
-        setInputValue(boundedValue.toString())
-      }
-
-      // Only update home value if it's at least the minimum
-      if (boundedValue >= 150000) {
-        onHomeValueChange(boundedValue)
-      }
-    }
-  }
-
-  // Handle blur event to ensure value is within bounds
-  const handleBlur = () => {
-    setIsEditing(false)
-    let numericValue = Number(inputValue)
-    if (isNaN(numericValue) || numericValue < 150000) {
-      numericValue = 150000
-    } else if (numericValue > 3000000) {
-      numericValue = 3000000
-    }
-
-    onHomeValueChange(numericValue)
-    setInputValue(numericValue.toString())
-  }
-
-  // Show raw value when editing, formatted value when not editing
-  const displayValue = isEditing
-    ? inputValue
-    : formatCurrency(homeValue, lng).replace(/\s/g, "")
 
   return (
-    <div className="flex flex-col justify-between">
-      <div>
-        <div className="mb-6 sm:mb-8">
-          <div className="mb-2 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <label
-              className="text-md block font-medium text-foreground"
-              htmlFor="home-value-text"
-            >
-              {t("controls.home_value_label")}
-            </label>
-            {/* Text input for home value */}
-            <input
-              className="text-md mt-2 w-full rounded border p-2 text-right font-bold text-foreground sm:mt-0 sm:w-1/3 sm:text-lg"
-              id="home-value-text"
-              type="text"
-              value={displayValue}
-              onBlur={handleBlur}
-              onChange={handleInputChange}
-              onFocus={(e) => {
-                setIsEditing(true)
-                // When focusing, show the raw numeric value for easier editing
-                setInputValue(homeValue.toString())
-                // Select all text for easier replacement
-                e.target.select()
-              }}
-            />
-          </div>
-          <div className="relative mt-4 sm:mt-0">
-            <label className="sr-only" htmlFor="home-value-slider">
-              {t("controls.home_value_label")}
-            </label>
-            <input
-              className="custom-slider h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200"
-              id="home-value-slider"
-              max="3000000"
-              min="150000"
-              step="10000"
-              type="range"
-              value={homeValue}
-              onChange={handleSliderChange}
-            />
-            {/* No need for the script here - we'll handle the updates in React */}
-            <div className="mt-2 flex justify-between">
-              <span className="text-xs text-gray-500">
-                {formatCurrency(150000, lng)}
-              </span>
-              <span className="text-xs text-gray-500">
-                {t("controls.max_value_plus")}
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="my-4 w-full border-t-2 border-dashed border-gray-200 sm:my-6" />
-
-        <div className="mb-6 sm:mb-8">
-          <p className="text-md mb-2 font-medium text-foreground">
-            {t("controls.payment_preference.label")}
-          </p>
-          <div className="space-y-3">
-            <label
-              className="flex w-fit cursor-pointer items-center rounded-full border border-gray-300 p-2 px-3 transition-colors hover:border-gray-400 has-[:checked]:border-black sm:px-4"
-              htmlFor="payment-option-balanced"
-            >
-              <input
-                checked={paymentPreference === "balanced"}
-                className="peer sr-only"
-                id="payment-option-balanced"
-                name="payment-preference"
-                type="radio"
-                onChange={() =>
-                  onPaymentPreferenceChange(
-                    paymentPreference === "balanced" ? null : "balanced"
-                  )
-                }
-              />
-              <img
-                alt="Unchecked"
-                className="mr-2 size-4 peer-checked:hidden sm:mr-3 sm:size-6"
-                src="/images/radio-unchecked.svg"
-              />
-              <img
-                alt="Checked"
-                className="mr-2 hidden size-4 peer-checked:block sm:mr-3 sm:size-6"
-                src="/images/radio-checked.svg"
-              />
-              <span className="text-sm font-medium text-foreground">
-                {t("controls.payment_preference.options.balanced")}
-              </span>
-            </label>
-
-            <label
-              className="flex w-fit cursor-pointer items-center rounded-full border border-gray-300 p-2 px-3 transition-colors hover:border-gray-400 has-[:checked]:border-black dark:border-gray-300 dark:hover:border-gray-300 sm:px-4"
-              htmlFor="payment-option-lumpSum"
-            >
-              <input
-                checked={paymentPreference === "lumpSum"}
-                className="peer sr-only"
-                id="payment-option-lumpSum"
-                name="payment-preference"
-                type="radio"
-                onChange={() =>
-                  onPaymentPreferenceChange(
-                    paymentPreference === "lumpSum" ? null : "lumpSum"
-                  )
-                }
-              />
-              <img
-                alt="Unchecked"
-                className="mr-2 size-4 peer-checked:hidden sm:mr-3 sm:size-6"
-                src="/images/radio-unchecked.svg"
-              />
-              <img
-                alt="Checked"
-                className="mr-2 hidden size-4 peer-checked:block sm:mr-3 sm:size-6"
-                src="/images/radio-checked.svg"
-              />
-              <span className="text-sm font-medium text-foreground">
-                {t("controls.payment_preference.options.lump_sum")}
-              </span>
-            </label>
-
-            <label
-              className="flex w-fit cursor-pointer items-center rounded-full border border-gray-300 p-2 px-3 transition-colors hover:border-gray-400 has-[:checked]:border-black dark:border-gray-300 dark:hover:border-gray-300 sm:px-4"
-              htmlFor="payment-option-monthly"
-            >
-              <input
-                checked={paymentPreference === "monthly"}
-                className="peer sr-only"
-                id="payment-option-monthly"
-                name="payment-preference"
-                type="radio"
-                onChange={() =>
-                  onPaymentPreferenceChange(
-                    paymentPreference === "monthly" ? null : "monthly"
-                  )
-                }
-              />
-              <img
-                alt="Unchecked"
-                className="mr-2 size-5 peer-checked:hidden sm:mr-3 sm:size-6"
-                src="/images/radio-unchecked.svg"
-              />
-              <img
-                alt="Checked"
-                className="mr-2 hidden size-5 peer-checked:block sm:mr-3 sm:size-6"
-                src="/images/radio-checked.svg"
-              />
-              <span className="text-sm font-medium text-foreground">
-                {t("controls.payment_preference.options.monthly")}
-              </span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-interface CalculatorResultsProps {
-  t: (key: string, options?: Record<string, string | number>) => string
-  lng: string
-  homeValue: number
-  srenovaOffer: number
-  lumpSumPayment: number
-  monthlyPayment: number
-}
-
-function CalculatorResults({
-  t,
-  lng,
-  srenovaOffer,
-  lumpSumPayment,
-  monthlyPayment,
-}: CalculatorResultsProps) {
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="rounded-2xl border border-gray-400 bg-white p-4 sm:p-6">
-        {/* Lump Sum Section */}
-        <div className="mb-4">
-          <div className="mb-2 inline-block rounded-2xl bg-gray-200 px-2 py-1 sm:px-3">
-            <span className="text-xs font-bold uppercase tracking-wide text-foreground">
-              {t("results.lump_sum.label")}
-            </span>
-          </div>
-          <div className="mb-1 text-2xl font-bold text-gray-900 sm:text-3xl">
-            {formatCurrency(lumpSumPayment, lng)}{" "}
-            {t("results.lump_sum.duration_short")}
-          </div>
-          <p className="text-xs text-foreground sm:text-sm">
-            {t("results.lump_sum.description")}
-          </p>
-        </div>
-        <div className="my-4 w-full border-t-2 border-dashed border-gray-200 sm:my-6" />
-
-        {/* Monthly Payment Section */}
-        <div>
-          <div className="mb-2 inline-block rounded-2xl bg-gray-200 px-2 py-1 sm:px-3">
-            <span className="text-xs font-bold uppercase tracking-wide text-foreground">
-              {t("results.monthly.label")}
-            </span>
-          </div>
-          <div className="mb-1 text-2xl font-bold text-foreground sm:text-3xl">
-            {formatCurrency(monthlyPayment, lng)}{" "}
-            {t("results.monthly.duration_short")}
-          </div>
-        </div>
-        <div className="my-4 w-full border-t-2 border-dashed border-gray-200 sm:my-6" />
-
-        {/* Offer Basis Text */}
-        <p className="text-xs text-foreground">
-          {t("results.offer_basis", {
-            offer: formatCurrency(srenovaOffer, lng),
-          })}
-        </p>
-      </div>
-      <p className="text-center text-xs text-foreground">
-        {t("results.disclaimer")}
-      </p>
-    </div>
+    (principal * (monthlyRate * Math.pow(1 + monthlyRate, termMonths))) /
+    (Math.pow(1 + monthlyRate, termMonths) - 1)
   )
 }
 
@@ -355,72 +62,204 @@ export function Calculator() {
   const lng = params.lng as string
   const { t } = useTranslation(lng, "calculator")
 
-  const [homeValue, setHomeValue] = useState(750000)
-  const [paymentPreference, setPaymentPreference] = useState<string | null>(
-    "balanced"
+  const [carValue] = useState(25000) // Estimated car value for the calculation
+  const [downPayment, setDownPayment] = useState(2350)
+  const [creditScoreRange, setCreditScoreRange] = useState("700-749")
+  const [loanTerm, setLoanTerm] = useState(72)
+  const [includeTradeIn, setIncludeTradeIn] = useState(false)
+  const [isEditingDownPayment, setIsEditingDownPayment] = useState(false)
+  const [downPaymentInput, setDownPaymentInput] = useState(
+    downPayment.toString()
   )
 
-  const srenovaOffer = useMemo(() => homeValue * 0.8, [homeValue])
+  const calculationResults = useMemo(() => {
+    const effectiveDownPayment = includeTradeIn
+      ? downPayment + 3000
+      : downPayment // Assume $3k trade-in value
+    const loanAmount = Math.max(0, carValue - effectiveDownPayment)
+    const apr = getAPRFromRange(creditScoreRange)
 
-  const { lumpSumPayment, monthlyPayment } = useMemo(() => {
-    // Balanced calculation (default)
-    let lumpSum = srenovaOffer * 0.3
-    let monthlyTotal = srenovaOffer * 0.7
-    let monthly = monthlyTotal / (20 * 12)
+    const monthlyPayment = calculateMonthlyPayment(loanAmount, apr, loanTerm)
+    const totalPayments = monthlyPayment * loanTerm
 
-    // Override based on user selection
-    if (paymentPreference === "lumpSum") {
-      // Large lump sum: 40% upfront, 60% paid monthly over 20 years
-      lumpSum = srenovaOffer * 0.4
-      monthlyTotal = srenovaOffer * 0.6
-      monthly = monthlyTotal / (20 * 12)
-    } else if (paymentPreference === "monthly") {
-      // Prioritize monthly: 10% upfront, 90% paid monthly over 20 years
-      lumpSum = srenovaOffer * 0.1
-      monthlyTotal = srenovaOffer * 0.9
-      monthly = monthlyTotal / (20 * 12)
+    return {
+      loanAmount,
+      monthlyPayment,
+      totalPayments,
+      apr,
     }
-    // balanced option uses the default calculation
+  }, [carValue, downPayment, creditScoreRange, loanTerm, includeTradeIn])
 
-    return { lumpSumPayment: lumpSum, monthlyPayment: monthly }
-  }, [srenovaOffer, paymentPreference])
+  const handleDownPaymentChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const rawValue = stripCurrencyFormat(event.target.value)
+    setDownPaymentInput(rawValue)
+
+    if (rawValue === "") {
+      return
+    }
+
+    const numericValue = Number(rawValue)
+    if (!isNaN(numericValue)) {
+      setDownPayment(numericValue)
+    }
+  }
+
+  const handleDownPaymentBlur = () => {
+    setIsEditingDownPayment(false)
+    let numericValue = Number(downPaymentInput)
+    if (isNaN(numericValue) || numericValue < 0) {
+      numericValue = 0
+    }
+
+    setDownPayment(numericValue)
+    setDownPaymentInput(numericValue.toString())
+  }
+
+  const displayDownPayment = isEditingDownPayment
+    ? downPaymentInput
+    : downPayment.toString()
 
   return (
     <section
-      className="container mx-auto max-w-6xl rounded-3xl bg-gradient-to-r from-[#FBFCFF] to-[#F1F6FF] px-4 py-12 dark:from-background dark:to-background sm:px-6 sm:py-16 md:py-20 lg:py-32"
+      className="container mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16"
       id="calculator"
     >
-      <div className="mx-auto max-w-6xl rounded-3xl">
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-12 md:mb-16">
-          <h2 className="mb-3 text-4xl font-bold tracking-tight text-gray-900 sm:mb-4  md:text-5xl">
-            <span className="bg-gradient-to-r from-[#CA8A04] via-[#F5B329] to-[#F5B329] bg-clip-text text-transparent">
-              {t("title.srenova")}
-            </span>
-            <span className="text-foreground"> {t("title.calculator")}</span>
+      <div className="mx-auto max-w-3xl">
+        <div className="mx-auto mb-8 text-center sm:mb-12">
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
+            Car Payment Calculator
           </h2>
-          <p className="mt-8 text-xs text-foreground sm:text-lg">
-            {t("description")}
+          <p className="text-lg text-gray-600">
+            Calculate your estimated monthly payment
           </p>
         </div>
 
-        <div className="mx-auto max-w-4xl overflow-hidden p-4 sm:p-6 md:p-8">
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-            <CalculatorControls
-              homeValue={homeValue}
-              lng={lng}
-              paymentPreference={paymentPreference}
-              t={t}
-              onHomeValueChange={setHomeValue}
-              onPaymentPreferenceChange={setPaymentPreference}
-            />
-            <CalculatorResults
-              homeValue={homeValue}
-              lng={lng}
-              lumpSumPayment={lumpSumPayment}
-              monthlyPayment={monthlyPayment}
-              srenovaOffer={srenovaOffer}
-              t={t}
-            />
+        <div className="rounded-lg bg-white p-6 shadow-lg">
+          {/* Input Fields Grid */}
+          <div className="grid gap-6 md:grid-cols-2 mb-8">
+            {/* Down Payment */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Est. down payment
+              </label>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                  $
+                </span>
+                <input
+                  type="text"
+                  value={displayDownPayment}
+                  onChange={handleDownPaymentChange}
+                  onFocus={(e) => {
+                    setIsEditingDownPayment(true)
+                    setDownPaymentInput(downPayment.toString())
+                    e.target.select()
+                  }}
+                  onBlur={handleDownPaymentBlur}
+                  className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg font-medium"
+                  placeholder="2350"
+                />
+              </div>
+            </div>
+
+            {/* Loan Term */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Loan term
+              </label>
+              <select
+                value={loanTerm}
+                onChange={(e) => setLoanTerm(Number(e.target.value))}
+                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg font-medium bg-white"
+              >
+                <option value={36}>36 months</option>
+                <option value={48}>48 months</option>
+                <option value={60}>60 months</option>
+                <option value={72}>72 months</option>
+                <option value={84}>84 months</option>
+              </select>
+            </div>
+
+            {/* Credit Score */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Credit score
+              </label>
+              <select
+                value={creditScoreRange}
+                onChange={(e) => setCreditScoreRange(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg font-medium bg-white"
+              >
+                {creditScoreRanges.map((range) => (
+                  <option key={range.range} value={range.range}>
+                    {range.range}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Monthly Payment Display */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Est. monthly payment
+              </label>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                  $
+                </span>
+                <input
+                  type="text"
+                  value={Math.round(
+                    calculationResults.monthlyPayment
+                  ).toString()}
+                  readOnly
+                  className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-md bg-gray-50 text-lg font-medium text-gray-900"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Trade-in Toggle */}
+          <div className="flex items-center mb-8">
+            <button
+              type="button"
+              onClick={() => setIncludeTradeIn(!includeTradeIn)}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                includeTradeIn ? "bg-blue-600" : "bg-gray-200"
+              }`}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  includeTradeIn ? "translate-x-6" : "translate-x-1"
+                }`}
+              />
+            </button>
+            <span className="ml-3 text-sm font-medium text-gray-700">
+              Include trade-in
+            </span>
+          </div>
+
+          {/* Results Display */}
+          <div className="text-center border-t pt-8">
+            <div className="mb-2">
+              <span className="text-5xl font-bold text-gray-900">
+                {formatCurrency(calculationResults.totalPayments, lng)}
+              </span>
+            </div>
+            <div className="mb-4">
+              <span className="text-lg text-gray-600">
+                with {calculationResults.apr}% APR
+              </span>
+              <button className="ml-2 inline-flex items-center justify-center w-5 h-5 bg-gray-200 rounded-full text-gray-500 hover:bg-gray-300">
+                <span className="text-xs">?</span>
+              </button>
+            </div>
+            <div className="text-sm text-gray-600">
+              Not ready to pre-qualify?{" "}
+              <button className="text-blue-600 hover:text-blue-700 underline">
+                Shop by estimated budget
+              </button>
+            </div>
           </div>
         </div>
       </div>

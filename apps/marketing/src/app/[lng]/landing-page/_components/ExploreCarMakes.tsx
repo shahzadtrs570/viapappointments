@@ -2,147 +2,50 @@
 "use client"
 
 import { Container } from "@package/ui/container"
+import logoData from "../All_US_Car_Brand_Logos_Links.json"
 
-const carMakes = [
-  {
-    name: "Audi",
-    logo: (
-      <svg viewBox="0 0 256 162" className="h-16 w-auto">
-        <g fill="#BB0A30">
-          <circle cx="59.5" cy="81" r="58.5"/>
-          <circle cx="135.5" cy="81" r="58.5" fillOpacity="0.8"/>
-          <circle cx="196.5" cy="81" r="58.5" fillOpacity="0.6"/>
-          <circle cx="118" cy="81" r="58.5" fillOpacity="0.4"/>
-        </g>
-      </svg>
-    )
-  },
-  {
-    name: "BMW",
-    logo: (
-      <svg viewBox="0 0 256 256" className="h-16 w-auto">
-        <circle cx="128" cy="128" r="120" fill="#0066B2" stroke="#000" strokeWidth="8"/>
-        <path d="M128 8 A120 120 0 0 1 128 248 A120 120 0 0 1 128 8 Z M128 20 A108 108 0 0 0 128 236 A108 108 0 0 0 128 20 Z" fill="#fff"/>
-        <path d="M128 20 L128 128 L20 128 A108 108 0 0 1 128 20 Z" fill="#0066B2"/>
-        <path d="M128 128 L236 128 L128 236 A108 108 0 0 1 128 128 Z" fill="#0066B2"/>
-        <path d="M128 20 L236 128 L128 128 A108 108 0 0 1 128 20 Z" fill="#fff"/>
-        <path d="M20 128 L128 236 L128 128 A108 108 0 0 1 20 128 Z" fill="#fff"/>
-      </svg>
-    )
-  },
-  {
-    name: "Honda",
-    logo: (
-      <svg viewBox="0 0 256 256" className="h-16 w-auto">
-        <rect width="256" height="256" fill="#C8102E"/>
-        <path d="M64 64 L64 192 L80 192 L80 136 L176 136 L176 192 L192 192 L192 64 L176 64 L176 120 L80 120 L80 64 Z" fill="white"/>
-      </svg>
-    )
-  },
-  {
-    name: "Toyota",
-    logo: (
-      <svg viewBox="0 0 256 80" className="h-16 w-auto">
-        <rect width="256" height="80" fill="#E60012"/>
-        <ellipse cx="80" cy="40" rx="30" ry="25" fill="white"/>
-        <ellipse cx="40" cy="40" rx="25" ry="30" fill="white"/>
-        <ellipse cx="65" cy="40" rx="20" ry="20" fill="#E60012"/>
-        <text x="140" y="50" fill="white" fontSize="32" fontWeight="bold">TOYOTA</text>
-      </svg>
-    )
-  },
-  {
-    name: "Bentley",
-    logo: (
-      <svg viewBox="0 0 256 160" className="h-16 w-auto">
-        <ellipse cx="128" cy="80" rx="120" ry="72" fill="#003366"/>
-        <path d="M128 20 L158 80 L128 140 L98 80 Z" fill="white"/>
-        <circle cx="128" cy="50" r="8" fill="#003366"/>
-        <path d="M118 70 L138 70 L138 90 L118 90 Z" fill="#003366"/>
-        <text x="128" y="110" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">B</text>
-      </svg>
-    )
-  },
-  {
-    name: "Mercedes",
-    logo: (
-      <svg viewBox="0 0 256 256" className="h-16 w-auto">
-        <circle cx="128" cy="128" r="120" fill="#00ADEF"/>
-        <circle cx="128" cy="128" r="100" fill="white"/>
-        <path d="M128 40 L128 128 L40 190 A100 100 0 0 1 128 40 Z" fill="#00ADEF"/>
-        <path d="M128 128 L216 190 A100 100 0 0 1 40 190 L128 128 Z" fill="#00ADEF"/>
-        <path d="M128 40 L216 190 A100 100 0 0 1 128 128 L128 40 Z" fill="#00ADEF"/>
-        <circle cx="128" cy="128" r="12" fill="white"/>
-      </svg>
-    )
-  },
-  {
-    name: "Ford",
-    logo: (
-      <svg viewBox="0 0 256 100" className="h-16 w-auto">
-        <ellipse cx="128" cy="50" rx="120" ry="40" fill="#003478"/>
-        <text x="128" y="60" textAnchor="middle" fill="white" fontSize="36" fontWeight="bold" fontStyle="italic">Ford</text>
-      </svg>
-    )
-  },
-  {
-    name: "Volkswagen",
-    logo: (
-      <svg viewBox="0 0 256 256" className="h-16 w-auto">
-        <circle cx="128" cy="128" r="120" fill="#1E3A8A"/>
-        <circle cx="128" cy="128" r="100" fill="white"/>
-        <path d="M90 80 L128 150 L166 80 L128 90 Z" fill="#1E3A8A"/>
-        <circle cx="128" cy="110" r="20" fill="#1E3A8A"/>
-        <text x="128" y="190" textAnchor="middle" fill="#1E3A8A" fontSize="24" fontWeight="bold">VW</text>
-      </svg>
-    )
-  },
-  {
-    name: "Lexus",
-    logo: (
-      <svg viewBox="0 0 256 160" className="h-16 w-auto">
-        <ellipse cx="128" cy="80" rx="120" ry="72" fill="#000"/>
-        <ellipse cx="128" cy="80" rx="100" ry="60" fill="white"/>
-        <text x="128" y="90" textAnchor="middle" fill="black" fontSize="32" fontWeight="bold">L</text>
-      </svg>
-    )
-  },
-  {
-    name: "Nissan",
-    logo: (
-      <svg viewBox="0 0 256 80" className="h-16 w-auto">
-        <rect width="256" height="80" fill="#C3002F"/>
-        <circle cx="128" cy="40" r="30" fill="white"/>
-        <text x="128" y="50" textAnchor="middle" fill="#C3002F" fontSize="16" fontWeight="bold">NISSAN</text>
-      </svg>
-    )
-  },
-  {
-    name: "Porsche",
-    logo: (
-      <svg viewBox="0 0 256 256" className="h-16 w-auto">
-        <rect width="256" height="256" fill="#000"/>
-        <rect x="32" y="32" width="192" height="192" fill="#D4AF37"/>
-        <circle cx="128" cy="128" r="60" fill="#000"/>
-        <text x="128" y="140" textAnchor="middle" fill="#D4AF37" fontSize="24" fontWeight="bold">PORSCHE</text>
-      </svg>
-    )
-  },
-  {
-    name: "Subaru",
-    logo: (
-      <svg viewBox="0 0 256 160" className="h-16 w-auto">
-        <ellipse cx="128" cy="80" rx="120" ry="72" fill="#003478"/>
-        <circle cx="100" cy="60" r="12" fill="white"/>
-        <circle cx="156" cy="60" r="12" fill="white"/>
-        <circle cx="128" cy="45" r="16" fill="white"/>
-        <circle cx="80" cy="100" r="10" fill="white"/>
-        <circle cx="176" cy="100" r="10" fill="white"/>
-        <circle cx="128" cy="115" r="14" fill="white"/>
-      </svg>
-    )
-  }
+// Types
+interface LogoEntry {
+  Manufacturer: string
+  "Logo URL": string
+}
+
+// Type assertion for the imported JSON data
+const logos = logoData as LogoEntry[]
+
+// Filter to popular makes and create the carMakes array
+const popularMakes = [
+  "Audi",
+  "BMW",
+  "Honda",
+  "Toyota",
+  "Bentley",
+  "Mercedes-Benz",
+  "Ford",
+  "Volkswagen",
+  "Lexus",
+  "Nissan",
+  "Porsche",
+  "Subaru",
 ]
+
+const carMakes = popularMakes
+  .map((makeName) => {
+    // Find the logo data for this make
+    const logoEntry = logos.find(
+      (logo) =>
+        logo.Manufacturer === makeName ||
+        logo.Manufacturer === makeName.replace("-", "-") ||
+        (makeName === "Mercedes" && logo.Manufacturer === "Mercedes-Benz")
+    )
+
+    return {
+      name: makeName,
+      logoUrl: logoEntry?.["Logo URL"] || "",
+      manufacturer: logoEntry?.Manufacturer || makeName,
+    }
+  })
+  .filter((make) => make.logoUrl) // Only include makes with valid logo URLs
 
 export function ExploreCarMakes() {
   return (
@@ -165,7 +68,7 @@ export function ExploreCarMakes() {
             </button>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
           {carMakes.map((make) => (
             <div
@@ -173,7 +76,26 @@ export function ExploreCarMakes() {
               className="group flex cursor-pointer flex-col items-center rounded-xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 dark:bg-gray-800"
             >
               <div className="mb-4 flex h-20 w-full items-center justify-center">
-                {make.logo}
+                <img
+                  src={make.logoUrl}
+                  alt={`${make.name} logo`}
+                  className="h-16 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-110"
+                  onError={(e) => {
+                    // Fallback to a generic car icon if image fails to load
+                    const target = e.target as HTMLImageElement
+                    target.style.display = "none"
+                    target.nextElementSibling?.classList.remove("hidden")
+                  }}
+                />
+                <div className="hidden h-16 w-16 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                  <svg
+                    className="h-8 w-8 text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10 3a1 1 0 00-1 1v1.4L7.2 7H5a1 1 0 00-1 1v2a1 1 0 001 1h.6l1.6 4.8a1 1 0 00.95.7h5.7a1 1 0 00.95-.7L16.4 11H17a1 1 0 001-1V8a1 1 0 00-1-1h-2.2L13 5.4V4a1 1 0 00-1-1h-2z" />
+                  </svg>
+                </div>
               </div>
               <h4 className="text-center text-lg font-semibold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
                 {make.name}
@@ -181,8 +103,7 @@ export function ExploreCarMakes() {
             </div>
           ))}
         </div>
-
       </Container>
     </section>
   )
-} 
+}

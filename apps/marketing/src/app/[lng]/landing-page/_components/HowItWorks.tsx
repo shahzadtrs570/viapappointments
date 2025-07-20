@@ -1,8 +1,10 @@
+/* eslint-disable */
 "use client"
 
 import { useParams } from "next/navigation"
 
 import { useTranslation } from "@/lib/i18n/client"
+import { WheelPopupWrapper } from "./WheelPopupWrapper"
 
 export function HowItWorks() {
   const params = useParams()
