@@ -20,6 +20,7 @@ export default function CarShopPage({ params: { lng } }: CarShopPageProps) {
     priceRange: [0, 200000] as [number, number],
     yearRange: [2020, 2024] as [number, number],
     fuelType: "",
+    carType: "used" as "used" | "new",
   })
 
   const handleFilterChange = (newFilters: any) => {
@@ -71,7 +72,11 @@ export default function CarShopPage({ params: { lng } }: CarShopPageProps) {
 
           {/* Car Listings */}
           <div className="lg:col-span-3">
-            <CarListings cars={filteredCars} lng={lng} />
+            <CarListings
+              cars={filteredCars}
+              lng={lng}
+              carType={filters.carType}
+            />
           </div>
         </div>
       </div>

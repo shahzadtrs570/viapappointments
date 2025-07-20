@@ -7,9 +7,10 @@ import CarCard from "./CarCard"
 interface CarListingsProps {
   cars: any[]
   lng: string
+  carType: "used" | "new"
 }
 
-export default function CarListings({ cars, lng }: CarListingsProps) {
+export default function CarListings({ cars, lng, carType }: CarListingsProps) {
   const [sortBy, setSortBy] = useState("bestMatch")
 
   const sortedCars = [...cars].sort((a, b) => {
