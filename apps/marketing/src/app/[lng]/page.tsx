@@ -26,7 +26,7 @@ export async function generateMetadata({
     ),
     description: t(
       "meta.description",
-      "Srenova helps homeowners access their property's value while maintaining the right to live in their home. Flexible payment options, transparent process, and professional support."
+      "VIPAPPOINTMENTS helps homeowners access their property's value while maintaining the right to live in their home. Flexible payment options, transparent process, and professional support."
     ),
   }
 }
