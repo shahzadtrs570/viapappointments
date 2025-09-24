@@ -2,6 +2,7 @@ import { adminRouter } from "./routers/admin/admin.router"
 import { buyerOnboardingRouter } from "./routers/buyer/sub-routers/onboarding/buyer-onboarding.router"
 import { featureTemplateRouter } from "./routers/feature-template/feature-template.router"
 import { fileUploadRouter } from "./routers/fileUpload/fileUpload.router"
+import { inventoryRouter } from "./routers/inventory/inventory.router"
 import { leadsRouter } from "./routers/leads/leads.router"
 import { newsletterRouter } from "./routers/newsletter/newsletter.router"
 import { paymentsRouter } from "./routers/payments/payments.router"
@@ -19,6 +20,7 @@ export const appRouter = createTRPCRouter({
   waitlist: waitlistRouter,
   newsletter: newsletterRouter,
   leads: leadsRouter,
+  inventory: inventoryRouter,
   property: propertyRouter,
   featureTemplate: featureTemplateRouter,
   fileUpload: fileUploadRouter,

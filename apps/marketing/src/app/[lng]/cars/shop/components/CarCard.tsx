@@ -14,25 +14,31 @@ import {
 
 interface CarCardProps {
   car: {
-    title: string
-    year: string
-    make: string
-    model: string
-    trim: string
-    bodyStyle: string
-    vin: string
-    stock: string
-    salePrice: number
-    msrp: number
-    exteriorColor: string
-    interiorColor: string
-    engine: string
-    transmission: string
-    fuelType: string
-    fuelEconomyCity: number
-    fuelEconomyHighway: number
-    highlightedFeatures: string[]
-    images: string[]
+    id: string
+    title?: string
+    year?: number
+    make?: string
+    model?: string
+    trim?: string
+    bodyStyle?: string
+    vin?: string
+    stockNumber?: string
+    priceAmount?: number
+    msrpAmount?: number
+    exteriorColor?: string
+    interiorColor?: string
+    engineSize?: number
+    transmission?: string
+    fuelType?: string
+    mpgCity?: number
+    mpgHighway?: number
+    features?: any
+    images?: any
+    dealership?: {
+      id: string
+      name: string
+      phone?: string
+    }
   }
   index: number
   lng: string
@@ -44,9 +50,33 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
   const [showRequestDialog, setShowRequestDialog] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
 
+  // Handle different image data structures
+  let images: string[] = []
+  if (car.images) {
+    if (Array.isArray(car.images)) {
+      // If it's an array of objects with url property
+      if (
+        car.images.length > 0 &&
+        typeof car.images[0] === "object" &&
+        car.images[0].url
+      ) {
+        images = car.images.map((img: any) => img.url)
+      }
+      // If it's an array of strings
+      else if (car.images.length > 0 && typeof car.images[0] === "string") {
+        images = car.images
+      }
+    } else if (typeof car.images === "object") {
+      // If it's an object with urls property
+      if (car.images.urls && Array.isArray(car.images.urls)) {
+        images = car.images.urls
+      }
+    }
+  }
+
   const mainImage =
-    car.images && car.images.length > 0 && !imageError
-      ? car.images[0]
+    images && images.length > 0 && !imageError
+      ? images[0]
       : "https://via.placeholder.com/400x300/f3f4f6/9ca3af?text=No+Image"
 
   const handleImageError = () => {
@@ -70,13 +100,13 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: `${car.year} ${car.make} ${car.model} ${car.trim}`,
-        text: `Check out this ${car.year} ${car.make} ${car.model} for $${car.salePrice.toLocaleString()}`,
-        url: window.location.origin + `/${lng}/cars/shop/${index}`,
+        title: `${car.year} ${car.make} ${car.model} ${car.trim || ""}`.trim(),
+        text: `Check out this ${car.year} ${car.make} ${car.model} for $${(car.priceAmount || 0).toLocaleString()}`,
+        url: window.location.origin + `/${lng}/cars/shop/${car.id}`,
       })
     } else {
       navigator.clipboard.writeText(
-        window.location.origin + `/${lng}/cars/shop/${index}`
+        window.location.origin + `/${lng}/cars/shop/${car.id}`
       )
     }
   }
@@ -86,12 +116,14 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
         {/* Image Section */}
         <div className="relative">
-          <Link href={`/${lng}/cars/shop/${index}`}>
+          <Link href={`/${lng}/cars/shop/${car.id}`}>
             <div className="relative cursor-pointer">
               <div className="aspect-[4/3] bg-gray-100">
                 <img
                   src={mainImage}
-                  alt={car.title}
+                  alt={
+                    car.title || `${car.year} ${car.make} ${car.model}`.trim()
+                  }
                   onError={handleImageError}
                   className="w-full h-full object-cover"
                 />
@@ -118,31 +150,35 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
           </div>
 
           {/* Car Title - Make clickable */}
-          <Link href={`/${lng}/cars/shop/${index}`}>
+          <Link href={`/${lng}/cars/shop/${car.id}`}>
             <h3 className="text-lg font-semibold text-gray-900 mb-2 cursor-pointer hover:text-blue-600 transition-colors">
-              {car.year} {car.make} {car.model} {car.trim}
+              {car.year} {car.make} {car.model} {car.trim || ""}
             </h3>
           </Link>
 
           {/* Engine Info */}
           <div className="mb-6">
-            <span className="text-gray-600">{car.engine}</span>
+            <span className="text-gray-600">
+              {car.engineSize
+                ? `${car.engineSize}L`
+                : "Engine info not available"}
+            </span>
           </div>
 
           {/* Price */}
           <div className="mb-6">
             <span className="text-2xl font-bold text-gray-900">
-              ${car.salePrice.toLocaleString()}
+              ${(car.priceAmount || 0).toLocaleString()}
             </span>
           </div>
 
           {/* Phone and Request Info */}
           <div className="flex items-center justify-between mb-4">
             <a
-              href="tel:(218)396-7705"
+              href={`tel:${car.dealership?.phone || "(218)396-7705"}`}
               className="text-blue-600 hover:text-blue-700 font-medium"
             >
-              (218) 396-7705
+              {car.dealership?.phone || "(218) 396-7705"}
             </a>
             <button
               onClick={handleRequestInfo}
@@ -154,7 +190,9 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
 
           {/* Location and Menu */}
           <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-            <span className="text-gray-900 font-medium">Greenville, MI</span>
+            <span className="text-gray-900 font-medium">
+              {car.dealership?.name || "Dealership"}
+            </span>
 
             {/* Menu button that directly opens dialog */}
             <button
@@ -188,16 +226,18 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
               <div className="w-24 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
                 <img
                   src={mainImage}
-                  alt={car.title}
+                  alt={
+                    car.title || `${car.year} ${car.make} ${car.model}`.trim()
+                  }
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                  {car.year} {car.make} {car.model} {car.trim}
+                  {car.year} {car.make} {car.model} {car.trim || ""}
                 </h3>
                 <p className="text-lg font-semibold text-gray-900">
-                  ${car.salePrice.toLocaleString()}
+                  ${(car.priceAmount || 0).toLocaleString()}
                 </p>
               </div>
               <button
@@ -217,7 +257,7 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                   Features
                 </h3>
                 <Link
-                  href={`/${lng}/cars/shop/${index}`}
+                  href={`/${lng}/cars/shop/${car.id}`}
                   className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center gap-1"
                 >
                   View full listing
@@ -298,7 +338,9 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                     <div className="font-semibold text-gray-900 mb-1">
                       Exterior color
                     </div>
-                    <div className="text-gray-600">{car.exteriorColor}</div>
+                    <div className="text-gray-600">
+                      {car.exteriorColor || "Not specified"}
+                    </div>
                   </div>
                 </div>
 
@@ -318,7 +360,9 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                     <div className="font-semibold text-gray-900 mb-1">
                       Interior color
                     </div>
-                    <div className="text-gray-600">{car.interiorColor}</div>
+                    <div className="text-gray-600">
+                      {car.interiorColor || "Not specified"}
+                    </div>
                   </div>
                 </div>
 
@@ -336,9 +380,7 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900 mb-1">MPG</div>
-                    <div className="text-gray-600">
-                      {car.fuelEconomyCity || 29} MPG
-                    </div>
+                    <div className="text-gray-600">{car.mpgCity || 29} MPG</div>
                   </div>
                 </div>
 
@@ -360,7 +402,9 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                     <div className="font-semibold text-gray-900 mb-1">
                       Engine
                     </div>
-                    <div className="text-gray-600">{car.engine}</div>
+                    <div className="text-gray-600">
+                      {car.engineSize ? `${car.engineSize}L` : "Not specified"}
+                    </div>
                   </div>
                 </div>
 
@@ -385,7 +429,9 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                     <div className="font-semibold text-gray-900 mb-1">
                       Fuel type
                     </div>
-                    <div className="text-gray-600">{car.fuelType}</div>
+                    <div className="text-gray-600">
+                      {car.fuelType || "Not specified"}
+                    </div>
                   </div>
                 </div>
 
@@ -407,7 +453,9 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                     <div className="font-semibold text-gray-900 mb-1">
                       Transmission
                     </div>
-                    <div className="text-gray-600">{car.transmission}</div>
+                    <div className="text-gray-600">
+                      {car.transmission || "Not specified"}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -420,7 +468,7 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                   Vehicle overview
                 </h3>
                 <Link
-                  href={`/${lng}/cars/shop/${index}`}
+                  href={`/${lng}/cars/shop/${car.id}`}
                   className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center gap-1"
                 >
                   View specifications
@@ -443,37 +491,51 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
               <div className="grid grid-cols-2 gap-x-12 gap-y-3">
                 <div className="flex justify-between">
                   <span className="font-semibold text-gray-900">Make:</span>
-                  <span className="text-gray-600">{car.make}</span>
+                  <span className="text-gray-600">
+                    {car.make || "Not specified"}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-semibold text-gray-900">Model:</span>
-                  <span className="text-gray-600">{car.model}</span>
+                  <span className="text-gray-600">
+                    {car.model || "Not specified"}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-semibold text-gray-900">Year:</span>
-                  <span className="text-gray-600">{car.year}</span>
+                  <span className="text-gray-600">
+                    {car.year || "Not specified"}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-semibold text-gray-900">Trim:</span>
-                  <span className="text-gray-600">{car.trim}</span>
+                  <span className="text-gray-600">
+                    {car.trim || "Not specified"}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-semibold text-gray-900">
                     Body type:
                   </span>
-                  <span className="text-gray-600">{car.bodyStyle}</span>
+                  <span className="text-gray-600">
+                    {car.bodyStyle || "Not specified"}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-semibold text-gray-900">Mileage:</span>
-                  <span className="text-gray-600">2,518</span>
+                  <span className="text-gray-600">Not specified</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-semibold text-gray-900">Stock #:</span>
-                  <span className="text-gray-600">{car.stock}</span>
+                  <span className="text-gray-600">
+                    {car.stockNumber || "Not specified"}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-semibold text-gray-900">VIN:</span>
-                  <span className="text-gray-600 text-xs">{car.vin}</span>
+                  <span className="text-gray-600 text-xs">
+                    {car.vin || "Not specified"}
+                  </span>
                 </div>
               </div>
             </div>
@@ -507,13 +569,13 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-semibold text-gray-900 mb-1">
-                    {car.year} {car.make} {car.model} {car.trim}
+                    {car.year} {car.make} {car.model} {car.trim || ""}
                   </h4>
                   <p className="text-sm text-gray-600 mb-1">
-                    Stock #{car.stock}
+                    Stock #{car.stockNumber || "Not specified"}
                   </p>
                   <p className="text-lg font-bold text-green-600">
-                    ${car.salePrice.toLocaleString()}
+                    ${(car.priceAmount || 0).toLocaleString()}
                   </p>
                 </div>
               </div>
@@ -579,7 +641,7 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                     placeholder="I'm interested in this vehicle. Please send me more information."
-                    defaultValue={`I'm interested in the ${car.year} ${car.make} ${car.model} ${car.trim} (Stock #${car.stock}). Please contact me with more information.`}
+                    defaultValue={`I'm interested in the ${car.year} ${car.make} ${car.model} ${car.trim || ""} (Stock #${car.stockNumber || "N/A"}). Please contact me with more information.`}
                   />
                 </div>
 
@@ -616,10 +678,10 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                 Prefer to call? Speak with a specialist:
               </p>
               <a
-                href="tel:(218)396-7705"
+                href={`tel:${car.dealership?.phone || "(218)396-7705"}`}
                 className="text-lg font-semibold text-blue-600 hover:text-blue-700 transition-colors"
               >
-                (218) 396-7705
+                {car.dealership?.phone || "(218) 396-7705"}
               </a>
               <p className="text-xs text-gray-500 mt-1">
                 Available Mon-Fri 9AM-6PM

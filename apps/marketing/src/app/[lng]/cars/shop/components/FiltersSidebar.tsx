@@ -11,15 +11,25 @@ interface FiltersSidebarProps {
     yearRange: [number, number]
     fuelType: string
     carType: "used" | "new"
+    search: string
+    sortBy: string
   }
   onFilterChange: (filters: any) => void
-  cars: any[]
+  filterOptions?: {
+    makes: Array<{ value: string; count: number }>
+    bodyStyles: Array<{ value: string; count: number }>
+    fuelTypes: Array<{ value: string; count: number }>
+    priceRange: { min: number; max: number }
+    yearRange: { min: number; max: number }
+  }
+  isLoading?: boolean
 }
 
 export default function FiltersSidebar({
   filters,
   onFilterChange,
-  cars,
+  filterOptions,
+  isLoading,
 }: FiltersSidebarProps) {
   const [localFilters, setLocalFilters] = useState(filters)
   const [activeTab, setActiveTab] = useState("car")
@@ -53,10 +63,10 @@ export default function FiltersSidebar({
     sellerType: false,
   })
 
-  // Get unique values from cars data
-  const makes = [...new Set(cars.map((car) => car.make))].sort()
-  const bodyStyles = [...new Set(cars.map((car) => car.bodyStyle))].sort()
-  const fuelTypes = [...new Set(cars.map((car) => car.fuelType))].sort()
+  // Get filter options from API or fallback to empty arrays
+  const makes = filterOptions?.makes?.map((item) => item.value) || []
+  const bodyStyles = filterOptions?.bodyStyles?.map((item) => item.value) || []
+  const fuelTypes = filterOptions?.fuelTypes?.map((item) => item.value) || []
 
   const handleFilterUpdate = (key: string, value: any) => {
     const newFilters = { ...localFilters, [key]: value }
@@ -85,6 +95,7 @@ export default function FiltersSidebar({
                 value={localFilters.make}
                 onChange={(e) => handleFilterUpdate("make", e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium"
+                disabled={isLoading}
               >
                 <option value="">All makes</option>
                 {makes.map((make) => (
@@ -138,6 +149,7 @@ export default function FiltersSidebar({
                   handleFilterUpdate("bodyStyle", e.target.value)
                 }
                 className="w-full p-3 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium"
+                disabled={isLoading}
               >
                 <option value="">All Body Styles</option>
                 {bodyStyles.map((style) => (
@@ -419,6 +431,7 @@ export default function FiltersSidebar({
                         ])
                       }}
                       className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                      disabled={isLoading}
                     />
                   </div>
                   <div>
@@ -431,6 +444,7 @@ export default function FiltersSidebar({
                       onChange={(e) => {
                         const value =
                           parseInt(e.target.value.replace(/[^0-9]/g, "")) ||
+                          filterOptions?.priceRange?.max ||
                           200000
                         handleFilterUpdate("priceRange", [
                           localFilters.priceRange[0],
@@ -438,6 +452,7 @@ export default function FiltersSidebar({
                         ])
                       }}
                       className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                      disabled={isLoading}
                     />
                   </div>
                 </div>
@@ -446,8 +461,8 @@ export default function FiltersSidebar({
                 <div className="px-2">
                   <input
                     type="range"
-                    min="0"
-                    max="200000"
+                    min={filterOptions?.priceRange?.min || 0}
+                    max={filterOptions?.priceRange?.max || 200000}
                     step="1000"
                     value={localFilters.priceRange[1]}
                     onChange={(e) =>
@@ -457,6 +472,7 @@ export default function FiltersSidebar({
                       ])
                     }
                     className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer slider"
+                    disabled={isLoading}
                   />
                 </div>
 

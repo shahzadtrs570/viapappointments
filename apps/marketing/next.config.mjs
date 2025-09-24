@@ -10,6 +10,75 @@ const config = {
     appDir: true,
     serverComponentsExternalPackages: [],
   },
+  // Image configuration for external domains
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.cloudfront.net',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.motor1.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'hips.hearstapps.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.cstatic-images.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'inventory-dmg.assets-cdk.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.dealereprocess.net',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.dealereprocess.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.vinsolutions.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.autotrader.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.cars.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.cargurus.com',
+      },
+    ],
+    domains: [
+      'images.unsplash.com',
+      'via.placeholder.com',
+    ],
+  },
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   /** Enables hot reloading for local packages without a build step */

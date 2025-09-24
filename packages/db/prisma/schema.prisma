@@ -62,11 +62,9 @@ model User {
   updatedAt         DateTime             @updatedAt
   role              Role                 @default(USER)
   preferredLanguage String?              @default("en")
-  SrenovaRole    Srenova_UserRole[]     @default([SELLER, FUND_BUYER])
   receiveUpdates    Boolean              @default(false)
   isCompanyUser     Boolean              @default(false)
-
-  isBanned Boolean @default(false)
+  isBanned          Boolean              @default(false)
 
   bans            Ban[]
   performedBans   Ban[] @relation("performedBans")
@@ -76,27 +74,6 @@ model User {
   sessions         Session[]
   subscription     Subscription?
   featureTemplates FeatureTemplate[]
-
-  // Srenova - Additional relations
-  contactAddress         ContactAddress?
-  sellerProfiles         SellerProfile[]
-  familySupporterProfile FamilySupporterProfile?
-  fundBuyerProfile       FundBuyerProfile?
-  conveyancerProfile     ConveyancerProfile?
-  valuerProfile          ValuerProfile?
-  adminProfile           AdminProfile?
-  documents              Document[]
-  propertyDocuments      PropertyDocument[]
-  
-  // BuyBox relations
-  createdBuyBoxes        BuyBox[]
-  buyBoxInvestments      BuyBoxInvestment[]
-  
-  // Buyer Onboarding relation
-  buyerOnboarding        BuyerOnboarding?
-  
-  // Eligibility relation
-  eligibility            Eligibility?
 }
 
 model Ban {
@@ -390,896 +367,7 @@ model SurveyLeadConnection {
   @@index([leadTypeFilter])
 }
 
-// Srenova - New Models
 
-// User Roles specific to Srenova
-enum Srenova_UserRole {
-  SELLER
-  FAMILY_SUPPORTER
-  FUND_BUYER
-  CONVEYANCER
-  VALUER
-}
-
-// Property Types
-enum PropertyType {
-  HOUSE
-  APARTMENT
-  BUNGALOW
-  COTTAGE
-  VILLA
-  OTHER
-}
-
-// Health Conditions
-enum HealthCondition {
-  EXCELLENT
-  GOOD
-  FAIR
-  POOR
-}
-
-// Financial Priority
-enum FinancialPriority {
-  LUMP_SUM
-  MONTHLY_INCOME
-  MIXED
-  UNDECIDED
-}
-
-// Property Condition
-enum PropertyCondition {
-  EXCELLENT
-  GOOD
-  FAIR
-  NEEDS_RENOVATION
-}
-
-// Offer Status
-enum OfferStatus {
-  DRAFT
-  PENDING
-  ACCEPTED
-  REJECTED
-  EXPIRED
-  WITHDRAWN
-}
-
-// Contract Status
-enum ContractStatus {
-  DRAFT
-  PENDING_SIGNATURE
-  PARTIALLY_SIGNED
-  SIGNED
-  COMPLETED
-  TERMINATED
-  DISPUTED
-}
-
-// Valuation Status
-enum ValuationStatus {
-  REQUESTED
-  IN_PROGRESS
-  COMPLETED
-  REJECTED
-}
-
-// Property Document Type
-enum PropertyDocumentType {
-  DEED
-  FLOOR_PLAN
-  ENERGY_CERTIFICATE
-  SURVEY
-  PROPERTY_TAX
-  INSURANCE
-  PHOTO
-  OTHER
-}
-
-// Agreement Type
-enum AgreementType {
-  STANDARD
-  CUSTOM
-}
-
-// Occupancy Right
-enum OccupancyRight {
-  FULL
-  PARTIAL
-  NONE
-}
-
-// Contact Address
-model ContactAddress {
-  id          String   @id @default(cuid())
-  userId      String   @unique
-  streetLine1 String
-  streetLine2 String?
-  city        String
-  state       String?
-  postalCode  String
-  country     String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-// Property Address
-model PropertyAddress {
-  id          String   @id @default(cuid())
-  propertyId  String   @unique
-  streetLine1 String   /// @encrypted
-  streetLine2 String?  /// @encrypted
-  city        String   /// @encrypted
-  state       String?  /// @encrypted
-  postalCode  String   /// @encrypted
-  country     String   /// @encrypted
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  addressData Json?    // Store full address data from lookup services
-
-  // Relations
-  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-}
-
-// Seller Profile
-model SellerProfile {
-  id                 String            @id @default(cuid())
-  userId             String
-  firstName          String            /// @encrypted
-  lastName           String            /// @encrypted
-  email              String            /// @encrypted
-  emailHash          String?           /// @encryption:hash(email)
-  dateOfBirth        String            /// @encrypted
-  generalHealth      HealthCondition
-  financialPriority  FinancialPriority
-  willStayInProperty Boolean
-  createdAt          DateTime          @default(now())
-  updatedAt          DateTime          @updatedAt
-
-  // Relations
-  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  sellerProperties  SellerProperty[]
-  offers            Offer[]
-  contracts         Contract[]
-  completionStatus  CompletionStatus[]
-  applicationReview ApplicationReview[]
-  dashboardStatuses PropertyDashboardStatus[]
-
-  @@index([userId])
-}
-
-// Family Supporter Profile
-model FamilySupporterProfile {
-  id                   String   @id @default(cuid())
-  userId               String   @unique
-  firstName            String
-  lastName             String
-  relationshipToSeller String
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
-
-  // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-}
-
-// Fund Buyer Profile
-model FundBuyerProfile {
-  id                 String   @id @default(cuid())
-  userId             String   @unique
-  companyName        String
-  registrationNumber String
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-
-  // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-}
-
-// Conveyancer Profile
-model ConveyancerProfile {
-  id            String   @id @default(cuid())
-  userId        String   @unique
-  firmName      String
-  licenseNumber String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
-  // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-}
-
-// Valuer Profile
-model ValuerProfile {
-  id            String   @id @default(cuid())
-  userId        String   @unique
-  firmName      String
-  licenseNumber String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
-  // Relations
-  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  valuations Valuation[]
-
-  @@index([userId])
-}
-
-// Admin Profile
-model AdminProfile {
-  id         String   @id @default(cuid())
-  userId     String   @unique
-  adminLevel String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-
-  // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-}
-
-// Property
-model Property {
-  id             String            @id @default(cuid())
-  propertyType   PropertyType
-  bedroomCount   String            /// @encrypted
-  bathroomCount  String            /// @encrypted
-  totalAreaSqM   String            /// @encrypted
-  condition      PropertyCondition
-  estimatedValue String            /// @encrypted
-  confirmedValue String?           /// @encrypted
-  yearBuilt      String?           /// @encrypted
-  features       String            /// @encrypted
-  leaseLength    String?           /// @encrypted
-  userId         String            // Added userId field
-  showDocumentUpload Boolean?      // Whether to show document upload section
-  createdAt      DateTime          @default(now())
-  updatedAt      DateTime          @updatedAt
-
-  // Relations
-  address           PropertyAddress?
-  propertyDocuments PropertyDocument[]
-  valuations        Valuation[]
-  offers            Offer[]
-  sellerProperties  SellerProperty[]
-  completionStatus  CompletionStatus[]
-  applicationReview ApplicationReview[]
-  buyBoxProperties  BuyBoxProperty[]
-  dashboardStatuses PropertyDashboardStatus[]
-
-  @@index([propertyType])
-  @@index([userId])     // Added index for userId
-}
-
-// Seller-Property Relationship (Many-to-Many)
-model SellerProperty {
-  id                  String   @id @default(cuid())
-  sellerId            String   
-  propertyId          String
-  ownershipPercentage Float
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
-
-  // Relations
-  seller   SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
-  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-
-  @@unique([sellerId, propertyId])
-  @@index([sellerId])
-  @@index([propertyId])
-}
-
-// Offer
-model Offer {
-  id                   String         @id @default(cuid())
-  propertyId           String
-  sellerProfileId      String
-  referenceNumber      String?
-  initialPaymentAmount String         /// @encrypted // was: Float
-  monthlyPaymentAmount String         /// @encrypted // was: Float
-  indexationRate       String         /// @encrypted // was: Float
-  status               OfferStatus    @default(DRAFT)
-  agreementType        AgreementType
-  offerData            String?        /// @encrypted // was: Json? - Store the full offer JSON data as encrypted string
-  coSellerIds          String[]       @default([])
-  createdAt            String         /// @encrypted // was: DateTime - DateTime as encrypted ISO string
-  updatedAt            String         /// @encrypted // was: DateTime - DateTime as encrypted ISO string
-  expirationDate       DateTime?      // When the offer expires
-  isProvisional        Boolean        @default(true) // Indicates a provisional (true) vs final (false) offer
-  responseId           String?        // ID from the backoffice system response
-  
-  // Relations
-  property             Property       @relation(fields: [propertyId], references: [id])
-  sellerProfile        SellerProfile  @relation(fields: [sellerProfileId], references: [id])
-  contract             Contract[]
-
-  @@index([propertyId])
-  @@index([sellerProfileId])
-  @@index([status])
-  @@index([referenceNumber])
-}
-
-// Contract
-model Contract {
-  id              String         @id @default(cuid())
-  offerId         String         @unique
-  sellerProfileId String
-  contractNumber  String
-  status          ContractStatus @default(DRAFT)
-  signedBySeller  Boolean        @default(false)
-  signedByBuyer   Boolean        @default(false)
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-
-  // Relations
-  offer         Offer         @relation(fields: [offerId], references: [id], onDelete: Cascade)
-  sellerProfile SellerProfile @relation(fields: [sellerProfileId], references: [id], onDelete: Cascade)
-
-  @@index([sellerProfileId])
-  @@index([status])
-}
-
-// Document (User Documents)
-model Document {
-  id           String   @id @default(cuid())
-  userId       String
-  documentType String
-  filename     String
-  fileUrl      String
-  fileSize     Int
-  verified     Boolean  @default(false)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([documentType])
-}
-
-// Property Document
-model PropertyDocument {
-  id           String               @id @default(cuid())
-  propertyId   String
-  documentType String               /// @encrypted
-  filename     String               /// @encrypted
-  fileUrl      String               /// @encrypted
-  verified     Boolean              @default(false)
-  uploadedById String
-  createdAt    String               /// @encrypted // was: DateTime - DateTime as encrypted ISO string
-  updatedAt    String               /// @encrypted // was: DateTime - DateTime as encrypted ISO string
-
-  // Relations
-  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  uploadedBy User     @relation(fields: [uploadedById], references: [id], onDelete: Cascade)
-
-  @@index([propertyId])
-  @@index([documentType])
-  @@index([uploadedById])
-}
-
-// Valuation
-model Valuation {
-  id            String          @id @default(cuid())
-  propertyId    String
-  valuerId      String
-  marketValue   Float
-  occupiedValue Float
-  status        ValuationStatus @default(REQUESTED)
-  notes         String?
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-
-  // Relations
-  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  valuer   ValuerProfile @relation(fields: [valuerId], references: [id], onDelete: Cascade)
-
-  @@index([propertyId])
-  @@index([valuerId])
-  @@index([status])
-}
-
-// Application Review
-enum ApplicationReviewStatus {
-  PENDING
-  PROCESSING
-  ACCEPTED
-  REJECTED
-}
-
-model ApplicationReview {
-  id             String                @id @default(cuid())
-  checklist      String                /// @encrypted // Stores the checklist data as encrypted JSON string
-  considerations String                /// @encrypted // Stores the considerations data as encrypted JSON string
-  propertyId     String
-  sellerId       String
-  userId         String                // Added userId field
-  coSellerIds    String[]             @default([]) // IDs of additional sellers    
-  status         ApplicationReviewStatus @default(PENDING)
-  createdAt      String                /// @encrypted // Encrypted DateTime as ISO string
-  updatedAt      String                /// @encrypted // Encrypted DateTime as ISO string
-
-  // Relations
-  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  seller   SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
-  
-  @@index([propertyId])
-  @@index([sellerId])
-  @@index([userId])     // Added index for userId
-}
-
-// Completion Status
-model CompletionStatus {
-  id         String   @id @default(cuid())
-  choice     String   /// @encrypted // was: String
-  details    String   /// @encrypted // was: Json - Stores the solicitor details as encrypted JSON string
-  propertyId String
-  sellerId   String
-  coSellerIds    String[] @default([]) // IDs of additional sellers
-  createdAt  String   /// @encrypted // was: DateTime - DateTime as encrypted ISO string
-  updatedAt  String   /// @encrypted // was: DateTime - DateTime as encrypted ISO string
-
-  // Relations
-  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  seller   SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
-
-  @@index([propertyId])
-  @@index([sellerId])
-}
-
-// BuyBox related models
-model BuyBox {
-  id               String   @id @default(cuid())
-  name             String
-  description      String
-  themeType        String
-  status           String   @default("draft") // draft, pending_review, approved, published
-  createdById      String
-  submissionNotes  String?
-  submittedAt      DateTime?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-
-  // Relations
-  createdBy            User                      @relation(fields: [createdById], references: [id])
-  themeData            BuyBoxThemeData?
-  properties           BuyBoxProperty[]
-  financialModel       BuyBoxFinancialModel?
-  complianceInfo       BuyBoxComplianceInfo?
-  platformListing      BuyBoxListing?
-  investorEngagement   BuyBoxInvestorEngagement?
-  capitalDeployment    BuyBoxCapitalDeployment?
-  continuousManagement BuyBoxContinuousManagement?
-  investments          BuyBoxInvestment[]
-
-  @@index([createdById])
-  @@index([status])
-  @@index([createdAt])
-}
-
-model BuyBoxThemeData {
-  id                 String   @id @default(cuid())
-  buyBoxId           String   @unique
-  location           Json     @default("{}")
-  propertyTypes      Json     @default("[]")
-  demographicProfile Json     @default("{}")
-  additionalCriteria String?
-  targetInvestors    Json     @default("[]")
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-
-  // Relations
-  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
-}
-
-model BuyBoxProperty {
-  buyBoxId          String
-  propertyId        String
-  sellerDemographics Json
-  dueDiligence      Json
-  documents         Json     @default("[]")
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-
-  // Relations
-  buyBox   BuyBox   @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
-  property Property @relation(fields: [propertyId], references: [id])
-
-  @@id([buyBoxId, propertyId])
-  @@index([buyBoxId])
-  @@index([propertyId])
-}
-
-model BuyBoxFinancialModel {
-  id                  String   @id @default(cuid())
-  buyBoxId            String   @unique
-  totalBouquet        Float
-  totalMonthlyAnnuity Float
-  guaranteedTerms     Json
-  expectedReturns     Json
-  riskAnalysis        Json
-  pricing             Json
-  cashFlowProjections Json?    @default("[]")
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
-
-  // Relations
-  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
-}
-
-model BuyBoxComplianceInfo {
-  id                   String   @id @default(cuid())
-  buyBoxId             String   @unique
-  regulatoryCompliance Json
-  legalChecks          Json
-  documents            Json
-  internalApproval     Json
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
-
-  // Relations
-  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
-}
-
-model BuyBoxListing {
-  id                  String   @id @default(cuid())
-  buyBoxId            String   @unique
-  buyBoxName          String
-  shortDescription    String
-  longDescription     String   @db.Text
-  highlightFeatures   Json
-  investmentHighlights Json
-  riskDisclosures     Json
-  documents           Json
-  publishStatus       String   @default("draft") // draft, pending_review, approved, published
-  reviewNotes         String?
-  publishDate         DateTime?
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
-
-  // Relations
-  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
-
-  @@index([publishStatus])
-}
-
-model BuyBoxInvestorEngagement {
-  id                     String   @id @default(cuid())
-  buyBoxId               String   @unique
-  accessControls         Json
-  investorCommunication  Json
-  subscriptionManagement Json
-  qAndASettings          Json
-  createdAt              DateTime @default(now())
-  updatedAt              DateTime @updatedAt
-
-  // Relations
-  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
-}
-
-model BuyBoxCapitalDeployment {
-  id               String   @id @default(cuid())
-  buyBoxId         String   @unique
-  fundsManagement  Json
-  contractExecution Json
-  propertyTransfers Json
-  sellerPayments    Json
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-
-  // Relations
-  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
-}
-
-model BuyBoxContinuousManagement {
-  id                 String   @id @default(cuid())
-  buyBoxId           String   @unique
-  reportingSchedule  Json
-  performanceTracking Json
-  investorRelations  Json
-  complianceReporting Json
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-
-  // Relations
-  buyBox BuyBox @relation(fields: [buyBoxId], references: [id], onDelete: Cascade)
-}
-
-// BuyBox Investment related models
-model BuyBoxInvestment {
-  id              String   @id @default(cuid())
-  buyBoxId        String
-  investorId      String   // Reference to User ID
-  amount          Float
-  status          String   @default("pending") // pending, active, completed, withdrawn
-  investmentDate  DateTime @default(now())
-  completionDate  DateTime?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-
-  // Relations
-  buyBox   BuyBox @relation(fields: [buyBoxId], references: [id])
-  investor User   @relation(fields: [investorId], references: [id])
-
-  @@index([buyBoxId])
-  @@index([investorId])
-  @@index([status])
-}
-
-// Buyer Onboarding Models
-model BuyerOnboarding {
-  id                  String               @id @default(cuid())
-  userId              String               @unique
-  user                User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  status              OnboardingStatus     @default(IN_PROGRESS)
-  startDate           DateTime             @default(now())
-  completionDate      DateTime?
-  currentStep         OnboardingStep       @default(INITIAL_INQUIRY)
-  initialInquiry      BuyerInitialInquiry?
-  qualificationKYCAML BuyerQualificationKYCAML?
-  dueDiligenceLegal   BuyerDueDiligenceLegal?
-  investorProfile     BuyerInvestorProfile?
-  platformTraining    BuyerPlatformTraining?
-  buyBoxAllocation    BuyerBuyBoxAllocation?
-  transactionExecution BuyerTransactionExecution?
-  monitoringReporting BuyerMonitoringReporting?
-  secondaryMarket     BuyerSecondaryMarket?
-  createdAt           DateTime             @default(now())
-  updatedAt           DateTime             @updatedAt
-
-  @@index([userId])
-  @@map("buyer_onboarding")
-}
-
-model BuyerInitialInquiry {
-  id                      String          @id @default(cuid())
-  buyerOnboardingId       String          @unique
-  buyerOnboarding         BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
-  investmentGoals         String
-  estimatedInvestmentAmount Decimal
-  preferredContactMethod  String
-  preferredContactTime    String?
-  questions               String?
-  referralSource          String?
-  completed               Boolean         @default(false)
-  createdAt               DateTime        @default(now())
-  updatedAt               DateTime        @updatedAt
-
-  @@index([buyerOnboardingId])
-  @@map("buyer_initial_inquiry")
-}
-
-model BuyerQualificationKYCAML {
-  id                      String          @id @default(cuid())
-  buyerOnboardingId       String          @unique
-  buyerOnboarding         BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
-  investorType            String
-  entityType              String?
-  fullLegalName           String
-  dateOfBirth             DateTime?
-  taxIdentificationNumber String
-  nationality             String
-  residenceCountry        String
-  isAccreditedInvestor    Boolean
-  accreditationDocuments  String[]
-  sourceOfFunds           String
-  hasPoliticalExposure    Boolean
-  politicalExposureDetails String?
-  completed               Boolean         @default(false)
-  createdAt               DateTime        @default(now())
-  updatedAt               DateTime        @updatedAt
-
-  @@index([buyerOnboardingId])
-  @@map("buyer_qualification_kyc_aml")
-}
-
-model BuyerDueDiligenceLegal {
-  id                        String          @id @default(cuid())
-  buyerOnboardingId         String          @unique
-  buyerOnboarding           BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
-  hasReviewedInvestmentAgreement Boolean
-  hasReviewedOperatingAgreement Boolean
-  hasReviewedPrivacyPolicy  Boolean
-  hasReviewedTermsOfService Boolean
-  hasReviewedRiskDisclosures Boolean
-  legalRepresentativeName   String?
-  legalRepresentativeContact String?
-  additionalLegalRequirements String?
-  signedDocuments           String[]
-  electronicSignatureConsent Boolean
-  completed                 Boolean         @default(false)
-  createdAt                 DateTime        @default(now())
-  updatedAt                 DateTime        @updatedAt
-
-  @@index([buyerOnboardingId])
-  @@map("buyer_due_diligence_legal")
-}
-
-model BuyerInvestorProfile {
-  id                      String          @id @default(cuid())
-  buyerOnboardingId       String          @unique
-  buyerOnboarding         BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
-  investmentStrategy      String
-  riskTolerance           String
-  investmentHorizon       String
-  targetAnnualReturn      Decimal?
-  investmentFrequency     String?
-  preferredPropertyTypes  String[]
-  preferredLocations      String[]
-  minPropertyValue        Decimal?
-  maxPropertyValue        Decimal?
-  preferredDiversification String?
-  esgPreferences          String[]
-  specialRequirements     String?
-  completed               Boolean         @default(false)
-  createdAt               DateTime        @default(now())
-  updatedAt               DateTime        @updatedAt
-
-  @@index([buyerOnboardingId])
-  @@map("buyer_investor_profile")
-}
-
-model BuyerPlatformTraining {
-  id                                String          @id @default(cuid())
-  buyerOnboardingId                 String          @unique
-  buyerOnboarding                   BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
-  hasCompletedPlatformOrientation   Boolean
-  hasCompletedInvestmentWorkshop    Boolean
-  hasCompletedPortfolioManagementTraining Boolean
-  hasSetupAccount                   Boolean
-  hasSetupNotifications             Boolean
-  hasTestedInvestmentSimulation     Boolean
-  scheduledPersonalTraining         Boolean
-  personalTrainingDate              DateTime?
-  trainingFeedback                  String?
-  additionalTrainingRequested       String?
-  completed                         Boolean         @default(false)
-  createdAt                         DateTime        @default(now())
-  updatedAt                         DateTime        @updatedAt
-
-  @@index([buyerOnboardingId])
-  @@map("buyer_platform_training")
-}
-
-model BuyerBuyBoxAllocation {
-  id                        String          @id @default(cuid())
-  buyerOnboardingId         String          @unique
-  buyerOnboarding           BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
-  selectedBuyBoxIds         String[]
-  investmentAmountPerBuyBox Json
-  totalAllocation           Decimal
-  allocationStrategy        String
-  allocationNotes           String?
-  targetAllocationDate      DateTime?
-  reinvestmentPreferences   String?
-  hasDiversificationRequirements Boolean
-  diversificationRequirements String?
-  completed                 Boolean         @default(false)
-  createdAt                 DateTime        @default(now())
-  updatedAt                 DateTime        @updatedAt
-
-  @@index([buyerOnboardingId])
-  @@map("buyer_buy_box_allocation")
-}
-
-model BuyerTransactionExecution {
-  id                           String          @id @default(cuid())
-  buyerOnboardingId            String          @unique
-  buyerOnboarding              BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
-  paymentMethod                String
-  bankingInformation           Json?
-  cryptoWalletAddress          String?
-  transactionDate              DateTime?
-  hasReviewedTransactionDetails Boolean
-  hasConfirmedInvestmentAmount Boolean
-  hasSentFunds                 Boolean
-  fundsReceivedDate            DateTime?
-  transactionConfirmationNumber String?
-  investmentActivationDate     DateTime?
-  completed                    Boolean         @default(false)
-  createdAt                    DateTime        @default(now())
-  updatedAt                    DateTime        @updatedAt
-
-  @@index([buyerOnboardingId])
-  @@map("buyer_transaction_execution")
-}
-
-model BuyerMonitoringReporting {
-  id                         String          @id @default(cuid())
-  buyerOnboardingId          String          @unique
-  buyerOnboarding            BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
-  preferredReportingFrequency String
-  additionalMetricsRequested String[]
-  notificationPreferences    Json
-  hasSetupDashboardAlerts    Boolean
-  hasScheduledPeriodicCalls  Boolean
-  periodicCallFrequency      String?
-  taxReportingPreferences    String?
-  specialReportingRequirements String?
-  completed                  Boolean         @default(false)
-  createdAt                  DateTime        @default(now())
-  updatedAt                  DateTime        @updatedAt
-
-  @@index([buyerOnboardingId])
-  @@map("buyer_monitoring_reporting")
-}
-
-model BuyerSecondaryMarket {
-  id                       String          @id @default(cuid())
-  buyerOnboardingId        String          @unique
-  buyerOnboarding          BuyerOnboarding @relation(fields: [buyerOnboardingId], references: [id], onDelete: Cascade)
-  interestedInSecondaryMarket Boolean
-  expectedHoldingPeriod    String?
-  secondaryMarketPreferences String[]
-  hasReviewedLiquidityOptions Boolean
-  liquidityRequirements    String?
-  exitStrategyPreferences  String?
-  hasTrustedBeneficiaries  Boolean
-  beneficiaryInformation   Json?
-  completed                Boolean         @default(false)
-  createdAt                DateTime        @default(now())
-  updatedAt                DateTime        @updatedAt
-
-  @@index([buyerOnboardingId])
-  @@map("buyer_secondary_market")
-}
-
-enum OnboardingStatus {
-  NOT_STARTED
-  IN_PROGRESS
-  COMPLETED
-  SUSPENDED
-}
-
-enum OnboardingStep {
-  INITIAL_INQUIRY
-  QUALIFICATION_KYC_AML
-  DUE_DILIGENCE_LEGAL
-  INVESTOR_PROFILE
-  PLATFORM_TRAINING
-  BUY_BOX_ALLOCATION
-  TRANSACTION_EXECUTION
-  MONITORING_REPORTING
-  SECONDARY_MARKET
-  COMPLETED
-}
-
-model PropertyDashboardStatus {
-  id             String   @id @default(cuid())
-  propertyId     String
-  sellerId       String
-  coSellerIds    String[] @default([])
-  referenceNumber String  /// @encrypted // was: String
-  currentStage   String   /// @encrypted // was: String
-  stageProgress  String   /// @encrypted // was: Float
-  statusData     String   /// @encrypted // was: Json - Store the full dashboard status as encrypted JSON string
-  createdAt      String   /// @encrypted // was: DateTime - DateTime as encrypted ISO string
-  updatedAt      String   /// @encrypted // was: DateTime - DateTime as encrypted ISO string
-  
-  // Hash fields for sorting (non-encrypted)
-  createdAtHash  String?  /// @encryption:hash(createdAt) - Sortable hash for createdAt
-  updatedAtHash  String?  /// @encryption:hash(updatedAt) - Sortable hash for updatedAt
-
-  // Relations
-  property       Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  seller         SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
-
-  @@index([propertyId])
-  @@index([sellerId])
-  @@index([referenceNumber])
-  @@index([updatedAtHash])
-  @@index([createdAtHash])
-}
 
 
 model Resource {
@@ -1306,29 +394,129 @@ model Embedding {
   // CREATE INDEX ON embeddings USING hnsw (embedding vector_cosine_ops);
 }
 
-// Eligibility model to store user eligibility data
-model Eligibility {
-  id                     String   @id @default(cuid())
-  userId                 String   @unique
-  isEligible            Boolean?
-  age                    String?
-  ownership              String?
-  propertyType           String?
-  mainResidence          String?
-  financialGoals         String[] @default([])
-  country                String?
-  propertyOwnership      String?
-  jointOwnership         String?
-  spouseAge              String?
-  childrenHeirs          String?
-  inheritanceImportance  String?
-  confidentUnderstanding String?
-  discussOptions         String?
-  createdAt              DateTime @default(now())
-  updatedAt              DateTime @updatedAt
+// Dealership/Company information
+model Dealership {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  address         String?
+  phone           String?
+  website         String?
+  email           String?
+  
+  // Business details
+  businessType    String   @default("DEALER") // DEALER, PRIVATE_SELLER, AUCTION, RENTAL_COMPANY, FLEET, etc.
+  isActive        Boolean  @default(true)
+  
+  // Branding
+  logoUrl         String?
+  primaryColor    String?
+  secondaryColor  String?
+  
+  // Metadata
+  metadata        Json?    // Flexible field for additional dealer-specific data
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relations
+  inventory       Inventory[]
+  
+  @@index([slug])
+  @@index([businessType])
+  @@index([isActive])
+  @@index([createdAt])
+}
 
-  // Relation to User
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
+// Core inventory
+model Inventory {
+  id              String   @id @default(cuid())
+  
+  // Core identifiers (indexed for fast queries)
+  dealershipId    String
+  sourceUrl       String?  // Original URL from scraping
+  vin             String?  // Vehicle Identification Number
+  stockNumber     String?  // Dealer's internal stock number
+  
+  // Core vehicle information (normalized for fast filtering)
+  make            String?  // Toyota, Ford, etc.
+  model           String?  // Camry, F-150, etc.
+  year            Int?     // 2024, 2023, etc.
+  trim            String?  // LX, Sport, etc.
+  
+  // Pricing (stored as integers for precise calculations)
+  priceAmount     Int?     // Price in cents (e.g., $50,000 = 5000000)
+  priceCurrency   String   @default("USD")
+  msrpAmount      Int?     // MSRP in cents
+  
+  // Key specifications (most commonly filtered fields)
+  mileage         Int?     // Odometer reading
+  condition       String   @default("UNKNOWN") // NEW, USED, CERTIFIED_PRE_OWNED, DAMAGED, SALVAGE, etc.
+  fuelType        String   @default("UNKNOWN") // GASOLINE, DIESEL, HYBRID, ELECTRIC, PLUG_IN_HYBRID, etc.
+  transmission    String   @default("UNKNOWN") // MANUAL, AUTOMATIC, CVT, SEMI_AUTOMATIC, etc.
+  drivetrain      String   @default("UNKNOWN") // FWD, RWD, AWD, FOUR_WD, etc.
+  bodyStyle       String   @default("UNKNOWN") // SEDAN, COUPE, HATCHBACK, WAGON, SUV, CROSSOVER, PICKUP, VAN, etc.
+  
+  // Engine details
+  engineSize      Float?   // Engine displacement in liters
+  engineCylinders Int?     // Number of cylinders
+  horsepower      Int?     // Horsepower rating
+  
+  // Fuel economy
+  mpgCity         Int?     // City MPG
+  mpgHighway      Int?     // Highway MPG
+  mpgCombined     Int?     // Combined MPG
+  
+  // Colors
+  exteriorColor   String?
+  interiorColor   String?
+  
+  // Status and availability
+  status          String   @default("AVAILABLE") // AVAILABLE, SOLD, PENDING, RESERVED, UNAVAILABLE, ARCHIVED, etc.
+  isActive        Boolean  @default(true)
+  isFeatured      Boolean  @default(false)
+  
+  // Data source tracking
+  scrapedAt       DateTime?
+  lastUpdated     DateTime @default(now())
+  
+  // Flexible data storage for varying structures
+  rawData         Json?    // Complete original scraped data
+  processedData   Json?    // Cleaned and processed data
+  
+  // Structured JSON fields for maximum performance
+  features        Json?    // Array of features: [{category, name, value, isHighlight}]
+  specifications  Json?    // Array of specs: [{category, name, value, unit, numericValue}]
+  images          Json?    // Array of images: [{url, type, isPrimary, thumbnailUrl, altText}]
+  
+  // SEO and display
+  title           String?  // Display title
+  description     String?  @db.Text // Long description
+  slug            String?  // URL-friendly identifier
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relations
+  dealership      Dealership @relation(fields: [dealershipId], references: [id], onDelete: Cascade)
+  
+  // Composite indexes for common query patterns
+  @@index([dealershipId, isActive, status])
+  @@index([make, model, year])
+  @@index([priceAmount, condition])
+  @@index([year, mileage])
+  @@index([fuelType, transmission])
+  @@index([bodyStyle, drivetrain])
+  @@index([condition, fuelType])
+  @@index([status, isActive])
+  @@index([createdAt, isActive])
+  @@index([isFeatured, isActive])
+  @@index([vin]) // Unique vehicle identification
+  @@index([stockNumber, dealershipId])
+  @@index([slug])
+  @@index([scrapedAt])
+  @@index([lastUpdated])
+  
 }
