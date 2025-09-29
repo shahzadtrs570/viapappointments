@@ -5,22 +5,93 @@ import { useState } from "react"
 
 interface FiltersSidebarProps {
   filters: {
+    // Basic vehicle info
     make: string
-    bodyStyle: string
-    priceRange: [number, number]
+    model: string
     yearRange: [number, number]
+    trim: string
+    bodyStyle: string
+    condition: string
+    status: string
+
+    // Pricing
+    priceRange: [number, number]
+    priceCurrency: string
+    msrpAmount: number
+
+    // Vehicle specifications
+    mileageRange: [number, number]
     fuelType: string
-    carType: "used" | "new"
+    transmission: string[]
+    drivetrain: string[]
+    engineSize: number
+    engineCylinders: number
+    horsepower: number
+    mpgCity: number
+    mpgHighway: number
+    mpgCombined: number
+
+    // Colors
+    exteriorColor: string[]
+    interiorColor: string[]
+
+    // Features and options
+    features: string[]
+    specifications: string[]
+
+    // Vehicle history and condition
+    hideWithoutPhotos: boolean
+    hideWithAccidents: boolean
+    hideWithFrameDamage: boolean
+    hideWithTheftHistory: boolean
+    hideFleet: boolean
+    hideWithLemonHistory: boolean
+    hideWithSalvageHistory: boolean
+    singleOwner: boolean
+
+    // Search and sorting
     search: string
     sortBy: string
+    carType: "used" | "new"
+
+    // Additional filters
+    priceDrops: boolean
+    onlineFinancing: boolean
+    isActive: boolean
+    isFeatured: boolean
+    [key: string]: any // Allow dynamic property access
   }
   onFilterChange: (filters: any) => void
   filterOptions?: {
+    // Basic vehicle info
     makes: Array<{ value: string; count: number }>
+    models: Array<{ value: string; count: number }>
+    trims: Array<{ value: string; count: number }>
     bodyStyles: Array<{ value: string; count: number }>
+    conditions: Array<{ value: string; count: number }>
+    statuses: Array<{ value: string; count: number }>
+
+    // Fuel and transmission
     fuelTypes: Array<{ value: string; count: number }>
+    transmissions: Array<{ value: string; count: number }>
+    drivetrains: Array<{ value: string; count: number }>
+
+    // Colors
+    exteriorColors: Array<{ value: string; count: number }>
+    interiorColors: Array<{ value: string; count: number }>
+
+    // Years
+    years: Array<{ value: string; count: number }>
+
+    // Ranges
     priceRange: { min: number; max: number }
     yearRange: { min: number; max: number }
+    mileageRange: { min: number; max: number }
+    engineSizeRange: { min: number; max: number }
+    horsepowerRange: { min: number; max: number }
+    mpgCityRange: { min: number; max: number }
+    mpgHighwayRange: { min: number; max: number }
+    mpgCombinedRange: { min: number; max: number }
   }
   isLoading?: boolean
 }
@@ -61,14 +132,68 @@ export default function FiltersSidebar({
     priceDrops: false,
     dealerRating: false,
     sellerType: false,
+    trim: false,
+    condition: false,
+    status: false,
+    engineSpecs: false,
+    mpgSpecs: false,
   })
 
   // Get filter options from API or fallback to empty arrays
   const makes = filterOptions?.makes?.map((item) => item.value) || []
+
+  // Filter models based on selected make
+  const filteredModels = localFilters.make
+    ? filterOptions?.models?.filter((item) => {
+        // This would need to be implemented based on your data structure
+        // For now, we'll show all models
+        return true
+      }) || []
+    : filterOptions?.models || []
+
+  const models = filteredModels.map((item) =>
+    typeof item === "string" ? item : item.value
+  )
+  const trims = filterOptions?.trims?.map((item) => item.value) || []
   const bodyStyles = filterOptions?.bodyStyles?.map((item) => item.value) || []
+  const conditions = filterOptions?.conditions?.map((item) => item.value) || []
+  const statuses = filterOptions?.statuses?.map((item) => item.value) || []
   const fuelTypes = filterOptions?.fuelTypes?.map((item) => item.value) || []
+  const transmissions =
+    filterOptions?.transmissions?.map((item) => item.value) || []
+  const drivetrains =
+    filterOptions?.drivetrains?.map((item) => item.value) || []
 
   const handleFilterUpdate = (key: string, value: any) => {
+    const newFilters = { ...localFilters, [key]: value }
+
+    // Clear model when make changes
+    if (key === "make") {
+      newFilters.model = ""
+    }
+
+    setLocalFilters(newFilters)
+    onFilterChange(newFilters)
+  }
+
+  const handleArrayFilterUpdate = (
+    key: string,
+    value: string,
+    checked: boolean
+  ) => {
+    const currentArray = localFilters[key] || []
+    let newArray
+    if (checked) {
+      newArray = [...currentArray, value]
+    } else {
+      newArray = currentArray.filter((item: string) => item !== value)
+    }
+    const newFilters = { ...localFilters, [key]: newArray }
+    setLocalFilters(newFilters)
+    onFilterChange(newFilters)
+  }
+
+  const handleBooleanFilterUpdate = (key: string, value: boolean) => {
     const newFilters = { ...localFilters, [key]: value }
     setLocalFilters(newFilters)
     onFilterChange(newFilters)
@@ -112,10 +237,17 @@ export default function FiltersSidebar({
                 Model
               </label>
               <select
-                disabled
-                className="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-100 text-gray-500 font-medium"
+                value={localFilters.model}
+                onChange={(e) => handleFilterUpdate("model", e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium"
+                disabled={isLoading}
               >
-                <option>All models</option>
+                <option value="">All models</option>
+                {models.map((model) => (
+                  <option key={model} value={model}>
+                    {model}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -518,19 +650,57 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.mileage && (
             <div className="px-4 pb-4 space-y-4">
-              <div className="text-sm font-medium text-gray-900">Any</div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs text-gray-600 mb-1">
+                    Min Mileage
+                  </label>
+                  <input
+                    type="number"
+                    value={localFilters.mileageRange[0]}
+                    onChange={(e) =>
+                      handleFilterUpdate("mileageRange", [
+                        parseInt(e.target.value) || 0,
+                        localFilters.mileageRange[1],
+                      ])
+                    }
+                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                    disabled={isLoading}
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-600 mb-1">
+                    Max Mileage
+                  </label>
+                  <input
+                    type="number"
+                    value={localFilters.mileageRange[1]}
+                    onChange={(e) =>
+                      handleFilterUpdate("mileageRange", [
+                        localFilters.mileageRange[0],
+                        parseInt(e.target.value) || 200000,
+                      ])
+                    }
+                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
               <div className="px-2">
                 <input
                   type="range"
                   min="0"
                   max="200000"
                   step="5000"
-                  defaultValue="200000"
-                  className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
-                  style={{
-                    background:
-                      "linear-gradient(to right, #3b82f6 0%, #3b82f6 100%, #e5e7eb 100%, #e5e7eb 100%)",
-                  }}
+                  value={localFilters.mileageRange[1]}
+                  onChange={(e) =>
+                    handleFilterUpdate("mileageRange", [
+                      localFilters.mileageRange[0],
+                      parseInt(e.target.value),
+                    ])
+                  }
+                  className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer slider"
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -567,30 +737,49 @@ export default function FiltersSidebar({
                   <label className="block text-xs text-gray-600 mb-1">
                     Min
                   </label>
-                  <select className="w-full p-2 border border-gray-300 rounded text-sm font-medium">
-                    <option>1956</option>
-                    <option>2020</option>
-                    <option>2021</option>
-                    <option>2022</option>
-                    <option>2023</option>
-                    <option>2024</option>
+                  <select
+                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                    value={localFilters.yearRange[0]}
+                    onChange={(e) =>
+                      handleFilterUpdate("yearRange", [
+                        parseInt(e.target.value),
+                        localFilters.yearRange[1],
+                      ])
+                    }
+                    disabled={isLoading}
+                  >
+                    <option value="1956">1956</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">
                     Max
                   </label>
-                  <select className="w-full p-2 border border-gray-300 rounded text-sm font-medium">
-                    <option>2026</option>
-                    <option>2024</option>
-                    <option>2023</option>
-                    <option>2022</option>
-                    <option>2021</option>
-                    <option>2020</option>
+                  <select
+                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                    value={localFilters.yearRange[1]}
+                    onChange={(e) =>
+                      handleFilterUpdate("yearRange", [
+                        localFilters.yearRange[0],
+                        parseInt(e.target.value),
+                      ])
+                    }
+                    disabled={isLoading}
+                  >
+                    <option value="2026">2026</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
                   </select>
                 </div>
               </div>
-              <div className="text-center text-sm text-gray-500">to</div>
             </div>
           )}
         </div>
@@ -623,7 +812,17 @@ export default function FiltersSidebar({
           {expandedSections.onlineOptions && (
             <div className="px-4 pb-4">
               <label className="flex items-start space-x-3">
-                <input type="checkbox" className="mt-1 text-blue-600" />
+                <input
+                  type="checkbox"
+                  className="mt-1 text-blue-600"
+                  checked={localFilters.onlineFinancing || false}
+                  onChange={(e) =>
+                    handleBooleanFilterUpdate(
+                      "onlineFinancing",
+                      e.target.checked
+                    )
+                  }
+                />
                 <div>
                   <div className="text-sm font-medium text-gray-900">
                     Start your purchase online (4,084)
@@ -665,32 +864,55 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.exteriorColor && (
             <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "Black", count: 1899, color: "#000000" },
-                { name: "Blue", count: 950, color: "#2563eb" },
-                { name: "Brown", count: 79, color: "#8b4513" },
-                { name: "Gold", count: 74, color: "#ffd700" },
-                { name: "Gray", count: 1806, color: "#6b7280" },
-                { name: "Green", count: 66, color: "#10b981" },
-                { name: "Orange", count: 30, color: "#f97316" },
-                { name: "Pink", count: 1, color: "#ec4899" },
-                { name: "Purple", count: 11, color: "#8b5cf6" },
-                { name: "Red", count: 706, color: "#ef4444" },
-                { name: "Silver", count: 1140, color: "#c0c0c0" },
-                { name: "Teal", count: 8, color: "#14b8a6" },
-                { name: "White", count: 1690, color: "#ffffff" },
-              ].map((color) => (
-                <label key={color.name} className="flex items-center space-x-3">
-                  <input type="checkbox" className="text-blue-600" />
-                  <div
-                    className="w-4 h-4 rounded-full border border-gray-300"
-                    style={{ backgroundColor: color.color }}
-                  />
-                  <span className="text-sm text-gray-900">
-                    {color.name} ({color.count.toLocaleString()})
-                  </span>
-                </label>
-              ))}
+              {(filterOptions?.exteriorColors || []).map((color) => {
+                // Color mapping for common colors
+                const colorMap: { [key: string]: string } = {
+                  Black: "#000000",
+                  Blue: "#2563eb",
+                  Brown: "#8b4513",
+                  Gold: "#ffd700",
+                  Gray: "#6b7280",
+                  Green: "#10b981",
+                  Orange: "#f97316",
+                  Pink: "#ec4899",
+                  Purple: "#8b5cf6",
+                  Red: "#ef4444",
+                  Silver: "#c0c0c0",
+                  Teal: "#14b8a6",
+                  White: "#ffffff",
+                }
+                return (
+                  <label
+                    key={color.value}
+                    className="flex items-center space-x-3"
+                  >
+                    <input
+                      type="checkbox"
+                      className="text-blue-600"
+                      checked={
+                        localFilters.exteriorColor?.includes(color.value) ||
+                        false
+                      }
+                      onChange={(e) =>
+                        handleArrayFilterUpdate(
+                          "exteriorColor",
+                          color.value,
+                          e.target.checked
+                        )
+                      }
+                    />
+                    <div
+                      className="w-4 h-4 rounded-full border border-gray-300"
+                      style={{
+                        backgroundColor: colorMap[color.value] || "#cccccc",
+                      }}
+                    />
+                    <span className="text-sm text-gray-900">
+                      {color.value} ({color.count.toLocaleString()})
+                    </span>
+                  </label>
+                )
+              })}
             </div>
           )}
         </div>
@@ -722,25 +944,48 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.interiorColor && (
             <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "Black", count: 2156, color: "#000000" },
-                { name: "Beige", count: 845, color: "#f5f5dc" },
-                { name: "Brown", count: 234, color: "#8b4513" },
-                { name: "Gray", count: 1523, color: "#6b7280" },
-                { name: "Red", count: 89, color: "#ef4444" },
-                { name: "White", count: 445, color: "#ffffff" },
-              ].map((color) => (
-                <label key={color.name} className="flex items-center space-x-3">
-                  <input type="checkbox" className="text-blue-600" />
-                  <div
-                    className="w-4 h-4 rounded-full border border-gray-300"
-                    style={{ backgroundColor: color.color }}
-                  />
-                  <span className="text-sm text-gray-900">
-                    {color.name} ({color.count.toLocaleString()})
-                  </span>
-                </label>
-              ))}
+              {(filterOptions?.interiorColors || []).map((color) => {
+                // Color mapping for common colors
+                const colorMap: { [key: string]: string } = {
+                  Black: "#000000",
+                  Beige: "#f5f5dc",
+                  Brown: "#8b4513",
+                  Gray: "#6b7280",
+                  Red: "#ef4444",
+                  White: "#ffffff",
+                }
+                return (
+                  <label
+                    key={color.value}
+                    className="flex items-center space-x-3"
+                  >
+                    <input
+                      type="checkbox"
+                      className="text-blue-600"
+                      checked={
+                        localFilters.interiorColor?.includes(color.value) ||
+                        false
+                      }
+                      onChange={(e) =>
+                        handleArrayFilterUpdate(
+                          "interiorColor",
+                          color.value,
+                          e.target.checked
+                        )
+                      }
+                    />
+                    <div
+                      className="w-4 h-4 rounded-full border border-gray-300"
+                      style={{
+                        backgroundColor: colorMap[color.value] || "#cccccc",
+                      }}
+                    />
+                    <span className="text-sm text-gray-900">
+                      {color.value} ({color.count.toLocaleString()})
+                    </span>
+                  </label>
+                )
+              })}
             </div>
           )}
         </div>
@@ -770,18 +1015,27 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.drivetrain && (
             <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "All-Wheel Drive", count: 1717 },
-                { name: "Front-Wheel Drive", count: 6375 },
-                { name: "Rear-Wheel Drive", count: 1295 },
-              ].map((option) => (
+              {(filterOptions?.drivetrains || []).map((option) => (
                 <label
-                  key={option.name}
+                  key={option.value}
                   className="flex items-center space-x-3"
                 >
-                  <input type="checkbox" className="text-blue-600" />
+                  <input
+                    type="checkbox"
+                    className="text-blue-600"
+                    checked={
+                      localFilters.drivetrain?.includes(option.value) || false
+                    }
+                    onChange={(e) =>
+                      handleArrayFilterUpdate(
+                        "drivetrain",
+                        option.value,
+                        e.target.checked
+                      )
+                    }
+                  />
                   <span className="text-sm text-gray-900">
-                    {option.name} ({option.count.toLocaleString()})
+                    {option.value} ({option.count.toLocaleString()})
                   </span>
                 </label>
               ))}
@@ -816,17 +1070,27 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.transmission && (
             <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "Automatic", count: 9163 },
-                { name: "Manual", count: 230 },
-              ].map((option) => (
+              {(filterOptions?.transmissions || []).map((option) => (
                 <label
-                  key={option.name}
+                  key={option.value}
                   className="flex items-center space-x-3"
                 >
-                  <input type="checkbox" className="text-blue-600" />
+                  <input
+                    type="checkbox"
+                    className="text-blue-600"
+                    checked={
+                      localFilters.transmission?.includes(option.value) || false
+                    }
+                    onChange={(e) =>
+                      handleArrayFilterUpdate(
+                        "transmission",
+                        option.value,
+                        e.target.checked
+                      )
+                    }
+                  />
                   <span className="text-sm text-gray-900">
-                    {option.name} ({option.count.toLocaleString()})
+                    {option.value} ({option.count.toLocaleString()})
                   </span>
                 </label>
               ))}
@@ -925,53 +1189,15 @@ export default function FiltersSidebar({
           )}
         </div>
 
-        {/* Engine */}
-        <div>
+        {/* Engine - Disabled as data not available */}
+        <div className="opacity-50">
           <button
-            onClick={() => toggleSection("engine")}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+            disabled
+            className="w-full flex items-center justify-between p-4 text-left cursor-not-allowed"
           >
             <span className="text-sm font-bold text-gray-900">Engine</span>
-            <svg
-              className={`w-5 h-5 text-gray-400 transition-transform ${
-                expandedSections.engine ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <span className="text-xs text-gray-500">(Data not available)</span>
           </button>
-          {expandedSections.engine && (
-            <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "H4", count: 214 },
-                { name: "H6", count: 4 },
-                { name: "I3", count: 16 },
-                { name: "I4", count: 6828 },
-                { name: "I5", count: 54 },
-                { name: "I6", count: 234 },
-                { name: "V6", count: 1876 },
-                { name: "V8", count: 456 },
-              ].map((engine) => (
-                <label
-                  key={engine.name}
-                  className="flex items-center space-x-3"
-                >
-                  <input type="checkbox" className="text-blue-600" />
-                  <span className="text-sm text-gray-900">
-                    {engine.name} ({engine.count.toLocaleString()})
-                  </span>
-                </label>
-              ))}
-            </div>
-          )}
         </div>
 
         {/* Hybrid & Electric */}
@@ -1079,234 +1305,52 @@ export default function FiltersSidebar({
           )}
         </div>
 
-        {/* Features */}
-        <div className="border-b border-gray-200">
+        {/* Features - Disabled as data not available */}
+        <div className="border-b border-gray-200 opacity-50">
           <button
-            onClick={() => toggleSection("features")}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+            disabled
+            className="w-full flex items-center justify-between p-4 text-left cursor-not-allowed"
           >
             <span className="text-sm font-bold text-gray-900">Features</span>
-            <svg
-              className={`w-5 h-5 text-gray-400 transition-transform ${
-                expandedSections.features ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <span className="text-xs text-gray-500">(Data not available)</span>
           </button>
-          {expandedSections.features && (
-            <div className="px-4 pb-4 space-y-4">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full p-2 border border-gray-300 rounded text-sm"
-              />
-              <div className="space-y-3">
-                {[
-                  { name: "Backup Camera", count: 7662 },
-                  { name: "Alloy Wheels", count: 7762 },
-                  { name: "Bluetooth", count: 8479 },
-                  { name: "Heated Seats", count: 4792 },
-                  { name: "CarPlay", count: 4187 },
-                  { name: "Navigation System", count: 3499 },
-                  { name: "Android Auto", count: 3707 },
-                  { name: "Remote Start", count: 3585 },
-                  { name: "Sunroof/Moonroof", count: 4107 },
-                  { name: "Blind Spot Monitoring", count: 4018 },
-                ].map((feature) => (
-                  <label
-                    key={feature.name}
-                    className="flex items-center space-x-3"
-                  >
-                    <input type="checkbox" className="text-blue-600" />
-                    <span className="text-sm text-gray-900">
-                      {feature.name} ({feature.count.toLocaleString()})
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
 
-        {/* Number of seats */}
-        <div className="border-b border-gray-200">
+        {/* Number of seats - Disabled as data not available */}
+        <div className="border-b border-gray-200 opacity-50">
           <button
-            onClick={() => toggleSection("numberOfSeats")}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+            disabled
+            className="w-full flex items-center justify-between p-4 text-left cursor-not-allowed"
           >
             <span className="text-sm font-bold text-gray-900">
               Number of seats
             </span>
-            <svg
-              className={`w-5 h-5 text-gray-400 transition-transform ${
-                expandedSections.numberOfSeats ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <span className="text-xs text-gray-500">(Data not available)</span>
           </button>
-          {expandedSections.numberOfSeats && (
-            <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "3", count: 1 },
-                { name: "4", count: 53 },
-                { name: "5", count: 9207 },
-                { name: "6", count: 43 },
-              ].map((seats) => (
-                <label key={seats.name} className="flex items-center space-x-3">
-                  <input type="checkbox" className="text-blue-600" />
-                  <span className="text-sm text-gray-900">
-                    {seats.name} ({seats.count.toLocaleString()})
-                  </span>
-                </label>
-              ))}
-            </div>
-          )}
         </div>
 
-        {/* Number of doors */}
-        <div className="border-b border-gray-200">
+        {/* Number of doors - Disabled as data not available */}
+        <div className="border-b border-gray-200 opacity-50">
           <button
-            onClick={() => toggleSection("numberOfDoors")}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+            disabled
+            className="w-full flex items-center justify-between p-4 text-left cursor-not-allowed"
           >
             <span className="text-sm font-bold text-gray-900">
               Number of doors
             </span>
-            <svg
-              className={`w-5 h-5 text-gray-400 transition-transform ${
-                expandedSections.numberOfDoors ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <span className="text-xs text-gray-500">(Data not available)</span>
           </button>
-          {expandedSections.numberOfDoors && (
-            <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "2", count: 6 },
-                { name: "4", count: 9381 },
-              ].map((doors) => (
-                <label key={doors.name} className="flex items-center space-x-3">
-                  <input type="checkbox" className="text-blue-600" />
-                  <span className="text-sm text-gray-900">
-                    {doors.name} ({doors.count.toLocaleString()})
-                  </span>
-                </label>
-              ))}
-            </div>
-          )}
         </div>
 
-        {/* Deal Rating */}
-        <div className="border-b border-gray-200">
+        {/* Deal Rating - Disabled as data not available */}
+        <div className="border-b border-gray-200 opacity-50">
           <button
-            onClick={() => toggleSection("dealRating")}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+            disabled
+            className="w-full flex items-center justify-between p-4 text-left cursor-not-allowed"
           >
             <span className="text-sm font-bold text-gray-900">Deal Rating</span>
-            <svg
-              className={`w-5 h-5 text-gray-400 transition-transform ${
-                expandedSections.dealRating ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <span className="text-xs text-gray-500">(Data not available)</span>
           </button>
-          {expandedSections.dealRating && (
-            <div className="px-4 pb-4 space-y-3">
-              {[
-                {
-                  name: "Great Deal",
-                  count: 654,
-                  icon: "🟢",
-                  color: "text-green-600",
-                },
-                {
-                  name: "Good Deal",
-                  count: 2011,
-                  icon: "🟢",
-                  color: "text-green-600",
-                },
-                {
-                  name: "Fair Deal",
-                  count: 3403,
-                  icon: "🟡",
-                  color: "text-yellow-600",
-                },
-                {
-                  name: "High Priced",
-                  count: 1330,
-                  icon: "🟠",
-                  color: "text-orange-600",
-                },
-                {
-                  name: "Overpriced",
-                  count: 579,
-                  icon: "🔴",
-                  color: "text-red-600",
-                },
-                {
-                  name: "Uncertain",
-                  count: 97,
-                  icon: "❓",
-                  color: "text-gray-600",
-                },
-                {
-                  name: "No Rating",
-                  count: 1478,
-                  icon: "⚫",
-                  color: "text-gray-600",
-                },
-              ].map((rating) => (
-                <label
-                  key={rating.name}
-                  className="flex items-center space-x-3"
-                >
-                  <input type="checkbox" className="text-blue-600" />
-                  <span className={`text-sm ${rating.color}`}>
-                    {rating.icon}
-                  </span>
-                  <span className="text-sm text-gray-900">
-                    {rating.name} ({rating.count.toLocaleString()})
-                  </span>
-                </label>
-              ))}
-            </div>
-          )}
         </div>
 
         {/* Photos */}
@@ -1335,7 +1379,17 @@ export default function FiltersSidebar({
           {expandedSections.photos && (
             <div className="px-4 pb-4">
               <label className="flex items-center space-x-3">
-                <input type="checkbox" className="text-blue-600" />
+                <input
+                  type="checkbox"
+                  className="text-blue-600"
+                  checked={localFilters.hideWithoutPhotos || false}
+                  onChange={(e) =>
+                    handleBooleanFilterUpdate(
+                      "hideWithoutPhotos",
+                      e.target.checked
+                    )
+                  }
+                />
                 <span className="text-sm text-gray-900">
                   Hide vehicles without photos (730)
                 </span>
@@ -1372,7 +1426,14 @@ export default function FiltersSidebar({
           {expandedSections.vehicleHistory && (
             <div className="px-4 pb-4 space-y-4">
               <label className="flex items-center space-x-3">
-                <input type="checkbox" className="text-blue-600" />
+                <input
+                  type="checkbox"
+                  className="text-blue-600"
+                  checked={localFilters.singleOwner || false}
+                  onChange={(e) =>
+                    handleBooleanFilterUpdate("singleOwner", e.target.checked)
+                  }
+                />
                 <span className="text-sm text-gray-900">
                   Single Owner (4,496)
                 </span>
@@ -1383,18 +1444,49 @@ export default function FiltersSidebar({
                 </div>
                 <div className="space-y-3">
                   {[
-                    { name: "Accidents Reported", count: 2972 },
-                    { name: "Frame Damage", count: 347 },
-                    { name: "Theft History Reported", count: 104 },
-                    { name: "Fleet (e.g. rental or corporate)", count: 2137 },
-                    { name: "Lemon History Reported", count: 35 },
-                    { name: "Salvage History Reported", count: 214 },
+                    {
+                      name: "Accidents Reported",
+                      count: 2972,
+                      key: "hideWithAccidents",
+                    },
+                    {
+                      name: "Frame Damage",
+                      count: 347,
+                      key: "hideWithFrameDamage",
+                    },
+                    {
+                      name: "Theft History Reported",
+                      count: 104,
+                      key: "hideWithTheftHistory",
+                    },
+                    {
+                      name: "Fleet (e.g. rental or corporate)",
+                      count: 2137,
+                      key: "hideFleet",
+                    },
+                    {
+                      name: "Lemon History Reported",
+                      count: 35,
+                      key: "hideWithLemonHistory",
+                    },
+                    {
+                      name: "Salvage History Reported",
+                      count: 214,
+                      key: "hideWithSalvageHistory",
+                    },
                   ].map((item) => (
                     <label
                       key={item.name}
                       className="flex items-center space-x-3"
                     >
-                      <input type="checkbox" className="text-blue-600" />
+                      <input
+                        type="checkbox"
+                        className="text-blue-600"
+                        checked={localFilters[item.key] || false}
+                        onChange={(e) =>
+                          handleBooleanFilterUpdate(item.key, e.target.checked)
+                        }
+                      />
                       <span className="text-sm text-gray-900">
                         {item.name} ({item.count.toLocaleString()})
                       </span>
@@ -1608,7 +1700,14 @@ export default function FiltersSidebar({
           {expandedSections.priceDrops && (
             <div className="px-4 pb-4">
               <label className="flex items-center space-x-3">
-                <input type="checkbox" className="text-blue-600" />
+                <input
+                  type="checkbox"
+                  className="text-blue-600"
+                  checked={localFilters.priceDrops || false}
+                  onChange={(e) =>
+                    handleBooleanFilterUpdate("priceDrops", e.target.checked)
+                  }
+                />
                 <span className="text-sm text-gray-900">
                   Only show recent price drops (965)
                 </span>
@@ -1669,6 +1768,305 @@ export default function FiltersSidebar({
           )}
         </div>
 
+        {/* Trim */}
+        <div className="border-b border-gray-200">
+          <button
+            onClick={() => toggleSection("trim")}
+            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+          >
+            <span className="text-sm font-bold text-gray-900">Trim</span>
+            <svg
+              className={`w-5 h-5 text-gray-400 transition-transform ${
+                expandedSections.trim ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          {expandedSections.trim && (
+            <div className="px-4 pb-4 space-y-3">
+              {(filterOptions?.trims || []).map((trim) => (
+                <label key={trim.value} className="flex items-center space-x-3">
+                  <input
+                    type="checkbox"
+                    className="text-blue-600"
+                    checked={localFilters.trim === trim.value}
+                    onChange={(e) =>
+                      handleFilterUpdate(
+                        "trim",
+                        e.target.checked ? trim.value : ""
+                      )
+                    }
+                  />
+                  <span className="text-sm text-gray-900">
+                    {trim.value} ({trim.count.toLocaleString()})
+                  </span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Condition */}
+        <div className="border-b border-gray-200">
+          <button
+            onClick={() => toggleSection("condition")}
+            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+          >
+            <span className="text-sm font-bold text-gray-900">Condition</span>
+            <svg
+              className={`w-5 h-5 text-gray-400 transition-transform ${
+                expandedSections.condition ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          {expandedSections.condition && (
+            <div className="px-4 pb-4 space-y-3">
+              {(filterOptions?.conditions || []).map((condition) => (
+                <label
+                  key={condition.value}
+                  className="flex items-center space-x-3"
+                >
+                  <input
+                    type="checkbox"
+                    className="text-blue-600"
+                    checked={localFilters.condition === condition.value}
+                    onChange={(e) =>
+                      handleFilterUpdate(
+                        "condition",
+                        e.target.checked ? condition.value : ""
+                      )
+                    }
+                  />
+                  <span className="text-sm text-gray-900">
+                    {condition.value} ({condition.count.toLocaleString()})
+                  </span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Status */}
+        <div className="border-b border-gray-200">
+          <button
+            onClick={() => toggleSection("status")}
+            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+          >
+            <span className="text-sm font-bold text-gray-900">Status</span>
+            <svg
+              className={`w-5 h-5 text-gray-400 transition-transform ${
+                expandedSections.status ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          {expandedSections.status && (
+            <div className="px-4 pb-4 space-y-3">
+              {(filterOptions?.statuses || []).map((status) => (
+                <label
+                  key={status.value}
+                  className="flex items-center space-x-3"
+                >
+                  <input
+                    type="checkbox"
+                    className="text-blue-600"
+                    checked={localFilters.status === status.value}
+                    onChange={(e) =>
+                      handleFilterUpdate(
+                        "status",
+                        e.target.checked ? status.value : ""
+                      )
+                    }
+                  />
+                  <span className="text-sm text-gray-900">
+                    {status.value} ({status.count.toLocaleString()})
+                  </span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Engine Specifications */}
+        <div className="border-b border-gray-200">
+          <button
+            onClick={() => toggleSection("engineSpecs")}
+            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+          >
+            <span className="text-sm font-bold text-gray-900">
+              Engine Specifications
+            </span>
+            <svg
+              className={`w-5 h-5 text-gray-400 transition-transform ${
+                expandedSections.engineSpecs ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          {expandedSections.engineSpecs && (
+            <div className="px-4 pb-4 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs text-gray-600 mb-1">
+                    Min Engine Size (L)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={localFilters.engineSize || ""}
+                    onChange={(e) =>
+                      handleFilterUpdate(
+                        "engineSize",
+                        parseFloat(e.target.value) || 0
+                      )
+                    }
+                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                    disabled={isLoading}
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-600 mb-1">
+                    Min Horsepower
+                  </label>
+                  <input
+                    type="number"
+                    value={localFilters.horsepower || ""}
+                    onChange={(e) =>
+                      handleFilterUpdate(
+                        "horsepower",
+                        parseInt(e.target.value) || 0
+                      )
+                    }
+                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* MPG Specifications */}
+        <div className="border-b border-gray-200">
+          <button
+            onClick={() => toggleSection("mpgSpecs")}
+            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+          >
+            <span className="text-sm font-bold text-gray-900">
+              MPG Specifications
+            </span>
+            <svg
+              className={`w-5 h-5 text-gray-400 transition-transform ${
+                expandedSections.mpgSpecs ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          {expandedSections.mpgSpecs && (
+            <div className="px-4 pb-4 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs text-gray-600 mb-1">
+                    Min City MPG
+                  </label>
+                  <input
+                    type="number"
+                    value={localFilters.mpgCity || ""}
+                    onChange={(e) =>
+                      handleFilterUpdate(
+                        "mpgCity",
+                        parseInt(e.target.value) || 0
+                      )
+                    }
+                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                    disabled={isLoading}
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-600 mb-1">
+                    Min Highway MPG
+                  </label>
+                  <input
+                    type="number"
+                    value={localFilters.mpgHighway || ""}
+                    onChange={(e) =>
+                      handleFilterUpdate(
+                        "mpgHighway",
+                        parseInt(e.target.value) || 0
+                      )
+                    }
+                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs text-gray-600 mb-1">
+                  Min Combined MPG
+                </label>
+                <input
+                  type="number"
+                  value={localFilters.mpgCombined || ""}
+                  onChange={(e) =>
+                    handleFilterUpdate(
+                      "mpgCombined",
+                      parseInt(e.target.value) || 0
+                    )
+                  }
+                  className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                  disabled={isLoading}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+
         {/* Seller Type */}
         <div>
           <button
@@ -1699,7 +2097,20 @@ export default function FiltersSidebar({
                 { name: "CarGurus Partners", count: 8809 },
               ].map((type) => (
                 <label key={type.name} className="flex items-center space-x-3">
-                  <input type="checkbox" className="text-blue-600" />
+                  <input
+                    type="checkbox"
+                    className="text-blue-600"
+                    checked={
+                      localFilters.sellerType?.includes(type.name) || false
+                    }
+                    onChange={(e) =>
+                      handleArrayFilterUpdate(
+                        "sellerType",
+                        type.name,
+                        e.target.checked
+                      )
+                    }
+                  />
                   <span className="text-sm text-gray-900">
                     {type.name} ({type.count.toLocaleString()})
                   </span>

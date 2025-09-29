@@ -96,6 +96,11 @@ export default function CarListings({
               <div className="text-sm font-medium text-gray-900">
                 {total || cars.length} car
                 {(total || cars.length) !== 1 ? "s" : ""} found
+                {totalPages > 1 && (
+                  <span className="ml-2 text-gray-500">
+                    (Page {currentPage} of {totalPages})
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -193,99 +198,122 @@ export default function CarListings({
 
       {/* Pagination - Always show when onPageChange is available */}
       {onPageChange && (
-        <div className="flex items-center justify-center space-x-2 pt-2">
-          {/* Previous Button */}
-          <button
-            onClick={() => onPageChange(currentPage - 1)}
-            disabled={currentPage <= 1 || isLoading}
-            className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Previous
-          </button>
-
-          {/* Professional Pagination with Dots - Always show structure */}
-          <div className="flex items-center space-x-1">
-            {/* First Page */}
-            {(totalPages > 0 || isLoading) && (
-              <button
-                onClick={() => onPageChange(1)}
-                disabled={isLoading}
-                className={`px-3 py-2 text-sm font-medium rounded-md ${
-                  currentPage === 1
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
-                } ${isLoading ? "opacity-50" : ""}`}
-              >
-                1
-              </button>
-            )}
-
-            {/* Left Dots */}
-            {!isLoading && currentPage > 4 && totalPages > 7 && (
-              <span className="px-2 py-2 text-gray-500">...</span>
-            )}
-
-            {/* Middle Pages - Hide during loading but keep space */}
-            {!isLoading &&
-              Array.from({ length: totalPages }, (_, i) => i + 1)
-                .filter((pageNum) => {
-                  if (totalPages <= 7) {
-                    return pageNum > 1 && pageNum < totalPages
-                  }
-                  if (currentPage <= 4) {
-                    return pageNum > 1 && pageNum <= 5
-                  }
-                  if (currentPage >= totalPages - 3) {
-                    return pageNum >= totalPages - 4 && pageNum < totalPages
-                  }
-                  return (
-                    pageNum >= currentPage - 1 && pageNum <= currentPage + 1
-                  )
-                })
-                .map((pageNum) => (
-                  <button
-                    key={pageNum}
-                    onClick={() => onPageChange(pageNum)}
-                    disabled={isLoading}
-                    className={`px-3 py-2 text-sm font-medium rounded-md ${
-                      currentPage === pageNum
-                        ? "bg-blue-600 text-white"
-                        : "text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
-                    } ${isLoading ? "opacity-50" : ""}`}
-                  >
-                    {pageNum}
-                  </button>
-                ))}
-
-            {/* Right Dots */}
-            {!isLoading && currentPage < totalPages - 3 && totalPages > 7 && (
-              <span className="px-2 py-2 text-gray-500">...</span>
-            )}
-
-            {/* Last Page */}
-            {!isLoading && totalPages > 1 && (
-              <button
-                onClick={() => onPageChange(totalPages)}
-                disabled={isLoading}
-                className={`px-3 py-2 text-sm font-medium rounded-md ${
-                  currentPage === totalPages
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
-                } ${isLoading ? "opacity-50" : ""}`}
-              >
-                {totalPages}
-              </button>
-            )}
+        <div className="flex flex-col items-center justify-center space-y-4 pt-4">
+          {/* Quick Page Navigation */}
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-gray-600">Go to page:</span>
+            <input
+              type="number"
+              min="1"
+              max={totalPages}
+              value={currentPage}
+              onChange={(e) => {
+                const page = parseInt(e.target.value)
+                if (page >= 1 && page <= totalPages) {
+                  onPageChange(page)
+                }
+              }}
+              className="w-16 px-2 py-1 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              disabled={isLoading}
+            />
+            <span className="text-sm text-gray-500">of {totalPages}</span>
           </div>
 
-          {/* Next Button */}
-          <button
-            onClick={() => onPageChange(currentPage + 1)}
-            disabled={currentPage >= totalPages || isLoading}
-            className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Next
-          </button>
+          {/* Pagination Controls */}
+          <div className="flex items-center justify-center space-x-2">
+            {/* Previous Button */}
+            <button
+              onClick={() => onPageChange(currentPage - 1)}
+              disabled={currentPage <= 1 || isLoading}
+              className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Previous
+            </button>
+
+            {/* Professional Pagination with Dots - Always show structure */}
+            <div className="flex items-center space-x-1">
+              {/* First Page */}
+              {(totalPages > 0 || isLoading) && (
+                <button
+                  onClick={() => onPageChange(1)}
+                  disabled={isLoading}
+                  className={`px-3 py-2 text-sm font-medium rounded-md ${
+                    currentPage === 1
+                      ? "bg-blue-600 text-white"
+                      : "text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
+                  } ${isLoading ? "opacity-50" : ""}`}
+                >
+                  1
+                </button>
+              )}
+
+              {/* Left Dots */}
+              {!isLoading && currentPage > 4 && totalPages > 7 && (
+                <span className="px-2 py-2 text-gray-500">...</span>
+              )}
+
+              {/* Middle Pages - Hide during loading but keep space */}
+              {!isLoading &&
+                Array.from({ length: totalPages }, (_, i) => i + 1)
+                  .filter((pageNum) => {
+                    if (totalPages <= 7) {
+                      return pageNum > 1 && pageNum < totalPages
+                    }
+                    if (currentPage <= 4) {
+                      return pageNum > 1 && pageNum <= 5
+                    }
+                    if (currentPage >= totalPages - 3) {
+                      return pageNum >= totalPages - 4 && pageNum < totalPages
+                    }
+                    return (
+                      pageNum >= currentPage - 1 && pageNum <= currentPage + 1
+                    )
+                  })
+                  .map((pageNum) => (
+                    <button
+                      key={pageNum}
+                      onClick={() => onPageChange(pageNum)}
+                      disabled={isLoading}
+                      className={`px-3 py-2 text-sm font-medium rounded-md ${
+                        currentPage === pageNum
+                          ? "bg-blue-600 text-white"
+                          : "text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
+                      } ${isLoading ? "opacity-50" : ""}`}
+                    >
+                      {pageNum}
+                    </button>
+                  ))}
+
+              {/* Right Dots */}
+              {!isLoading && currentPage < totalPages - 3 && totalPages > 7 && (
+                <span className="px-2 py-2 text-gray-500">...</span>
+              )}
+
+              {/* Last Page */}
+              {!isLoading && totalPages > 1 && (
+                <button
+                  onClick={() => onPageChange(totalPages)}
+                  disabled={isLoading}
+                  className={`px-3 py-2 text-sm font-medium rounded-md ${
+                    currentPage === totalPages
+                      ? "bg-blue-600 text-white"
+                      : "text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
+                  } ${isLoading ? "opacity-50" : ""}`}
+                >
+                  {totalPages}
+                </button>
+              )}
+            </div>
+
+            {/* Next Button */}
+            <button
+              onClick={() => onPageChange(currentPage + 1)}
+              disabled={currentPage >= totalPages || isLoading}
+              className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Next
+            </button>
+          </div>
         </div>
       )}
     </div>

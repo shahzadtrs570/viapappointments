@@ -7,7 +7,6 @@ const config = {
   reactStrictMode: false,
   // Update i18n configuration for Vercel
   experimental: {
-    appDir: true,
     serverComponentsExternalPackages: [],
   },
   // Image configuration for external domains
@@ -73,10 +72,6 @@ const config = {
         protocol: 'https',
         hostname: '*.cargurus.com',
       },
-    ],
-    domains: [
-      'images.unsplash.com',
-      'via.placeholder.com',
     ],
   },
   // Configure `pageExtensions` to include markdown and MDX files

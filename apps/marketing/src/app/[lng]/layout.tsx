@@ -22,7 +22,7 @@ export async function generateStaticParams() {
   return languages.map((lng: string) => ({ lng }))
 }
 
-const defaultUrl = process.env.NEXT_PUBLIC_APP_URL!
+const defaultUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3001"
 
 // Generate metadata dynamically based on language
 export async function generateMetadata({

@@ -1,9 +1,8 @@
 /* eslint-disable */
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Skeleton } from "@package/ui/skeleton"
-import { api } from "@/lib/trpc/client"
 import CarDetailsHeader from "./components/CarDetailsHeader"
 import CarImageGallery from "./components/CarImageGallery"
 import RequestInfoSidebar from "./components/RequestInfoSidebar"
@@ -22,33 +21,135 @@ export default function CarDetailsPage({
   params: { lng, id },
 }: CarDetailsPageProps) {
   const [activeTab, setActiveTab] = useState("overview")
+  const [car, setCar] = useState<any>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [allCars, setAllCars] = useState<any[]>([])
 
-  // Fetch car data by ID
-  const { data: car, isLoading, error } = api.inventory.getById.useQuery({ id })
+  // Load all cars data and find the specific car
+  useEffect(() => {
+    const loadCarData = async () => {
+      try {
+        console.log("Starting to load car data for ID:", id)
+        setIsLoading(true)
+        setError(null)
 
-  // Get inventory list for navigation (get IDs of nearby cars)
-  const { data: inventoryData } = api.inventory.getInventory.useQuery({
-    limit: 50, // Get more cars for navigation
-    isActive: true,
-    sortBy: "created_desc",
-  })
+        // Load all JSON data files
+        const dataFiles = [
+          "alderman_auto_data_2025-09-11T21-25-05.json",
+          "continental_auto_sales_data_2025-09-09T19-25-57.json",
+          "Kiefer_Mazda_data_2025-09-15T18-01-31.json",
+          "Kiefer_Mazda_data_2025-09-15T18-09-37.json",
+          "kirkbrothers_buick_gmc_data_2025-09-04T10-14-14 (1).json",
+          "kirkbrothers_chevrolet_data_2025-09-01T21-08-46.json",
+          "kirkbrothers_ford_data_2025-09-03T20-29-41 (1).json",
+          "pilson_ford_data_2025-09-08T20-05-43.json",
+          "sam_leman_ford_data_2025-09-07T19-39-48.json",
+          "sam_leman_ford_data_2025-09-07T19-44-16.json",
+          "sam_leman_toyota_data_2025-09-07T19-10-19.json",
+          "toyota_pekin_data_2025-09-14T20-04-34.json",
+          "toyota_pekin_data_2025-09-14T20-10-29.json",
+        ]
+
+        const allCarsData: any[] = []
+
+        for (const file of dataFiles) {
+          try {
+            console.log(`Loading file: ${file}`)
+            const response = await fetch(`/data/${file}`)
+            if (response.ok) {
+              const data = await response.json()
+              console.log(`Loaded ${data.length} items from ${file}`)
+              if (Array.isArray(data)) {
+                // Transform the data to match expected format
+                const transformedData = data.map((car: any, index: number) => ({
+                  id: `${file}-${index}`,
+                  make: car.model?.split(" ")[0] || "Unknown",
+                  model: car.model || "Unknown",
+                  year: parseInt(car.year) || 2020,
+                  priceAmount: parseFloat(
+                    car.price?.replace(/[^0-9.]/g, "") || "0"
+                  ),
+                  priceCurrency: "USD",
+                  mileage: parseInt(
+                    car.basicInfo?.Mileage?.replace(/[^0-9]/g, "") || "0"
+                  ),
+                  condition: car.basicInfo?.condition || "Used",
+                  fuelType: car.basicInfo?.Engine || "Unknown",
+                  transmission: car.basicInfo?.Transmission || "Unknown",
+                  drivetrain: car.basicInfo?.Drivetrain || "Unknown",
+                  bodyStyle: car.basicInfo?.bodyStyle || "Unknown",
+                  exteriorColor: car.basicInfo?.Exterior || "Unknown",
+                  interiorColor: car.basicInfo?.Interior || "Unknown",
+                  title: car.title || `${car.year} ${car.model}`,
+                  description: car.description || "",
+                  images: car.images || [],
+                  dealership: car.dealership || "Unknown Dealer",
+                  location: car.location || "Unknown Location",
+                  isActive: true,
+                  createdAt: new Date(car.scrapedAt || Date.now()),
+                  rawData: car,
+                }))
+                allCarsData.push(...transformedData)
+                console.log(`Added ${transformedData.length} cars from ${file}`)
+              }
+            } else {
+              console.warn(`Failed to load ${file}: ${response.status}`)
+            }
+          } catch (fileError) {
+            console.warn(`Failed to load ${file}:`, fileError)
+          }
+        }
+
+        setAllCars(allCarsData)
+
+        // Find the specific car by ID
+        console.log("Looking for car with ID:", id)
+        console.log("Total cars loaded:", allCarsData.length)
+        const foundCar = allCarsData.find((car) => car.id === id)
+        if (foundCar) {
+          console.log("Car found:", foundCar.title)
+          setCar(foundCar)
+        } else {
+          console.log(
+            "Car not found. Available IDs:",
+            allCarsData.slice(0, 5).map((c) => c.id)
+          )
+          // Try to find a similar car or use the first car as fallback
+          const fallbackCar = allCarsData[0]
+          if (fallbackCar) {
+            console.log("Using fallback car:", fallbackCar.title)
+            setCar(fallbackCar)
+          } else {
+            setError("Car not found and no fallback available")
+          }
+        }
+
+        setIsLoading(false)
+      } catch (err) {
+        console.error("Error loading car data:", err)
+        setError("Failed to load car data")
+        setIsLoading(false)
+      }
+    }
+
+    loadCarData()
+  }, [id])
 
   // Find current car's position in the list for navigation
-  const currentCarIndex =
-    inventoryData?.items.findIndex((item) => item.id === id) ?? -1
-  const totalInventoryCount = inventoryData?.total || 0
+  const currentCarIndex = allCars.findIndex((item) => item.id === id)
+  const totalInventoryCount = allCars.length
 
   // Get next and previous car IDs for navigation
   const nextCarId =
-    currentCarIndex >= 0 &&
-    currentCarIndex < (inventoryData?.items.length || 0) - 1
-      ? inventoryData?.items[currentCarIndex + 1]?.id
-      : inventoryData?.items[0]?.id
+    currentCarIndex >= 0 && currentCarIndex < allCars.length - 1
+      ? allCars[currentCarIndex + 1]?.id
+      : allCars[0]?.id
 
   const prevCarId =
     currentCarIndex > 0
-      ? inventoryData?.items[currentCarIndex - 1]?.id
-      : inventoryData?.items[(inventoryData?.items.length || 1) - 1]?.id
+      ? allCars[currentCarIndex - 1]?.id
+      : allCars[allCars.length - 1]?.id
 
   if (isLoading) {
     return (
@@ -209,6 +310,17 @@ export default function CarDetailsPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Debug Info - Remove in production */}
+      {process.env.NODE_ENV === "development" && (
+        <div className="bg-green-50 border-l-4 border-green-400 p-4 mx-6 mt-4">
+          <div className="text-sm text-green-700">
+            <strong>Vehicle Detail Debug:</strong> Car ID: {id} | Total cars:{" "}
+            {allCars.length} | Current index: {currentCarIndex} | Next:{" "}
+            {nextCarId} | Prev: {prevCarId}
+          </div>
+        </div>
+      )}
+
       <CarDetailsHeader
         car={car}
         currentIndex={currentCarIndex >= 0 ? currentCarIndex : 0}
