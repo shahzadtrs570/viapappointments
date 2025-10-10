@@ -4,11 +4,11 @@ import { X } from "lucide-react"
 
 interface ActiveFiltersProps {
   filters: {
-    make: string
+    make: string[]
     bodyStyle: string
     priceRange: [number, number]
     yearRange: [number, number]
-    fuelType: string
+    fuelType: string[]
     carType: "used" | "new"
     search: string
     sortBy: string
@@ -38,6 +38,16 @@ interface ActiveFiltersProps {
     singleOwner?: boolean
     priceDrops?: boolean
     onlineFinancing?: boolean
+    condition?: string
+    financingOptions?: string[]
+    daysOnMarketRange?: [number, number]
+    gasMileageRange?: [number, number]
+    engineSize?: number
+    horsepower?: number
+    mpgCity?: number
+    mpgHighway?: number
+    mpgCombined?: number
+    sellerType?: string[]
   }
   onFilterChange: (filters: any) => void
   onClearAll: () => void
@@ -66,16 +76,19 @@ export default function ActiveFilters({
       onRemove: () => void
     }> = []
 
-    // Make filter
-    if (filters.make) {
+    // Make filter (array) - Show as single entry with multiple values
+    if (filters.make && filters.make.length > 0) {
       activeFilters.push({
         key: "make",
         label: "Make",
-        value: filters.make,
+        value: filters.make.join(", "),
         onRemove: () => {
           const currentFilters = filtersRef?.current || filters
           console.log("Removing make filter, current filters:", currentFilters)
-          const updatedFilters = { ...currentFilters, make: "" }
+          const updatedFilters = { 
+            ...currentFilters, 
+            make: []
+          }
           console.log("Updated filters after removing make:", updatedFilters)
           onFilterChange(updatedFilters)
         },
@@ -98,6 +111,22 @@ export default function ActiveFilters({
       })
     }
 
+    // Condition filter (New/Used/CPO)
+    if (filters.condition) {
+      activeFilters.push({
+        key: "condition",
+        label: "Condition",
+        value: filters.condition,
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          console.log("Removing condition filter, current filters:", currentFilters)
+          const updatedFilters = { ...currentFilters, condition: "" }
+          console.log("Updated filters after removing condition:", updatedFilters)
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
     // Trim filter - MISSING FROM ACTIVE FILTERS
     if (filters.trim) {
       activeFilters.push({
@@ -114,21 +143,6 @@ export default function ActiveFilters({
       })
     }
 
-    // Condition filter (only show when manually selected)
-    if (filters.condition && filters.condition !== "") {
-      activeFilters.push({
-        key: "condition",
-        label: "Condition",
-        value: filters.condition,
-        onRemove: () => {
-          const currentFilters = filtersRef?.current || filters
-          console.log("Removing condition filter, current filters:", currentFilters)
-          const updatedFilters = { ...currentFilters, condition: "" }
-          console.log("Updated filters after removing condition:", updatedFilters)
-          onFilterChange(updatedFilters)
-        },
-      })
-    }
 
     // Status filter (only show when manually selected)
     if (filters.status && filters.status !== "") {
@@ -198,13 +212,22 @@ export default function ActiveFilters({
       })
     }
 
-    // Fuel Type filter
-    if (filters.fuelType) {
+    // Fuel Type filter (array) - Show as single entry with multiple values
+    if (filters.fuelType && filters.fuelType.length > 0) {
       activeFilters.push({
         key: "fuelType",
         label: "Fuel Type",
-        value: filters.fuelType,
-        onRemove: () => onFilterChange({ ...filters, fuelType: "" }),
+        value: filters.fuelType.join(", "),
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          console.log("Removing fuelType filter, current filters:", currentFilters)
+          const updatedFilters = { 
+            ...currentFilters, 
+            fuelType: []
+          }
+          console.log("Updated filters after removing fuelType:", updatedFilters)
+          onFilterChange(updatedFilters)
+        },
       })
     }
 
@@ -269,6 +292,134 @@ export default function ActiveFilters({
       })
     }
 
+    // Financing Options filter - HAS BACKEND IMPLEMENTATION
+    if (filters.financingOptions && filters.financingOptions.length > 0) {
+      activeFilters.push({
+        key: "financingOptions",
+        label: "Financing",
+        value: filters.financingOptions.join(", "),
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          const updatedFilters = { ...currentFilters, financingOptions: [] }
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
+    // Days on Market Range filter - HAS BACKEND IMPLEMENTATION
+    const defaultDaysOnMarketRange = { min: 0, max: 1000 }
+    if (
+      filters.daysOnMarketRange &&
+      (filters.daysOnMarketRange[0] !== defaultDaysOnMarketRange.min ||
+        filters.daysOnMarketRange[1] !== defaultDaysOnMarketRange.max)
+    ) {
+      activeFilters.push({
+        key: "daysOnMarketRange",
+        label: "Days on Market",
+        value: `${filters.daysOnMarketRange[0]} - ${filters.daysOnMarketRange[1]} days`,
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          const updatedFilters = {
+            ...currentFilters,
+            daysOnMarketRange: [defaultDaysOnMarketRange.min, defaultDaysOnMarketRange.max]
+          }
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
+    // Gas Mileage Range filter - HAS BACKEND IMPLEMENTATION
+    const defaultGasMileageRange = { min: 0, max: 150 }
+    if (
+      filters.gasMileageRange &&
+      (filters.gasMileageRange[0] !== defaultGasMileageRange.min ||
+        filters.gasMileageRange[1] !== defaultGasMileageRange.max)
+    ) {
+      activeFilters.push({
+        key: "gasMileageRange",
+        label: "Gas Mileage",
+        value: `${filters.gasMileageRange[0]} - ${filters.gasMileageRange[1]} MPG`,
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          const updatedFilters = {
+            ...currentFilters,
+            gasMileageRange: [defaultGasMileageRange.min, defaultGasMileageRange.max]
+          }
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
+    // Engine Specifications filter - Consolidated entry
+    if ((filters.engineSize && filters.engineSize > 0) || (filters.horsepower && filters.horsepower > 0)) {
+      const engineValues = []
+      if (filters.engineSize && filters.engineSize > 0) {
+        engineValues.push(`${filters.engineSize}L`)
+      }
+      if (filters.horsepower && filters.horsepower > 0) {
+        engineValues.push(`${filters.horsepower} HP`)
+      }
+      
+      activeFilters.push({
+        key: "engineSpecs",
+        label: "Engine Specifications",
+        value: engineValues.join(", "),
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          const updatedFilters = { 
+            ...currentFilters, 
+            engineSize: 0,
+            horsepower: 0
+          }
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
+    // MPG Specifications filter - Consolidated entry
+    if ((filters.mpgCity && filters.mpgCity > 0) || (filters.mpgHighway && filters.mpgHighway > 0) || (filters.mpgCombined && filters.mpgCombined > 0)) {
+      const mpgValues = []
+      if (filters.mpgCity && filters.mpgCity > 0) {
+        mpgValues.push(`City: ${filters.mpgCity} MPG`)
+      }
+      if (filters.mpgHighway && filters.mpgHighway > 0) {
+        mpgValues.push(`Highway: ${filters.mpgHighway} MPG`)
+      }
+      if (filters.mpgCombined && filters.mpgCombined > 0) {
+        mpgValues.push(`Combined: ${filters.mpgCombined} MPG`)
+      }
+      
+      activeFilters.push({
+        key: "mpgSpecs",
+        label: "MPG Specifications",
+        value: mpgValues.join(", "),
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          const updatedFilters = { 
+            ...currentFilters, 
+            mpgCity: 0,
+            mpgHighway: 0,
+            mpgCombined: 0
+          }
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
+    // Seller Type filter - HAS BACKEND IMPLEMENTATION
+    if (filters.sellerType && filters.sellerType.length > 0) {
+      activeFilters.push({
+        key: "sellerType",
+        label: "Seller Type",
+        value: filters.sellerType.join(", "),
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          const updatedFilters = { ...currentFilters, sellerType: [] }
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
     // Note: Removed filters without backend implementation:
     // - engine (no backend filtering)
     // - numberOfSeats (no backend filtering)  
@@ -297,33 +448,6 @@ export default function ActiveFilters({
       })
     }
 
-    // Gas Mileage Range filter
-    if (
-      filters.gasMileageRange &&
-      (filters.gasMileageRange[0] > 13 || filters.gasMileageRange[1] < 143)
-    ) {
-      activeFilters.push({
-        key: "gasMileageRange",
-        label: "Gas Mileage",
-        value: `${filters.gasMileageRange[0]} - ${filters.gasMileageRange[1]} MPG`,
-        onRemove: () =>
-          onFilterChange({ ...filters, gasMileageRange: [13, 143] }),
-      })
-    }
-
-    // Days on Market Range filter
-    if (
-      filters.daysOnMarketRange &&
-      (filters.daysOnMarketRange[0] > 1 || filters.daysOnMarketRange[1] < 1000)
-    ) {
-      activeFilters.push({
-        key: "daysOnMarketRange",
-        label: "Days on Market",
-        value: `${filters.daysOnMarketRange[0]} - ${filters.daysOnMarketRange[1]} days`,
-        onRemove: () =>
-          onFilterChange({ ...filters, daysOnMarketRange: [1, 1000] }),
-      })
-    }
 
     // Quality filters - Always show when enabled (these are our quality standards)
     if (filters.hideWithoutPhotos) {

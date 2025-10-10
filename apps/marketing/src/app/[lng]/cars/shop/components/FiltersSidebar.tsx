@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 interface FiltersSidebarProps {
   filters: {
     // Basic vehicle info
-    make: string
+    make: string[]
     model: string
     yearRange: [number, number]
     trim: string
@@ -21,7 +21,7 @@ interface FiltersSidebarProps {
 
     // Vehicle specifications
     mileageRange: [number, number]
-    fuelType: string
+    fuelType: string[]
     transmission: string[]
     drivetrain: string[]
     engineSize: number
@@ -59,6 +59,19 @@ interface FiltersSidebarProps {
     onlineFinancing: boolean
     isActive: boolean
     isFeatured: boolean
+    
+    // Financing options
+    financingOptions: string[]
+    
+    // Days on market range
+    daysOnMarketRange: [number, number]
+    
+    // Gas mileage range (MPG)
+    gasMileageRange: [number, number]
+    
+    // Seller type
+    sellerType: string[]
+    
     [key: string]: any // Allow dynamic property access
   }
   onFilterChange: (filters: any) => void
@@ -173,8 +186,8 @@ export default function FiltersSidebar({
   const handleFilterUpdate = (key: string, value: any) => {
     const newFilters = { ...localFilters, [key]: value }
 
-    // Clear model when make changes
-    if (key === "make") {
+    // Clear model when make changes (but only if make becomes empty)
+    if (key === "make" && (!value || value.length === 0)) {
       newFilters.model = ""
     }
 
@@ -220,25 +233,31 @@ export default function FiltersSidebar({
       case "car":
         return (
           <div className="space-y-4">
-            {/* Make */}
-            <div>
-              <label className="block text-sm font-bold text-gray-900 mb-2">
-                Make
-              </label>
-              <select
-                value={localFilters.make}
-                onChange={(e) => handleFilterUpdate("make", e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium"
-                disabled={isLoading}
-              >
-                <option value="">All makes</option>
-                {makes.map((make) => (
-                  <option key={make} value={make}>
-                    {make}
-                  </option>
-                ))}
-              </select>
-            </div>
+             {/* Make */}
+             <div>
+               <label className="block text-sm font-bold text-gray-900 mb-2">
+                 Make
+               </label>
+               <select
+                 value={localFilters.make && localFilters.make.length > 0 ? localFilters.make[0] : ""}
+                 onChange={(e) => {
+                   if (e.target.value) {
+                     handleFilterUpdate("make", [e.target.value])
+                   } else {
+                     handleFilterUpdate("make", [])
+                   }
+                 }}
+                 className="w-full p-3 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium"
+                 disabled={isLoading}
+               >
+                 <option value="">All makes</option>
+                 {makes.map((make) => (
+                   <option key={make} value={make}>
+                     {make}
+                   </option>
+                 ))}
+               </select>
+             </div>
 
             {/* Model */}
             <div>
@@ -1132,20 +1151,23 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.makeFilter && (
             <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "Acura", count: 149 },
-                { name: "Alfa Romeo", count: 23 },
-                { name: "Audi", count: 326 },
-                { name: "Bentley", count: 5 },
-                { name: "BMW", count: 540 },
-                { name: "Buick", count: 86 },
-                { name: "Cadillac", count: 153 },
-                { name: "Chevrolet", count: 782 },
-              ].map((make) => (
-                <label key={make.name} className="flex items-center space-x-3">
-                  <input type="checkbox" className="text-blue-600" />
+              {(filterOptions?.makes || []).map((make) => (
+                <label key={make.value} className="flex items-center space-x-3">
+                  <input 
+                    type="checkbox" 
+                    className="text-blue-600"
+                    checked={localFilters.make?.includes(make.value) || false}
+                    onChange={(e) => {
+                      handleArrayFilterUpdate(
+                        "make",
+                        make.value,
+                        e.target.checked
+                      )
+                    }}
+                    disabled={isLoading}
+                  />
                   <span className="text-sm text-gray-900">
-                    {make.name} ({make.count})
+                    {make.value} ({make.count})
                   </span>
                 </label>
               ))}
@@ -1178,19 +1200,23 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.fuelTypeFilter && (
             <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "Compressed Natural Gas", count: 1 },
-                { name: "Diesel", count: 34 },
-                { name: "Electric", count: 294 },
-                { name: "Flex Fuel Vehicle", count: 195 },
-                { name: "Fuel Cell", count: 2 },
-                { name: "Gasoline", count: 8439 },
-                { name: "Hybrid", count: 506 },
-              ].map((fuel) => (
-                <label key={fuel.name} className="flex items-center space-x-3">
-                  <input type="checkbox" className="text-blue-600" />
+              {(filterOptions?.fuelTypes || []).map((fuel) => (
+                <label key={fuel.value} className="flex items-center space-x-3">
+                  <input 
+                    type="checkbox" 
+                    className="text-blue-600"
+                    checked={localFilters.fuelType?.includes(fuel.value) || false}
+                    onChange={(e) => {
+                      handleArrayFilterUpdate(
+                        "fuelType",
+                        fuel.value,
+                        e.target.checked
+                      )
+                    }}
+                    disabled={isLoading}
+                  />
                   <span className="text-sm text-gray-900">
-                    {fuel.name} ({fuel.count.toLocaleString()})
+                    {fuel.value} ({fuel.count.toLocaleString()})
                   </span>
                 </label>
               ))}
@@ -1209,7 +1235,7 @@ export default function FiltersSidebar({
           </button>
         </div>
 
-        {/* Hybrid & Electric */}
+        {/* Hybrid & Electric - Now uses fuelType filtering */}
         <div className="border-b border-gray-200">
           <button
             onClick={() => toggleSection("hybridElectric")}
@@ -1235,40 +1261,36 @@ export default function FiltersSidebar({
             </svg>
           </button>
           {expandedSections.hybridElectric && (
-            <div className="px-4 pb-4 space-y-6">
-              <div>
-                <div className="text-sm font-medium text-gray-900 mb-2">
-                  EV battery range
-                </div>
-                <div className="text-sm text-gray-600 mb-3">
-                  14 miles - 469 miles
-                </div>
-                <input
-                  type="range"
-                  min="14"
-                  max="469"
-                  className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
-                />
-              </div>
-              <div>
-                <div className="text-sm font-medium text-gray-900 mb-2">
-                  EV battery charging time
-                </div>
-                <div className="text-sm text-gray-600 mb-3">
-                  2 hours - 16 hours
-                </div>
-                <input
-                  type="range"
-                  min="2"
-                  max="16"
-                  className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
-                />
-              </div>
+            <div className="px-4 pb-4 space-y-3">
+              {(filterOptions?.fuelTypes || [])
+                .filter(fuel => 
+                  ['HYBRID', 'ELECTRIC', 'PLUG_IN_HYBRID', 'Hybrid', 'Electric', 'Plug-in Hybrid'].includes(fuel.value)
+                )
+                .map((fuel) => (
+                  <label key={fuel.value} className="flex items-center space-x-3">
+                    <input 
+                      type="checkbox" 
+                      className="text-blue-600"
+                      checked={localFilters.fuelType?.includes(fuel.value) || false}
+                      onChange={(e) => {
+                        handleArrayFilterUpdate(
+                          "fuelType",
+                          fuel.value,
+                          e.target.checked
+                        )
+                      }}
+                      disabled={isLoading}
+                    />
+                    <span className="text-sm text-gray-900">
+                      {fuel.value} ({fuel.count.toLocaleString()})
+                    </span>
+                  </label>
+                ))}
             </div>
           )}
         </div>
 
-        {/* New / Used / CPO */}
+        {/* New / Used / CPO - Now uses condition filtering */}
         <div className="border-b border-gray-200">
           <button
             onClick={() => toggleSection("newUsedCPO")}
@@ -1295,21 +1317,33 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.newUsedCPO && (
             <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "Manufacturer Certified", count: 709 },
-                { name: "Third-Party Certified", count: 38 },
-                { name: "Used", count: 9552 },
-              ].map((option) => (
-                <label
-                  key={option.name}
-                  className="flex items-center space-x-3"
-                >
-                  <input type="checkbox" className="text-blue-600" />
-                  <span className="text-sm text-gray-900">
-                    {option.name} ({option.count.toLocaleString()})
-                  </span>
-                </label>
-              ))}
+              {(filterOptions?.conditions || [])
+                .filter(condition => 
+                  ['NEW', 'USED', 'CERTIFIED_PRE_OWNED', 'New', 'Used', 'Certified Pre-Owned'].includes(condition.value)
+                )
+                .map((condition) => (
+                  <label
+                    key={condition.value}
+                    className="flex items-center space-x-3"
+                  >
+                    <input 
+                      type="checkbox" 
+                      className="text-blue-600"
+                      checked={localFilters.condition === condition.value}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          handleFilterUpdate("condition", condition.value)
+                        } else {
+                          handleFilterUpdate("condition", "")
+                        }
+                      }}
+                      disabled={isLoading}
+                    />
+                    <span className="text-sm text-gray-900">
+                      {condition.value} ({condition.count.toLocaleString()})
+                    </span>
+                  </label>
+                ))}
             </div>
           )}
         </div>
@@ -1544,7 +1578,19 @@ export default function FiltersSidebar({
                     key={option.name}
                     className="flex items-center space-x-3"
                   >
-                    <input type="checkbox" className="text-blue-600" />
+                    <input 
+                      type="checkbox" 
+                      className="text-blue-600"
+                      checked={localFilters.financingOptions?.includes(option.name) || false}
+                      onChange={(e) => {
+                        handleArrayFilterUpdate(
+                          "financingOptions",
+                          option.name,
+                          e.target.checked
+                        )
+                      }}
+                      disabled={isLoading}
+                    />
                     <span className="text-sm text-gray-900">
                       {option.name} ({option.count.toLocaleString()})
                     </span>
@@ -1585,12 +1631,20 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.daysOnMarket && (
             <div className="px-4 pb-4 space-y-4">
-              <div className="text-sm text-gray-600">1 days - 1,000+ days</div>
+              <div className="text-sm text-gray-600">
+                {localFilters.daysOnMarketRange[0]} days - {localFilters.daysOnMarketRange[1]} days
+              </div>
               <input
                 type="range"
                 min="1"
                 max="1000"
+                value={localFilters.daysOnMarketRange[1]}
                 className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+                onChange={(e) => {
+                  const value = parseInt(e.target.value)
+                  handleFilterUpdate("daysOnMarketRange", [localFilters.daysOnMarketRange[0], value])
+                }}
+                disabled={isLoading}
               />
             </div>
           )}
@@ -1621,12 +1675,20 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.gasMileage && (
             <div className="px-4 pb-4 space-y-4">
-              <div className="text-sm text-gray-600">13 MPG - 143 MPG</div>
+              <div className="text-sm text-gray-600">
+                {localFilters.gasMileageRange[0]} MPG - {localFilters.gasMileageRange[1]} MPG
+              </div>
               <input
                 type="range"
                 min="13"
                 max="143"
+                value={localFilters.gasMileageRange[1]}
                 className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+                onChange={(e) => {
+                  const value = parseInt(e.target.value)
+                  handleFilterUpdate("gasMileageRange", [localFilters.gasMileageRange[0], value])
+                }}
+                disabled={isLoading}
               />
             </div>
           )}
@@ -1899,21 +1961,31 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.status && (
             <div className="px-4 pb-4 space-y-3">
+              <div className="mb-3">
+                <label className="flex items-center space-x-3">
+                  <input
+                    type="radio"
+                    name="status"
+                    className="text-blue-600"
+                    checked={!localFilters.status || localFilters.status === ""}
+                    onChange={() => handleFilterUpdate("status", "")}
+                  />
+                  <span className="text-sm text-gray-900 font-medium">
+                    All Status
+                  </span>
+                </label>
+              </div>
               {(filterOptions?.statuses || []).map((status) => (
                 <label
                   key={status.value}
                   className="flex items-center space-x-3"
                 >
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="status"
                     className="text-blue-600"
                     checked={localFilters.status === status.value}
-                    onChange={(e) =>
-                      handleFilterUpdate(
-                        "status",
-                        e.target.checked ? status.value : ""
-                      )
-                    }
+                    onChange={() => handleFilterUpdate("status", status.value)}
                   />
                   <span className="text-sm text-gray-900">
                     {status.value} ({status.count.toLocaleString()})
@@ -1951,42 +2023,77 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.engineSpecs && (
             <div className="px-4 pb-4 space-y-4">
+              <div className="mb-3">
+                <p className="text-xs text-gray-500 mb-3">
+                  Set minimum requirements for engine specifications
+                </p>
+              </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">
                     Min Engine Size (L)
                   </label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={localFilters.engineSize || ""}
-                    onChange={(e) =>
-                      handleFilterUpdate(
-                        "engineSize",
-                        parseFloat(e.target.value) || 0
-                      )
-                    }
-                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
-                    disabled={isLoading}
-                  />
+                  <div className="relative">
+                    <input
+                      type="number"
+                      step="0.1"
+                      min="0"
+                      max="8"
+                      placeholder="e.g. 2.0"
+                      value={localFilters.engineSize || ""}
+                      onChange={(e) =>
+                        handleFilterUpdate(
+                          "engineSize",
+                          parseFloat(e.target.value) || 0
+                        )
+                      }
+                      className="w-full p-2 border border-gray-300 rounded text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      disabled={isLoading}
+                    />
+                    <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-400">
+                      L
+                    </div>
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1">Range: 0.8L - 8.0L</div>
                 </div>
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">
                     Min Horsepower
                   </label>
-                  <input
-                    type="number"
-                    value={localFilters.horsepower || ""}
-                    onChange={(e) =>
-                      handleFilterUpdate(
-                        "horsepower",
-                        parseInt(e.target.value) || 0
-                      )
-                    }
-                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
-                    disabled={isLoading}
-                  />
+                  <div className="relative">
+                    <input
+                      type="number"
+                      min="0"
+                      max="1000"
+                      placeholder="e.g. 200"
+                      value={localFilters.horsepower || ""}
+                      onChange={(e) =>
+                        handleFilterUpdate(
+                          "horsepower",
+                          parseInt(e.target.value) || 0
+                        )
+                      }
+                      className="w-full p-2 border border-gray-300 rounded text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      disabled={isLoading}
+                    />
+                    <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-400">
+                      HP
+                    </div>
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1">Range: 50HP - 1000HP</div>
                 </div>
+              </div>
+              <div className="mt-3 pt-3 border-t border-gray-100">
+                <button
+                  onClick={() => {
+                    handleFilterUpdate("engineSize", 0)
+                    handleFilterUpdate("horsepower", 0)
+                  }}
+                  className="text-xs text-blue-600 hover:text-blue-700 underline"
+                  disabled={isLoading}
+                >
+                  Clear engine filters
+                </button>
               </div>
             </div>
           )}
@@ -2019,58 +2126,103 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.mpgSpecs && (
             <div className="px-4 pb-4 space-y-4">
+              <div className="mb-3">
+                <p className="text-xs text-gray-500 mb-3">
+                  Set minimum fuel efficiency requirements
+                </p>
+              </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">
                     Min City MPG
                   </label>
-                  <input
-                    type="number"
-                    value={localFilters.mpgCity || ""}
-                    onChange={(e) =>
-                      handleFilterUpdate(
-                        "mpgCity",
-                        parseInt(e.target.value) || 0
-                      )
-                    }
-                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
-                    disabled={isLoading}
-                  />
+                  <div className="relative">
+                    <input
+                      type="number"
+                      min="0"
+                      max="100"
+                      placeholder="e.g. 25"
+                      value={localFilters.mpgCity || ""}
+                      onChange={(e) =>
+                        handleFilterUpdate(
+                          "mpgCity",
+                          parseInt(e.target.value) || 0
+                        )
+                      }
+                      className="w-full p-2 border border-gray-300 rounded text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      disabled={isLoading}
+                    />
+                    <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-400">
+                      MPG
+                    </div>
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1">Range: 10 - 100 MPG</div>
                 </div>
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">
                     Min Highway MPG
                   </label>
-                  <input
-                    type="number"
-                    value={localFilters.mpgHighway || ""}
-                    onChange={(e) =>
-                      handleFilterUpdate(
-                        "mpgHighway",
-                        parseInt(e.target.value) || 0
-                      )
-                    }
-                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
-                    disabled={isLoading}
-                  />
+                  <div className="relative">
+                    <input
+                      type="number"
+                      min="0"
+                      max="100"
+                      placeholder="e.g. 35"
+                      value={localFilters.mpgHighway || ""}
+                      onChange={(e) =>
+                        handleFilterUpdate(
+                          "mpgHighway",
+                          parseInt(e.target.value) || 0
+                        )
+                      }
+                      className="w-full p-2 border border-gray-300 rounded text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      disabled={isLoading}
+                    />
+                    <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-400">
+                      MPG
+                    </div>
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1">Range: 15 - 100 MPG</div>
                 </div>
               </div>
               <div>
                 <label className="block text-xs text-gray-600 mb-1">
                   Min Combined MPG
                 </label>
-                <input
-                  type="number"
-                  value={localFilters.mpgCombined || ""}
-                  onChange={(e) =>
-                    handleFilterUpdate(
-                      "mpgCombined",
-                      parseInt(e.target.value) || 0
-                    )
-                  }
-                  className="w-full p-2 border border-gray-300 rounded text-sm font-medium"
+                <div className="relative">
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    placeholder="e.g. 30"
+                    value={localFilters.mpgCombined || ""}
+                    onChange={(e) =>
+                      handleFilterUpdate(
+                        "mpgCombined",
+                        parseInt(e.target.value) || 0
+                      )
+                    }
+                    className="w-full p-2 border border-gray-300 rounded text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    disabled={isLoading}
+                  />
+                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-400">
+                    MPG
+                  </div>
+                </div>
+                <div className="text-xs text-gray-400 mt-1">Range: 12 - 100 MPG</div>
+              </div>
+              <div className="mt-3 pt-3 border-t border-gray-100">
+                <button
+                  onClick={() => {
+                    handleFilterUpdate("mpgCity", 0)
+                    handleFilterUpdate("mpgHighway", 0)
+                    handleFilterUpdate("mpgCombined", 0)
+                  }}
+                  className="text-xs text-blue-600 hover:text-blue-700 underline"
                   disabled={isLoading}
-                />
+                >
+                  Clear MPG filters
+                </button>
               </div>
             </div>
           )}

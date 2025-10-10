@@ -2,16 +2,26 @@
 "use client"
 
 import { Container } from "@package/ui/container"
-import logoData from "../All_US_Car_Brand_Logos_Links.json"
 
-// Types
-interface LogoEntry {
-  Manufacturer: string
-  "Logo URL": string
+// Function to get brand logo path
+const getBrandLogoPath = (brandName: string): string => {
+  const brandMapping: { [key: string]: string } = {
+    "Audi": "/images/brand/audi.png",
+    "BMW": "/images/brand/bmw.png",
+    "Honda": "/images/brand/honda.png",
+    "Toyota": "/images/brand/toyota.png",
+    "Bentley": "/images/brand/bentley.png",
+    "Mercedes-Benz": "/images/brand/mercedes-benz.png",
+    "Ford": "/images/brand/ford.png",
+    "Volkswagen": "/images/brand/volkswagen.png",
+    "Lexus": "/images/brand/Lexus.png",
+    "Nissan": "/images/brand/nissan.png",
+    "Porsche": "/images/brand/porsche.png",
+    "Subaru": "/images/brand/subaru.png",
+  }
+  
+  return brandMapping[brandName] || ""
 }
-
-// Type assertion for the imported JSON data
-const logos = logoData as LogoEntry[]
 
 // Filter to popular makes and create the carMakes array
 const popularMakes = [
@@ -29,23 +39,11 @@ const popularMakes = [
   "Subaru",
 ]
 
-const carMakes = popularMakes
-  .map((makeName) => {
-    // Find the logo data for this make
-    const logoEntry = logos.find(
-      (logo) =>
-        logo.Manufacturer === makeName ||
-        logo.Manufacturer === makeName.replace("-", "-") ||
-        (makeName === "Mercedes" && logo.Manufacturer === "Mercedes-Benz")
-    )
-
-    return {
+const carMakes = popularMakes.map((makeName) => ({
       name: makeName,
-      logoUrl: logoEntry?.["Logo URL"] || "",
-      manufacturer: logoEntry?.Manufacturer || makeName,
-    }
-  })
-  .filter((make) => make.logoUrl) // Only include makes with valid logo URLs
+  logoUrl: getBrandLogoPath(makeName),
+  manufacturer: makeName,
+}))
 
 export function ExploreCarMakes() {
   return (
@@ -84,10 +82,11 @@ export function ExploreCarMakes() {
                     // Fallback to a generic car icon if image fails to load
                     const target = e.target as HTMLImageElement
                     target.style.display = "none"
-                    target.nextElementSibling?.classList.remove("hidden")
+                    const fallback = target.nextElementSibling as HTMLElement
+                    if (fallback) fallback.style.display = 'flex'
                   }}
                 />
-                <div className="hidden h-16 w-16 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <div className="h-16 w-16 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center" style={{ display: 'none' }}>
                   <svg
                     className="h-8 w-8 text-gray-400"
                     fill="currentColor"

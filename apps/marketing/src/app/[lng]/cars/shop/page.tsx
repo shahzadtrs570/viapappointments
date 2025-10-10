@@ -21,7 +21,7 @@ function CarShopPageContent({ lng }: { lng: string }) {
   const getInitialFilters = () => {
     return {
       // Basic vehicle info - Empty by default
-      make: searchParams.get("make") || "",
+      make: searchParams.get("make")?.split(",").filter(Boolean) || [],
       model: searchParams.get("model") || "",
       yearRange: [
         parseInt(searchParams.get("yearMin") || "0"),
@@ -45,7 +45,7 @@ function CarShopPageContent({ lng }: { lng: string }) {
         parseInt(searchParams.get("mileageMin") || "0"),
         parseInt(searchParams.get("mileageMax") || "999999")
       ] as [number, number],
-      fuelType: searchParams.get("fuelType") || "",
+      fuelType: searchParams.get("fuelType")?.split(",").filter(Boolean) || [],
       transmission: searchParams.get("transmission")?.split(",").filter(Boolean) || [],
       drivetrain: searchParams.get("drivetrain")?.split(",").filter(Boolean) || [],
       engineSize: 0,
@@ -83,6 +83,24 @@ function CarShopPageContent({ lng }: { lng: string }) {
       onlineFinancing: searchParams.get("onlineFinancing") === "true" || false,
       isActive: true,
       isFeatured: searchParams.get("isFeatured") === "true" || false,
+
+      // Financing options
+      financingOptions: searchParams.get("financingOptions")?.split(",").filter(Boolean) || [],
+
+      // Days on market range
+      daysOnMarketRange: [
+        parseInt(searchParams.get("daysOnMarketMin") || "0"),
+        parseInt(searchParams.get("daysOnMarketMax") || "1000")
+      ] as [number, number],
+
+      // Gas mileage range (MPG)
+      gasMileageRange: [
+        parseInt(searchParams.get("gasMileageMin") || "0"),
+        parseInt(searchParams.get("gasMileageMax") || "150")
+      ] as [number, number],
+
+      // Seller type
+      sellerType: searchParams.get("sellerType")?.split(",").filter(Boolean) || [],
     }
   }
 
@@ -98,7 +116,7 @@ function CarShopPageContent({ lng }: { lng: string }) {
   const clearAllFilters = () => {
     setFilters({
       // Basic vehicle info - Reset to empty defaults
-      make: "",
+      make: [] as string[],
       model: "",
       yearRange: [0, 9999] as [number, number],
       trim: "",
@@ -113,7 +131,7 @@ function CarShopPageContent({ lng }: { lng: string }) {
 
       // Vehicle specifications - Reset to no restrictions
       mileageRange: [0, 999999] as [number, number],
-      fuelType: "",
+      fuelType: [] as string[],
       transmission: [] as string[],
       drivetrain: [] as string[],
       engineSize: 0,
@@ -151,6 +169,18 @@ function CarShopPageContent({ lng }: { lng: string }) {
       onlineFinancing: false,
       isActive: true,
       isFeatured: false,
+
+      // Financing options
+      financingOptions: [] as string[],
+
+      // Days on market range
+      daysOnMarketRange: [0, 1000] as [number, number],
+
+      // Gas mileage range (MPG)
+      gasMileageRange: [0, 150] as [number, number],
+
+      // Seller type
+      sellerType: [] as string[],
     })
   }
 
@@ -261,7 +291,8 @@ function CarShopPageContent({ lng }: { lng: string }) {
       // Basic vehicle info filters
       if (
         filters.make &&
-        !car.make?.toLowerCase().includes(filters.make.toLowerCase())
+        filters.make.length > 0 &&
+        !filters.make.some(make => car.make?.toLowerCase().includes(make.toLowerCase()))
       )
         return false
       if (
@@ -305,8 +336,10 @@ function CarShopPageContent({ lng }: { lng: string }) {
           return false
       }
 
-      // Fuel type filter
-      if (filters.fuelType && car.fuelType !== filters.fuelType) return false
+      // Fuel type filter (array)
+      if (filters.fuelType && filters.fuelType.length > 0) {
+        if (!filters.fuelType.includes(car.fuelType)) return false
+      }
 
       // Transmission filter (array)
       if (filters.transmission.length > 0 && car.transmission) {
@@ -425,6 +458,53 @@ function CarShopPageContent({ lng }: { lng: string }) {
         return false
       if (filters.isFeatured && !car.isFeatured) return false
 
+      // Financing options filter
+      if (filters.financingOptions && filters.financingOptions.length > 0) {
+        // Check if car has any of the selected financing options
+        // This would need to be implemented based on how financing data is stored
+        // For now, we'll check if the car has online financing capability
+        const hasFinancingOption = filters.financingOptions.some(option => {
+          if (option === "Online Financing") {
+            return car.hasOnlineFinancing || false
+          }
+          // Add other financing option checks here as needed
+          return false
+        })
+        if (!hasFinancingOption) return false
+      }
+
+      // Days on market range filter
+      if (filters.daysOnMarketRange[0] > 0 || filters.daysOnMarketRange[1] < 1000) {
+        const daysOnMarket = Math.floor((Date.now() - new Date(car.createdAt).getTime()) / (1000 * 60 * 60 * 24))
+        if (daysOnMarket < filters.daysOnMarketRange[0] || daysOnMarket > filters.daysOnMarketRange[1]) {
+          return false
+        }
+      }
+
+      // Gas mileage range filter (using mpgCombined)
+      if (filters.gasMileageRange[0] > 0 || filters.gasMileageRange[1] < 150) {
+        if (car.mpgCombined && car.mpgCombined > 0) {
+          if (car.mpgCombined < filters.gasMileageRange[0] || car.mpgCombined > filters.gasMileageRange[1]) {
+            return false
+          }
+        }
+      }
+
+      // Seller type filter
+      if (filters.sellerType && filters.sellerType.length > 0) {
+        // Check if car's dealership business type matches any selected seller type
+        const hasMatchingSellerType = filters.sellerType.some(type => {
+          if (type === "Authorized Dealer") {
+            return car.dealership?.businessType === "DEALER"
+          }
+          if (type === "CarGurus Partners") {
+            return car.dealership?.businessType === "PARTNER"
+          }
+          return false
+        })
+        if (!hasMatchingSellerType) return false
+      }
+
       return true
     })
 
@@ -480,7 +560,7 @@ function CarShopPageContent({ lng }: { lng: string }) {
     // Apply all filters except the one we're counting for
     return allCars.filter((car) => {
       // Basic vehicle info filters
-      if (filters.make && !car.make?.toLowerCase().includes(filters.make.toLowerCase())) return false
+      if (filters.make && filters.make.length > 0 && !filters.make.some(make => car.make?.toLowerCase().includes(make.toLowerCase()))) return false
       if (filters.model && !car.model?.toLowerCase().includes(filters.model.toLowerCase())) return false
       if (filters.trim && !car.trim?.toLowerCase().includes(filters.trim.toLowerCase())) return false
       if (filters.bodyStyle && car.bodyStyle !== filters.bodyStyle) return false
@@ -500,8 +580,10 @@ function CarShopPageContent({ lng }: { lng: string }) {
         if (car.mileage < filters.mileageRange[0] || car.mileage > filters.mileageRange[1]) return false
       }
 
-      // Fuel type filter
-      if (filters.fuelType && car.fuelType !== filters.fuelType) return false
+      // Fuel type filter (array)
+      if (filters.fuelType && filters.fuelType.length > 0) {
+        if (!filters.fuelType.includes(car.fuelType)) return false
+      }
 
       // Transmission filter (array)
       if (filters.transmission.length > 0 && car.transmission) {
