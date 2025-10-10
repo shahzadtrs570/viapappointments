@@ -1,7 +1,7 @@
 /* eslint-disable */
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Skeleton } from "@package/ui/skeleton"
 import CarCard from "./CarCard"
 
@@ -27,6 +27,14 @@ export default function CarListings({
   onPageChange,
 }: CarListingsProps) {
   const [sortBy, setSortBy] = useState("bestMatch")
+  const pageInputRef = useRef<HTMLInputElement>(null)
+
+  // Update input value when currentPage changes
+  useEffect(() => {
+    if (pageInputRef.current) {
+      pageInputRef.current.value = currentPage.toString()
+    }
+  }, [currentPage])
 
   const sortedCars = [...cars].sort((a, b) => {
     switch (sortBy) {
@@ -203,19 +211,45 @@ export default function CarListings({
           <div className="flex items-center space-x-2">
             <span className="text-sm text-gray-600">Go to page:</span>
             <input
+              ref={pageInputRef}
               type="number"
               min="1"
               max={totalPages}
-              value={currentPage}
-              onChange={(e) => {
-                const page = parseInt(e.target.value)
+              defaultValue={currentPage}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const page = parseInt((e.target as HTMLInputElement).value)
+                  if (page >= 1 && page <= totalPages) {
+                    onPageChange(page)
+                  }
+                  // Blur the input to remove focus
+                  (e.target as HTMLInputElement).blur()
+                }
+              }}
+              onBlur={(e) => {
+                const page = parseInt((e.target as HTMLInputElement).value)
                 if (page >= 1 && page <= totalPages) {
                   onPageChange(page)
                 }
               }}
               className="w-16 px-2 py-1 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               disabled={isLoading}
+              placeholder="Page"
             />
+            <button
+              onClick={() => {
+                if (pageInputRef.current) {
+                  const page = parseInt(pageInputRef.current.value)
+                  if (page >= 1 && page <= totalPages) {
+                    onPageChange(page)
+                  }
+                }
+              }}
+              disabled={isLoading}
+              className="px-3 py-1 text-sm font-medium text-white bg-blue-600 border border-transparent rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Go
+            </button>
             <span className="text-sm text-gray-500">of {totalPages}</span>
           </div>
 

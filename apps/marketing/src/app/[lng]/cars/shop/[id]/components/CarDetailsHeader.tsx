@@ -97,7 +97,7 @@ export default function CarDetailsHeader({
             <div className="flex items-center space-x-2">
               {prevCarId && (
                 <Link
-                  href={`/${lng}/cars/shop/${prevCarId}`}
+                  href={`/${lng}/cars/details/${prevCarId}`}
                   className="flex items-center text-blue-600 hover:text-blue-700"
                 >
                   <svg
@@ -118,7 +118,7 @@ export default function CarDetailsHeader({
               )}
               {nextCarId && (
                 <Link
-                  href={`/${lng}/cars/shop/${nextCarId}`}
+                  href={`/${lng}/cars/details/${nextCarId}`}
                   className="flex items-center text-blue-600 hover:text-blue-700"
                 >
                   Next

@@ -1,7 +1,7 @@
 /* eslint-disable */
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 interface FiltersSidebarProps {
   filters: {
@@ -104,6 +104,12 @@ export default function FiltersSidebar({
 }: FiltersSidebarProps) {
   const [localFilters, setLocalFilters] = useState(filters)
   const [activeTab, setActiveTab] = useState("car")
+
+  // Sync localFilters with props when filters change (e.g., when removed from ActiveFilters)
+  useEffect(() => {
+    console.log("FiltersSidebar: Syncing localFilters with props:", filters)
+    setLocalFilters(filters)
+  }, [filters])
   const [expandedSections, setExpandedSections] = useState({
     location: false,
     pricePayment: true,
@@ -172,6 +178,7 @@ export default function FiltersSidebar({
       newFilters.model = ""
     }
 
+    console.log("FiltersSidebar: Updating filter", key, "to", value, "newFilters:", newFilters)
     setLocalFilters(newFilters)
     onFilterChange(newFilters)
   }
@@ -189,12 +196,14 @@ export default function FiltersSidebar({
       newArray = currentArray.filter((item: string) => item !== value)
     }
     const newFilters = { ...localFilters, [key]: newArray }
+    console.log("FiltersSidebar: Updating array filter", key, "to", newArray, "newFilters:", newFilters)
     setLocalFilters(newFilters)
     onFilterChange(newFilters)
   }
 
   const handleBooleanFilterUpdate = (key: string, value: boolean) => {
     const newFilters = { ...localFilters, [key]: value }
+    console.log("FiltersSidebar: Updating boolean filter", key, "to", value, "newFilters:", newFilters)
     setLocalFilters(newFilters)
     onFilterChange(newFilters)
   }

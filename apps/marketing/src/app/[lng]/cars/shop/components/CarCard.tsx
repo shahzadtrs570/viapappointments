@@ -102,11 +102,11 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
       navigator.share({
         title: `${car.year} ${car.make} ${car.model} ${car.trim || ""}`.trim(),
         text: `Check out this ${car.year} ${car.make} ${car.model} for $${(car.priceAmount || 0).toLocaleString()}`,
-        url: window.location.origin + `/${lng}/cars/shop/${car.id}`,
+        url: window.location.origin + `/${lng}/cars/details/${car.id}`,
       })
     } else {
       navigator.clipboard.writeText(
-        window.location.origin + `/${lng}/cars/shop/${car.id}`
+        window.location.origin + `/${lng}/cars/details/${car.id}`
       )
     }
   }
@@ -116,7 +116,7 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
         {/* Image Section */}
         <div className="relative">
-          <Link href={`/${lng}/cars/shop/${car.id}`}>
+          <Link href={`/${lng}/cars/details/${car.id}`}>
             <div className="relative cursor-pointer">
               <div className="aspect-[4/3] bg-gray-100">
                 <img
@@ -150,7 +150,7 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
           </div>
 
           {/* Car Title - Make clickable */}
-          <Link href={`/${lng}/cars/shop/${car.id}`}>
+          <Link href={`/${lng}/cars/details/${car.id}`}>
             <h3 className="text-lg font-semibold text-gray-900 mb-2 cursor-pointer hover:text-blue-600 transition-colors">
               {car.year} {car.make} {car.model} {car.trim || ""}
             </h3>
@@ -257,7 +257,7 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                   Features
                 </h3>
                 <Link
-                  href={`/${lng}/cars/shop/${car.id}`}
+                  href={`/${lng}/cars/details/${car.id}`}
                   className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center gap-1"
                 >
                   View full listing
@@ -468,7 +468,7 @@ export default function CarCard({ car, index, lng }: CarCardProps) {
                   Vehicle overview
                 </h3>
                 <Link
-                  href={`/${lng}/cars/shop/${car.id}`}
+                  href={`/${lng}/cars/details/${car.id}`}
                   className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center gap-1"
                 >
                   View specifications

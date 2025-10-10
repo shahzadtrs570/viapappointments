@@ -48,6 +48,7 @@ interface ActiveFiltersProps {
     priceRange: { min: number; max: number }
     yearRange: { min: number; max: number }
   }
+  filtersRef?: React.MutableRefObject<any>
 }
 
 export default function ActiveFilters({
@@ -55,6 +56,7 @@ export default function ActiveFilters({
   onFilterChange,
   onClearAll,
   filterOptions,
+  filtersRef,
 }: ActiveFiltersProps) {
   const getActiveFilters = () => {
     const activeFilters: Array<{
@@ -70,7 +72,77 @@ export default function ActiveFilters({
         key: "make",
         label: "Make",
         value: filters.make,
-        onRemove: () => onFilterChange({ ...filters, make: "" }),
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          console.log("Removing make filter, current filters:", currentFilters)
+          const updatedFilters = { ...currentFilters, make: "" }
+          console.log("Updated filters after removing make:", updatedFilters)
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
+    // Model filter - MISSING FROM ACTIVE FILTERS
+    if (filters.model) {
+      activeFilters.push({
+        key: "model",
+        label: "Model",
+        value: filters.model,
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          console.log("Removing model filter, current filters:", currentFilters)
+          const updatedFilters = { ...currentFilters, model: "" }
+          console.log("Updated filters after removing model:", updatedFilters)
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
+    // Trim filter - MISSING FROM ACTIVE FILTERS
+    if (filters.trim) {
+      activeFilters.push({
+        key: "trim",
+        label: "Trim",
+        value: filters.trim,
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          console.log("Removing trim filter, current filters:", currentFilters)
+          const updatedFilters = { ...currentFilters, trim: "" }
+          console.log("Updated filters after removing trim:", updatedFilters)
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
+    // Condition filter (only show when manually selected)
+    if (filters.condition && filters.condition !== "") {
+      activeFilters.push({
+        key: "condition",
+        label: "Condition",
+        value: filters.condition,
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          console.log("Removing condition filter, current filters:", currentFilters)
+          const updatedFilters = { ...currentFilters, condition: "" }
+          console.log("Updated filters after removing condition:", updatedFilters)
+          onFilterChange(updatedFilters)
+        },
+      })
+    }
+
+    // Status filter (only show when manually selected)
+    if (filters.status && filters.status !== "") {
+      activeFilters.push({
+        key: "status",
+        label: "Status",
+        value: filters.status,
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          console.log("Removing status filter, current filters:", currentFilters)
+          const updatedFilters = { ...currentFilters, status: "" }
+          console.log("Updated filters after removing status:", updatedFilters)
+          onFilterChange(updatedFilters)
+        },
       })
     }
 
@@ -84,10 +156,10 @@ export default function ActiveFilters({
       })
     }
 
-    // Price Range filter
-    const defaultPriceRange = filterOptions?.priceRange || {
+    // Price Range filter - Use empty defaults (no restrictions)
+    const defaultPriceRange = {
       min: 0,
-      max: 200000,
+      max: 999999,
     }
     if (
       filters.priceRange[0] !== defaultPriceRange.min ||
@@ -105,10 +177,10 @@ export default function ActiveFilters({
       })
     }
 
-    // Year Range filter
-    const defaultYearRange = filterOptions?.yearRange || {
-      min: 2020,
-      max: 2024,
+    // Year Range filter - Use empty defaults (no restrictions)
+    const defaultYearRange = {
+      min: 0,
+      max: 9999,
     }
     if (
       filters.yearRange[0] !== defaultYearRange.min ||
@@ -183,89 +255,45 @@ export default function ActiveFilters({
       })
     }
 
-    if (filters.engine && filters.engine.length > 0) {
-      activeFilters.push({
-        key: "engine",
-        label: "Engine",
-        value: filters.engine.join(", "),
-        onRemove: () => onFilterChange({ ...filters, engine: [] }),
-      })
-    }
-
+    // Features filter - HAS BACKEND IMPLEMENTATION
     if (filters.features && filters.features.length > 0) {
       activeFilters.push({
         key: "features",
         label: "Features",
         value: filters.features.join(", "),
-        onRemove: () => onFilterChange({ ...filters, features: [] }),
+        onRemove: () => {
+          const currentFilters = filtersRef?.current || filters
+          const updatedFilters = { ...currentFilters, features: [] }
+          onFilterChange(updatedFilters)
+        },
       })
     }
 
-    if (filters.numberOfSeats && filters.numberOfSeats.length > 0) {
-      activeFilters.push({
-        key: "numberOfSeats",
-        label: "Seats",
-        value: filters.numberOfSeats.join(", "),
-        onRemove: () => onFilterChange({ ...filters, numberOfSeats: [] }),
-      })
-    }
+    // Note: Removed filters without backend implementation:
+    // - engine (no backend filtering)
+    // - numberOfSeats (no backend filtering)  
+    // - numberOfDoors (no backend filtering)
+    // - dealRating (no backend filtering)
+    // - safetyRating (no backend filtering)
+    // - dealerRating (no backend filtering)
+    // - sellerType (no backend filtering)
 
-    if (filters.numberOfDoors && filters.numberOfDoors.length > 0) {
-      activeFilters.push({
-        key: "numberOfDoors",
-        label: "Doors",
-        value: filters.numberOfDoors.join(", "),
-        onRemove: () => onFilterChange({ ...filters, numberOfDoors: [] }),
-      })
+    // Mileage Range filter - Use empty defaults (no restrictions)
+    const defaultMileageRange = {
+      min: 0,
+      max: 999999,
     }
-
-    if (filters.dealRating && filters.dealRating.length > 0) {
-      activeFilters.push({
-        key: "dealRating",
-        label: "Deal Rating",
-        value: filters.dealRating.join(", "),
-        onRemove: () => onFilterChange({ ...filters, dealRating: [] }),
-      })
-    }
-
-    if (filters.safetyRating && filters.safetyRating.length > 0) {
-      activeFilters.push({
-        key: "safetyRating",
-        label: "Safety Rating",
-        value: filters.safetyRating.join(", "),
-        onRemove: () => onFilterChange({ ...filters, safetyRating: [] }),
-      })
-    }
-
-    if (filters.dealerRating && filters.dealerRating.length > 0) {
-      activeFilters.push({
-        key: "dealerRating",
-        label: "Dealer Rating",
-        value: filters.dealerRating.join(", "),
-        onRemove: () => onFilterChange({ ...filters, dealerRating: [] }),
-      })
-    }
-
-    if (filters.sellerType && filters.sellerType.length > 0) {
-      activeFilters.push({
-        key: "sellerType",
-        label: "Seller Type",
-        value: filters.sellerType.join(", "),
-        onRemove: () => onFilterChange({ ...filters, sellerType: [] }),
-      })
-    }
-
-    // Mileage Range filter
     if (
       filters.mileageRange &&
-      (filters.mileageRange[0] > 0 || filters.mileageRange[1] < 200000)
+      (filters.mileageRange[0] !== defaultMileageRange.min || 
+       filters.mileageRange[1] !== defaultMileageRange.max)
     ) {
       activeFilters.push({
         key: "mileageRange",
         label: "Mileage",
         value: `${filters.mileageRange[0].toLocaleString()} - ${filters.mileageRange[1].toLocaleString()} miles`,
         onRemove: () =>
-          onFilterChange({ ...filters, mileageRange: [0, 200000] }),
+          onFilterChange({ ...filters, mileageRange: [defaultMileageRange.min, defaultMileageRange.max] }),
       })
     }
 
@@ -297,12 +325,12 @@ export default function ActiveFilters({
       })
     }
 
-    // Boolean filters
+    // Quality filters - Always show when enabled (these are our quality standards)
     if (filters.hideWithoutPhotos) {
       activeFilters.push({
         key: "hideWithoutPhotos",
-        label: "Hide without photos",
-        value: "Yes",
+        label: "Quality: Photos Required",
+        value: "✓",
         onRemove: () =>
           onFilterChange({ ...filters, hideWithoutPhotos: false }),
       })
@@ -311,8 +339,8 @@ export default function ActiveFilters({
     if (filters.hideWithAccidents) {
       activeFilters.push({
         key: "hideWithAccidents",
-        label: "Hide with accidents",
-        value: "Yes",
+        label: "Quality: No Accidents",
+        value: "✓",
         onRemove: () =>
           onFilterChange({ ...filters, hideWithAccidents: false }),
       })
@@ -321,8 +349,8 @@ export default function ActiveFilters({
     if (filters.hideWithFrameDamage) {
       activeFilters.push({
         key: "hideWithFrameDamage",
-        label: "Hide with frame damage",
-        value: "Yes",
+        label: "Quality: No Frame Damage",
+        value: "✓",
         onRemove: () =>
           onFilterChange({ ...filters, hideWithFrameDamage: false }),
       })
@@ -331,8 +359,8 @@ export default function ActiveFilters({
     if (filters.hideWithTheftHistory) {
       activeFilters.push({
         key: "hideWithTheftHistory",
-        label: "Hide with theft history",
-        value: "Yes",
+        label: "Quality: No Theft History",
+        value: "✓",
         onRemove: () =>
           onFilterChange({ ...filters, hideWithTheftHistory: false }),
       })
@@ -350,8 +378,8 @@ export default function ActiveFilters({
     if (filters.hideWithLemonHistory) {
       activeFilters.push({
         key: "hideWithLemonHistory",
-        label: "Hide with lemon history",
-        value: "Yes",
+        label: "Quality: No Lemon History",
+        value: "✓",
         onRemove: () =>
           onFilterChange({ ...filters, hideWithLemonHistory: false }),
       })
@@ -360,8 +388,8 @@ export default function ActiveFilters({
     if (filters.hideWithSalvageHistory) {
       activeFilters.push({
         key: "hideWithSalvageHistory",
-        label: "Hide with salvage history",
-        value: "Yes",
+        label: "Quality: No Salvage History",
+        value: "✓",
         onRemove: () =>
           onFilterChange({ ...filters, hideWithSalvageHistory: false }),
       })
