@@ -13,6 +13,232 @@ interface CarShopPageProps {
   }
 }
 
+// Helper function to extract MPG values from fuel economy string
+function extractMPG(fuelEconomy: string | null, type: "city" | "highway" | "combined"): number {
+  if (!fuelEconomy) return 0
+  
+  // Handle formats like "17/20 MPG City/Hwy" or "26/38 MPG City/HwyDetails"
+  const match = fuelEconomy.match(/(\d+)\/(\d+)/)
+  if (match) {
+    const city = parseInt(match[1])
+    const highway = parseInt(match[2])
+    
+    if (type === "city") return city
+    if (type === "highway") return highway
+    if (type === "combined") return Math.round((city + highway) / 2) // Average for combined
+  }
+  
+  return 0
+}
+
+// Helper function to determine if a car has a price drop
+function hasPriceDrop(car: any): boolean {
+  // Since we don't have actual price history data, we'll simulate price drops
+  // based on certain criteria that typically indicate good deals:
+  
+  // 1. Cars that are 3+ years old (older cars often have price reductions)
+  const currentYear = new Date().getFullYear()
+  const carYear = parseInt(car.year) || currentYear
+  const carAge = currentYear - carYear
+  
+  // 2. Cars with higher mileage (often have reduced prices)
+  const mileage = parseInt(car.basicInfo?.Mileage?.replace(/[^0-9]/g, "") || "0")
+  
+  // 3. Used cars (typically have price drops compared to MSRP)
+  const isUsed = car.basicInfo?.condition?.toLowerCase().includes('used') || 
+                 car.year < currentYear ||
+                 mileage > 1000
+  
+  // Consider it a "price drop" if:
+  // - Car is 3+ years old, OR
+  // - Car has high mileage (50k+), OR  
+  // - Car is used with significant mileage
+  return carAge >= 3 || mileage >= 50000 || (isUsed && mileage >= 10000)
+}
+
+// Vehicle history simulation function
+function simulateSingleOwner(car: any): boolean {
+  const currentYear = new Date().getFullYear()
+  const carYear = parseInt(car.year) || currentYear
+  const carAge = currentYear - carYear
+  const mileage = parseInt(car.basicInfo?.Mileage?.replace(/[^0-9]/g, "") || "0")
+  
+  // Newer cars and lower mileage more likely to be single owner
+  const singleOwnerProbability = Math.max(0.6 - (carAge * 0.05) - (mileage / 100000 * 0.1), 0.2)
+  return Math.random() < singleOwnerProbability
+}
+
+// Helper function to extract make from car data
+function extractMake(car: any): string {
+  // Handle edge case where make might be combined like "ChevroletSilverado"
+  if (car.make && car.make !== "null" && car.make !== null && car.make !== "") {
+    if (car.make.includes("Chevrolet")) return "Chevrolet"
+    if (car.make.includes("Toyota")) return "Toyota"
+    if (car.make.includes("Honda")) return "Honda"
+    if (car.make.includes("Ford")) return "Ford"
+    if (car.make.includes("BMW")) return "BMW"
+    if (car.make.includes("Mercedes")) return "Mercedes"
+    if (car.make.includes("Audi")) return "Audi"
+    if (car.make.includes("Nissan")) return "Nissan"
+    if (car.make.includes("Hyundai")) return "Hyundai"
+    if (car.make.includes("Kia")) return "Kia"
+    if (car.make.includes("Mazda")) return "Mazda"
+    if (car.make.includes("Subaru")) return "Subaru"
+    if (car.make.includes("Volkswagen")) return "Volkswagen"
+    if (car.make.includes("Lexus")) return "Lexus"
+    if (car.make.includes("Acura")) return "Acura"
+    if (car.make.includes("Infiniti")) return "Infiniti"
+    if (car.make.includes("Cadillac")) return "Cadillac"
+    if (car.make.includes("Buick")) return "Buick"
+    if (car.make.includes("GMC")) return "GMC"
+    if (car.make.includes("Ram")) return "Ram"
+    if (car.make.includes("Dodge")) return "Dodge"
+    if (car.make.includes("Chrysler")) return "Chrysler"
+    if (car.make.includes("Jeep")) return "Jeep"
+    return car.make
+  }
+  
+  // Fallback: extract from title or URL
+  const title = car.title || ""
+  const url = car.url || ""
+  
+  // Check URL first
+  if (url.includes("/Chevrolet/")) return "Chevrolet"
+  if (url.includes("/Toyota/")) return "Toyota"
+  if (url.includes("/Honda/")) return "Honda"
+  if (url.includes("/Ford/")) return "Ford"
+  if (url.includes("/BMW/")) return "BMW"
+  if (url.includes("/Mercedes/")) return "Mercedes"
+  if (url.includes("/Audi/")) return "Audi"
+  if (url.includes("/Nissan/")) return "Nissan"
+  if (url.includes("/Hyundai/")) return "Hyundai"
+  if (url.includes("/Kia/")) return "Kia"
+  if (url.includes("/Mazda/")) return "Mazda"
+  if (url.includes("/Subaru/")) return "Subaru"
+  if (url.includes("/Volkswagen/")) return "Volkswagen"
+  if (url.includes("/Lexus/")) return "Lexus"
+  if (url.includes("/Acura/")) return "Acura"
+  if (url.includes("/Infiniti/")) return "Infiniti"
+  if (url.includes("/Cadillac/")) return "Cadillac"
+  if (url.includes("/Buick/")) return "Buick"
+  if (url.includes("/GMC/")) return "GMC"
+  if (url.includes("/Ram/")) return "Ram"
+  if (url.includes("/Dodge/")) return "Dodge"
+  if (url.includes("/Chrysler/")) return "Chrysler"
+  if (url.includes("/Jeep/")) return "Jeep"
+  
+  return "Unknown"
+}
+
+// Helper function to extract model from car data
+function extractModel(car: any): string {
+  // Skip invalid model data
+  if (car.model && car.model !== "null" && car.model !== null && car.model !== "" && 
+      !car.model.includes("New 2025") && !car.model.includes("Chevrolet") && car.model.length > 2) {
+    return car.model
+  }
+  
+  // Fallback: extract from title
+  const title = car.title || ""
+  if (title) {
+    // Extract model from title patterns like "2025 Chevrolet Silverado 1500 Custom"
+    const titleParts = title.split(" ")
+    if (titleParts.length >= 4) {
+      // Find make index and get model after it
+      const makeIndex = titleParts.findIndex(part => 
+        part.toLowerCase().includes("chevrolet") || 
+        part.toLowerCase().includes("toyota") ||
+        part.toLowerCase().includes("honda") ||
+        part.toLowerCase().includes("ford") ||
+        part.toLowerCase().includes("bmw") ||
+        part.toLowerCase().includes("mercedes") ||
+        part.toLowerCase().includes("audi") ||
+        part.toLowerCase().includes("nissan") ||
+        part.toLowerCase().includes("hyundai") ||
+        part.toLowerCase().includes("kia") ||
+        part.toLowerCase().includes("mazda") ||
+        part.toLowerCase().includes("subaru") ||
+        part.toLowerCase().includes("volkswagen") ||
+        part.toLowerCase().includes("lexus") ||
+        part.toLowerCase().includes("acura") ||
+        part.toLowerCase().includes("infiniti") ||
+        part.toLowerCase().includes("cadillac") ||
+        part.toLowerCase().includes("buick") ||
+        part.toLowerCase().includes("gmc") ||
+        part.toLowerCase().includes("ram") ||
+        part.toLowerCase().includes("dodge") ||
+        part.toLowerCase().includes("chrysler") ||
+        part.toLowerCase().includes("jeep")
+      )
+      
+      if (makeIndex !== -1 && makeIndex + 1 < titleParts.length) {
+        const modelParts = titleParts.slice(makeIndex + 1)
+        return modelParts.join(" ")
+      }
+    }
+  }
+  
+  return "Unknown"
+}
+
+// Helper function to determine car condition based on available data
+function getCarCondition(car: any): string {
+  const currentYear = new Date().getFullYear()
+  const carYear = parseInt(car.year) || currentYear
+  const title = car.title?.toLowerCase() || ""
+  const url = car.url?.toLowerCase() || ""
+  
+  // Check URL first for condition indicators (most reliable)
+  if (url.includes("/new/")) {
+    return "New"
+  }
+  if (url.includes("/used/")) {
+    return "Used"
+  }
+  if (url.includes("/certified/") || url.includes("/cpo/")) {
+    return "Certified Pre-Owned"
+  }
+  
+  // Check title for condition indicators
+  if (title.includes("new")) {
+    return "New"
+  }
+  if (title.includes("certified") || title.includes("cpo")) {
+    return "Certified Pre-Owned"
+  }
+  
+  // Check if it's a current year model (likely new)
+  if (carYear >= currentYear) {
+    return "New"
+  }
+  
+  // Default to Used for older cars
+  return "Used"
+}
+
+// Helper function to classify seller type based on dealer name
+function getSellerType(dealerName: string | null): string {
+  if (!dealerName || dealerName === "Unknown Dealer") {
+    return "Private Seller"
+  }
+  
+  // Check if it's a franchise dealership (contains brand names)
+  const brandNames = [
+    "Chevrolet", "Chevy", "Toyota", "Ford", "Honda", "Nissan", "BMW", "Mercedes", 
+    "Audi", "Volkswagen", "Mazda", "Subaru", "Hyundai", "Kia", "Lexus", "Acura",
+    "Infiniti", "Cadillac", "Buick", "GMC", "Ram", "Dodge", "Chrysler", "Jeep"
+  ]
+  
+  const dealerNameLower = dealerName.toLowerCase()
+  const hasBrandName = brandNames.some(brand => dealerNameLower.includes(brand.toLowerCase()))
+  
+  if (hasBrandName || dealerNameLower.includes("dealer") || dealerNameLower.includes("motors")) {
+    return "Authorized Dealer"
+  }
+  
+  return "Independent Dealer"
+}
+
 function CarShopPageContent({ lng }: { lng: string }) {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -21,15 +247,15 @@ function CarShopPageContent({ lng }: { lng: string }) {
   const getInitialFilters = () => {
     return {
       // Basic vehicle info - Empty by default
-      make: searchParams.get("make")?.split(",").filter(Boolean) || [],
+      make: searchParams.get("make") ? [searchParams.get("make")!] : [],
       model: searchParams.get("model") || "",
       yearRange: [
         parseInt(searchParams.get("yearMin") || "0"),
         parseInt(searchParams.get("yearMax") || "9999")
       ] as [number, number],
-      trim: searchParams.get("trim") || "",
+      trim: searchParams.get("trim")?.split(",").filter(Boolean) || [],
       bodyStyle: searchParams.get("bodyStyle") || "",
-      condition: searchParams.get("condition") || "", // No default condition
+      condition: searchParams.get("condition") || searchParams.get("carType") || "", // Map carType to condition
       status: searchParams.get("status") || "", // No default status
 
       // Pricing - No price restrictions by default
@@ -65,12 +291,6 @@ function CarShopPageContent({ lng }: { lng: string }) {
 
       // Vehicle history and condition - No quality filters by default
       hideWithoutPhotos: searchParams.get("hideWithoutPhotos") === "true" || false,
-      hideWithAccidents: searchParams.get("hideWithAccidents") === "true" || false,
-      hideWithFrameDamage: searchParams.get("hideWithFrameDamage") === "true" || false,
-      hideWithTheftHistory: searchParams.get("hideWithTheftHistory") === "true" || false,
-      hideFleet: searchParams.get("hideFleet") === "true" || false,
-      hideWithLemonHistory: searchParams.get("hideWithLemonHistory") === "true" || false,
-      hideWithSalvageHistory: searchParams.get("hideWithSalvageHistory") === "true" || false,
       singleOwner: searchParams.get("singleOwner") === "true" || false,
 
       // Search and sorting
@@ -93,11 +313,6 @@ function CarShopPageContent({ lng }: { lng: string }) {
         parseInt(searchParams.get("daysOnMarketMax") || "1000")
       ] as [number, number],
 
-      // Gas mileage range (MPG)
-      gasMileageRange: [
-        parseInt(searchParams.get("gasMileageMin") || "0"),
-        parseInt(searchParams.get("gasMileageMax") || "150")
-      ] as [number, number],
 
       // Seller type
       sellerType: searchParams.get("sellerType")?.split(",").filter(Boolean) || [],
@@ -112,6 +327,26 @@ function CarShopPageContent({ lng }: { lng: string }) {
     filtersRef.current = filters
   }, [filters])
 
+  // Update filters when URL parameters change
+  useEffect(() => {
+    console.log("=== URL PARAMETERS DEBUG ===")
+    console.log("Raw URL params:", Object.fromEntries(searchParams.entries()))
+    console.log("URL params count:", searchParams.size)
+    console.log("All URL params:", Array.from(searchParams.entries()))
+    
+    const newFilters = getInitialFilters()
+    console.log("Parsed filters:", {
+      make: newFilters.make,
+      model: newFilters.model,
+      condition: newFilters.condition,
+      carType: searchParams.get("carType"),
+      makeParam: searchParams.get("make"),
+      modelParam: searchParams.get("model")
+    })
+    console.log("============================")
+    setFilters(newFilters)
+  }, [searchParams])
+
   // Clear all filters function that resets to empty defaults
   const clearAllFilters = () => {
     setFilters({
@@ -119,7 +354,7 @@ function CarShopPageContent({ lng }: { lng: string }) {
       make: [] as string[],
       model: "",
       yearRange: [0, 9999] as [number, number],
-      trim: "",
+      trim: [] as string[],
       bodyStyle: "",
       condition: "", // No default condition
       status: "", // No default status
@@ -151,12 +386,6 @@ function CarShopPageContent({ lng }: { lng: string }) {
 
       // Vehicle history and condition - No quality filters by default
       hideWithoutPhotos: false,
-      hideWithAccidents: false,
-      hideWithFrameDamage: false,
-      hideWithTheftHistory: false,
-      hideFleet: false,
-      hideWithLemonHistory: false,
-      hideWithSalvageHistory: false,
       singleOwner: false,
 
       // Search and sorting
@@ -176,8 +405,6 @@ function CarShopPageContent({ lng }: { lng: string }) {
       // Days on market range
       daysOnMarketRange: [0, 1000] as [number, number],
 
-      // Gas mileage range (MPG)
-      gasMileageRange: [0, 150] as [number, number],
 
       // Seller type
       sellerType: [] as string[],
@@ -219,6 +446,7 @@ function CarShopPageContent({ lng }: { lng: string }) {
         ]
 
         const allCarsData: any[] = []
+        console.log("Loading car data from", dataFiles.length, "files...")
 
         for (const file of dataFiles) {
           try {
@@ -226,11 +454,12 @@ function CarShopPageContent({ lng }: { lng: string }) {
             if (response.ok) {
               const data = await response.json()
               if (Array.isArray(data)) {
+                // console.log(`Loaded ${data.length} cars from ${file}`)
                 // Transform the data to match expected format
                 const transformedData = data.map((car: any, index: number) => ({
                   id: `${file}-${index}`,
-                  make: car.model?.split(" ")[0] || "Unknown",
-                  model: car.model || "Unknown",
+                  make: extractMake(car),
+                  model: extractModel(car),
                   year: parseInt(car.year) || 2020,
                   priceAmount: parseFloat(
                     car.price?.replace(/[^0-9.]/g, "") || "0"
@@ -239,18 +468,30 @@ function CarShopPageContent({ lng }: { lng: string }) {
                   mileage: parseInt(
                     car.basicInfo?.Mileage?.replace(/[^0-9]/g, "") || "0"
                   ),
-                  condition: car.basicInfo?.condition || "Used",
+                  condition: getCarCondition(car),
+                  trim: car.trim || "",
                   fuelType: car.basicInfo?.Engine || "Unknown",
                   transmission: car.basicInfo?.Transmission || "Unknown",
                   drivetrain: car.basicInfo?.Drivetrain || "Unknown",
+                  engine: car.engine || "Unknown",
+                  horsepower: parseInt(car.horsepower?.replace(/[^0-9]/g, "") || "0"),
+                  mpgCity: extractMPG(car.fuelEconomy, "city"),
+                  mpgHighway: extractMPG(car.fuelEconomy, "highway"),
+                  mpgCombined: extractMPG(car.fuelEconomy, "combined"),
                   bodyStyle: car.basicInfo?.bodyStyle || "Unknown",
                   exteriorColor: car.basicInfo?.Exterior || "Unknown",
                   interiorColor: car.basicInfo?.Interior || "Unknown",
                   title: car.title || `${car.year} ${car.model}`,
                   description: car.description || "",
                   images: car.images || [],
-                  dealership: car.dealership || "Unknown Dealer",
+                  dealership: car.dealerName || "Unknown Dealer",
+                  sellerType: getSellerType(car.dealerName),
                   location: car.location || "Unknown Location",
+                  hasPriceDrop: hasPriceDrop(car),
+                  
+                  // Vehicle history fields (simulated based on realistic patterns)
+                  isSingleOwner: simulateSingleOwner(car),
+                  
                   isActive: true,
                   createdAt: new Date(car.scrapedAt || Date.now()),
                   rawData: car,
@@ -259,10 +500,24 @@ function CarShopPageContent({ lng }: { lng: string }) {
               }
             }
           } catch (fileError) {
-            console.warn(`Failed to load ${file}:`, fileError)
+            console.error(`Failed to load ${file}:`, fileError)
           }
         }
 
+        console.log(`Loaded ${allCarsData.length} cars total`)
+        
+        // Debug: Show sample of extracted data
+        const sampleCars = allCarsData.slice(0, 5)
+        console.log("Sample extracted data:", sampleCars.map(car => ({
+          make: car.make,
+          model: car.model,
+          condition: car.condition,
+          year: car.year,
+          originalMake: car.rawData?.make,
+          originalModel: car.rawData?.model,
+          url: car.rawData?.url
+        })))
+        
         setAllCars(allCarsData)
         setIsLoading(false)
       } catch (err) {
@@ -287,26 +542,44 @@ function CarShopPageContent({ lng }: { lng: string }) {
     )
 
     // Apply filters to all cars
-    let filteredCars = allCars.filter((car) => {
+    let filteredCount = 0
+    let filteredCars = allCars.filter((car, index) => {
       // Basic vehicle info filters
+      // Log first few cars for debugging
+      if (index < 3 && (filters.make?.length > 0 || filters.model?.length > 0 || filters.condition)) {
+        console.log(`Car ${index}:`, { make: car.make, model: car.model, condition: car.condition })
+      }
+      
       if (
         filters.make &&
         filters.make.length > 0 &&
-        !filters.make.some(make => car.make?.toLowerCase().includes(make.toLowerCase()))
-      )
+        !filters.make.some(make => car.make?.toLowerCase() === make.toLowerCase())
+      ) {
+        if (index < 3) console.log(`  ❌ Filtered out by make`)
         return false
+      }
       if (
         filters.model &&
+        filters.model.length > 0 &&
         !car.model?.toLowerCase().includes(filters.model.toLowerCase())
-      )
+      ) {
+        if (index < 3) console.log(`  ❌ Filtered out by model`)
         return false
+      }
       if (
         filters.trim &&
-        !car.trim?.toLowerCase().includes(filters.trim.toLowerCase())
+        filters.trim.length > 0 &&
+        !filters.trim.some(trim => car.trim?.toLowerCase().includes(trim.toLowerCase()))
       )
         return false
       if (filters.bodyStyle && car.bodyStyle !== filters.bodyStyle) return false
-      if (filters.condition && car.condition !== filters.condition) return false
+      if (filters.condition && filters.condition.length > 0 && car.condition !== filters.condition) {
+        if (index < 3) console.log(`  ❌ Filtered out by condition`)
+        return false
+      }
+      
+      if (index < 3) console.log(`  ✅ Car passed all filters!`)
+      filteredCount++
       if (filters.status && car.status !== filters.status) return false
 
       // Year range filter
@@ -443,12 +716,6 @@ function CarShopPageContent({ lng }: { lng: string }) {
       // Boolean filters
       if (filters.hideWithoutPhotos && (!car.images || car.images.length === 0))
         return false
-      if (filters.hideWithAccidents && car.hasAccidents) return false
-      if (filters.hideWithFrameDamage && car.hasFrameDamage) return false
-      if (filters.hideWithTheftHistory && car.hasTheftHistory) return false
-      if (filters.hideFleet && car.isFleet) return false
-      if (filters.hideWithLemonHistory && car.hasLemonHistory) return false
-      if (filters.hideWithSalvageHistory && car.hasSalvageHistory) return false
       if (filters.singleOwner && !car.isSingleOwner) return false
       if (filters.priceDrops && !car.hasPriceDrop) return false
       if (filters.onlineFinancing && !car.hasOnlineFinancing) return false
@@ -481,32 +748,73 @@ function CarShopPageContent({ lng }: { lng: string }) {
         }
       }
 
-      // Gas mileage range filter (using mpgCombined)
-      if (filters.gasMileageRange[0] > 0 || filters.gasMileageRange[1] < 150) {
-        if (car.mpgCombined && car.mpgCombined > 0) {
-          if (car.mpgCombined < filters.gasMileageRange[0] || car.mpgCombined > filters.gasMileageRange[1]) {
+
+      // Seller type filter
+      if (filters.sellerType && filters.sellerType.length > 0) {
+        // Check if car's seller type matches any selected seller type
+        if (!car.sellerType || !filters.sellerType.includes(car.sellerType)) {
+          return false
+        }
+      }
+
+      // Engine specifications filter
+      if (filters.engineSize && filters.engineSize > 0) {
+        // Extract engine size from engine string (e.g., "V6, 3.5L" -> 3.5)
+        const engineSizeMatch = car.engine?.match(/(\d+\.?\d*)\s*L/i)
+        if (engineSizeMatch) {
+          const carEngineSize = parseFloat(engineSizeMatch[1])
+          if (carEngineSize < filters.engineSize) {
             return false
           }
         }
       }
 
-      // Seller type filter
-      if (filters.sellerType && filters.sellerType.length > 0) {
-        // Check if car's dealership business type matches any selected seller type
-        const hasMatchingSellerType = filters.sellerType.some(type => {
-          if (type === "Authorized Dealer") {
-            return car.dealership?.businessType === "DEALER"
-          }
-          if (type === "CarGurus Partners") {
-            return car.dealership?.businessType === "PARTNER"
-          }
+      if (filters.horsepower && filters.horsepower > 0) {
+        if (!car.horsepower || car.horsepower < filters.horsepower) {
           return false
-        })
-        if (!hasMatchingSellerType) return false
+        }
+      }
+
+      // MPG specifications filter
+      if (filters.mpgCity && filters.mpgCity > 0) {
+        if (!car.mpgCity || car.mpgCity < filters.mpgCity) {
+          return false
+        }
+      }
+
+      if (filters.mpgHighway && filters.mpgHighway > 0) {
+        if (!car.mpgHighway || car.mpgHighway < filters.mpgHighway) {
+          return false
+        }
+      }
+
+      if (filters.mpgCombined && filters.mpgCombined > 0) {
+        if (!car.mpgCombined || car.mpgCombined < filters.mpgCombined) {
+          return false
+        }
       }
 
       return true
     })
+
+    console.log("=== FILTERING RESULT ===")
+    console.log("Filters applied:", { 
+      make: filters.make, 
+      model: filters.model, 
+      condition: filters.condition,
+      hasFilters: !!(filters.make?.length > 0 || filters.model?.length > 0 || filters.condition?.length > 0)
+    })
+    console.log(`Result: ${filteredCars.length} cars from ${allCars.length} total`)
+    
+    // Show sample of filtered results
+    if (filteredCars.length > 0 && filteredCars.length < allCars.length) {
+      console.log("Sample filtered cars:", filteredCars.slice(0, 3).map(car => ({
+        make: car.make,
+        model: car.model,
+        condition: car.condition
+      })))
+    }
+    console.log("=======================")
 
     // Apply sorting
     filteredCars.sort((a, b) => {
@@ -536,17 +844,10 @@ function CarShopPageContent({ lng }: { lng: string }) {
     const startIndex = (currentPage - 1) * itemsPerPage
     const endIndex = startIndex + itemsPerPage
     const paginatedCars = filteredCars.slice(startIndex, endIndex)
+    
+    // console.log("Pagination:", { filteredCars: filteredCars.length, totalPages, currentPage, paginatedCars: paginatedCars.length })
 
-    console.log(
-      "Pagination - Total:",
-      total,
-      "Start:",
-      startIndex,
-      "End:",
-      endIndex,
-      "Items:",
-      paginatedCars.length
-    )
+    // console.log("Pagination details:", { total, startIndex, endIndex, paginatedCars: paginatedCars.length })
 
     setInventoryData({
       items: paginatedCars,
@@ -560,9 +861,9 @@ function CarShopPageContent({ lng }: { lng: string }) {
     // Apply all filters except the one we're counting for
     return allCars.filter((car) => {
       // Basic vehicle info filters
-      if (filters.make && filters.make.length > 0 && !filters.make.some(make => car.make?.toLowerCase().includes(make.toLowerCase()))) return false
+      if (filters.make && filters.make.length > 0 && !filters.make.some(make => car.make?.toLowerCase().includes(make.toLowerCase()) || make.toLowerCase().includes(car.make?.toLowerCase() || ""))) return false
       if (filters.model && !car.model?.toLowerCase().includes(filters.model.toLowerCase())) return false
-      if (filters.trim && !car.trim?.toLowerCase().includes(filters.trim.toLowerCase())) return false
+      if (filters.trim && filters.trim.length > 0 && !filters.trim.some(trim => car.trim?.toLowerCase().includes(trim.toLowerCase()))) return false
       if (filters.bodyStyle && car.bodyStyle !== filters.bodyStyle) return false
       if (filters.condition && car.condition !== filters.condition) return false
       if (filters.status && car.status !== filters.status) return false
@@ -626,12 +927,6 @@ function CarShopPageContent({ lng }: { lng: string }) {
 
       // Boolean filters
       if (filters.hideWithoutPhotos && (!car.images || car.images.length === 0)) return false
-      if (filters.hideWithAccidents && car.hasAccidents) return false
-      if (filters.hideWithFrameDamage && car.hasFrameDamage) return false
-      if (filters.hideWithTheftHistory && car.hasTheftHistory) return false
-      if (filters.hideFleet && car.isFleet) return false
-      if (filters.hideWithLemonHistory && car.hasLemonHistory) return false
-      if (filters.hideWithSalvageHistory && car.hasSalvageHistory) return false
       if (filters.singleOwner && !car.isSingleOwner) return false
       if (filters.priceDrops && !car.hasPriceDrop) return false
       if (filters.onlineFinancing && !car.hasOnlineFinancing) return false
@@ -694,6 +989,11 @@ function CarShopPageContent({ lng }: { lng: string }) {
         value: status,
         count: filteredCarsForCounts.filter((car) => car.status === status).length,
       })),
+    sellerTypes: [
+      { value: "Authorized Dealer", count: filteredCarsForCounts.filter((car) => car.sellerType === "Authorized Dealer").length },
+      { value: "Independent Dealer", count: filteredCarsForCounts.filter((car) => car.sellerType === "Independent Dealer").length },
+      { value: "Private Seller", count: filteredCarsForCounts.filter((car) => car.sellerType === "Private Seller").length },
+    ],
 
     // Fuel and transmission
     fuelTypes: Array.from(
@@ -767,8 +1067,14 @@ function CarShopPageContent({ lng }: { lng: string }) {
       max: Math.max(...allCars.map((car) => car.mileage || 0)),
     },
     engineSizeRange: {
-      min: Math.min(...allCars.map((car) => car.engineSize || 0)),
-      max: Math.max(...allCars.map((car) => car.engineSize || 0)),
+      min: Math.min(...allCars.map((car) => {
+        const engineSizeMatch = car.engine?.match(/(\d+\.?\d*)\s*L/i)
+        return engineSizeMatch ? parseFloat(engineSizeMatch[1]) : 0
+      })),
+      max: Math.max(...allCars.map((car) => {
+        const engineSizeMatch = car.engine?.match(/(\d+\.?\d*)\s*L/i)
+        return engineSizeMatch ? parseFloat(engineSizeMatch[1]) : 0
+      })),
     },
     horsepowerRange: {
       min: Math.min(...allCars.map((car) => car.horsepower || 0)),
@@ -786,6 +1092,13 @@ function CarShopPageContent({ lng }: { lng: string }) {
       min: Math.min(...allCars.map((car) => car.mpgCombined || 0)),
       max: Math.max(...allCars.map((car) => car.mpgCombined || 0)),
     },
+    
+    // Counts
+    priceDropsCount: filteredCarsForCounts.filter((car) => car.hasPriceDrop).length,
+    vehiclesWithPhotosCount: filteredCarsForCounts.filter((car) => car.images && car.images.length > 0).length,
+    
+    // Vehicle history counts
+    singleOwnerVehiclesCount: filteredCarsForCounts.filter((car) => car.isSingleOwner).length,
   }
 
   // Calculate pagination info

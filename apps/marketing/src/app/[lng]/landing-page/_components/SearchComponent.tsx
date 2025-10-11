@@ -4,6 +4,7 @@
 
 import { Container } from "@package/ui/container"
 import { useState, useMemo } from "react"
+import { useRouter } from "next/navigation"
 import carDataRaw from "../Car-MakeModel-Database-1950-to-present.json"
 
 // Types
@@ -17,13 +18,13 @@ interface CarEntry {
 const carData = carDataRaw as CarEntry[]
 
 export function SearchComponent() {
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState<"buy" | "sell">("buy")
   const [searchData, setSearchData] = useState({
     // Buy tab data
     condition: "Used",
     make: "",
     model: "",
-    zipCode: "",
     // Sell tab data
     licensePlate: "",
     state: "State",
@@ -132,6 +133,38 @@ export function SearchComponent() {
     ? modelsByMake[searchData.make] || []
     : []
 
+  // Handle search navigation
+  const handleSearch = () => {
+    if (activeTab === "buy") {
+      // Build search parameters
+      const params = new URLSearchParams()
+      
+      // Always send condition (defaults to "Used")
+      params.set("carType", searchData.condition || "Used")
+      
+      if (searchData.make && searchData.make !== "") {
+        params.set("make", searchData.make)
+      }
+      
+      if (searchData.model && searchData.model !== "") {
+        params.set("model", searchData.model)
+      }
+      
+      // Debug logging
+      console.log("=== MAIN PAGE SEARCH DEBUG ===")
+      console.log("searchData:", searchData)
+      console.log("URL params:", params.toString())
+      console.log("Full URL:", `/cars/shop?${params.toString()}`)
+      console.log("==============================")
+      
+      // Navigate to cars shop page with search parameters
+      router.push(`/cars/shop?${params.toString()}`)
+    } else {
+      // Handle sell/trade functionality (placeholder)
+      console.log("Sell/Trade functionality not implemented yet")
+    }
+  }
+
   return (
     <section
       className="relative bg-cover bg-center bg-no-repeat min-h-[600px] flex items-center justify-center"
@@ -179,7 +212,7 @@ export function SearchComponent() {
 
           {/* Buy Tab Content */}
           {activeTab === "buy" && (
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
               {/* Condition Dropdown */}
               <select
                 value={searchData.condition}
@@ -226,17 +259,11 @@ export function SearchComponent() {
                 ))}
               </select>
 
-              {/* ZIP Code Input */}
-              <input
-                type="text"
-                value={searchData.zipCode}
-                onChange={(e) => handleInputChange("zipCode", e.target.value)}
-                placeholder="ZIP code"
-                className="w-full px-4 py-4 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white font-medium text-lg text-gray-700 placeholder-gray-500 border-0 outline-none transition-all duration-200"
-              />
-
               {/* Search Button */}
-              <button className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
+              <button 
+                onClick={handleSearch}
+                className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+              >
                 Search
               </button>
             </div>

@@ -12,6 +12,7 @@ interface ActiveFiltersProps {
     carType: "used" | "new"
     search: string
     sortBy: string
+    trim?: string[]
     // Additional filters
     exteriorColor?: string[]
     interiorColor?: string[]
@@ -22,26 +23,16 @@ interface ActiveFiltersProps {
     numberOfSeats?: string[]
     numberOfDoors?: string[]
     dealRating?: string[]
-    safetyRating?: string[]
-    dealerRating?: string[]
     sellerType?: string[]
     mileageRange?: [number, number]
-    gasMileageRange?: [number, number]
     daysOnMarketRange?: [number, number]
     hideWithoutPhotos?: boolean
-    hideWithAccidents?: boolean
-    hideWithFrameDamage?: boolean
-    hideWithTheftHistory?: boolean
-    hideFleet?: boolean
-    hideWithLemonHistory?: boolean
-    hideWithSalvageHistory?: boolean
     singleOwner?: boolean
     priceDrops?: boolean
     onlineFinancing?: boolean
     condition?: string
     financingOptions?: string[]
     daysOnMarketRange?: [number, number]
-    gasMileageRange?: [number, number]
     engineSize?: number
     horsepower?: number
     mpgCity?: number
@@ -127,17 +118,15 @@ export default function ActiveFilters({
       })
     }
 
-    // Trim filter - MISSING FROM ACTIVE FILTERS
-    if (filters.trim) {
+    // Trim filter - HAS BACKEND IMPLEMENTATION
+    if (filters.trim && filters.trim.length > 0) {
       activeFilters.push({
         key: "trim",
         label: "Trim",
-        value: filters.trim,
+        value: filters.trim.join(", "),
         onRemove: () => {
           const currentFilters = filtersRef?.current || filters
-          console.log("Removing trim filter, current filters:", currentFilters)
-          const updatedFilters = { ...currentFilters, trim: "" }
-          console.log("Updated filters after removing trim:", updatedFilters)
+          const updatedFilters = { ...currentFilters, trim: [] }
           onFilterChange(updatedFilters)
         },
       })
@@ -328,29 +317,8 @@ export default function ActiveFilters({
       })
     }
 
-    // Gas Mileage Range filter - HAS BACKEND IMPLEMENTATION
-    const defaultGasMileageRange = { min: 0, max: 150 }
-    if (
-      filters.gasMileageRange &&
-      (filters.gasMileageRange[0] !== defaultGasMileageRange.min ||
-        filters.gasMileageRange[1] !== defaultGasMileageRange.max)
-    ) {
-      activeFilters.push({
-        key: "gasMileageRange",
-        label: "Gas Mileage",
-        value: `${filters.gasMileageRange[0]} - ${filters.gasMileageRange[1]} MPG`,
-        onRemove: () => {
-          const currentFilters = filtersRef?.current || filters
-          const updatedFilters = {
-            ...currentFilters,
-            gasMileageRange: [defaultGasMileageRange.min, defaultGasMileageRange.max]
-          }
-          onFilterChange(updatedFilters)
-        },
-      })
-    }
 
-    // Engine Specifications filter - Consolidated entry
+    // Engine Specifications filter - HAS BACKEND IMPLEMENTATION
     if ((filters.engineSize && filters.engineSize > 0) || (filters.horsepower && filters.horsepower > 0)) {
       const engineValues = []
       if (filters.engineSize && filters.engineSize > 0) {
@@ -376,7 +344,7 @@ export default function ActiveFilters({
       })
     }
 
-    // MPG Specifications filter - Consolidated entry
+    // MPG Specifications filter - HAS BACKEND IMPLEMENTATION
     if ((filters.mpgCity && filters.mpgCity > 0) || (filters.mpgHighway && filters.mpgHighway > 0) || (filters.mpgCombined && filters.mpgCombined > 0)) {
       const mpgValues = []
       if (filters.mpgCity && filters.mpgCity > 0) {
@@ -425,9 +393,7 @@ export default function ActiveFilters({
     // - numberOfSeats (no backend filtering)  
     // - numberOfDoors (no backend filtering)
     // - dealRating (no backend filtering)
-    // - safetyRating (no backend filtering)
-    // - dealerRating (no backend filtering)
-    // - sellerType (no backend filtering)
+    // - sellerType (HAS backend filtering)
 
     // Mileage Range filter - Use empty defaults (no restrictions)
     const defaultMileageRange = {
@@ -460,69 +426,11 @@ export default function ActiveFilters({
       })
     }
 
-    if (filters.hideWithAccidents) {
-      activeFilters.push({
-        key: "hideWithAccidents",
-        label: "Quality: No Accidents",
-        value: "✓",
-        onRemove: () =>
-          onFilterChange({ ...filters, hideWithAccidents: false }),
-      })
-    }
-
-    if (filters.hideWithFrameDamage) {
-      activeFilters.push({
-        key: "hideWithFrameDamage",
-        label: "Quality: No Frame Damage",
-        value: "✓",
-        onRemove: () =>
-          onFilterChange({ ...filters, hideWithFrameDamage: false }),
-      })
-    }
-
-    if (filters.hideWithTheftHistory) {
-      activeFilters.push({
-        key: "hideWithTheftHistory",
-        label: "Quality: No Theft History",
-        value: "✓",
-        onRemove: () =>
-          onFilterChange({ ...filters, hideWithTheftHistory: false }),
-      })
-    }
-
-    if (filters.hideFleet) {
-      activeFilters.push({
-        key: "hideFleet",
-        label: "Hide fleet vehicles",
-        value: "Yes",
-        onRemove: () => onFilterChange({ ...filters, hideFleet: false }),
-      })
-    }
-
-    if (filters.hideWithLemonHistory) {
-      activeFilters.push({
-        key: "hideWithLemonHistory",
-        label: "Quality: No Lemon History",
-        value: "✓",
-        onRemove: () =>
-          onFilterChange({ ...filters, hideWithLemonHistory: false }),
-      })
-    }
-
-    if (filters.hideWithSalvageHistory) {
-      activeFilters.push({
-        key: "hideWithSalvageHistory",
-        label: "Quality: No Salvage History",
-        value: "✓",
-        onRemove: () =>
-          onFilterChange({ ...filters, hideWithSalvageHistory: false }),
-      })
-    }
-
+    // Single Owner filter
     if (filters.singleOwner) {
       activeFilters.push({
         key: "singleOwner",
-        label: "Single owner",
+        label: "Single Owner",
         value: "Yes",
         onRemove: () => onFilterChange({ ...filters, singleOwner: false }),
       })

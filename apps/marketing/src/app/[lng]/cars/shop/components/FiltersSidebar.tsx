@@ -9,7 +9,7 @@ interface FiltersSidebarProps {
     make: string[]
     model: string
     yearRange: [number, number]
-    trim: string
+    trim: string[]
     bodyStyle: string
     condition: string
     status: string
@@ -41,12 +41,6 @@ interface FiltersSidebarProps {
 
     // Vehicle history and condition
     hideWithoutPhotos: boolean
-    hideWithAccidents: boolean
-    hideWithFrameDamage: boolean
-    hideWithTheftHistory: boolean
-    hideFleet: boolean
-    hideWithLemonHistory: boolean
-    hideWithSalvageHistory: boolean
     singleOwner: boolean
 
     // Search and sorting
@@ -66,8 +60,6 @@ interface FiltersSidebarProps {
     // Days on market range
     daysOnMarketRange: [number, number]
     
-    // Gas mileage range (MPG)
-    gasMileageRange: [number, number]
     
     // Seller type
     sellerType: string[]
@@ -83,6 +75,7 @@ interface FiltersSidebarProps {
     bodyStyles: Array<{ value: string; count: number }>
     conditions: Array<{ value: string; count: number }>
     statuses: Array<{ value: string; count: number }>
+    sellerTypes: Array<{ value: string; count: number }>
 
     // Fuel and transmission
     fuelTypes: Array<{ value: string; count: number }>
@@ -105,6 +98,13 @@ interface FiltersSidebarProps {
     mpgCityRange: { min: number; max: number }
     mpgHighwayRange: { min: number; max: number }
     mpgCombinedRange: { min: number; max: number }
+    
+    // Counts
+    priceDropsCount: number
+    vehiclesWithPhotosCount: number
+    
+    // Vehicle history counts
+    singleOwnerVehiclesCount: number
   }
   isLoading?: boolean
 }
@@ -146,10 +146,7 @@ export default function FiltersSidebar({
     vehicleHistory: false,
     financing: false,
     daysOnMarket: false,
-    gasMileage: false,
-    safetyRating: false,
     priceDrops: false,
-    dealerRating: false,
     sellerType: false,
     trim: false,
     condition: false,
@@ -1434,7 +1431,7 @@ export default function FiltersSidebar({
                   }
                 />
                 <span className="text-sm text-gray-900">
-                  Hide vehicles without photos (730)
+                  Hide vehicles without photos ({filterOptions?.vehiclesWithPhotosCount || 0})
                 </span>
               </label>
             </div>
@@ -1468,54 +1465,16 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.vehicleHistory && (
             <div className="px-4 pb-4 space-y-4">
-              <label className="flex items-center space-x-3">
-                <input
-                  type="checkbox"
-                  className="text-blue-600"
-                  checked={localFilters.singleOwner || false}
-                  onChange={(e) =>
-                    handleBooleanFilterUpdate("singleOwner", e.target.checked)
-                  }
-                />
-                <span className="text-sm text-gray-900">
-                  Single Owner (4,496)
-                </span>
-              </label>
               <div>
                 <div className="text-sm font-bold text-gray-900 mb-3">
-                  Hide vehicles with:
+                  Show vehicles with:
                 </div>
                 <div className="space-y-3">
                   {[
                     {
-                      name: "Accidents Reported",
-                      count: 2972,
-                      key: "hideWithAccidents",
-                    },
-                    {
-                      name: "Frame Damage",
-                      count: 347,
-                      key: "hideWithFrameDamage",
-                    },
-                    {
-                      name: "Theft History Reported",
-                      count: 104,
-                      key: "hideWithTheftHistory",
-                    },
-                    {
-                      name: "Fleet (e.g. rental or corporate)",
-                      count: 2137,
-                      key: "hideFleet",
-                    },
-                    {
-                      name: "Lemon History Reported",
-                      count: 35,
-                      key: "hideWithLemonHistory",
-                    },
-                    {
-                      name: "Salvage History Reported",
-                      count: 214,
-                      key: "hideWithSalvageHistory",
+                      name: "Single Owner",
+                      count: filterOptions?.singleOwnerVehiclesCount || 0,
+                      key: "singleOwner",
                     },
                   ].map((item) => (
                     <label
@@ -1650,100 +1609,7 @@ export default function FiltersSidebar({
           )}
         </div>
 
-        {/* Gas Mileage */}
-        <div className="border-b border-gray-200">
-          <button
-            onClick={() => toggleSection("gasMileage")}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
-          >
-            <span className="text-sm font-bold text-gray-900">Gas mileage</span>
-            <svg
-              className={`w-5 h-5 text-gray-400 transition-transform ${
-                expandedSections.gasMileage ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          {expandedSections.gasMileage && (
-            <div className="px-4 pb-4 space-y-4">
-              <div className="text-sm text-gray-600">
-                {localFilters.gasMileageRange[0]} MPG - {localFilters.gasMileageRange[1]} MPG
-              </div>
-              <input
-                type="range"
-                min="13"
-                max="143"
-                value={localFilters.gasMileageRange[1]}
-                className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
-                onChange={(e) => {
-                  const value = parseInt(e.target.value)
-                  handleFilterUpdate("gasMileageRange", [localFilters.gasMileageRange[0], value])
-                }}
-                disabled={isLoading}
-              />
-            </div>
-          )}
-        </div>
 
-        {/* NHTSA Overall Safety Rating */}
-        <div className="border-b border-gray-200">
-          <button
-            onClick={() => toggleSection("safetyRating")}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
-          >
-            <span className="text-sm font-bold text-gray-900">
-              NHTSA overall safety rating
-            </span>
-            <svg
-              className={`w-5 h-5 text-gray-400 transition-transform ${
-                expandedSections.safetyRating ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          {expandedSections.safetyRating && (
-            <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "⭐⭐⭐⭐⭐ 5 stars", count: 3853 },
-                { name: "⭐⭐⭐⭐ 4+ stars", count: 4834 },
-                { name: "⭐⭐⭐ 3+ stars", count: 4866 },
-                { name: "No rating", count: 4686 },
-              ].map((rating) => (
-                <label
-                  key={rating.name}
-                  className="flex items-center space-x-3"
-                >
-                  <input
-                    type="radio"
-                    name="safetyRating"
-                    className="text-blue-600"
-                  />
-                  <span className="text-sm text-blue-600">
-                    {rating.name} ({rating.count.toLocaleString()})
-                  </span>
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
 
         {/* Price Drops */}
         <div className="border-b border-gray-200">
@@ -1780,64 +1646,13 @@ export default function FiltersSidebar({
                   }
                 />
                 <span className="text-sm text-gray-900">
-                  Only show recent price drops (965)
+                  Only show recent price drops ({filterOptions?.priceDropsCount || 0})
                 </span>
               </label>
             </div>
           )}
         </div>
 
-        {/* Dealer Rating */}
-        <div className="border-b border-gray-200">
-          <button
-            onClick={() => toggleSection("dealerRating")}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
-          >
-            <span className="text-sm font-bold text-gray-900">
-              Dealer rating
-            </span>
-            <svg
-              className={`w-5 h-5 text-gray-400 transition-transform ${
-                expandedSections.dealerRating ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          {expandedSections.dealerRating && (
-            <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "⭐⭐⭐⭐⭐ 5 stars", count: 1847 },
-                { name: "⭐⭐⭐⭐ 4+ stars", count: 5776 },
-                { name: "⭐⭐⭐ 3+ stars", count: 7835 },
-                { name: "⭐⭐ 2+ stars", count: 8159 },
-                { name: "⭐ 1+ stars", count: 8318 },
-              ].map((rating) => (
-                <label
-                  key={rating.name}
-                  className="flex items-center space-x-3"
-                >
-                  <input
-                    type="radio"
-                    name="dealerRating"
-                    className="text-blue-600"
-                  />
-                  <span className="text-sm text-blue-600">
-                    {rating.name} ({rating.count.toLocaleString()})
-                  </span>
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
 
         {/* Trim */}
         <div className="border-b border-gray-200">
@@ -1869,13 +1684,15 @@ export default function FiltersSidebar({
                   <input
                     type="checkbox"
                     className="text-blue-600"
-                    checked={localFilters.trim === trim.value}
-                    onChange={(e) =>
-                      handleFilterUpdate(
-                        "trim",
-                        e.target.checked ? trim.value : ""
-                      )
-                    }
+                    checked={localFilters.trim?.includes(trim.value) || false}
+                    onChange={(e) => {
+                      const currentTrims = localFilters.trim || []
+                      if (e.target.checked) {
+                        handleFilterUpdate("trim", [...currentTrims, trim.value])
+                      } else {
+                        handleFilterUpdate("trim", currentTrims.filter(t => t !== trim.value))
+                      }
+                    }}
                   />
                   <span className="text-sm text-gray-900">
                     {trim.value} ({trim.count.toLocaleString()})
@@ -2086,8 +1903,16 @@ export default function FiltersSidebar({
               <div className="mt-3 pt-3 border-t border-gray-100">
                 <button
                   onClick={() => {
-                    handleFilterUpdate("engineSize", 0)
-                    handleFilterUpdate("horsepower", 0)
+                    setLocalFilters(prev => ({
+                      ...prev,
+                      engineSize: 0,
+                      horsepower: 0
+                    }))
+                    onFilterChange({
+                      ...localFilters,
+                      engineSize: 0,
+                      horsepower: 0
+                    })
                   }}
                   className="text-xs text-blue-600 hover:text-blue-700 underline"
                   disabled={isLoading}
@@ -2214,9 +2039,18 @@ export default function FiltersSidebar({
               <div className="mt-3 pt-3 border-t border-gray-100">
                 <button
                   onClick={() => {
-                    handleFilterUpdate("mpgCity", 0)
-                    handleFilterUpdate("mpgHighway", 0)
-                    handleFilterUpdate("mpgCombined", 0)
+                    setLocalFilters(prev => ({
+                      ...prev,
+                      mpgCity: 0,
+                      mpgHighway: 0,
+                      mpgCombined: 0
+                    }))
+                    onFilterChange({
+                      ...localFilters,
+                      mpgCity: 0,
+                      mpgHighway: 0,
+                      mpgCombined: 0
+                    })
                   }}
                   className="text-xs text-blue-600 hover:text-blue-700 underline"
                   disabled={isLoading}
@@ -2253,27 +2087,24 @@ export default function FiltersSidebar({
           </button>
           {expandedSections.sellerType && (
             <div className="px-4 pb-4 space-y-3">
-              {[
-                { name: "Authorized Dealer", count: 1970 },
-                { name: "CarGurus Partners", count: 8809 },
-              ].map((type) => (
-                <label key={type.name} className="flex items-center space-x-3">
+              {(filterOptions?.sellerTypes || []).map((type) => (
+                <label key={type.value} className="flex items-center space-x-3">
                   <input
                     type="checkbox"
                     className="text-blue-600"
                     checked={
-                      localFilters.sellerType?.includes(type.name) || false
+                      localFilters.sellerType?.includes(type.value) || false
                     }
                     onChange={(e) =>
                       handleArrayFilterUpdate(
                         "sellerType",
-                        type.name,
+                        type.value,
                         e.target.checked
                       )
                     }
                   />
                   <span className="text-sm text-gray-900">
-                    {type.name} ({type.count.toLocaleString()})
+                    {type.value} ({type.count.toLocaleString()})
                   </span>
                 </label>
               ))}
