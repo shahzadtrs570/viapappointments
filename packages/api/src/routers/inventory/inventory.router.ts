@@ -10,19 +10,50 @@ import { inventoryService } from "./service/inventory.service"
 // Input validation schemas
 const getInventorySchema = z.object({
   // Filtering options
-  make: z.string().optional(),
+  make: z.array(z.string()).optional(),
   model: z.string().optional(),
   year: z.number().int().min(1900).max(2030).optional(),
   minYear: z.number().int().min(1900).max(2030).optional(),
   maxYear: z.number().int().min(1900).max(2030).optional(),
   minPrice: z.number().min(0).optional(),
   maxPrice: z.number().min(0).optional(),
+  minMileage: z.number().int().min(0).optional(),
+  maxMileage: z.number().int().min(0).optional(),
   condition: z.string().optional(),
-  fuelType: z.string().optional(),
-  transmission: z.string().optional(),
-  drivetrain: z.string().optional(),
+  fuelType: z.array(z.string()).optional(),
+  transmission: z.array(z.string()).optional(),
+  drivetrain: z.array(z.string()).optional(),
   bodyStyle: z.string().optional(),
   dealershipId: z.string().optional(),
+
+  // Additional filters
+  trim: z.array(z.string()).optional(),
+  exteriorColor: z.array(z.string()).optional(),
+  interiorColor: z.array(z.string()).optional(),
+  features: z.array(z.string()).optional(),
+
+  // Engine and MPG filters
+  minEngineSize: z.number().min(0).optional(),
+  minHorsepower: z.number().int().min(0).optional(),
+  minMpgCity: z.number().int().min(0).optional(),
+  minMpgHighway: z.number().int().min(0).optional(),
+  minMpgCombined: z.number().int().min(0).optional(),
+
+  // Boolean filters
+  hideWithoutPhotos: z.boolean().optional(),
+  singleOwner: z.boolean().optional(),
+  priceDrops: z.boolean().optional(),
+  onlineFinancing: z.boolean().optional(),
+
+  // Financing options
+  financingOptions: z.array(z.string()).optional(),
+
+  // Days on market
+  minDaysOnMarket: z.number().int().min(0).optional(),
+  maxDaysOnMarket: z.number().int().min(0).optional(),
+
+  // Seller type
+  sellerType: z.array(z.string()).optional(),
 
   // Search and pagination
   search: z.string().optional(),

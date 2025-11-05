@@ -11,19 +11,50 @@ import type { Inventory, Dealership } from "@package/db"
 export interface GetInventoryArgs {
   input: {
     // Filtering options
-    make?: string
+    make?: string[]
     model?: string
     year?: number
     minYear?: number
     maxYear?: number
     minPrice?: number
     maxPrice?: number
+    minMileage?: number
+    maxMileage?: number
     condition?: string
-    fuelType?: string
-    transmission?: string
-    drivetrain?: string
+    fuelType?: string[]
+    transmission?: string[]
+    drivetrain?: string[]
     bodyStyle?: string
     dealershipId?: string
+
+    // Additional filters
+    trim?: string[]
+    exteriorColor?: string[]
+    interiorColor?: string[]
+    features?: string[]
+
+    // Engine and MPG filters
+    minEngineSize?: number
+    minHorsepower?: number
+    minMpgCity?: number
+    minMpgHighway?: number
+    minMpgCombined?: number
+
+    // Boolean filters
+    hideWithoutPhotos?: boolean
+    singleOwner?: boolean
+    priceDrops?: boolean
+    onlineFinancing?: boolean
+
+    // Financing options
+    financingOptions?: string[]
+
+    // Days on market
+    minDaysOnMarket?: number
+    maxDaysOnMarket?: number
+
+    // Seller type
+    sellerType?: string[]
 
     // Search and pagination
     search?: string

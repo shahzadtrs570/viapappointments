@@ -4,7 +4,7 @@
 
 import { Container } from "@package/ui/container"
 import { useState, useMemo } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useParams } from "next/navigation"
 import carDataRaw from "../Car-MakeModel-Database-1950-to-present.json"
 
 // Types
@@ -19,6 +19,8 @@ const carData = carDataRaw as CarEntry[]
 
 export function SearchComponent() {
   const router = useRouter()
+  const params = useParams()
+  const lng = params?.lng || "en" // Get language from route params
   const [activeTab, setActiveTab] = useState<"buy" | "sell">("buy")
   const [searchData, setSearchData] = useState({
     // Buy tab data
@@ -137,28 +139,36 @@ export function SearchComponent() {
   const handleSearch = () => {
     if (activeTab === "buy") {
       // Build search parameters
-      const params = new URLSearchParams()
-      
-      // Always send condition (defaults to "Used")
-      params.set("carType", searchData.condition || "Used")
-      
+      const searchParams = new URLSearchParams()
+
+      // Map condition to the correct format
+      // "New" -> condition: "New"
+      // "Used" -> condition: "Used"
+      // "Certified Pre-Owned" -> condition: "Certified Pre-Owned"
+      if (searchData.condition && searchData.condition !== "") {
+        searchParams.set("condition", searchData.condition)
+      }
+
+      // Add make filter
       if (searchData.make && searchData.make !== "") {
-        params.set("make", searchData.make)
+        searchParams.set("make", searchData.make)
       }
-      
+
+      // Add model filter
       if (searchData.model && searchData.model !== "") {
-        params.set("model", searchData.model)
+        searchParams.set("model", searchData.model)
       }
-      
+
       // Debug logging
       console.log("=== MAIN PAGE SEARCH DEBUG ===")
+      console.log("Language:", lng)
       console.log("searchData:", searchData)
-      console.log("URL params:", params.toString())
-      console.log("Full URL:", `/cars/shop?${params.toString()}`)
+      console.log("URL params:", searchParams.toString())
+      console.log("Full URL:", `/${lng}/cars/shop?${searchParams.toString()}`)
       console.log("==============================")
-      
-      // Navigate to cars shop page with search parameters
-      router.push(`/cars/shop?${params.toString()}`)
+
+      // Navigate to cars shop page with search parameters (include language)
+      router.push(`/${lng}/cars/shop?${searchParams.toString()}`)
     } else {
       // Handle sell/trade functionality (placeholder)
       console.log("Sell/Trade functionality not implemented yet")
@@ -260,7 +270,7 @@ export function SearchComponent() {
               </select>
 
               {/* Search Button */}
-              <button 
+              <button
                 onClick={handleSearch}
                 className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
               >

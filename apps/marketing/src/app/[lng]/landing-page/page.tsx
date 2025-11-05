@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable */
 import type { Metadata } from "next"
 
 import { useTranslation } from "@/lib/i18n"
@@ -61,7 +61,7 @@ export default async function LandingPage({
       <FAQ />
       <TrustIndicators />
       <CallToAction />
-      <WheelPopupWrapper />
+      {/* <WheelPopupWrapper /> */}
     </section>
   )
 }

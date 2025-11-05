@@ -49,7 +49,7 @@ export default async function LandingPage({
       <BudgetCalculator />
       <ExploreCarMakes />
       <ExploreCarTypes />
-      <WheelPopupWrapper />
+      {/* <WheelPopupWrapper /> */}
     </section>
   )
 }

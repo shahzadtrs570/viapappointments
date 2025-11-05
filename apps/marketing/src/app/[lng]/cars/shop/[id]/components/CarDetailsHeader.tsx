@@ -58,9 +58,9 @@ export default function CarDetailsHeader({
     }
   }
 
-  // Convert from cents to dollars
-  const priceAmount = car.priceAmount ? car.priceAmount / 100 : 0
-  const msrpAmount = car.msrpAmount ? car.msrpAmount / 100 : 0
+  // Prices are already in dollars from API
+  const priceAmount = car.priceAmount || 0
+  const msrpAmount = car.msrpAmount || 0
 
   const dealInfo = getDealRating(priceAmount, msrpAmount)
   const savings = msrpAmount && priceAmount ? msrpAmount - priceAmount : 0

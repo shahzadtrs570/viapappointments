@@ -1,7 +1,8 @@
 /* eslint-disable */
 
 import { db as prisma } from "@package/db"
-import type { Prisma, Inventory, Dealership } from "@package/db"
+import { Prisma } from "@package/db"
+import type { Inventory, Dealership } from "@package/db"
 import type {
   InventoryWithDealership,
   InventoryFilters,
@@ -98,19 +99,38 @@ class InventoryRepository {
    * Get paginated inventory with filters
    */
   public async getInventory(args: {
-    make?: string
+    make?: string[]
     model?: string
     year?: number
     minYear?: number
     maxYear?: number
     minPrice?: number
     maxPrice?: number
+    minMileage?: number
+    maxMileage?: number
     condition?: string
-    fuelType?: string
-    transmission?: string
-    drivetrain?: string
+    fuelType?: string[]
+    transmission?: string[]
+    drivetrain?: string[]
     bodyStyle?: string
     dealershipId?: string
+    trim?: string[]
+    exteriorColor?: string[]
+    interiorColor?: string[]
+    features?: string[]
+    minEngineSize?: number
+    minHorsepower?: number
+    minMpgCity?: number
+    minMpgHighway?: number
+    minMpgCombined?: number
+    hideWithoutPhotos?: boolean
+    singleOwner?: boolean
+    priceDrops?: boolean
+    onlineFinancing?: boolean
+    financingOptions?: string[]
+    minDaysOnMarket?: number
+    maxDaysOnMarket?: number
+    sellerType?: string[]
     search?: string
     cursor?: string
     skip?: number
@@ -133,12 +153,31 @@ class InventoryRepository {
       maxYear,
       minPrice,
       maxPrice,
+      minMileage,
+      maxMileage,
       condition,
       fuelType,
       transmission,
       drivetrain,
       bodyStyle,
       dealershipId,
+      trim,
+      exteriorColor,
+      interiorColor,
+      features,
+      minEngineSize,
+      minHorsepower,
+      minMpgCity,
+      minMpgHighway,
+      minMpgCombined,
+      hideWithoutPhotos,
+      singleOwner,
+      priceDrops,
+      onlineFinancing,
+      financingOptions,
+      minDaysOnMarket,
+      maxDaysOnMarket,
+      sellerType,
       search,
       cursor,
       skip,
@@ -149,24 +188,86 @@ class InventoryRepository {
       isFeatured,
     } = args
 
+    // Build price filter with proper AND conditions
+    const priceFilter: any = {
+      not: null,
+      gt: 0, // Always exclude 0 or null prices
+    }
+    if (minPrice) {
+      priceFilter.gte = minPrice * 100 // Convert to cents
+    }
+    if (maxPrice) {
+      priceFilter.lte = maxPrice * 100 // Convert to cents
+    }
+
     // Build where clause
     const where: Prisma.InventoryWhereInput = {
       isActive,
+      priceAmount: priceFilter,
       ...(status && { status }),
       ...(isFeatured !== undefined && { isFeatured }),
-      ...(make && { make: { contains: make, mode: "insensitive" } }),
+      ...(make &&
+        make.length > 0 && {
+          make: {
+            in: make,
+            mode: "insensitive",
+          },
+        }),
       ...(model && { model: { contains: model, mode: "insensitive" } }),
       ...(year && { year }),
       ...(minYear && { year: { gte: minYear } }),
       ...(maxYear && { year: { lte: maxYear } }),
-      ...(minPrice && { priceAmount: { gte: minPrice * 100 } }), // Convert to cents
-      ...(maxPrice && { priceAmount: { lte: maxPrice * 100 } }), // Convert to cents
+      ...(minMileage && { mileage: { gte: minMileage } }),
+      ...(maxMileage && { mileage: { lte: maxMileage } }),
       ...(condition && { condition }),
-      ...(fuelType && { fuelType }),
-      ...(transmission && { transmission }),
-      ...(drivetrain && { drivetrain }),
+      ...(fuelType &&
+        fuelType.length > 0 && {
+          fuelType: {
+            in: fuelType,
+          },
+        }),
+      ...(transmission &&
+        transmission.length > 0 && {
+          transmission: {
+            in: transmission,
+          },
+        }),
+      ...(drivetrain &&
+        drivetrain.length > 0 && {
+          drivetrain: {
+            in: drivetrain,
+          },
+        }),
       ...(bodyStyle && { bodyStyle }),
       ...(dealershipId && { dealershipId }),
+      ...(trim &&
+        trim.length > 0 && {
+          trim: {
+            in: trim,
+          },
+        }),
+      ...(exteriorColor &&
+        exteriorColor.length > 0 && {
+          exteriorColor: {
+            in: exteriorColor,
+          },
+        }),
+      ...(interiorColor &&
+        interiorColor.length > 0 && {
+          interiorColor: {
+            in: interiorColor,
+          },
+        }),
+      ...(minEngineSize && { engineSize: { gte: minEngineSize } }),
+      ...(minHorsepower && { horsepower: { gte: minHorsepower } }),
+      ...(minMpgCity && { mpgCity: { gte: minMpgCity } }),
+      ...(minMpgHighway && { mpgHighway: { gte: minMpgHighway } }),
+      ...(minMpgCombined && { mpgCombined: { gte: minMpgCombined } }),
+      ...(hideWithoutPhotos && {
+        images: {
+          not: Prisma.JsonNull,
+        },
+      }),
       ...(search && {
         OR: [
           { make: { contains: search, mode: "insensitive" } },
@@ -253,6 +354,11 @@ class InventoryRepository {
   ): Promise<InventoryFilters> {
     const where: Prisma.InventoryWhereInput = {
       isActive: true,
+      // Exclude items with invalid prices
+      priceAmount: {
+        not: null,
+        gt: 0,
+      },
       ...(dealershipId && { dealershipId }),
     }
 
@@ -441,6 +547,11 @@ class InventoryRepository {
    */
   public async getInventoryStats(dealershipId?: string) {
     const where: Prisma.InventoryWhereInput = {
+      // Exclude items with invalid prices
+      priceAmount: {
+        not: null,
+        gt: 0,
+      },
       ...(dealershipId && { dealershipId }),
     }
 
@@ -570,6 +681,11 @@ class InventoryRepository {
 
     const where: Prisma.InventoryWhereInput = {
       isActive: true,
+      // Exclude items with invalid prices
+      priceAmount: {
+        not: null,
+        gt: 0,
+      },
       OR: [
         { make: { contains: query, mode: "insensitive" } },
         { model: { contains: query, mode: "insensitive" } },

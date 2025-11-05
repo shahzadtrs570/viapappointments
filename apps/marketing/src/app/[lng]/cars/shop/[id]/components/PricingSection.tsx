@@ -2,6 +2,7 @@
 "use client"
 
 import { useState } from "react"
+import { openVehicleListing } from "../utils/vehicleUrl"
 
 interface PricingSectionProps {
   car: any
@@ -13,12 +14,16 @@ export default function PricingSection({ car }: PricingSectionProps) {
   const [loanTerm, setLoanTerm] = useState(60)
   const [showHistory, setShowHistory] = useState(false)
 
-  // Convert from cents to dollars
-  const marketPrice = car.msrpAmount ? car.msrpAmount / 100 : 0
-  const currentPrice = car.priceAmount ? car.priceAmount / 100 : 0
+  // Prices are already in dollars from API
+  const marketPrice = car.msrpAmount || 0
+  const currentPrice = car.priceAmount || 0
   const savings = marketPrice && currentPrice ? marketPrice - currentPrice : 0
   const savingsPercent =
     marketPrice > 0 ? Math.round((savings / marketPrice) * 100) : 0
+
+  const handleStartPurchase = () => {
+    openVehicleListing(car)
+  }
 
   const estimatePayment = () => {
     const principal = currentPrice - downPayment
@@ -466,7 +471,10 @@ export default function PricingSection({ car }: PricingSectionProps) {
             heading to the dealership.
           </p>
           <div className="flex space-x-4">
-            <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors">
+            <button
+              onClick={handleStartPurchase}
+              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+            >
               Start purchase
             </button>
             <button className="flex-1 border border-gray-300 hover:border-gray-400 text-gray-900 font-semibold py-3 px-4 rounded-lg transition-colors">

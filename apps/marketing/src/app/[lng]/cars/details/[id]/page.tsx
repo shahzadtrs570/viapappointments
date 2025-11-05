@@ -45,7 +45,10 @@ export default function CarDetailsPage({
             return
           }
         } catch (apiError) {
-          console.warn("Database API failed, falling back to JSON files:", apiError)
+          console.warn(
+            "Database API failed, falling back to JSON files:",
+            apiError
+          )
         }
 
         // Fallback to JSON files if database API fails
@@ -120,9 +123,9 @@ export default function CarDetailsPage({
         // Find the specific car by ID - handle both old format and new format
         console.log("Looking for car with ID:", id)
         console.log("Total cars loaded:", allCarsData.length)
-        
+
         let foundCar = allCarsData.find((car) => car.id === id)
-        
+
         // If not found with exact ID, try to find by numeric ID (for new format)
         if (!foundCar) {
           const numericId = parseInt(id)
@@ -131,7 +134,7 @@ export default function CarDetailsPage({
             console.log("Found car by numeric index:", foundCar?.title)
           }
         }
-        
+
         if (foundCar) {
           console.log("Car found:", foundCar.title)
           setCar(foundCar)
@@ -328,17 +331,6 @@ export default function CarDetailsPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Debug Info - Remove in production */}
-      {process.env.NODE_ENV === "development" && (
-        <div className="bg-green-50 border-l-4 border-green-400 p-4 mx-6 mt-4">
-          <div className="text-sm text-green-700">
-            <strong>Vehicle Detail Debug:</strong> Car ID: {id} | Total cars:{" "}
-            {allCars.length} | Current index: {currentCarIndex} | Next:{" "}
-            {nextCarId} | Prev: {prevCarId}
-          </div>
-        </div>
-      )}
-
       <CarDetailsHeader
         car={car}
         currentIndex={currentCarIndex >= 0 ? currentCarIndex : 0}
