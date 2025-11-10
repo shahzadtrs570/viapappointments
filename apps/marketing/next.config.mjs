@@ -14,67 +14,11 @@ const config = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: '**', // Allow all HTTPS domains
       },
       {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.amazonaws.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.cloudfront.net',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.googleusercontent.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.motor1.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'hips.hearstapps.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.cstatic-images.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'inventory-dmg.assets-cdk.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.dealereprocess.net',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.dealereprocess.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.vinsolutions.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.autotrader.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.cars.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.cargurus.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'vehicle-images.dealerinspire.com',
+        protocol: 'http',
+        hostname: '**', // Allow all HTTP domains
       },
     ],
   },
