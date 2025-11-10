@@ -5,7 +5,9 @@ import { Inter } from "next/font/google"
 
 import type { Metadata, Viewport } from "next"
 
-import { RootLayout as MarketingRootLayout } from "@/components/Layouts"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+import { Toaster } from "@/components/ui/toaster"
 import { useTranslation } from "@/lib/i18n"
 import { getInitialResources } from "@/lib/i18n/getInitialResources"
 import { I18nProvider } from "@/lib/i18n/I18nProvider"
@@ -36,12 +38,12 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(defaultUrl),
     title: {
-      template: `%s | ${t("title", "Srenova")}`,
-      default: t("title", "Srenova"),
+      template: `%s | ${t("title", "Check The Lot")}`,
+      default: t("title", "Check The Lot | AI-Powered Marketplace"),
     },
     description: t(
       "description",
-      "Connect property owners with investment opportunities for equity release."
+      "Discover your next dream purchase with AI-powered search. Browse vehicles, homes, boats, and more in one intelligent marketplace."
     ),
     icons: {
       icon: "/icon.png",
@@ -107,7 +109,10 @@ export default async function RootLayout({
             lng={lng}
             namespaces={namespaces}
           >
-            <MarketingRootLayout>{children}</MarketingRootLayout>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <Toaster />
           </I18nProvider>
         </TRPCReactProvider>
       </body>

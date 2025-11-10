@@ -50,17 +50,7 @@ export default async function LandingPage({
   return (
     <section className="bg-white">
       <Hero />
-      <ScrollingBanner />
-      <PreQualifyImage />
-      <Features />
-      <WhatIsSrenova />
-      <Calculator />
-      <ValueProposition />
-      <HowItWorks />
-      <Benefits />
-      <FAQ />
-      <TrustIndicators />
-      <CallToAction />
+
       {/* <WheelPopupWrapper /> */}
     </section>
   )

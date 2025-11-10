@@ -8,9 +8,9 @@ type LandingLayoutProps = {
 export function LandingLayout({ children }: LandingLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
-      <Navbar />
+      {/* <Navbar /> */}
       <main className="flex-1">{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
