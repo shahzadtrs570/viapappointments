@@ -4,14 +4,19 @@ import { useState } from "react"
 import { Mic, Sparkles, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { useRouter } from "next/navigation"
 import { useToast } from "@/hooks/use-toast"
 
-const Hero = () => {
-  const router = useRouter()
+interface HeroProps {
+  onAiSearch?: (query: string) => Promise<void>
+  isSearching?: boolean
+}
+
+const Hero = ({ onAiSearch, isSearching: externalIsSearching }: HeroProps) => {
   const { toast } = useToast()
   const [searchQuery, setSearchQuery] = useState("")
-  const [isSearching, setIsSearching] = useState(false)
+  const [internalIsSearching, setInternalIsSearching] = useState(false)
+
+  const isSearching = externalIsSearching || internalIsSearching
 
   const handleAISearch = async () => {
     if (!searchQuery.trim()) {
@@ -23,55 +28,40 @@ const Hero = () => {
       return
     }
 
-    setIsSearching(true)
-
-    try {
-      // Call AI parsing endpoint
-      const response = await fetch("/api/ai-search", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ query: searchQuery }),
-      })
-
-      if (!response.ok) {
-        throw new Error("Search failed")
+    if (onAiSearch) {
+      // Use the callback from parent
+      await onAiSearch(searchQuery)
+    } else {
+      // Fallback behavior if no callback provided
+      setInternalIsSearching(true)
+      try {
+        const response = await fetch("/api/ai-search", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: searchQuery }),
+        })
+        if (response.ok) {
+          const data = await response.json()
+          toast({
+            title: "AI Understanding",
+            description: data.interpretation || "Processing your search...",
+          })
+        }
+      } catch (error) {
+        console.error("AI search error:", error)
+        toast({
+          title: "Search Error",
+          description: "Please try again",
+          variant: "destructive",
+        })
+      } finally {
+        setInternalIsSearching(false)
       }
-
-      const data = await response.json()
-
-      // Show AI interpretation
-      toast({
-        title: "AI Understanding",
-        description: data.interpretation || "Processing your search...",
-      })
-
-      // Encode filters as URL params
-      const params = new URLSearchParams()
-      params.set("q", searchQuery)
-      params.set("filters", JSON.stringify(data.filters))
-      params.set("ai", "true")
-
-      // Navigate to search results with filters
-      router.push(`/search?${params.toString()}`)
-    } catch (error) {
-      console.error("AI search error:", error)
-      toast({
-        title: "Search Error",
-        description: "Performing basic search instead...",
-        variant: "destructive",
-      })
-
-      // Fallback to basic search
-      router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
-    } finally {
-      setIsSearching(false)
     }
   }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !isSearching) {
       handleAISearch()
     }
   }
@@ -117,32 +107,26 @@ const Hero = () => {
         </p>
 
         {/* AI Search Bar */}
-        <div className="max-w-5xl mx-auto glass-strong rounded-3xl p-3 shadow-glass glow-hover mb-8">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-4 flex-1 bg-background/60 rounded-2xl px-6 py-5">
-              <Sparkles className="h-5 w-5 text-primary flex-shrink-0" />
-              <Input
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Try: 'Find a boat under $30K near Miami' or 'Luxury SUV with low miles'"
-                className="border-0 bg-transparent text-base placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 font-medium"
-                disabled={isSearching}
-              />
-              <button className="hover:bg-accent/10 p-2.5 rounded-xl transition-all hover:scale-110">
-                <Mic className="h-5 w-5 text-muted-foreground hover:text-accent transition-colors" />
-              </button>
-            </div>
+        <div className="max-w-4xl mx-auto glass-strong rounded-2xl p-2 shadow-glass glow-hover mb-8">
+          <div className="flex items-center gap-3 bg-background/60 rounded-xl px-6 py-4">
+            <Sparkles className="h-5 w-5 text-primary flex-shrink-0" />
+            <Input
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Try: 'Tesla under $60K' or 'Luxury SUV with low miles'"
+              className="border-0 bg-transparent text-base placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 font-medium flex-1"
+              disabled={isSearching}
+            />
             <Button
-              size="lg"
+              size="sm"
               onClick={handleAISearch}
               disabled={isSearching}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-7 rounded-2xl font-bold text-base glow-primary shadow-xl disabled:opacity-50"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-5 rounded-xl font-bold text-sm glow-primary shadow-lg disabled:opacity-50 flex-shrink-0 min-w-[120px]"
             >
               {isSearching ? (
                 <>
-                  <Loader2 className="h-5 w-5 animate-spin mr-2" />
-                  Searching...
+                  <Loader2 className="h-4 w-4 animate-spin" />
                 </>
               ) : (
                 "Ask AI"

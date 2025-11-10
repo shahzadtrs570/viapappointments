@@ -72,6 +72,10 @@ const config = {
         protocol: 'https',
         hostname: '*.cargurus.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'vehicle-images.dealerinspire.com',
+      },
     ],
   },
   // Configure `pageExtensions` to include markdown and MDX files
