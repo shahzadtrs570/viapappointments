@@ -6,13 +6,26 @@ import type { Metadata } from "next"
 
 import { docs } from "@/lib/fuma"
 
+// Disable static generation for docs in production builds
+export const dynamic = "force-dynamic"
+
 export function generateStaticParams() {
-  return docs
-    .getPages()
-    .filter((page) => page.slugs.length > 0)
-    .map((page) => ({
-      slug: page.slugs,
-    }))
+  // Skip static generation if docs are disabled
+  if (!featureFlags.docs) {
+    return []
+  }
+
+  try {
+    return docs
+      .getPages()
+      .filter((page) => page.slugs.length > 0)
+      .map((page) => ({
+        slug: page.slugs,
+      }))
+  } catch (error) {
+    console.error("Error generating static params for docs:", error)
+    return []
+  }
 }
 
 export function generateMetadata({ params }: { params: { slug?: string[] } }) {
