@@ -36,7 +36,7 @@ const About = () => {
       year: "Origin",
       title: "Born from Experience",
       description:
-        "Founded by the team behind 7Social and VIPAppointments.com, bringing years of marketplace expertise.",
+        "Founded by the team behind Marketplace Listing Tool, bringing years of marketplace expertise.",
     },
     {
       year: "Evolution",

@@ -275,7 +275,7 @@ export default function HomePage({ params: { lng } }: HomePageProps) {
                       <ListingCard
                         image={imageUrl}
                         title={`${car.year || ""} ${car.make || ""} ${car.model || ""}`.trim()}
-                        price={`$${((car.priceAmount || 0) / 100).toLocaleString()}`}
+                        price={`$${(car.priceAmount || 0).toLocaleString()}`}
                         location={car.dealership?.name || "Dealership"}
                         category="Vehicles"
                         verified={car.isFeatured}

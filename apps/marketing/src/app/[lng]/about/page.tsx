@@ -57,7 +57,7 @@ export default async function AboutPage({
       year: "Origin",
       title: "Born from Experience",
       description:
-        "Founded by the team behind 7Social and VIPAppointments.com, bringing years of marketplace expertise.",
+        "Founded by the team behind Marketplace Listing Tool, bringing years of marketplace expertise.",
     },
     {
       year: "Evolution",
@@ -186,7 +186,8 @@ export default async function AboutPage({
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 AI-powered search that understands natural language. Ask for
-                what you want — and Check The Lot finds it.
+                what you want and let AI search the Listings of Things database
+                for you.
               </p>
 
               <div className="grid md:grid-cols-2 gap-4 pt-8">
